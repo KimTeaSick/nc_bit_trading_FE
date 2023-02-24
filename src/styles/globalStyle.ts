@@ -1,0 +1,31 @@
+import styled from "styled-components";
+
+export const globalColor = {
+  mainColor: " #359865",
+  pointColor: " #10393a",
+  subPointColor: "#eccb54",
+  backgroundColor: " #f1f1f1",
+  subBackgroundColor: " #f4f3ea",
+};
+
+export const Layout = styled.div`
+  display: flex;
+  .sidebar_section {
+    height: 80vh;
+  }
+`;
+
+export const PageWapper = styled.div`
+  width: 100%;
+  margin: 20px;
+  padding: 45px;
+  min-height: 80vh;
+  margin-left: 60px;
+  border-radius: 35px;
+  background-color: #f4f4ea;
+  p {
+    font-size: 32px;
+    font-weight: bold;
+    color: ${globalColor.pointColor};
+  }
+`;
