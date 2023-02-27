@@ -1,4 +1,5 @@
 import { CoinType } from "@/@types/CoinList";
+import { krwChage } from "@/lib/krwChage";
 import Link from "next/link";
 import { FC } from "react";
 import * as CL from "./CoinListStyled";
@@ -12,7 +13,7 @@ const CoinCard: FC<CoinCardProps> = ({ coin }) => {
     <Link href={`coin/${coin[0]}`}>
       <CL.CoinCard>
         <div>{coin[0]}</div>
-        <div>{coin[1].max_price} 원</div>
+        <div>{krwChage(String(coin[1].max_price))} 원</div>
       </CL.CoinCard>
     </Link>
   );

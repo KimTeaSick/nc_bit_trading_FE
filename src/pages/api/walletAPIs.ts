@@ -13,3 +13,8 @@ export const sell = (body: { coin: string; unit: number }) => {
 export const buy = (body: { coin: string; unit: number }) => {
   post("buy", body);
 };
+
+export const getProperty = createAsyncThunk("getProperty", async () => {
+  const response = await get("myProperty");
+  return response;
+});

@@ -1,3 +1,4 @@
+import { krwChage } from "@/lib/krwChage";
 import { RootStateType } from "@/module/rootReducer.d";
 import { sell, buy } from "@/pages/api/walletAPIs";
 import { FC } from "react";
@@ -9,7 +10,7 @@ const MyBalance: FC = () => {
     (state: RootStateType) => state.wallet
   );
 
-  console.log(coinList);
+  const mathBalnce = Math.round(Number(balance));
   const sellButtonEvent = (coin: string, unit: string) => {
     const body = {
       coin: coin.slice(6, coin.length),
@@ -17,19 +18,17 @@ const MyBalance: FC = () => {
     };
     sell(body);
   };
+
   return (
     <>
-      <div>예수금 : {balance}</div>
+      <div>예수금 : {krwChage(String(mathBalnce))}</div>
       <div>
         보유 코인 :
-        {coinList.map((value: any, index: number) => (
+        {coinList?.map((value: any, index: number) => (
           <CoinList key={index}>
-            <div>{coinList[index + 1]}</div>
-            <SellButton
-              onClick={() =>
-                sellButtonEvent(coinList[index + 1][0], coinList[index + 1][1])
-              }
-            >
+            <div>{value[0]}</div>
+            <div>{Number(value[1]).toFixed(4)}</div>
+            <SellButton onClick={() => sellButtonEvent(value[0], value[1])}>
               매도
             </SellButton>
           </CoinList>

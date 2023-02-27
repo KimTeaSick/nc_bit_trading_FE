@@ -19,6 +19,6 @@ export const CoinDetailButton = styled.button`
   height: 30px;
   font-size: 14px;
   border-radius: 10px;
-  background-color: #f4f4ea;
+  background-color: #f9f9f9;
   border: 1px solid #ddddcb;
 `;

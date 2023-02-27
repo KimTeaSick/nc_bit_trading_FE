@@ -2,21 +2,30 @@ import LayoutComponent from "@/components/common/Layout";
 import WalletPage from "@/components/Wallet/WalletPage";
 import { NextPage } from "next";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPageActive } from "@/module/common";
-import { getBalance } from "./api/walletAPIs";
+import { getBalance, getProperty } from "./api/walletAPIs";
+import { RootStateType } from "@/module/rootReducer.d";
+import Loading from "@/components/common/Loading";
 
 const Wallet: NextPage = () => {
   const dispatch = useDispatch<any>();
-
+  const { myPropertyState, balanceState } = useSelector(
+    (state: RootStateType) => state.wallet
+  );
   useEffect(() => {
     dispatch(setPageActive("Wallet"));
     dispatch(getBalance());
+    dispatch(getProperty());
   }, [dispatch]);
 
   return (
     <LayoutComponent>
-      <WalletPage />
+      {myPropertyState && balanceState === "Loading" ? (
+        <Loading />
+      ) : (
+        <WalletPage />
+      )}
     </LayoutComponent>
   );
 };

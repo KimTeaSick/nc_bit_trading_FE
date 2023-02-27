@@ -55,7 +55,7 @@ const CandleChart: FC<CandleChartProps> = ({
           x2={xAxisLength}
           y1={yAxisLength}
           y2={yAxisLength}
-          stroke={"red"}
+          stroke={"#50535E"}
         />
         <HoLine
           numYTicks={numYTicks}
@@ -119,7 +119,7 @@ const CandleChart: FC<CandleChartProps> = ({
           y1={y0}
           x2={x0}
           y2={y0 + yAxisLength}
-          stroke={"red"}
+          stroke={"#50535E"}
         />
       </svg>
     </>

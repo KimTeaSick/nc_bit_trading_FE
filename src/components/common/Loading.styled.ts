@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 export const LoadingPageWrapper = styled.div`
   display: flex;
   width: inherit;
-  height: inherit;
+  height: 100%;
   align-items: center;
   justify-content: center;
   /* background-color: pink; */

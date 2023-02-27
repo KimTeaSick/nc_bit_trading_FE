@@ -8,6 +8,7 @@ import { NextPage } from "next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import { setDetailCoin } from "@/module/coin";
+import Loading from "@/components/common/Loading";
 
 const CoinDetail: NextPage = () => {
   const router = useRouter();
@@ -18,7 +19,9 @@ const CoinDetail: NextPage = () => {
     "1m" | "3m" | "5m" | "10m" | "30m" | "1h" | "6h" | "12h" | "24h"
   >("1h");
 
-  const { chartData } = useSelector((state: RootStateType) => state.coin);
+  const { chartData, chartDataStatus } = useSelector(
+    (state: RootStateType) => state.coin
+  );
 
   const setCoin = useCallback(async () => {
     const coinData = await getCoinDetailInfo(id);
@@ -34,7 +37,15 @@ const CoinDetail: NextPage = () => {
 
   return (
     <LayoutComponent>
-      <CoinDetailPage selectCoin={selectCoin} data={chartData} coinName={id} />
+      {chartDataStatus === "Loading" ? (
+        <Loading />
+      ) : (
+        <CoinDetailPage
+          selectCoin={selectCoin}
+          data={chartData}
+          coinName={id}
+        />
+      )}
     </LayoutComponent>
   );
 };

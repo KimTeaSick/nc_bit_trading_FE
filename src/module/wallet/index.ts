@@ -1,4 +1,4 @@
-import { getBalance } from "@/pages/api/walletAPIs";
+import { getBalance, getProperty } from "@/pages/api/walletAPIs";
 import { createSlice } from "@reduxjs/toolkit";
 import { WalletInitialState } from "./wallet";
 
@@ -6,6 +6,8 @@ const initialState: WalletInitialState = {
   balance: 0.0,
   coinList: [],
   balanceState: "",
+  myProperty: "",
+  myPropertyState: "",
 };
 
 const walletSlice = createSlice({
@@ -25,6 +27,19 @@ const walletSlice = createSlice({
 
     builder.addCase(getBalance.rejected, (state, action) => {
       state.balanceState = `error ${action.error}`;
+    });
+
+    builder.addCase(getProperty.pending, (state) => {
+      state.myPropertyState = "Loading";
+    });
+
+    builder.addCase(getProperty.fulfilled, (state, action) => {
+      state.myProperty = action.payload;
+      state.myPropertyState = "Success";
+    });
+
+    builder.addCase(getProperty.rejected, (state, action) => {
+      state.myPropertyState = `error ${action.error}`;
     });
   },
 });

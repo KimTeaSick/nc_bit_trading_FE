@@ -4,6 +4,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import commonSlice from "./common";
 import walletSlice from "./wallet";
 import coinSlice from "./coin";
+import tradingSlice from "./trading";
 import { AsyncThunkAction } from "@reduxjs/toolkit";
 
 const rootReducer = (
@@ -18,6 +19,7 @@ const rootReducer = (
         common: commonSlice,
         wallet: walletSlice,
         coin: coinSlice,
+        trading: tradingSlice,
       });
       return combineReducer(state, action);
     }

@@ -2,10 +2,9 @@ import React from "react";
 import { DetailCoinType } from "@/@types/CoinList";
 import ButtonSection from "./ButtonSection";
 import * as CD from "./CoinDetailStyled";
-import Loading from "../common/Loading";
-import dynamic from "next/dynamic";
 import { FC } from "react";
 import Chart from "../Chart";
+import { krwChage } from "@/lib/krwChage";
 
 interface CoinDetailPageProps {
   selectCoin?: DetailCoinType;
@@ -23,19 +22,19 @@ const CoinDetailPage: FC<CoinDetailPageProps> = ({
       <CD.CoinDetailTopSection>
         <p>{coinName}</p>
         <div>
-          <div>금일 최고가 : {selectCoin?.data?.max_price} 원</div>
-          <div>금일 최저가 : {selectCoin?.data?.min_price} 원</div>
+          <div>
+            금일 최고가 : {krwChage(String(selectCoin?.data?.max_price))} 원
+          </div>
+          <div>
+            금일 최저가 : {krwChage(String(selectCoin?.data?.min_price))} 원
+          </div>
         </div>
       </CD.CoinDetailTopSection>
       <div>
-        {data !== undefined ? (
-          <>
-            <Chart />
-            <ButtonSection />
-          </>
-        ) : (
-          <Loading />
-        )}
+        <>
+          <Chart />
+          <ButtonSection />
+        </>
       </div>
     </>
   );

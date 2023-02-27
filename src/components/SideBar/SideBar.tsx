@@ -18,7 +18,11 @@ const SideBar: NextComponentType = () => {
       <Button goal="/" icon={faHouse} active={activePage === "Dash"} />
       <Button goal="/wallet" icon={faWallet} active={activePage === "Wallet"} />
       <Button goal="/coin" icon={faChartLine} active={activePage === "Coin"} />
-      <Button goal="/" icon={faPaperPlane} active={activePage === "Send"} />
+      <Button
+        goal="/tradinglist"
+        icon={faPaperPlane}
+        active={activePage === "tradinglist"}
+      />
       <Button goal="/" icon={faGear} active={activePage === "Setting"} />
     </SB.SideBarSection>
   );

@@ -44,7 +44,13 @@ const VolumeChart: FC<VolumeChartProps> = ({
 
   return (
     <svg width={xAxisLength} height={yAxisLength}>
-      <line x1={x0} y1={xAxisY} x2={xAxisLength} y2={xAxisY} stroke={"red"} />
+      <line
+        x1={x0}
+        y1={xAxisY}
+        x2={xAxisLength}
+        y2={xAxisY}
+        stroke={"#50535E"}
+      />
       <HoLine
         numYTicks={numYTicks}
         yAxisLength={yAxisLength}
@@ -79,7 +85,7 @@ const VolumeChart: FC<VolumeChartProps> = ({
           </g>
         );
       })}
-      <line x1={x0} y1={y0} x2={x0} y2={y0 + yAxisLength} stroke={"red"} />
+      <line x1={x0} y1={y0} x2={x0} y2={y0 + yAxisLength} stroke={"#50535E"} />
     </svg>
   );
 };
