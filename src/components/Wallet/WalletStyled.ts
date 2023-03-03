@@ -16,12 +16,12 @@ export const WalletSideSection = styled.div`
 export const CoinList = styled.div`
   gap: 10px;
   display: flex;
-  max-width: 350px;
+  max-width: 360px;
   margin: 5px 0 0 5px;
   align-items: center;
   justify-content: space-between;
   div {
-    min-width: 140px;
+    min-width: 100px;
   }
 `;
 

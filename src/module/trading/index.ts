@@ -5,6 +5,7 @@ import { getOrderList } from "@/pages/api/tradingList";
 const initialState: TradingInitialState = {
   orderList: [],
   orderListStatus: "",
+  orderListPage: "",
 };
 
 const tradingSlice = createSlice({
@@ -17,7 +18,8 @@ const tradingSlice = createSlice({
     });
     builder.addCase(getOrderList.fulfilled, (state, action) => {
       state.orderListStatus = "Success";
-      state.orderList = action.payload;
+      state.orderList = action.payload.data;
+      state.orderListPage = action.payload.page;
     });
     builder.addCase(getOrderList.rejected, (state, action) => {
       state.orderListStatus = `error ${action.error}`;

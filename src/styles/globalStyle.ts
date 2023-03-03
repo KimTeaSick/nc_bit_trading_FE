@@ -29,3 +29,17 @@ export const PageWapper = styled.div`
     color: ${globalColor.pointColor};
   }
 `;
+
+interface InputProps {
+  width: number;
+}
+
+export const Input = styled.input`
+  width: ${(props: InputProps) => props.width}px;
+  color: #000;
+  height: 25px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+`;

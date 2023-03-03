@@ -1,23 +1,29 @@
 import { krwChage } from "@/lib/krwChage";
 import { RootStateType } from "@/module/rootReducer.d";
 import { sell, buy } from "@/pages/api/walletAPIs";
-import { FC } from "react";
+import { Input } from "@/styles/globalStyle";
+import { FC, useState } from "react";
 import { useSelector } from "react-redux";
 import { CoinList, SellButton } from "./WalletStyled";
 
 const MyBalance: FC = () => {
+  const [unit, setUnit] = useState<string>("");
+
   const { balance, coinList } = useSelector(
     (state: RootStateType) => state.wallet
   );
 
   const mathBalnce = Math.round(Number(balance));
+
   const sellButtonEvent = (coin: string, unit: string) => {
+    if (unit === "") {
+      alert("갯수를 입력해주세요");
+      return;
+    }
     const body = {
       coin: coin.slice(6, coin.length),
       unit: parseFloat(unit),
     };
-    console.log(body);
-
     sell(body);
   };
 
@@ -30,7 +36,13 @@ const MyBalance: FC = () => {
           <CoinList key={index}>
             <div>{value[0]}</div>
             <div>{Number(value[1]).toFixed(4)}</div>
-            <SellButton onClick={() => sellButtonEvent(value[0], value[1])}>
+            <Input
+              width={70}
+              type={"number"}
+              placeholder="0"
+              onChange={(e) => setUnit(e.target.value)}
+            />
+            <SellButton onClick={() => sellButtonEvent(value[0], unit)}>
               매도
             </SellButton>
           </CoinList>

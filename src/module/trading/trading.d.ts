@@ -23,4 +23,5 @@ type OrderListContractType = {
 export type TradingInitialState = {
   orderList: OrderListType[];
   orderListStatus: string;
+  orderListPage: string;
 };

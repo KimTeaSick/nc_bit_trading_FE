@@ -16,8 +16,8 @@ const List: FC<ListProps> = ({ data, index }) => {
       <div>{data.type === "bid" ? "매수" : "매도"}</div>
       <div>{krwChage(data.contract[0].price)} 원</div>
       <div>{data.order_qty}</div>
-      <div>{krwChage(data.contract[0].total)}원</div>
-      <div>{data.contract[0].fee}</div>
+      <div>{krwChage(data.contract[0].total)} 원</div>
+      <div>{data.contract[0].fee} 원</div>
     </OrderList>
   );
 };

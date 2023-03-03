@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: CommonInitialState = {
   activePage: "",
+  pagiNation: "",
 };
 
 const commonSlice = createSlice({
