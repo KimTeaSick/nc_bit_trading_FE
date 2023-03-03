@@ -18,4 +18,19 @@ export const OrderList = styled.div`
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
+  div {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+  }
 `;
+
+export const LIST_VALUE = [
+  "번호",
+  "코인",
+  "매매",
+  "코인 1개당 가격",
+  "수량",
+  "원",
+  "수수료",
+];

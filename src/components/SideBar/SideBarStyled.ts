@@ -2,6 +2,7 @@ import { globalColor } from "./../../styles/globalStyle";
 import styled from "styled-components";
 
 export const SideBarSection = styled.div`
+  row-gap: 3px;
   display: flex;
   position: fixed;
   min-height: 80vh;

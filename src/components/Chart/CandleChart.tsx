@@ -6,6 +6,7 @@ import CandleInfo from "./CandleInfo";
 import { stringify } from "querystring";
 import { timeChange } from "@/lib/timeChage";
 import AvgLine from "./AvgLine";
+import { krwChage } from "@/lib/krwChage";
 
 interface CandleChartProps {
   CHART_WIDTH: number;
@@ -45,9 +46,12 @@ const CandleChart: FC<CandleChartProps> = ({
   return (
     <>
       <div>
-        {timeChange(hoverInfo?.Date)} 고가 : {hoverInfo?.High} 저가:
-        {hoverInfo?.Low} 종가: {hoverInfo?.Close} 시가:{hoverInfo?.Open} 거래량:
-        {hoverInfo?.Volume}
+        {timeChange(hoverInfo?.Date)}
+        고가 : {krwChage(String(hoverInfo?.High))}
+        저가 : {krwChage(String(hoverInfo?.Low))}
+        종가 : {krwChage(String(hoverInfo?.Close))}
+        시가 : {krwChage(String(hoverInfo?.Open))}
+        거래량 : {hoverInfo?.Volume}
       </div>
       <svg width={xAxisLength} height={SVG_CHART_HEIGHT}>
         <line //x 선
@@ -113,7 +117,7 @@ const CandleChart: FC<CandleChartProps> = ({
             </g>
           );
         })}
-        <AvgLine />
+        {/* <AvgLine /> */}
         <line // y 선
           x1={x0}
           y1={y0}

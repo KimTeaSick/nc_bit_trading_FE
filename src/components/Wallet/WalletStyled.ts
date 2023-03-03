@@ -1,3 +1,4 @@
+import { AnyAction } from "redux";
 import styled from "styled-components";
 
 export const WalletTopSection = styled.div`
@@ -10,23 +11,27 @@ export const WalletSideSection = styled.div`
   font-size: 22px;
   font-weight: bold;
   border-radius: 30px;
-  /* background-color: #f5f7f9; */
 `;
 
 export const CoinList = styled.div`
   gap: 10px;
-  width: 250px;
   display: flex;
+  max-width: 350px;
   margin: 5px 0 0 5px;
   align-items: center;
   justify-content: space-between;
+  div {
+    min-width: 140px;
+  }
 `;
 
 export const SellButton = styled.button`
   width: 50px;
   height: 30px;
   border: none;
+  color: #963900;
   cursor: pointer;
+  font-weight: bold;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #eccb54;
 `;

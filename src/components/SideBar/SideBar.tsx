@@ -23,7 +23,7 @@ const SideBar: NextComponentType = () => {
         icon={faPaperPlane}
         active={activePage === "tradinglist"}
       />
-      <Button goal="/" icon={faGear} active={activePage === "Setting"} />
+      <Button goal="/setting" icon={faGear} active={activePage === "Setting"} />
     </SB.SideBarSection>
   );
 };

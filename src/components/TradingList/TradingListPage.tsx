@@ -2,8 +2,8 @@ import { RootStateType } from "@/module/rootReducer.d";
 import { getOrderList } from "@/pages/api/tradingList";
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import List from "./List";
-import { ListSection } from "./Trading.styled";
+import List, { ListTitle } from "./List";
+import { ListSection, LIST_VALUE } from "./Trading.styled";
 
 const TradingPage: FC = () => {
   const dispatch = useDispatch<any>();
@@ -16,6 +16,7 @@ const TradingPage: FC = () => {
     <div>
       <p>TradingList</p>
       <ListSection>
+        <ListTitle data={LIST_VALUE} />
         {orderList?.map((value, index) => (
           <List key={index} data={value} index={index + 1} />
         ))}

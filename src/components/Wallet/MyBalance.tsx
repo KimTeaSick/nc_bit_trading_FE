@@ -16,6 +16,8 @@ const MyBalance: FC = () => {
       coin: coin.slice(6, coin.length),
       unit: parseFloat(unit),
     };
+    console.log(body);
+
     sell(body);
   };
 
