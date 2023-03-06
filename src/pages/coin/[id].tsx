@@ -2,7 +2,11 @@ import CoinDetailPage from "@/components/CoinDetail/CoinDetailPage";
 import { DetailCoinType } from "@/@types/CoinList";
 import LayoutComponent from "@/components/common/Layout";
 import { useCallback, useEffect, useState } from "react";
-import { getCoinDetailInfo, getChartData } from "../api/coinListAPIs";
+import {
+  getCoinDetailInfo,
+  getChartData,
+  getAvgData,
+} from "../api/coinListAPIs";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +19,8 @@ const CoinDetail: NextPage = () => {
   const dispatch = useDispatch<any>();
   const { id } = router.query;
   const [selectCoin, setSelectCoin] = useState<DetailCoinType>();
+  const [clo, setClo] = useState<number[]>([]);
+
   const [term, setTerm] = useState<
     "1m" | "3m" | "5m" | "10m" | "30m" | "1h" | "6h" | "12h" | "24h"
   >("1h");
@@ -26,6 +32,7 @@ const CoinDetail: NextPage = () => {
   const setCoin = useCallback(async () => {
     const coinData = await getCoinDetailInfo(id);
     const body = { id, term };
+    dispatch(getAvgData());
     dispatch(setDetailCoin(id));
     dispatch(getChartData(body));
     setSelectCoin(coinData);

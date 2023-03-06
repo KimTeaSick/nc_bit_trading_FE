@@ -1,5 +1,5 @@
 import { CoinInitialState } from "./coin.d";
-import { getChartData } from "./../../pages/api/coinListAPIs";
+import { getChartData, getAvgData } from "./../../pages/api/coinListAPIs";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: CoinInitialState = {
@@ -7,6 +7,9 @@ const initialState: CoinInitialState = {
   chartTerm: "24h",
   chartData: [],
   chartDataStatus: "",
+
+  avgData: [],
+  avgDataStatus: "",
 };
 
 const coinSlice = createSlice({
@@ -30,6 +33,17 @@ const coinSlice = createSlice({
     });
     builder.addCase(getChartData.rejected, (state, action) => {
       state.chartDataStatus = `error ${action.error}`;
+    });
+
+    builder.addCase(getAvgData.pending, (state) => {
+      state.avgDataStatus = "Loading";
+    });
+    builder.addCase(getAvgData.fulfilled, (state, action) => {
+      state.avgDataStatus = "Success";
+      state.avgData = action.payload;
+    });
+    builder.addCase(getAvgData.rejected, (state, action) => {
+      state.avgDataStatus = `error ${action.error}`;
     });
   },
 });

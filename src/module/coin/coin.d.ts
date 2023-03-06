@@ -4,4 +4,6 @@ export type CoinInitialState = {
   chartTerm: string;
   chartData: any;
   chartDataStatus: string;
+  avgData: number[];
+  avgDataStatus: string;
 };

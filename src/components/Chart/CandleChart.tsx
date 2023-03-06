@@ -3,10 +3,11 @@ import { ChartDataType } from "@/@types/CoinList";
 import { scaleLinear } from "d3-scale";
 import HoLine from "./HoLine";
 import CandleInfo from "./CandleInfo";
-import { stringify } from "querystring";
 import { timeChange } from "@/lib/timeChage";
 import AvgLine from "./AvgLine";
 import { krwChage } from "@/lib/krwChage";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/module/rootReducer.d";
 
 interface CandleChartProps {
   CHART_WIDTH: number;
@@ -19,6 +20,8 @@ const CandleChart: FC<CandleChartProps> = ({
   chartData,
 }) => {
   const [hoverInfo, setHoverInfo] = useState<ChartDataType>();
+  const { avgData: clo } = useSelector((state: RootStateType) => state.coin);
+  const dataArray = [];
 
   let SVG_CHART_WIDTH = typeof CHART_WIDTH === "number" ? CHART_WIDTH * 1 : 0;
   let SVG_CHART_HEIGHT =
@@ -31,6 +34,7 @@ const CandleChart: FC<CandleChartProps> = ({
   const yAxisLength = SVG_CHART_HEIGHT * 0.94;
   const xAxisY = y0 + yAxisLength;
   const barPlothWidth = xAxisLength / 120;
+  const clo5Array: [number, number][] = [];
 
   const dataYMax = chartData.reduce(
     (max, crr) => Math.max(max, crr.High),
@@ -43,6 +47,20 @@ const CandleChart: FC<CandleChartProps> = ({
   );
   const dataYRange = dataYMax - dataYMin;
   const numYTicks = 7;
+
+  for (let i = 0; i < chartData.length; i++) {
+    clo5Array.push([clo[i], clo[i + 1]]);
+    dataArray.push([
+      chartData[i].Date,
+      chartData[i].Open,
+      chartData[i].Close,
+      chartData[i].High,
+      chartData[i].Low,
+      clo5Array[i],
+    ]);
+  }
+  console.log(dataArray);
+
   return (
     <>
       <div>
@@ -87,6 +105,7 @@ const CandleChart: FC<CandleChartProps> = ({
           const scaleY = scaleLinear()
             .domain([dataYMin, dataYMax])
             .range([y0, yAxisLength]);
+
           const fill = value.Close > value.Open ? "red" : "blue";
 
           return (
@@ -106,6 +125,15 @@ const CandleChart: FC<CandleChartProps> = ({
                 y2={yAxisLength - scaleY(value.High)}
                 stroke={value.Open > value.Close ? "blue" : "red"}
               />
+              <AvgLine
+                dataYMin={dataYMin}
+                barPlothWidth={barPlothWidth}
+                yAxisLength={yAxisLength}
+                x={x}
+                xX={xX}
+                scaleY={scaleY}
+                clo5Array={dataArray[5][index]}
+              />
               <rect
                 {...{ fill }}
                 x={x}
@@ -117,7 +145,7 @@ const CandleChart: FC<CandleChartProps> = ({
             </g>
           );
         })}
-        {/* <AvgLine /> */}
+
         <line // y 선
           x1={x0}
           y1={y0}

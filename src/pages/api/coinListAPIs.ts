@@ -18,3 +18,8 @@ export const getChartData = createAsyncThunk(
     return post(`getCandleChart`, body);
   }
 );
+
+export const getAvgData = createAsyncThunk("getAvgData", async () => {
+  const data = await post("getAvgData");
+  return data;
+});
