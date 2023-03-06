@@ -1,12 +1,20 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { PagiNationSection } from "./PagiNation.styked";
 
-const PaginNation: FC = () => {
-  const arr = [1, 2, 34, 4];
+interface PaginNationProps {
+  page: string;
+  setNowPage: Dispatch<SetStateAction<number>>;
+}
+
+const PaginNation: FC<PaginNationProps> = ({ page, setNowPage }) => {
+  const count = new Array(page).fill("");
+
   return (
     <PagiNationSection>
-      {arr.map((value, index) => (
-        <div key={index}>{index + 1}</div>
+      {count.map((value, index) => (
+        <div key={index} onClick={() => setNowPage(index + 1)}>
+          {index + 1}
+        </div>
       ))}
     </PagiNationSection>
   );

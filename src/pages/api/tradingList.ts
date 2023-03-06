@@ -3,7 +3,7 @@ import { post } from ".";
 
 export const getOrderList = createAsyncThunk(
   "getOrderList",
-  async (body: { page: string }) => {
+  async (body: { page: number }) => {
     const response = await post("getOrderList", body);
     return response;
   }
