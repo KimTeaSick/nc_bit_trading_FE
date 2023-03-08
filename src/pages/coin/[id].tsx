@@ -5,7 +5,9 @@ import { useCallback, useEffect, useState } from "react";
 import {
   getCoinDetailInfo,
   getChartData,
-  getAvgData,
+  get5AvgData,
+  get20AvgData,
+  get60AvgData,
 } from "../api/coinListAPIs";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
@@ -23,16 +25,22 @@ const CoinDetail: NextPage = () => {
 
   const [term, setTerm] = useState<
     "1m" | "3m" | "5m" | "10m" | "30m" | "1h" | "6h" | "12h" | "24h"
-  >("1h");
+  >("5m");
 
-  const { chartData, chartDataStatus } = useSelector(
-    (state: RootStateType) => state.coin
-  );
+  const {
+    chartData,
+    chartDataStatus,
+    avg60DataStatus,
+    avg20DataStatus,
+    avg5DataStatus,
+  } = useSelector((state: RootStateType) => state.coin);
 
   const setCoin = useCallback(async () => {
     const coinData = await getCoinDetailInfo(id);
     const body = { id, term };
-    dispatch(getAvgData());
+    dispatch(get5AvgData());
+    dispatch(get20AvgData());
+    dispatch(get60AvgData());
     dispatch(setDetailCoin(id));
     dispatch(getChartData(body));
     setSelectCoin(coinData);
@@ -44,7 +52,10 @@ const CoinDetail: NextPage = () => {
 
   return (
     <LayoutComponent>
-      {chartDataStatus === "Loading" ? (
+      {(chartDataStatus &&
+        avg60DataStatus &&
+        avg20DataStatus &&
+        avg5DataStatus) === "Loading" ? (
         <Loading />
       ) : (
         <CoinDetailPage

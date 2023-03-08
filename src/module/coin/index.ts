@@ -1,5 +1,10 @@
 import { CoinInitialState } from "./coin.d";
-import { getChartData, getAvgData } from "./../../pages/api/coinListAPIs";
+import {
+  getChartData,
+  get5AvgData,
+  get20AvgData,
+  get60AvgData,
+} from "./../../pages/api/coinListAPIs";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: CoinInitialState = {
@@ -8,8 +13,14 @@ const initialState: CoinInitialState = {
   chartData: [],
   chartDataStatus: "",
 
-  avgData: [],
-  avgDataStatus: "",
+  avg5Data: [],
+  avg5DataStatus: "",
+
+  avg20Data: [],
+  avg20DataStatus: "",
+
+  avg60Data: [],
+  avg60DataStatus: "",
 };
 
 const coinSlice = createSlice({
@@ -35,15 +46,43 @@ const coinSlice = createSlice({
       state.chartDataStatus = `error ${action.error}`;
     });
 
-    builder.addCase(getAvgData.pending, (state) => {
-      state.avgDataStatus = "Loading";
+    builder.addCase(get5AvgData.pending, (state) => {
+      state.avg5DataStatus = "Loading";
     });
-    builder.addCase(getAvgData.fulfilled, (state, action) => {
-      state.avgDataStatus = "Success";
-      state.avgData = action.payload;
+    builder.addCase(get5AvgData.fulfilled, (state, action) => {
+      state.avg5DataStatus = "Success";
+      state.avg5Data = action.payload.filter(
+        (element: number | "undefined") => element !== "undefined"
+      );
     });
-    builder.addCase(getAvgData.rejected, (state, action) => {
-      state.avgDataStatus = `error ${action.error}`;
+    builder.addCase(get5AvgData.rejected, (state, action) => {
+      state.avg5DataStatus = `error ${action.error}`;
+    });
+
+    builder.addCase(get20AvgData.pending, (state) => {
+      state.avg20DataStatus = "Loading";
+    });
+    builder.addCase(get20AvgData.fulfilled, (state, action) => {
+      state.avg20DataStatus = "Success";
+      state.avg20Data = action.payload.filter(
+        (element: number | "undefined") => element !== "undefined"
+      );
+    });
+    builder.addCase(get20AvgData.rejected, (state, action) => {
+      state.avg20DataStatus = `error ${action.error}`;
+    });
+
+    builder.addCase(get60AvgData.pending, (state) => {
+      state.avg60DataStatus = "Loading";
+    });
+    builder.addCase(get60AvgData.fulfilled, (state, action) => {
+      state.avg60DataStatus = "Success";
+      state.avg60Data = action.payload.filter(
+        (element: number | "undefined") => element !== "undefined"
+      );
+    });
+    builder.addCase(get60AvgData.rejected, (state, action) => {
+      state.avg60DataStatus = `error ${action.error}`;
     });
   },
 });

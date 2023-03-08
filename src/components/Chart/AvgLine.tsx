@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { NumberValue } from "d3-scale";
+import React, { FC } from "react";
 
 interface AvgLineProps {
   barPlothWidth: number;
@@ -6,8 +7,9 @@ interface AvgLineProps {
   dataYMin: number;
   x: number;
   xX: number;
-  clo5Array: [number, number][];
-  scaleY: (clo: [number, number]) => number;
+  clo5Array: [number, number];
+  scaleY: (clo: NumberValue) => number;
+  color: string;
 }
 
 const AvgLine: FC<AvgLineProps> = ({
@@ -18,15 +20,16 @@ const AvgLine: FC<AvgLineProps> = ({
   x,
   xX,
   scaleY,
+  color,
 }) => {
-  console.log("clo5Array[0]", clo5Array[0]);
-  // console.log("clo5Array[1]", clo5Array[1]);
-
   return (
     <>
-      {clo5Array[0] > dataYMin && clo5Array[0] != clo5Array[1] ? (
+      {clo5Array[0] !== undefined &&
+      clo5Array[1] !== undefined &&
+      clo5Array[0] > dataYMin &&
+      clo5Array[0] != clo5Array[1] ? (
         <line
-          stroke="gold"
+          stroke={color}
           x1={x + (barPlothWidth - 5) / 2}
           x2={xX + (barPlothWidth - 5) / 2}
           y1={yAxisLength - scaleY(clo5Array[0])}
@@ -37,4 +40,4 @@ const AvgLine: FC<AvgLineProps> = ({
   );
 };
 
-export default AvgLine;
+export default React.memo(AvgLine);
