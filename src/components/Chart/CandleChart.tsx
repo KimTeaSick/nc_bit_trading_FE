@@ -18,16 +18,15 @@ const CandleChart: FC<CandleChartProps> = ({
   CHART_HEIGHT,
   chartData,
 }) => {
+  const { lineOneColor, lineTwoColor, lineThreeColor } = useSelector(
+    (state: RootStateType) => state.common
+  );
+  console.log(lineOneColor, lineTwoColor, lineThreeColor);
+
   const [hoverInfo, setHoverInfo] = useState<any[] | undefined>();
-  const {
-    avg5Data: clo,
-    avg20Data,
-    avg60Data,
-  } = useSelector((state: RootStateType) => state.coin);
-
-  console.log("avg20Data", avg20Data);
-  console.log("avg60Data", avg60Data);
-
+  const { avg5Data, avg20Data, avg60Data } = useSelector(
+    (state: RootStateType) => state.coin
+  );
   const dataArray: any[] = [];
   let SVG_CHART_WIDTH = typeof CHART_WIDTH === "number" ? CHART_WIDTH * 1 : 0;
   let SVG_CHART_HEIGHT =
@@ -58,7 +57,10 @@ const CandleChart: FC<CandleChartProps> = ({
 
   for (let i = 0; i < chartData.length; i++) {
     // clo5Array.push([clo[i], clo[i + 1]]);
-    clo5Array.push([clo[i], clo[i + 1] == undefined ? clo[i] : clo[i + 1]]);
+    clo5Array.push([
+      avg5Data[i],
+      avg5Data[i + 1] == undefined ? avg5Data[i] : avg5Data[i + 1],
+    ]);
     clo20Array.push([
       avg20Data[i],
       avg20Data[i + 1] == undefined ? avg20Data[i] : avg20Data[i + 1],
@@ -152,7 +154,7 @@ const CandleChart: FC<CandleChartProps> = ({
                 xX={xX}
                 scaleY={scaleY}
                 clo5Array={value[6]}
-                color="green"
+                color={lineOneColor}
               />
               <AvgLine
                 dataYMin={dataYMin}
@@ -162,7 +164,7 @@ const CandleChart: FC<CandleChartProps> = ({
                 xX={xX}
                 scaleY={scaleY}
                 clo5Array={value[7]}
-                color="skyblue"
+                color={lineTwoColor}
               />
               <AvgLine
                 dataYMin={dataYMin}
@@ -172,7 +174,7 @@ const CandleChart: FC<CandleChartProps> = ({
                 xX={xX}
                 scaleY={scaleY}
                 clo5Array={value[8]}
-                color="orange"
+                color={lineThreeColor}
               />
               <rect
                 {...{ fill }}

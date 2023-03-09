@@ -35,16 +35,20 @@ const CoinDetail: NextPage = () => {
     avg5DataStatus,
   } = useSelector((state: RootStateType) => state.coin);
 
+  const { lineOneRange, lineTwoRange, lineThreeRange } = useSelector(
+    (state: RootStateType) => state.common
+  );
+
   const setCoin = useCallback(async () => {
     const coinData = await getCoinDetailInfo(id);
     const body = { id, term };
-    dispatch(get5AvgData());
-    dispatch(get20AvgData());
-    dispatch(get60AvgData());
+    dispatch(get5AvgData({ range: lineOneRange }));
+    dispatch(get20AvgData({ range: lineTwoRange }));
+    dispatch(get60AvgData({ range: lineThreeRange }));
     dispatch(setDetailCoin(id));
     dispatch(getChartData(body));
     setSelectCoin(coinData);
-  }, [id, term, dispatch]);
+  }, [id, term, dispatch, lineOneRange, lineTwoRange, lineThreeRange]);
 
   useEffect(() => {
     setCoin();
