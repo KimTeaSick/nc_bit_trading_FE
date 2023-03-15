@@ -19,6 +19,9 @@ export const CoinDetailButton = styled.button`
   height: 30px;
   font-size: 14px;
   border-radius: 10px;
-  background-color: #f9f9f9;
+  background-color: ${(props: { active: boolean }) =>
+    props.active ? "#10393a" : "#f9f9f9"};
+  color: ${(props: { active: boolean }) =>
+    props.active ? "#f9f9f9" : "#10393a"};
   border: 1px solid #ddddcb;
 `;

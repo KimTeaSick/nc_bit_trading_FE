@@ -21,14 +21,10 @@ const CoinDetail: NextPage = () => {
   const dispatch = useDispatch<any>();
   const { id } = router.query;
   const [selectCoin, setSelectCoin] = useState<DetailCoinType>();
-  const [clo, setClo] = useState<number[]>([]);
-
-  const [term, setTerm] = useState<
-    "1m" | "3m" | "5m" | "10m" | "30m" | "1h" | "6h" | "12h" | "24h"
-  >("5m");
 
   const {
     chartData,
+    chartTerm,
     chartDataStatus,
     avg60DataStatus,
     avg20DataStatus,
@@ -41,14 +37,16 @@ const CoinDetail: NextPage = () => {
 
   const setCoin = useCallback(async () => {
     const coinData = await getCoinDetailInfo(id);
-    const body = { id, term };
-    dispatch(get5AvgData({ range: lineOneRange }));
-    dispatch(get20AvgData({ range: lineTwoRange }));
-    dispatch(get60AvgData({ range: lineThreeRange }));
+    const body = { id, term: chartTerm };
+    dispatch(get5AvgData({ range: lineOneRange, coin: id, term: chartTerm }));
+    dispatch(get20AvgData({ range: lineTwoRange, coin: id, term: chartTerm }));
+    dispatch(
+      get60AvgData({ range: lineThreeRange, coin: id, term: chartTerm })
+    );
     dispatch(setDetailCoin(id));
     dispatch(getChartData(body));
     setSelectCoin(coinData);
-  }, [id, term, dispatch, lineOneRange, lineTwoRange, lineThreeRange]);
+  }, [id, dispatch, lineOneRange, lineTwoRange, lineThreeRange, chartTerm]);
 
   useEffect(() => {
     setCoin();
@@ -56,9 +54,9 @@ const CoinDetail: NextPage = () => {
 
   return (
     <LayoutComponent>
-      {(chartDataStatus &&
-        avg60DataStatus &&
-        avg20DataStatus &&
+      {(chartDataStatus ||
+        avg60DataStatus ||
+        avg20DataStatus ||
         avg5DataStatus) === "Loading" ? (
         <Loading />
       ) : (

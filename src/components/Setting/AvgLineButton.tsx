@@ -13,9 +13,9 @@ import {
 interface AvgLineButtonProps {
   active: boolean;
   setActive: Dispatch<SetStateAction<boolean>>;
-  oneRange: number;
-  twoRange: number;
-  threeRange: number;
+  oneRange: string;
+  twoRange: string;
+  threeRange: string;
   oneColor: string;
   twoColor: string;
   threeColor: string;

@@ -127,8 +127,8 @@ const CandleChart: FC<CandleChartProps> = ({
             .domain([dataYMin, dataYMax])
             .range([y0, yAxisLength]);
 
-          const fill = value[2] > value[1] ? "red" : "blue";
-
+          const fill =
+            value[2] > value[1] || value[2] === value[1] ? "red" : "blue";
           return (
             <g key={index}>
               <rect
@@ -182,7 +182,11 @@ const CandleChart: FC<CandleChartProps> = ({
                 width={barPlothWidth - sidePadding}
                 y={yAxisLength - scaleY(max)}
                 // 시가 종가 최대 최소값의 차
-                height={scaleY(max) - scaleY(min)}
+                height={
+                  scaleY(max) - scaleY(min) <= 0
+                    ? 0.5
+                    : scaleY(max) - scaleY(min)
+                }
               />
             </g>
           );

@@ -4,12 +4,12 @@ import { AvgLineDetailOptionSection } from "./Setting.styled";
 
 interface AvgLineDetailProps {
   lineName: string;
-  range: number;
+  range: string;
   color: string;
 }
 
 interface AvgLineDetailActiveProps extends AvgLineDetailProps {
-  setRange: Dispatch<SetStateAction<number>>;
+  setRange: Dispatch<SetStateAction<string>>;
   setColor: Dispatch<SetStateAction<string>>;
 }
 export const AvgLineDetailActive: FC<AvgLineDetailActiveProps> = ({

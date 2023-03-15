@@ -12,9 +12,9 @@ interface AvgLineSettingProps {
 
 const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
   const AvgLine = useSelector((state: RootStateType) => state.common);
-  const [oneRange, setOneRange] = useState(5);
-  const [twoRange, setTwoRange] = useState(20);
-  const [threeRange, setThreeRange] = useState(60);
+  const [oneRange, setOneRange] = useState("5");
+  const [twoRange, setTwoRange] = useState("20");
+  const [threeRange, setThreeRange] = useState("60");
   const [oneColor, setOneColor] = useState("green");
   const [twoColor, setTwoColor] = useState("skyblue");
   const [threeColor, setThreeColor] = useState("orange");

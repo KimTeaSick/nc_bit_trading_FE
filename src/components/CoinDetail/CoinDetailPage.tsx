@@ -5,6 +5,8 @@ import * as CD from "./CoinDetailStyled";
 import { FC } from "react";
 import Chart from "../Chart";
 import { krwChage } from "@/lib/krwChage";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/module/rootReducer.d";
 
 interface CoinDetailPageProps {
   selectCoin?: DetailCoinType;
@@ -12,15 +14,13 @@ interface CoinDetailPageProps {
   data: any;
 }
 
-const CoinDetailPage: FC<CoinDetailPageProps> = ({
-  selectCoin,
-  coinName,
-  data,
-}) => {
+const CoinDetailPage: FC<CoinDetailPageProps> = ({ selectCoin, coinName }) => {
+  const { avg5DataTrend } = useSelector((state: RootStateType) => state.coin);
   return (
     <>
       <CD.CoinDetailTopSection>
         <p>{coinName}</p>
+        <p>{avg5DataTrend ? "상승" : "하락"}</p>
         <div>
           <div>
             금일 최고가 : {krwChage(String(selectCoin?.data?.max_price))} 원

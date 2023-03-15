@@ -6,9 +6,10 @@ import { RootStateType } from "@/module/rootReducer.d";
 import { getChartData } from "@/pages/api/coinListAPIs";
 interface ButtonProps {
   termText: "1m" | "3m" | "5m" | "10m" | "30m" | "1h" | "6h" | "12h" | "24h";
+  active: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ termText }) => {
+const Button: FC<ButtonProps> = ({ termText, active }) => {
   const { detailCoin, chartTerm } = useSelector(
     (state: RootStateType) => state.coin
   );
@@ -19,8 +20,13 @@ const Button: FC<ButtonProps> = ({ termText }) => {
       term: termText,
     };
     dispatch(getChartData(body));
+    dispatch(setChartTerm(termText));
   };
-  return <CoinDetailButton onClick={termEvent}>{termText}</CoinDetailButton>;
+  return (
+    <CoinDetailButton onClick={termEvent} active={active}>
+      {termText}
+    </CoinDetailButton>
+  );
 };
 
 export default Button;

@@ -24,10 +24,7 @@ const AvgLine: FC<AvgLineProps> = ({
 }) => {
   return (
     <>
-      {clo5Array[0] !== undefined &&
-      clo5Array[1] !== undefined &&
-      clo5Array[0] > dataYMin &&
-      clo5Array[0] != clo5Array[1] ? (
+      {clo5Array[0] !== undefined && clo5Array[1] !== undefined ? (
         <line
           stroke={color}
           x1={x + (barPlothWidth - 5) / 2}

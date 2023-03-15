@@ -8,3 +8,7 @@ export const PagiNationSection = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const PageButton = styled.span`
+  cursor: pointer;
+`;
