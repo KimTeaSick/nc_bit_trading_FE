@@ -19,6 +19,7 @@ export const CoinCard = styled.div`
   font-weight: bold;
   align-items: center;
   border-radius: 10px;
+  text-decoration-line: none;
   flex-direction: column;
   background-color: #fff;
   justify-content: center;

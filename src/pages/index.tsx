@@ -5,20 +5,26 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setPageActive } from "@/module/common";
 import { getProperty } from "./api/walletAPIs";
-import { getRecommendPrice } from "./api/dash";
+import { useRecommendPrice } from "../components/Dash/dashQuery";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch<any>();
 
+  const { request }: any = useRecommendPrice();
+
   useEffect(() => {
     dispatch(setPageActive("Dash"));
     dispatch(getProperty());
-    dispatch(getRecommendPrice());
-  }, [dispatch]);
+    console.log("coin", request);
+    console.log("coin data", request.data);
+  }, [dispatch, request]);
 
   return (
     <LayoutComponent>
-      <DashBoardPage />
+      <DashBoardPage
+        recommendPrice={request?.data}
+        isLoading={request.isLoading}
+      />
     </LayoutComponent>
   );
 };

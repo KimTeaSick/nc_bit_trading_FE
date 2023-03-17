@@ -1,4 +1,8 @@
+export type RecommendPriceType = {
+  coin: string;
+  separation: number;
+};
 export type DashInitialState = {
-  recommendPrice: [];
+  recommendPrice: recommendPrice[];
   recommendPriceStatus: string;
 };

@@ -4,21 +4,43 @@ import { useSelector } from "react-redux";
 import { krwChage } from "@/lib/krwChage";
 import { PropertySection } from "./Dash.styled";
 import { CoinCard } from "../CoinList/CoinListStyled";
+import Loading from "../common/Loading";
+import Link from "next/link";
 
-const DashBoardPage: FC = () => {
+interface DashBoardPageProps {
+  recommendPrice: any[];
+  isLoading: boolean;
+}
+
+const DashBoardPage: FC<DashBoardPageProps> = ({
+  recommendPrice,
+  isLoading,
+}) => {
   const { myProperty } = useSelector((state: RootStateType) => state.wallet);
-  const { recommendPrice } = useSelector((state: RootStateType) => state.dash);
+  console.log("recommendPrice", recommendPrice);
+
   return (
     <div>
-      <p>DashBoard</p>
-      <PropertySection>
-        {krwChage(String(Math.round(Number(myProperty))))} ₩
-      </PropertySection>
-      <div style={{ flexWrap: "wrap", display: "flex" }}>
-        {recommendPrice.map((coin, index) => (
-          <CoinCard key={index}>{coin}</CoinCard>
-        ))}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <p>DashBoard</p>
+          <PropertySection>
+            {krwChage(String(Math.round(Number(myProperty))))} ₩
+          </PropertySection>
+          <div style={{ flexWrap: "wrap", display: "flex" }}>
+            {recommendPrice?.map((coin, index) => (
+              <Link href={`coin/${coin.coin}`} key={index}>
+                <CoinCard>
+                  <div>{coin.coin}</div>
+                  {Math.round(coin.separation)}
+                </CoinCard>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
