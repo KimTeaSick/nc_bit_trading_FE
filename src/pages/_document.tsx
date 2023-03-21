@@ -39,8 +39,8 @@ export default class MyDocument extends Document {
   }
   render() {
     return (
-      <Html style={{ backgroundColor: "#eccb54" }}>
-        <Head>{/* <title>nc_trading</title> */}</Head>
+      <Html style={{ backgroundColor: "#e0e2e8", maxWidth: "100vw" }}>
+        <Head title="nc_trading" />
         <body>
           <Main />
           <NextScript />

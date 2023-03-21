@@ -1,28 +1,28 @@
 import styled from "styled-components";
 
 export const globalColor = {
-  mainColor: " #359865",
+  mainColor: "#359865",
   pointColor: " #10393a",
+  buttonPointColor: "#F54329",
   subPointColor: "#eccb54",
-  backgroundColor: " #f1f1f1",
+  backgroundColor: " #e0e2e8",
   subBackgroundColor: " #f4f3ea",
 };
 
 export const Layout = styled.div`
-  display: flex;
+  max-width: 100vw;
+  /* display: flex; */
   .sidebar_section {
     height: 80vh;
   }
 `;
 
 export const PageWapper = styled.div`
-  width: 100%;
-  margin: 20px;
-  padding: 45px;
+  padding: 35px;
+  max-width: 100vw;
   min-height: 80vh;
-  margin-left: 60px;
   border-radius: 35px;
-  background-color: #f4f4ea;
+  background-color: #e0e2e8;
   p {
     font-size: 32px;
     font-weight: bold;

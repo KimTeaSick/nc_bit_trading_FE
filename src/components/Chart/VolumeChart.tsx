@@ -72,7 +72,9 @@ const VolumeChart: FC<VolumeChartProps> = ({
           <g key={index}>
             <rect
               fill={
-                value.Volume > chartData[index - 1]?.Volume ? "red" : "blue"
+                value.Volume > chartData[index - 1]?.Volume
+                  ? "#F54329 "
+                  : "#0D32FC"
               }
               x={x + sidePadding / 2}
               y={y}

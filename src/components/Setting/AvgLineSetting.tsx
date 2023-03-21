@@ -65,16 +65,18 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
           />
         </>
       )}
-      <AvgLineButton
-        oneRange={oneRange}
-        twoRange={twoRange}
-        threeRange={threeRange}
-        oneColor={oneColor}
-        twoColor={twoColor}
-        threeColor={threeColor}
-        active={active}
-        setActive={setActive}
-      />
+      <div className="buttonSection">
+        <AvgLineButton
+          oneRange={oneRange}
+          twoRange={twoRange}
+          threeRange={threeRange}
+          oneColor={oneColor}
+          twoColor={twoColor}
+          threeColor={threeColor}
+          active={active}
+          setActive={setActive}
+        />
+      </div>
     </AvgLineSection>
   );
 };

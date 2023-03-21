@@ -1,3 +1,4 @@
+import { globalColor } from "./../../styles/globalStyle";
 import styled from "styled-components";
 
 export const CoinDetailTopSection = styled.div`
@@ -18,10 +19,11 @@ export const CoinDetailButton = styled.button`
   width: 100px;
   height: 30px;
   font-size: 14px;
+  cursor: pointer;
   border-radius: 10px;
   background-color: ${(props: { active: boolean }) =>
-    props.active ? "#10393a" : "#f9f9f9"};
+    props.active ? globalColor.buttonPointColor : "#f9f9f9"};
   color: ${(props: { active: boolean }) =>
-    props.active ? "#f9f9f9" : "#10393a"};
+    props.active ? "#f9f9f9" : globalColor.pointColor};
   border: 1px solid #ddddcb;
 `;

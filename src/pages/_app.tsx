@@ -17,7 +17,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Welcome!</title>
+        <title>nc_bit</title>
       </Head>
       <main className="app">
         <QueryClientProvider client={queryClient}>

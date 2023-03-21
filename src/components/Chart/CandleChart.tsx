@@ -128,7 +128,9 @@ const CandleChart: FC<CandleChartProps> = ({
             .range([y0, yAxisLength]);
 
           const fill =
-            value[2] > value[1] || value[2] === value[1] ? "red" : "blue";
+            value[2] > value[1] || value[2] === value[1]
+              ? "#F54329"
+              : "#0D32FC";
           return (
             <g key={index}>
               <rect
@@ -144,7 +146,7 @@ const CandleChart: FC<CandleChartProps> = ({
                 x2={x + (barPlothWidth - sidePadding) / 2}
                 y1={yAxisLength - scaleY(value[4])}
                 y2={yAxisLength - scaleY(value[3])}
-                stroke={value[1] > value[2] ? "blue" : "red"}
+                stroke={value[1] > value[2] ? "#0D32FC" : "#F54329"}
               />
               <AvgLine
                 dataYMin={dataYMin}

@@ -24,8 +24,8 @@ export const SideBarButton = styled.div<SideBarButtonProps>`
   align-items: center;
   justify-content: center;
   background-color: ${(props) =>
-    props.active ? globalColor.pointColor : globalColor.subPointColor};
+    props.active ? globalColor.buttonPointColor : globalColor.backgroundColor};
   &:hover {
-    background-color: ${globalColor.pointColor};
+    background-color: ${globalColor.buttonPointColor};
   }
 `;

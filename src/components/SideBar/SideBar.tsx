@@ -5,10 +5,10 @@ import {
   faPaperPlane,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 import { NextComponentType } from "next";
 import * as SB from "./SideBarStyled";
 import Button from "./SideBar.button";
-import { useSelector } from "react-redux";
 
 const SideBar: NextComponentType = () => {
   const { activePage } = useSelector((state: any) => state.common);

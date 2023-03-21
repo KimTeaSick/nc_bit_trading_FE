@@ -1,6 +1,7 @@
 import SideBar from "@/components/SideBar/SideBar";
 import { Layout, PageWapper } from "@/styles/globalStyle";
 import { FC, ReactNode } from "react";
+import Header from "./Header";
 
 interface LayoutComponentProps {
   children: ReactNode;
@@ -9,9 +10,10 @@ interface LayoutComponentProps {
 const LayoutComponent: FC<LayoutComponentProps> = ({ children }) => {
   return (
     <Layout>
-      <div className="sidebar_section">
+      <Header />
+      {/* <div className="sidebar_section">
         <SideBar />
-      </div>
+      </div> */}
       <PageWapper>{children}</PageWapper>
     </Layout>
   );

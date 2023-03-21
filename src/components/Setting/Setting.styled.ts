@@ -1,3 +1,4 @@
+import { globalColor } from "./../../styles/globalStyle";
 import styled from "styled-components";
 
 export const AvgLineSection = styled.div`
@@ -12,6 +13,10 @@ export const AvgLineSection = styled.div`
     font-size: 20px;
     font-weight: bold;
   }
+  .buttonSection {
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 
 export const AvgButton = styled.button`
@@ -20,10 +25,11 @@ export const AvgButton = styled.button`
   border: none;
   color: white;
   font-size: 16px;
+  cursor: pointer;
   font-weight: bold;
   text-align: center;
   border-radius: 10px;
-  background-color: purple;
+  background-color: ${globalColor.buttonPointColor};
 `;
 
 export const AvgLineDetailOptionSection = styled.div`

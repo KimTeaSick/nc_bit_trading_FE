@@ -2,8 +2,8 @@ import { globalColor } from "./../../styles/globalStyle";
 import styled from "styled-components";
 
 export const CoinListWapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
   a {
     text-decoration: none;
   }
