@@ -11,20 +11,19 @@ export const globalColor = {
 
 export const Layout = styled.div`
   max-width: 100vw;
-  /* display: flex; */
   .sidebar_section {
     height: 80vh;
   }
 `;
 
 export const PageWapper = styled.div`
-  padding: 35px;
+  padding: 30px;
   max-width: 100vw;
   min-height: 80vh;
   border-radius: 35px;
   background-color: #e0e2e8;
   p {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold;
     color: ${globalColor.pointColor};
   }

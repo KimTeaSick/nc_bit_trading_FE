@@ -12,16 +12,17 @@ interface CandleChartProps {
   CHART_WIDTH: number;
   CHART_HEIGHT: number;
   chartData: ChartDataType[];
+  dataLength: number;
 }
 const CandleChart: FC<CandleChartProps> = ({
   CHART_WIDTH,
   CHART_HEIGHT,
+  dataLength,
   chartData,
 }) => {
   const { lineOneColor, lineTwoColor, lineThreeColor } = useSelector(
     (state: RootStateType) => state.common
   );
-  console.log(lineOneColor, lineTwoColor, lineThreeColor);
 
   const [hoverInfo, setHoverInfo] = useState<any[] | undefined>();
   const { avg5Data, avg20Data, avg60Data } = useSelector(
@@ -38,7 +39,7 @@ const CandleChart: FC<CandleChartProps> = ({
   const xAxisLength = SVG_CHART_WIDTH * 0.9;
   const yAxisLength = SVG_CHART_HEIGHT * 0.94;
   const xAxisY = y0 + yAxisLength;
-  const barPlothWidth = xAxisLength / 120;
+  const barPlothWidth = xAxisLength / dataLength;
   const clo5Array: [number, number][] = [];
   const clo20Array: [number, number][] = [];
   const clo60Array: [number, number][] = [];

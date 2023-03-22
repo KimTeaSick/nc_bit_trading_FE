@@ -8,13 +8,16 @@ export const HeaderSection = styled.div`
   padding-right: 30px;
   justify-content: space-between;
   .buttonSection {
-    display: flex;
     gap: 20px;
+    display: flex;
   }
   .homeButton {
     cursor: pointer;
-    font-weight: bold;
     font-size: 22px;
+    font-weight: bold;
     color: ${globalColor.pointColor};
+  }
+  a {
+    text-decoration: none;
   }
 `;

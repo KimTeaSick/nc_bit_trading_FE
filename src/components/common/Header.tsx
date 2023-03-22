@@ -9,12 +9,15 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Header: FC = () => {
   const { activePage } = useSelector((state: any) => state.common);
   return (
     <HD.HeaderSection>
-      <p className="homeButton">nc bit trading</p>
+      <Link href="/">
+        <p className="homeButton">nc bit trading</p>
+      </Link>
       <div className="buttonSection">
         <Button goal="/" icon={faHouse} active={activePage === "Dash"} />
         <Button

@@ -8,11 +8,13 @@ interface VolumeChartProps {
   CHART_WIDTH: number;
   CHART_HEIGHT: number;
   chartData: ChartDataType[];
+  dataLength: number;
 }
 const VolumeChart: FC<VolumeChartProps> = ({
   CHART_WIDTH,
   CHART_HEIGHT,
   chartData,
+  dataLength,
 }) => {
   let SVG_CHART_WIDTH = typeof CHART_WIDTH === "number" ? CHART_WIDTH * 1 : 0;
   let SVG_CHART_HEIGHT =
@@ -40,7 +42,7 @@ const VolumeChart: FC<VolumeChartProps> = ({
     Infinity
   );
   // const barPlotWidth = xAxisLength / ÷chartData.length;
-  const barPlotWidth = xAxisLength / 120;
+  const barPlotWidth = xAxisLength / dataLength;
 
   return (
     <svg width={xAxisLength} height={yAxisLength}>

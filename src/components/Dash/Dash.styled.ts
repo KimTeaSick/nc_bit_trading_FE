@@ -1,48 +1,72 @@
 import { globalColor } from "./../../styles/globalStyle";
 import styled from "styled-components";
 
-interface BackGroundImgProps {
-  img: any;
-}
-
-export const BackGroundImg = styled.div`
-  width: 100vw;
-  min-height: 75vh;
-  position: relative;
-  background-size: cover;
-  margin-left: calc(-50vw + 50%);
-  background-image: url(${(props: BackGroundImgProps) => props.img});
-`;
-export const PropertySection = styled.div`
-  bottom: -10%;
-  width: 400px;
-  height: 250px;
+export const AccountInfoSection = styled.div`
+  height: 150px;
   display: flex;
   font-size: 44px;
   border-radius: 60px;
   font-weight: bold;
-  position: absolute;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
-  left: calc(50vw - 200px);
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px;
   background-color: ${globalColor.backgroundColor};
   .property {
     display: flex;
   }
 `;
-
-export const CardSection = styled.div`
+export const AccountInfoWrapper = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  .cardWrapper {
-    width: 70%;
+  .accountItemWrapper {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    justify-content: space-between;
   }
+  .accountItem {
+    font-size: 20px;
+  }
+`;
+export const RTSRSection = styled.div`
+  width: 100%;
+  max-height: 30vh;
+  overflow-y: scroll;
+  background-color: #fff;
+  scrollbar-width: thin;
   a {
     text-decoration: none;
+  }
+`;
+
+export const RTSRWrapper = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  .RTSRItemWrapper {
+    display: grid;
+    padding: 10px;
+    align-items: center;
+    border-top: 1px solid #dcdcdc;
+    justify-content: space-between;
+    grid-template-columns: repeat(9, 1fr);
+  }
+  .RTSRItem {
+    font-size: 20px;
+  }
+  .RTSRList :hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+  }
+`;
+
+export const PossessionSection = styled.div`
+  .possessionItemWrapper {
+    max-height: 30vh;
+    background-color: #fff;
+  }
+  .possessionItemWrapper {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    padding: 10px;
+    box-sizing: border-box;
   }
 `;

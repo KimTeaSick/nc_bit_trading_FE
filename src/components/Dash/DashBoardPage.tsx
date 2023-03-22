@@ -1,12 +1,16 @@
+import {
+  AccountInfoSection,
+  PossessionSection,
+  RTSRSection,
+} from "./Dash.styled";
 import { RootStateType } from "@/module/rootReducer.d";
-import { FC } from "react";
 import { useSelector } from "react-redux";
 import { krwChage } from "@/lib/krwChage";
-import { PropertySection, CardSection, BackGroundImg } from "./Dash.styled";
-import { CoinCard } from "../CoinList/CoinListStyled";
+import { FC } from "react";
+import AccountInfo from "./AccountInfo";
 import Loading from "../common/Loading";
-import Link from "next/link";
-import IMG from "../../img/chart.jpg";
+import Possession from "./Possession";
+import RTSR from "./RTSR";
 
 interface DashBoardPageProps {
   recommendPrice: any[];
@@ -18,33 +22,25 @@ const DashBoardPage: FC<DashBoardPageProps> = ({
   isLoading,
 }) => {
   const { myProperty } = useSelector((state: RootStateType) => state.wallet);
-  console.log("recommendPrice", recommendPrice);
 
   return (
     <div>
-      <BackGroundImg img={IMG.src}>
-        <PropertySection>
-          <p>NC의 현재 보유 자산</p>
-          <div>{krwChage(String(Math.round(Number(myProperty))))} ₩</div>
-        </PropertySection>
-      </BackGroundImg>
-      <p>추천 종목</p>
+      <AccountInfoSection>
+        <AccountInfo
+          property={krwChage(String(Math.round(Number(myProperty))))}
+        />
+      </AccountInfoSection>
+      <p>실시간 조건 검색</p>
       {isLoading ? (
         <Loading />
       ) : (
-        <CardSection>
-          <div className="cardWrapper">
-            {recommendPrice?.map((coin, index) => (
-              <Link href={`coin/${coin.coin}`} key={index}>
-                <CoinCard>
-                  <div>{coin.coin}</div>
-                  {Math.round(coin.separation)}
-                </CoinCard>
-              </Link>
-            ))}
-          </div>
-        </CardSection>
+        <RTSRSection>
+          <RTSR reccomandItem={recommendPrice} />
+        </RTSRSection>
       )}
+      <PossessionSection>
+        <Possession />
+      </PossessionSection>
     </div>
   );
 };
