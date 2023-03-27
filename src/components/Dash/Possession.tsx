@@ -1,9 +1,5 @@
-import { krwChage } from "@/lib/krwChage";
-import { RootStateType } from "@/module/rootReducer.d";
-import { sell, buy } from "@/pages/api/walletAPIs";
-import { Input } from "@/styles/globalStyle";
+import { PossessionCoinType } from "@/@types/Dash";
 import { FC, useState } from "react";
-import { useSelector } from "react-redux";
 
 const POSSESSION_ITEM = [
   "NO.",
@@ -17,27 +13,12 @@ const POSSESSION_ITEM = [
   "수익률",
 ];
 
-const Possession: FC = () => {
-  const [unit, setUnit] = useState<string>("");
+interface PossessionProps {
+  possessionCoin: PossessionCoinType[];
+}
 
-  const { balance, coinList } = useSelector(
-    (state: RootStateType) => state.wallet
-  );
-
-  const mathBalnce = Math.round(Number(balance));
-
-  const sellButtonEvent = (coin: string, unit: string) => {
-    if (unit === "") {
-      alert("갯수를 입력해주세요");
-      return;
-    }
-    const body = {
-      coin: coin.slice(6, coin.length),
-      unit: parseFloat(unit),
-    };
-    sell(body);
-  };
-  console.log("coinList", coinList);
+const Possession: FC<PossessionProps> = ({ possessionCoin }) => {
+  console.log("possessionCoin", possessionCoin);
 
   return (
     <>
@@ -46,6 +27,21 @@ const Possession: FC = () => {
         <div className="possessionItemWrapper">
           {POSSESSION_ITEM.map((item, index) => (
             <div key={index}>{item}</div>
+          ))}
+        </div>
+        <div className="possessionItemWrapper">
+          {possessionCoin?.map((coin, index) => (
+            <>
+              <div key={index}>{index + 1}</div>
+              <div key={index}>{coin.coin}</div>
+              <div>{coin.info.unit}</div>
+              <div>{Number(coin.info.buy_price).toFixed(2)} 원</div>
+              <div>{Number(coin.info.now_price).toFixed(2)} 원</div>
+              <div>{Number(coin.info.buy_total_price).toFixed(2)} 원</div>
+              <div>{Number(coin.info.evaluate_price).toFixed(2)} 원</div>
+              <div>{Number(coin.info.profit).toFixed(2)} 원</div>
+              <div>{Number(coin.info.rate).toFixed(2)} %</div>
+            </>
           ))}
         </div>
       </div>

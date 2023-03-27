@@ -1,11 +1,4 @@
-import React from "react";
-import {
-  QueryOptions,
-  useMutation,
-  useQuery,
-  useQueryClient,
-  UseQueryResult,
-} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export const useRecommendPrice = () => {
@@ -15,6 +8,15 @@ export const useRecommendPrice = () => {
       .get("http://localhost:8000/" + queryKey)
       .then((res) => res.data);
   const request = useQuery([queryKey], queryFn);
+  return { request };
+};
 
+export const usePossessionCoin = () => {
+  const queryKey = "getPossessoionCoinInfo" as const;
+  const queryFn = async () =>
+    await axios
+      .get("http://localhost:8000/" + queryKey)
+      .then((res) => res.data);
+  const request = useQuery([queryKey], queryFn);
   return { request };
 };

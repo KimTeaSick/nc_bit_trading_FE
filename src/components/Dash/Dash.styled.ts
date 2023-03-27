@@ -29,10 +29,18 @@ export const AccountInfoWrapper = styled.div`
 `;
 export const RTSRSection = styled.div`
   width: 100%;
+  min-height: 30vh;
   max-height: 30vh;
   overflow-y: scroll;
   background-color: #fff;
   scrollbar-width: thin;
+  .loading {
+    width: 100%;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   a {
     text-decoration: none;
   }

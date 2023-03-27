@@ -11,14 +11,17 @@ import AccountInfo from "./AccountInfo";
 import Loading from "../common/Loading";
 import Possession from "./Possession";
 import RTSR from "./RTSR";
+import { PossessionCoinType } from "@/@types/Dash.d";
 
 interface DashBoardPageProps {
   recommendPrice: any[];
   isLoading: boolean;
+  possessionCoin: PossessionCoinType[];
 }
 
 const DashBoardPage: FC<DashBoardPageProps> = ({
   recommendPrice,
+  possessionCoin,
   isLoading,
 }) => {
   const { myProperty } = useSelector((state: RootStateType) => state.wallet);
@@ -31,15 +34,11 @@ const DashBoardPage: FC<DashBoardPageProps> = ({
         />
       </AccountInfoSection>
       <p>실시간 조건 검색</p>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <RTSRSection>
-          <RTSR reccomandItem={recommendPrice} />
-        </RTSRSection>
-      )}
+      <RTSRSection>
+        <RTSR isLoading={isLoading} reccomandItem={recommendPrice} />
+      </RTSRSection>
       <PossessionSection>
-        <Possession />
+        <Possession possessionCoin={possessionCoin} />
       </PossessionSection>
     </div>
   );

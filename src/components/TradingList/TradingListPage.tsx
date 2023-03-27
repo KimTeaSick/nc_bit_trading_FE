@@ -2,6 +2,7 @@ import { RootStateType } from "@/module/rootReducer.d";
 import { getOrderList } from "@/pages/api/tradingList";
 import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CustomCalendar from "../common/CustomCalendar";
 import Loading from "../common/Loading";
 import PaginNation from "../common/PaginNation";
 import List, { ListTitle } from "./List";
@@ -24,6 +25,7 @@ const TradingPage: FC = () => {
         <Loading />
       ) : (
         <ListSection>
+          <CustomCalendar />
           <ListTitle data={LIST_VALUE} />
           {orderList?.map((value, index) => (
             <List key={index} data={value} index={index + 1} />
