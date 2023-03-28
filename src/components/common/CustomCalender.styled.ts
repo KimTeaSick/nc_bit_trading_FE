@@ -48,6 +48,12 @@ export const CalenderSection = styled.div`
     background: #fff;
     text-align: center;
   }
+  .react-calendar__month-view__days {
+    background-color: #fff;
+  }
+  .react-calendar__tile .react-calendar__month-view__days__day {
+    width: 25px;
+  }
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
     color: #fff;
@@ -55,10 +61,21 @@ export const CalenderSection = styled.div`
   }
   .react-calendar__tile--rangeStart,
   .react-calendar__tile--rangeEnd {
-    background-color: red;
+    width: 15px;
     color: #fff;
+    background-color: ${globalColor.buttonPointColor};
   }
   .react-calendar--selectRange {
     background-color: pink;
   }
+`;
+
+export const Button = styled.button`
+  width: 70px;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: ${globalColor.buttonPointColor};
 `;

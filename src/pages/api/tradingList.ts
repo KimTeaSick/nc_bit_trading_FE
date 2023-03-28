@@ -8,3 +8,13 @@ export const getOrderList = createAsyncThunk(
     return response;
   }
 );
+
+export const getDateOrderList = createAsyncThunk(
+  "getDateOrderList",
+  async (body: any) => {
+    const response = await post("getDateOrderList", body);
+    console.log("response", response);
+
+    return response;
+  }
+);

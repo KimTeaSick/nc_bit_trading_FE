@@ -1,6 +1,6 @@
 import { TradingInitialState } from "./trading.d";
 import { createSlice } from "@reduxjs/toolkit";
-import { getOrderList } from "@/pages/api/tradingList";
+import { getOrderList, getDateOrderList } from "@/pages/api/tradingList";
 
 const initialState: TradingInitialState = {
   orderList: [],
@@ -22,6 +22,18 @@ const tradingSlice = createSlice({
       state.orderListPage = action.payload.page;
     });
     builder.addCase(getOrderList.rejected, (state, action) => {
+      state.orderListStatus = `error ${action.error}`;
+    });
+
+    builder.addCase(getDateOrderList.pending, (state) => {
+      state.orderListStatus = "Loading";
+    });
+    builder.addCase(getDateOrderList.fulfilled, (state, action) => {
+      state.orderListStatus = "Success";
+      state.orderList = action.payload.data;
+      state.orderListPage = action.payload.page;
+    });
+    builder.addCase(getDateOrderList.rejected, (state, action) => {
       state.orderListStatus = `error ${action.error}`;
     });
   },

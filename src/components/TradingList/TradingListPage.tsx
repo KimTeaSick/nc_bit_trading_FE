@@ -1,12 +1,12 @@
+import { FC, useEffect, useState } from "react";
 import { RootStateType } from "@/module/rootReducer.d";
 import { getOrderList } from "@/pages/api/tradingList";
-import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ListSection, LIST_VALUE } from "./Trading.styled";
 import CustomCalendar from "../common/CustomCalendar";
-import Loading from "../common/Loading";
 import PaginNation from "../common/PaginNation";
 import List, { ListTitle } from "./List";
-import { ListSection, LIST_VALUE } from "./Trading.styled";
+import Loading from "../common/Loading";
 
 const TradingPage: FC = () => {
   const dispatch = useDispatch<any>();
@@ -14,6 +14,7 @@ const TradingPage: FC = () => {
   const { orderList, orderListPage, orderListStatus } = useSelector(
     (state: RootStateType) => state.trading
   );
+
   useEffect(() => {
     dispatch(getOrderList({ page: nowPage }));
   }, [dispatch, nowPage]);
