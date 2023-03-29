@@ -2,7 +2,6 @@ import { globalColor } from "./../../styles/globalStyle";
 import styled from "styled-components";
 
 export const CalenderSection = styled.div`
-  width: 50%;
   .react-calendar__navigation {
     height: 35px;
     display: flex;
@@ -67,6 +66,12 @@ export const CalenderSection = styled.div`
   }
   .react-calendar--selectRange {
     background-color: pink;
+  }
+  .buttonSection {
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
   }
 `;
 

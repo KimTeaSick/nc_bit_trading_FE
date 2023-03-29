@@ -7,6 +7,8 @@ import CustomCalendar from "../common/CustomCalendar";
 import PaginNation from "../common/PaginNation";
 import List, { ListTitle } from "./List";
 import Loading from "../common/Loading";
+import ModalPortal from "../common/modalPortal";
+import CalenderModal from "./CalenderModal";
 
 const TradingPage: FC = () => {
   const dispatch = useDispatch<any>();
@@ -14,6 +16,11 @@ const TradingPage: FC = () => {
   const { orderList, orderListPage, orderListStatus } = useSelector(
     (state: RootStateType) => state.trading
   );
+  const [modalOpen, setModalOpen] = useState<boolean>();
+
+  const HandleModalShow = () => {
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     dispatch(getOrderList({ page: nowPage }));
@@ -26,7 +33,13 @@ const TradingPage: FC = () => {
         <Loading />
       ) : (
         <ListSection>
-          <CustomCalendar />
+          <div onClick={() => setModalOpen(true)}>asdas</div>
+          {modalOpen && (
+            <ModalPortal>
+              <CalenderModal onClose={HandleModalShow} />
+            </ModalPortal>
+          )}
+          {/* <CustomCalendar /> */}
           <ListTitle data={LIST_VALUE} />
           {orderList?.map((value, index) => (
             <List key={index} data={value} index={index + 1} />

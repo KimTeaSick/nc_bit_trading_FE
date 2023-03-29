@@ -6,9 +6,11 @@ import { useEffect } from "react";
 import { setPageActive } from "@/module/common";
 import { getProperty } from "./api/walletAPIs";
 import {
+  getAccountThunk,
+  useAccountInfo,
   usePossessionCoin,
   useRecommendPrice,
-} from "../components/Dash/dashQuery";
+} from "./api/dash";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch<any>();
@@ -18,8 +20,12 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     dispatch(setPageActive("Dash"));
-    dispatch(getProperty());
-  }, [dispatch, recommandPrice]);
+    dispatch(
+      getAccountThunk({
+        date: ["20230329000000", "20230329235959"],
+      })
+    );
+  }, [dispatch, , recommandPrice]);
 
   return (
     <LayoutComponent>

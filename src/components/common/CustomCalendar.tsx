@@ -7,7 +7,11 @@ import { getDateOrderList } from "@/pages/api/tradingList";
 import { getCurrentDate } from "@/lib/dateFormat";
 import { useDispatch } from "react-redux";
 
-const CustomCalendar: FC = () => {
+interface CustomCalendarProps {
+  onClose: () => void;
+}
+
+const CustomCalendar: FC<CustomCalendarProps> = ({ onClose }) => {
   const dispatch = useDispatch<any>();
 
   const [selectDate, setSelectDate] = useState<Value>([]);
@@ -20,6 +24,7 @@ const CustomCalendar: FC = () => {
 
   const eveeent = () => {
     dispatch(getDateOrderList({ date: selectDate, page: 1 }));
+    onClose();
   };
 
   return (
@@ -31,7 +36,10 @@ const CustomCalendar: FC = () => {
           formatDay={(locale, date) => moment(date).format("DD")}
           showNeighboringMonth={false}
         />
-        <Button onClick={eveeent}>확인</Button>
+        <div className="buttonSection">
+          <Button onClick={onClose}>닫기</Button>
+          <Button onClick={eveeent}>확인</Button>
+        </div>
       </CalenderSection>
     </>
   );

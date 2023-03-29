@@ -25,6 +25,28 @@ export const OrderList = styled.div`
   }
 `;
 
+export const ModalBack = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  .modalContent {
+    width: 600px;
+    height: fit-content;
+    border-radius: 15px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
 export const LIST_VALUE = [
   "번호",
   "코인",
@@ -33,4 +55,5 @@ export const LIST_VALUE = [
   "수량",
   "원",
   "수수료",
+  "일자",
 ];

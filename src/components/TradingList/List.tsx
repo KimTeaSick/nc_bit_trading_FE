@@ -1,3 +1,4 @@
+import { timeStampToDate } from "@/lib/dateFormat";
 import { krwChage } from "@/lib/krwChage";
 import { OrderListType } from "@/module/trading/trading";
 import { FC } from "react";
@@ -9,6 +10,8 @@ interface ListProps {
 }
 
 const List: FC<ListProps> = ({ data, index }) => {
+  console.log("data", data);
+
   return (
     <OrderList>
       <div>{index}</div>
@@ -18,6 +21,7 @@ const List: FC<ListProps> = ({ data, index }) => {
       <div>{data.order_qty}</div>
       <div>{krwChage(data.contract[0].total)} 원</div>
       <div>{data.contract[0].fee} 원</div>
+      <div>{timeStampToDate(Number(data.order_date))}</div>
     </OrderList>
   );
 };

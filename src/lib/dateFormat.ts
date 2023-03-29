@@ -12,3 +12,16 @@ export function getCurrentDate(date: any) {
   seconds = seconds < 10 ? "0" + seconds.toString() : seconds.toString();
   return year + month + day + hour + minites + seconds;
 }
+
+export function timeStampToDate(timestamp: number) {
+  const DATE_PARAMATER = timestamp / 1000;
+  console.log(typeof DATE_PARAMATER);
+
+  var date = new Date(DATE_PARAMATER);
+  console.log(date);
+
+  // console.log("year is " + date.getFullYear());
+  return (
+    date.getFullYear() + "." + (date.getMonth() + 1) + "." + date.getDate()
+  );
+}

@@ -1,10 +1,14 @@
-// import { getRecommendPrice } from "@/pages/api/dash";
+import * as Dash from "@/pages/api/dash";
 import { createSlice } from "@reduxjs/toolkit";
 import { DashInitialState } from "./dash";
 
 const initialState: DashInitialState = {
   recommendPrice: [],
   recommendPriceStatus: "",
+  accountInfo: [],
+  accountInfoStatus: "",
+  possessionCoin: [],
+  possessionCoinStatus: "",
 };
 
 const DashSlice = createSlice({
@@ -12,16 +16,16 @@ const DashSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // builder.addCase(getRecommendPrice.pending, (state) => {
-    //   state.recommendPriceStatus = "Loading";
-    // });
-    // builder.addCase(getRecommendPrice.fulfilled, (state, action) => {
-    //   state.recommendPrice = action.payload;
-    //   state.recommendPriceStatus = "Success";
-    // });
-    // builder.addCase(getRecommendPrice.rejected, (state, action) => {
-    //   state.recommendPriceStatus = `error ${action.error}`;
-    // });
+    builder.addCase(Dash.getAccountThunk.pending, (state) => {
+      state.accountInfoStatus = "Loading";
+    });
+    builder.addCase(Dash.getAccountThunk.fulfilled, (state, action) => {
+      state.accountInfo = action.payload;
+      state.accountInfoStatus = "Success";
+    });
+    builder.addCase(Dash.getAccountThunk.rejected, (state, action) => {
+      state.accountInfoStatus = `error ${action.error}`;
+    });
   },
 });
 

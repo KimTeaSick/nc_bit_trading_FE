@@ -1,9 +1,9 @@
+import { RootStateType } from "@/module/rootReducer.d";
 import { FC } from "react";
+import { useSelector } from "react-redux";
 import { AccountInfoWrapper } from "./Dash.styled";
 
-interface AccountInfoProps {
-  property: string;
-}
+interface AccountInfoProps {}
 
 const ACCOUNT_INFO_ITEM = [
   "추정 자산",
@@ -14,7 +14,10 @@ const ACCOUNT_INFO_ITEM = [
   "손익금",
 ];
 
-const AccountInfo: FC<AccountInfoProps> = ({ property }) => {
+const AccountInfo: FC<AccountInfoProps> = ({}) => {
+  const { accountInfo } = useSelector((state: RootStateType) => state.dash);
+  console.log("accountInfoaccountInfo", accountInfo);
+
   return (
     <>
       <p>NC 계좌정보</p>
@@ -27,11 +30,11 @@ const AccountInfo: FC<AccountInfoProps> = ({ property }) => {
           ))}
         </div>
         <div className="accountItemWrapper">
-          <div>{property ? property : 0}</div>
-          <div>0</div>
-          <div>0</div>
-          <div>0</div>
-          <div>0</div>
+          <div>{accountInfo[0]?.toFixed(2)}</div>
+          <div>{accountInfo[1]?.toFixed(2)}</div>
+          <div>{accountInfo[2]?.toFixed(2)}</div>
+          <div>{accountInfo[3]?.toFixed(2)}</div>
+          <div>{accountInfo[4]?.toFixed(2)}</div>
           <div>0</div>
         </div>
       </AccountInfoWrapper>
