@@ -23,16 +23,13 @@ export const usePossessionCoin = () => {
   return { request };
 };
 
-export const useAccountInfo = (body: { date: string[] }) => {
-  const queryKey = "dash/accountInfo/" as const;
-  const queryFn = async () => {
-    await axios.get("http://localhost:8000/" + queryKey, {
-      params: { date1: body.date[0], date2: body.date[1] },
-    });
-  };
-  const request = useQuery([queryKey], queryFn);
-  return { request };
-};
+export const getPossessionCoin = createAsyncThunk(
+  "dash/getPossessoionCoinInfo",
+  async () => {
+    const response = get("dash/getPossessoionCoinInfo");
+    return response;
+  }
+);
 
 export const getAccountThunk = createAsyncThunk(
   "dash/accountInfo",

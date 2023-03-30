@@ -7,24 +7,27 @@ import { setPageActive } from "@/module/common";
 import { getProperty } from "./api/walletAPIs";
 import {
   getAccountThunk,
-  useAccountInfo,
-  usePossessionCoin,
+  getPossessionCoin,
+  // usePossessionCoin,
   useRecommendPrice,
 } from "./api/dash";
+import { YMD } from "@/lib/dateFormat";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch<any>();
-
+  const now = new Date();
   const { request: recommandPrice }: any = useRecommendPrice();
-  const { request: possessionCoin }: any = usePossessionCoin();
+  // const { request: possessionCoin }: any = usePossessionCoin();
 
   useEffect(() => {
     dispatch(setPageActive("Dash"));
+    dispatch(getPossessionCoin());
     dispatch(
       getAccountThunk({
-        date: ["20230329000000", "20230329235959"],
+        date: [YMD(now) + "000000", YMD(now) + "235959"],
       })
     );
+    console.log(YMD(now));
   }, [dispatch, , recommandPrice]);
 
   return (
@@ -32,7 +35,6 @@ const Home: NextPage = () => {
       <DashBoardPage
         recommendPrice={recommandPrice?.data}
         isLoading={recommandPrice.isLoading}
-        possessionCoin={possessionCoin?.data}
       />
     </LayoutComponent>
   );

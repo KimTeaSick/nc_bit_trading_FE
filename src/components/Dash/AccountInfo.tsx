@@ -16,7 +16,6 @@ const ACCOUNT_INFO_ITEM = [
 
 const AccountInfo: FC<AccountInfoProps> = ({}) => {
   const { accountInfo } = useSelector((state: RootStateType) => state.dash);
-  console.log("accountInfoaccountInfo", accountInfo);
 
   return (
     <>
@@ -30,11 +29,11 @@ const AccountInfo: FC<AccountInfoProps> = ({}) => {
           ))}
         </div>
         <div className="accountItemWrapper">
-          <div>{accountInfo[0]?.toFixed(2)}</div>
-          <div>{accountInfo[1]?.toFixed(2)}</div>
-          <div>{accountInfo[2]?.toFixed(2)}</div>
-          <div>{accountInfo[3]?.toFixed(2)}</div>
-          <div>{accountInfo[4]?.toFixed(2)}</div>
+          <div>{accountInfo[0]?.toFixed(1)}</div>
+          <div>{accountInfo[1]?.toFixed(1)}</div>
+          <div>{accountInfo[2]?.toFixed(1)}</div>
+          <div>{accountInfo[3]?.toFixed(1)}</div>
+          <div>{accountInfo[4]?.toFixed(1)}</div>
           <div>0</div>
         </div>
       </AccountInfoWrapper>

@@ -26,6 +26,17 @@ const DashSlice = createSlice({
     builder.addCase(Dash.getAccountThunk.rejected, (state, action) => {
       state.accountInfoStatus = `error ${action.error}`;
     });
+
+    builder.addCase(Dash.getPossessionCoin.pending, (state) => {
+      state.possessionCoinStatus = "Loading";
+    });
+    builder.addCase(Dash.getPossessionCoin.fulfilled, (state, action) => {
+      state.possessionCoin = action.payload;
+      state.possessionCoinStatus = "Success";
+    });
+    builder.addCase(Dash.getPossessionCoin.rejected, (state, action) => {
+      state.possessionCoinStatus = `error ${action.error}`;
+    });
   },
 });
 

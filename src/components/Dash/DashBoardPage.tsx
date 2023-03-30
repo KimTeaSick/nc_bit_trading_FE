@@ -21,7 +21,6 @@ interface DashBoardPageProps {
 
 const DashBoardPage: FC<DashBoardPageProps> = ({
   recommendPrice,
-  possessionCoin,
   isLoading,
 }) => {
   const { myProperty } = useSelector((state: RootStateType) => state.wallet);
@@ -37,7 +36,7 @@ const DashBoardPage: FC<DashBoardPageProps> = ({
           <RTSR isLoading={isLoading} reccomandItem={recommendPrice} />
         </RTSRSection>
         <PossessionSection>
-          <Possession possessionCoin={possessionCoin} />
+          <Possession />
         </PossessionSection>
       </div>
       <div className="rightSection">

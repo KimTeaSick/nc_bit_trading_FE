@@ -1,4 +1,4 @@
-import { PossessionCoinInfoType } from "./../../@types/Dash.d";
+import { PossessionCoinType } from "./../../@types/Dash.d";
 export type RecommendPriceType = {
   coin: string;
   separation: number;
@@ -8,6 +8,6 @@ export type DashInitialState = {
   recommendPriceStatus: string;
   accountInfo: number[];
   accountInfoStatus: string;
-  possessionCoin: PossessionCoinInfoType[];
+  possessionCoin: PossessionCoinType[];
   possessionCoinStatus: string;
 };
