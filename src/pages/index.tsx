@@ -19,6 +19,8 @@ const Home: NextPage = () => {
   const { request: recommandPrice }: any = useRecommendPrice();
   // const { request: possessionCoin }: any = usePossessionCoin();
 
+  console.log("recommandPrice", recommandPrice);
+
   useEffect(() => {
     dispatch(setPageActive("Dash"));
     dispatch(getPossessionCoin());
@@ -28,7 +30,7 @@ const Home: NextPage = () => {
       })
     );
     console.log(YMD(now));
-  }, [dispatch, , recommandPrice]);
+  }, [dispatch, recommandPrice]);
 
   return (
     <LayoutComponent>

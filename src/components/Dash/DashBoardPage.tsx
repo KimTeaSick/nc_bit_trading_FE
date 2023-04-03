@@ -16,15 +16,13 @@ import { PossessionCoinType } from "@/@types/Dash.d";
 interface DashBoardPageProps {
   recommendPrice: any[];
   isLoading: boolean;
-  possessionCoin: PossessionCoinType[];
+  possessionCoin?: PossessionCoinType[];
 }
 
 const DashBoardPage: FC<DashBoardPageProps> = ({
   recommendPrice,
   isLoading,
 }) => {
-  const { myProperty } = useSelector((state: RootStateType) => state.wallet);
-
   return (
     <PageStructure>
       <div className="leftSection">
@@ -42,11 +40,11 @@ const DashBoardPage: FC<DashBoardPageProps> = ({
       <div className="rightSection">
         <div>
           <p>매수 조건</p>
-          <div className="rightContent">asd</div>
+          <div className="rightContent"></div>
         </div>
         <div>
           <p>매도 조건</p>
-          <div className="rightContent">asd</div>
+          <div className="rightContent"></div>
         </div>
         <button className="autoSBbutton">자동매매 시작</button>
       </div>

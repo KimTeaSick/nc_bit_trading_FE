@@ -33,7 +33,7 @@ const RTSR: FC<RTSRProps> = ({ reccomandItem, isLoading }) => {
         <div className="loading">
           <Loading />
         </div>
-      ) : (
+      ) : Array.isArray(reccomandItem) ? (
         <div className="RTSRList">
           {reccomandItem?.map((item, index) => (
             <div className="RTSRItemWrapper" key={index}>
@@ -49,6 +49,8 @@ const RTSR: FC<RTSRProps> = ({ reccomandItem, isLoading }) => {
             </div>
           ))}
         </div>
+      ) : (
+        <div>현재 조건에 맞는 검색 결과가 없습니다.</div>
       )}
     </RTSRWrapper>
   );

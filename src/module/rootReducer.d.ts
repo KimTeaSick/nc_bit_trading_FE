@@ -1,3 +1,4 @@
+import { SettingInitialStateType } from "./setting/setting.d";
 import { TradingInitialState } from "./trading/trading.d";
 import { WalletInitialState } from "./wallet/wallet.d";
 import { CommonInitialState } from "./common/common.d";
@@ -10,4 +11,5 @@ export type RootStateType = {
   coin: CoinInitialState;
   trading: TradingInitialState;
   dash: DashInitialState;
+  setting: SettingInitialStateType;
 };

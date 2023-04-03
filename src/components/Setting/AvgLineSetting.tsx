@@ -19,6 +19,15 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
   const [twoColor, setTwoColor] = useState("skyblue");
   const [threeColor, setThreeColor] = useState("orange");
 
+  const {
+    firstDisparityTerm,
+    secondDisparityTerm,
+    thirdDisparityTerm,
+    firstDisparityColor,
+    secondDisparityColor,
+    thirdDisparityColor,
+  } = useSelector((state: RootStateType) => state.setting);
+
   return (
     <AvgLineSection>
       <p>이동평균선 설정</p>
@@ -50,18 +59,18 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
         <>
           <AvgLineDetailComplete
             lineName="Line One"
-            range={AvgLine.lineOneRange}
-            color={AvgLine.lineOneColor}
+            range={firstDisparityTerm}
+            color={firstDisparityColor}
           />
           <AvgLineDetailComplete
             lineName="Line Two"
-            range={AvgLine.lineTwoRange}
-            color={AvgLine.lineTwoColor}
+            range={secondDisparityTerm}
+            color={secondDisparityColor}
           />
           <AvgLineDetailComplete
             lineName="Line Three"
-            range={AvgLine.lineThreeRange}
-            color={AvgLine.lineThreeColor}
+            range={thirdDisparityTerm}
+            color={thirdDisparityColor}
           />
         </>
       )}

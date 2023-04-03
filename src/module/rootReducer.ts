@@ -6,7 +6,7 @@ import walletSlice from "./wallet";
 import coinSlice from "./coin";
 import tradingSlice from "./trading";
 import dashSlice from "./dash";
-import { AsyncThunkAction } from "@reduxjs/toolkit";
+import settingSlice from "./setting";
 
 const rootReducer = (
   state: RootStateType,
@@ -22,6 +22,7 @@ const rootReducer = (
         coin: coinSlice,
         trading: tradingSlice,
         dash: dashSlice,
+        setting: settingSlice,
       });
       return combineReducer(state, action);
     }

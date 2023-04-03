@@ -17,10 +17,10 @@ const POSSESSION_ITEM = [
 ];
 
 interface PossessionProps {
-  possessionCoin: PossessionCoinType[] | 333;
+  possessionCoin?: PossessionCoinType[] | 333;
 }
 
-const Possession: FC<PossessionProps> = ({}) => {
+const Possession: FC<PossessionProps> = () => {
   const { possessionCoin } = useSelector((state: RootStateType) => state.dash);
 
   return (
