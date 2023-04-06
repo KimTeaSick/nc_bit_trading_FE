@@ -1,11 +1,21 @@
 export type SettingInitialStateType = {
-  firstDisparityTerm: string;
-  firstDisparityColor: string;
-  firstDisparityStatus: string;
-  secondDisparityTerm: string;
-  secondDisparityColor: string;
-  secondDisparityStatus: string;
-  thirdDisparityTerm: string;
-  thirdDisparityColor: string;
-  thirdDisparityStatus: string;
+  search_idx?: number;
+  search_name: string;
+  price: string;
+  trends_term: string;
+  trends: string;
+  transaction_amount: string;
+  avg_volume: string;
+  first_disparity: string;
+  second_disparity: string;
+};
+
+export type SearchOptionType = {
+  name?: string;
+  avgVolume: string;
+  first_disparity: string;
+  price: string;
+  second_disparity: string;
+  transaction_amount: string;
+  trends: string;
 };

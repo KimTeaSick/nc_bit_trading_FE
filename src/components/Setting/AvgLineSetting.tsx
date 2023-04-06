@@ -1,9 +1,13 @@
 import { RootStateType } from "@/module/rootReducer.d";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useReducer, useState } from "react";
 import { useSelector } from "react-redux";
-import AvgLineButton from "./AvgLineButton";
+import SettingButton from "./SettingButton";
 import { AvgLineDetailActive, AvgLineDetailComplete } from "./AvgLineDetail";
 import { AvgLineSection } from "./Setting.styled";
+import {
+  useDisparityLineMutation,
+  useDisparityLineQuery,
+} from "@/pages/api/settingAPI";
 
 interface AvgLineSettingProps {
   active: boolean;
@@ -11,22 +15,28 @@ interface AvgLineSettingProps {
 }
 
 const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
-  const AvgLine = useSelector((state: RootStateType) => state.common);
-  const [oneRange, setOneRange] = useState("5");
-  const [twoRange, setTwoRange] = useState("20");
-  const [threeRange, setThreeRange] = useState("60");
-  const [oneColor, setOneColor] = useState("green");
-  const [twoColor, setTwoColor] = useState("skyblue");
-  const [threeColor, setThreeColor] = useState("orange");
+  const [disparityOption, setDisparityOption] = useReducer(
+    (prev: any, next: any) => {
+      return { ...prev, ...next };
+    },
+    {
+      line_one: { name: "line_one", range: "", color: "" },
+      line_two: { name: "line_two", range: "", color: "" },
+      line_three: { name: "line_three", range: "", color: "" },
+    }
+  );
 
-  const {
-    firstDisparityTerm,
-    secondDisparityTerm,
-    thirdDisparityTerm,
-    firstDisparityColor,
-    secondDisparityColor,
-    thirdDisparityColor,
-  } = useSelector((state: RootStateType) => state.setting);
+  const request = useDisparityLineQuery();
+
+  const { mutate: updateDisparity } = useDisparityLineMutation(disparityOption);
+  const changeOption = () => {
+    if (active) {
+      updateDisparity(disparityOption);
+      setActive(!active);
+    } else {
+      setActive(!active);
+    }
+  };
 
   return (
     <AvgLineSection>
@@ -35,56 +45,83 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
         <>
           <AvgLineDetailActive
             lineName="Line One"
-            range={oneRange}
-            color={oneColor}
-            setColor={setOneColor}
-            setRange={setOneRange}
+            setColor={(e) =>
+              setDisparityOption({
+                line_one: {
+                  ...disparityOption.line_one,
+                  color: e.target.value,
+                },
+              })
+            }
+            setRange={(e) =>
+              setDisparityOption({
+                line_one: {
+                  ...disparityOption.line_one,
+                  range: e.target.value,
+                },
+              })
+            }
           />
           <AvgLineDetailActive
             lineName="Line Two"
-            range={twoRange}
-            color={twoColor}
-            setColor={setTwoColor}
-            setRange={setTwoRange}
+            setColor={(e) =>
+              setDisparityOption({
+                line_two: {
+                  ...disparityOption.line_two,
+                  color: e.target.value,
+                },
+              })
+            }
+            setRange={(e) =>
+              setDisparityOption({
+                line_two: {
+                  ...disparityOption.line_two,
+                  range: e.target.value,
+                },
+              })
+            }
           />
           <AvgLineDetailActive
             lineName="Line Three"
-            range={threeRange}
-            color={threeColor}
-            setColor={setThreeColor}
-            setRange={setThreeRange}
+            setColor={(e) =>
+              setDisparityOption({
+                line_three: {
+                  ...disparityOption.line_three,
+                  color: e.target.value,
+                },
+              })
+            }
+            setRange={(e) =>
+              setDisparityOption({
+                line_three: {
+                  ...disparityOption.line_three,
+                  range: e.target.value,
+                },
+              })
+            }
           />
         </>
       ) : (
         <>
           <AvgLineDetailComplete
             lineName="Line One"
-            range={firstDisparityTerm}
-            color={firstDisparityColor}
+            range={request.data?.line_one.range}
+            color={request.data?.line_one.color}
           />
           <AvgLineDetailComplete
             lineName="Line Two"
-            range={secondDisparityTerm}
-            color={secondDisparityColor}
+            range={request.data?.line_two.range}
+            color={request.data?.line_two.color}
           />
           <AvgLineDetailComplete
             lineName="Line Three"
-            range={thirdDisparityTerm}
-            color={thirdDisparityColor}
+            range={request.data?.line_three.range}
+            color={request.data?.line_three.color}
           />
         </>
       )}
       <div className="buttonSection">
-        <AvgLineButton
-          oneRange={oneRange}
-          twoRange={twoRange}
-          threeRange={threeRange}
-          oneColor={oneColor}
-          twoColor={twoColor}
-          threeColor={threeColor}
-          active={active}
-          setActive={setActive}
-        />
+        <SettingButton active={active} event={changeOption} />
       </div>
     </AvgLineSection>
   );

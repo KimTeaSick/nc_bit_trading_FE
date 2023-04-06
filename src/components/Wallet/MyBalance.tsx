@@ -1,7 +1,7 @@
 import { krwChage } from "@/lib/krwChage";
 import { RootStateType } from "@/module/rootReducer.d";
 import { sell, buy } from "@/pages/api/walletAPIs";
-import { Input } from "@/styles/globalStyle";
+import { Input } from "@/components/common/Input";
 import { FC, useState } from "react";
 import { useSelector } from "react-redux";
 import { CoinList, SellButton } from "./WalletStyled";

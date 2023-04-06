@@ -29,5 +29,5 @@ export function timeStampToDate(timestamp: number) {
 export const YMD = (now: Date) => {
   return `${now.getFullYear()}${
     now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : now.getMonth() + 1
-  }${now.getDate()}`;
+  }${now.getDate() < 10 ? "0" + now.getDate() : now.getDate()}`;
 };

@@ -1,16 +1,16 @@
-import { Input } from "@/styles/globalStyle";
+import { Input } from "@/components/common/Input";
 import { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 import { AvgLineDetailOptionSection } from "./Setting.styled";
 
 interface AvgLineDetailProps {
   lineName: string;
-  range: string;
-  color: string;
+  range?: string;
+  color?: string;
 }
 
 interface AvgLineDetailActiveProps extends AvgLineDetailProps {
-  setRange: Dispatch<SetStateAction<string>>;
-  setColor: Dispatch<SetStateAction<string>>;
+  setRange: (e: any) => any;
+  setColor: (e: any) => any;
 }
 export const AvgLineDetailActive: FC<AvgLineDetailActiveProps> = ({
   lineName,
@@ -24,24 +24,11 @@ export const AvgLineDetailActive: FC<AvgLineDetailActiveProps> = ({
       <p>{lineName}</p>
       <AvgLineDetailOptionSection>
         <div>기간 설정 :</div>
-        <Input
-          width={150}
-          value={range}
-          type="number"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setRange(e.target.value)
-          }
-        />
+        <Input width={100} value={range} type="number" onChange={setRange} />
       </AvgLineDetailOptionSection>
       <AvgLineDetailOptionSection>
         <div>색상 설정 :</div>
-        <Input
-          width={150}
-          value={color}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setColor(e.target.value)
-          }
-        />
+        <Input width={100} value={color} onChange={setColor} />
       </AvgLineDetailOptionSection>
     </div>
   );
@@ -52,18 +39,15 @@ export const AvgLineDetailComplete: FC<AvgLineDetailProps> = ({
   range,
   color,
 }) => {
-  console.log(range);
-  console.log(color);
-
   return (
     <div>
       <p>{lineName}</p>
       <AvgLineDetailOptionSection>
-        <div>기간 설정 :</div>
+        <div>기간 :</div>
         <div>{range} </div>
       </AvgLineDetailOptionSection>
       <AvgLineDetailOptionSection>
-        <div>색상 설정 :</div>
+        <div>색상 :</div>
         <div>{color} </div>
       </AvgLineDetailOptionSection>
     </div>

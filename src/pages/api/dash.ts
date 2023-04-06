@@ -4,7 +4,7 @@ import axios from "axios";
 import { get } from ".";
 
 export const useRecommendPrice = () => {
-  const queryKey = "getRecommendPrice" as const;
+  const queryKey = "dash/getRecommendPrice" as const;
   const queryFn = async () =>
     await axios
       .get("http://localhost:8000/" + queryKey)

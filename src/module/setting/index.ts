@@ -3,44 +3,37 @@ import { createSlice } from "@reduxjs/toolkit";
 import { SettingInitialStateType } from "./setting";
 
 const initialState: SettingInitialStateType = {
-  firstDisparityTerm: "",
-  firstDisparityColor: "",
-  firstDisparityStatus: "",
-  secondDisparityTerm: "",
-  secondDisparityColor: "",
-  secondDisparityStatus: "",
-  thirdDisparityTerm: "",
-  thirdDisparityColor: "",
-  thirdDisparityStatus: "",
+  search_idx: 0,
+  search_name: "",
+  price: "",
+  trends_term: "",
+  trends: "",
+  transaction_amount: "",
+  avg_volume: "",
+  first_disparity: "",
+  second_disparity: "",
 };
 
 const SettingSlice = createSlice({
   name: "SettingSlice",
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(getDisparityOptionThunk.pending, (state) => {
-      state.firstDisparityStatus = "Loading";
-      state.secondDisparityStatus = "Loading";
-      state.thirdDisparityStatus = "Loading";
-    });
-    builder.addCase(getDisparityOptionThunk.fulfilled, (state, action) => {
-      state.firstDisparityStatus = "Success";
-      state.firstDisparityTerm = action.payload[0][1];
-      state.firstDisparityColor = action.payload[0][2];
-      state.secondDisparityStatus = "Success";
-      state.secondDisparityTerm = action.payload[1][1];
-      state.secondDisparityColor = action.payload[1][2];
-      state.thirdDisparityStatus = "Success";
-      state.thirdDisparityTerm = action.payload[2][1];
-      state.thirdDisparityColor = action.payload[2][2];
-    });
-    builder.addCase(getDisparityOptionThunk.rejected, (state, action) => {
-      state.firstDisparityStatus = `error ${action.error}`;
-      state.secondDisparityStatus = `error ${action.error}`;
-      state.thirdDisparityStatus = `error ${action.error}`;
-    });
+  reducers: {
+    setSearchOption: (state, action) => {
+      console.log("action.payload", action.payload);
+      action.payload.idx ? (state.search_idx = action.payload.idx) : 0;
+      state.search_name = action.payload.name;
+      state.price = action.payload.price;
+      state.trends_term = action.payload.trends_term;
+      state.trends = action.payload.trends;
+      state.transaction_amount = action.payload.transaction_amount;
+      state.avg_volume = action.payload.avg_volume;
+      state.first_disparity = action.payload.first_disparity;
+      state.second_disparity = action.payload.second_disparity;
+    },
   },
+  extraReducers: (builder) => {},
 });
+
+export const { setSearchOption } = SettingSlice.actions;
 
 export default SettingSlice.reducer;
