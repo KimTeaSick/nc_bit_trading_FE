@@ -9,7 +9,7 @@ interface AvgLineProps {
   xX: number;
   clo5Array: [number, number];
   scaleY: (clo: NumberValue) => number;
-  color: string;
+  color: string | undefined;
 }
 
 const AvgLine: FC<AvgLineProps> = ({

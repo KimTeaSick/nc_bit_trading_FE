@@ -1,15 +1,13 @@
 import { AppProps } from "next/app";
-import Head from "next/head";
 import { useState } from "react";
 import {
-  DehydratedState,
   Hydrate,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
 import wrapper from "@/module";
-
-const queryClient = new QueryClient();
+import Head from "next/head";
+import "../styles/globals.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = useState(() => new QueryClient());

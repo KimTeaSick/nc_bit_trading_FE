@@ -1,9 +1,11 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import styled from "styled-components";
 
 interface SelectionProps {
   width: number;
-  itemList: string[];
+  itemList: any[];
+  value?: string;
+  event: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 interface SelectProps {
@@ -20,11 +22,13 @@ const Select = styled.select`
   border-radius: 5px;
 `;
 
-const Selection: FC<SelectionProps> = ({ width, itemList }) => {
+const Selection: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   return (
-    <Select width={width}>
-      {itemList.map((value, index) => (
-        <option key={index}>{value}</option>
+    <Select width={width} onChange={event} value={value || undefined}>
+      {itemList.map((value: any, index) => (
+        <option value={value?.idx} key={index}>
+          {value?.name}
+        </option>
       ))}
     </Select>
   );

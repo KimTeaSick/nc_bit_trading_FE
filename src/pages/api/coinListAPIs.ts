@@ -28,6 +28,8 @@ export const getChartData = createAsyncThunk(
 export const get5AvgData = createAsyncThunk(
   "getAvgData",
   async (body: GetAvgDataBodyType) => {
+    console.log("body", body);
+
     const data = await post("getAvgData", body);
     return data;
   }

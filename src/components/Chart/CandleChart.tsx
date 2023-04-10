@@ -20,15 +20,16 @@ const CandleChart: FC<CandleChartProps> = ({
   dataLength,
   chartData,
 }) => {
-  const { lineOneColor, lineTwoColor, lineThreeColor } = useSelector(
-    (state: RootStateType) => state.common
-  );
-
   const [hoverInfo, setHoverInfo] = useState<any[] | undefined>();
+  const { line_one, line_two, line_three } = useSelector(
+    (state: RootStateType) => state.setting
+  );
   const { avg5Data, avg20Data, avg60Data } = useSelector(
     (state: RootStateType) => state.coin
   );
+
   const dataArray: any[] = [];
+
   let SVG_CHART_WIDTH = typeof CHART_WIDTH === "number" ? CHART_WIDTH * 1 : 0;
   let SVG_CHART_HEIGHT =
     typeof CHART_HEIGHT === "number" ? CHART_HEIGHT * 0.5 : 0;
@@ -157,7 +158,7 @@ const CandleChart: FC<CandleChartProps> = ({
                 xX={xX}
                 scaleY={scaleY}
                 clo5Array={value[6]}
-                color={lineOneColor}
+                color={line_one?.color}
               />
               <AvgLine
                 dataYMin={dataYMin}
@@ -167,7 +168,7 @@ const CandleChart: FC<CandleChartProps> = ({
                 xX={xX}
                 scaleY={scaleY}
                 clo5Array={value[7]}
-                color={lineTwoColor}
+                color={line_two?.color}
               />
               <AvgLine
                 dataYMin={dataYMin}
@@ -177,7 +178,7 @@ const CandleChart: FC<CandleChartProps> = ({
                 xX={xX}
                 scaleY={scaleY}
                 clo5Array={value[8]}
-                color={lineThreeColor}
+                color={line_three?.color}
               />
               <rect
                 {...{ fill }}

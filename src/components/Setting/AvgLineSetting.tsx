@@ -1,6 +1,4 @@
-import { RootStateType } from "@/module/rootReducer.d";
-import { Dispatch, FC, SetStateAction, useReducer, useState } from "react";
-import { useSelector } from "react-redux";
+import { Dispatch, FC, SetStateAction, useEffect, useReducer } from "react";
 import SettingButton from "./SettingButton";
 import { AvgLineDetailActive, AvgLineDetailComplete } from "./AvgLineDetail";
 import { AvgLineSection } from "./Setting.styled";
@@ -8,6 +6,8 @@ import {
   useDisparityLineMutation,
   useDisparityLineQuery,
 } from "@/pages/api/settingAPI";
+import { useDispatch } from "react-redux";
+import { setDisparityLineOption } from "@/module/setting";
 
 interface AvgLineSettingProps {
   active: boolean;
@@ -15,6 +15,7 @@ interface AvgLineSettingProps {
 }
 
 const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
+  const dispatch = useDispatch();
   const [disparityOption, setDisparityOption] = useReducer(
     (prev: any, next: any) => {
       return { ...prev, ...next };
@@ -26,7 +27,7 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
     }
   );
 
-  const request = useDisparityLineQuery();
+  const { data, isLoading } = useDisparityLineQuery();
 
   const { mutate: updateDisparity } = useDisparityLineMutation(disparityOption);
   const changeOption = () => {
@@ -38,12 +39,36 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
     }
   };
 
+  useEffect(() => {
+    console.log("request.data :::::::: ", data);
+    setDisparityOption({
+      line_one: {
+        ...disparityOption.line_one,
+        range: data?.line_one.range,
+        color: data?.line_one.color,
+      },
+      line_two: {
+        ...disparityOption.line_two,
+        range: data?.line_two.range,
+        color: data?.line_two.color,
+      },
+      line_three: {
+        ...disparityOption.line_three,
+        range: data?.line_three.range,
+        color: data?.line_three.color,
+      },
+    });
+    dispatch(setDisparityLineOption(data));
+  }, [data, isLoading, dispatch]);
+
   return (
     <AvgLineSection>
       <p>이동평균선 설정</p>
       {active === true ? (
         <>
           <AvgLineDetailActive
+            range={disparityOption.line_one.range}
+            color={disparityOption.line_one.color}
             lineName="Line One"
             setColor={(e) =>
               setDisparityOption({
@@ -63,6 +88,8 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
             }
           />
           <AvgLineDetailActive
+            range={disparityOption.line_two.range}
+            color={disparityOption.line_two.color}
             lineName="Line Two"
             setColor={(e) =>
               setDisparityOption({
@@ -82,6 +109,8 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
             }
           />
           <AvgLineDetailActive
+            range={disparityOption.line_three.range}
+            color={disparityOption.line_three.color}
             lineName="Line Three"
             setColor={(e) =>
               setDisparityOption({
@@ -105,18 +134,18 @@ const AvgLineSetting: FC<AvgLineSettingProps> = ({ active, setActive }) => {
         <>
           <AvgLineDetailComplete
             lineName="Line One"
-            range={request.data?.line_one.range}
-            color={request.data?.line_one.color}
+            range={disparityOption.line_one.range}
+            color={disparityOption.line_one.color}
           />
           <AvgLineDetailComplete
             lineName="Line Two"
-            range={request.data?.line_two.range}
-            color={request.data?.line_two.color}
+            range={disparityOption.line_two.range}
+            color={disparityOption.line_two.color}
           />
           <AvgLineDetailComplete
             lineName="Line Three"
-            range={request.data?.line_three.range}
-            color={request.data?.line_three.color}
+            range={disparityOption.line_three.range}
+            color={disparityOption.line_three.color}
           />
         </>
       )}

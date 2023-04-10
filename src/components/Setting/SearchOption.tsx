@@ -16,12 +16,6 @@ import {
 
 const SearchOption = () => {
   const request = useDisparityLineQuery();
-  const SELECT_ITEMS = [
-    request.data?.line_one.range,
-    request.data?.line_two.range,
-    request.data?.line_three.range,
-  ];
-
   const [event, updateEvent] = useReducer(
     (prev: any, next: any) => {
       return { ...prev, ...next };
@@ -30,7 +24,7 @@ const SearchOption = () => {
       idx: 0,
       name: "",
       price: "",
-      trends_term: "",
+      trends_idx: "",
       trends: "",
       avg_volume: "",
       first_disparity: "",
@@ -43,20 +37,25 @@ const SearchOption = () => {
     search_idx,
     search_name,
     price,
-    trends_term,
     trends,
+    trends_idx,
     transaction_amount,
     avg_volume,
     first_disparity,
     second_disparity,
+    line_one,
+    line_two,
+    line_three,
   } = useSelector((state: RootStateType) => state.setting);
+
+  const SELECT_ITEMS = [line_one, line_two, line_three];
 
   useEffect(() => {
     updateEvent({
       idx: search_idx !== 0 ? search_idx : 0,
       name: search_name,
       price: price,
-      trends_term: trends_term,
+      trends_idx: trends_idx,
       trends: trends,
       avg_volume: transaction_amount,
       first_disparity: avg_volume,
@@ -67,7 +66,7 @@ const SearchOption = () => {
     search_idx,
     search_name,
     price,
-    trends_term,
+    trends_idx,
     trends,
     transaction_amount,
     avg_volume,
@@ -80,9 +79,8 @@ const SearchOption = () => {
   };
   const optionUpdateEvent = () => {
     searchOptionUpdate(event);
+    alert("설정이 수정되었습니다.");
   };
-
-  console.log(event);
 
   return (
     <SearchSection>
@@ -115,11 +113,11 @@ const SearchOption = () => {
         <SearchContent>
           <p>추세</p>
           <div className="phrase">
-            <Input
-              value={event.trends_term}
-              type={"number"}
-              width={60}
-              onChange={(e) => updateEvent({ trends_term: e.target.value })}
+            <Selection
+              width={120}
+              value={event.trends_idx || 1}
+              itemList={SELECT_ITEMS}
+              event={(e) => updateEvent({ trends_idx: e.target.value })}
             />
             평균선 추세가
             <Input

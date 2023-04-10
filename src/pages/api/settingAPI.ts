@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, UseQueryOptions } from "@tanstack/react-query";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { get, post } from ".";
 import { SearchOptionType } from "@/module/setting/setting";
