@@ -52,3 +52,8 @@ export const searchOptionUpdate = async (body: SearchOptionType) => {
   const response = await post("setting/updateSearchOption", body);
   return response;
 };
+
+export const useSearchOption = async (body: { num: string }) => {
+  const response = await post("setting/updateUseSearchOption", body);
+  return response;
+};

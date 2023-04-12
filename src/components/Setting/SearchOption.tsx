@@ -12,6 +12,7 @@ import {
   useDisparityLineQuery,
   searchOptionInsert,
   searchOptionUpdate,
+  useSearchOption,
 } from "@/pages/api/settingAPI";
 
 const SearchOption = () => {
@@ -81,7 +82,10 @@ const SearchOption = () => {
     searchOptionUpdate(event);
     alert("설정이 수정되었습니다.");
   };
-
+  const useSearchOptionEvent = () => {
+    useSearchOption({ num: event.idx });
+    alert("설정이 변경되었습니다.");
+  };
   return (
     <SearchSection>
       <div className="left">
@@ -179,12 +183,22 @@ const SearchOption = () => {
             이하인 종목
           </div>
         </SearchContent>
-        <SettingButton
-          active={second_disparity !== "" ? false : true}
-          event={
-            second_disparity !== "" ? optionUpdateEvent : optionInsertEvent
-          }
-        />
+        <div style={{ display: "flex", gap: "10px" }}>
+          <SettingButton
+            active={second_disparity !== "" ? false : true}
+            title={second_disparity !== "" ? "수정" : "사용"}
+            event={
+              second_disparity !== "" ? optionUpdateEvent : optionInsertEvent
+            }
+          />
+          {second_disparity !== "" ? (
+            <SettingButton
+              active={second_disparity !== "" ? false : true}
+              title={"사용"}
+              event={useSearchOptionEvent}
+            />
+          ) : null}
+        </div>
       </div>
       <div className="right">
         <SearchOptionList />
