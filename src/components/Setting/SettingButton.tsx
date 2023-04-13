@@ -3,7 +3,7 @@ import { AvgButton } from "./Setting.styled";
 
 interface SettingButtonProps {
   active?: boolean;
-  title: "저장" | "수정" | "사용";
+  title?: "저장" | "수정" | "사용";
   event?: () => void;
 }
 

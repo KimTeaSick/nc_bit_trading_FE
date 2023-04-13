@@ -34,10 +34,12 @@ const TradingPage: FC = () => {
       ) : (
         <ListSection>
           <div onClick={() => setModalOpen(true)}>asdas</div>
-          {modalOpen && (
+          {modalOpen ? (
             <ModalPortal>
               <CalenderModal onClose={HandleModalShow} />
             </ModalPortal>
+          ) : (
+            <div></div>
           )}
           {/* <CustomCalendar /> */}
           <ListTitle data={LIST_VALUE} />

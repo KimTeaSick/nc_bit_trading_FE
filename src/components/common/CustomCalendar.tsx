@@ -16,7 +16,7 @@ const CustomCalendar: FC<CustomCalendarProps> = ({ onClose }) => {
 
   const [selectDate, setSelectDate] = useState<Value>([]);
 
-  const chooseDate = useCallback((value: Value, event: MouseEvent) => {
+  const chooseDate = useCallback((value: any, event: MouseEvent) => {
     const value1 = getCurrentDate(value[0]);
     const value2 = getCurrentDate(value[1]);
     setSelectDate([value1, value2]);

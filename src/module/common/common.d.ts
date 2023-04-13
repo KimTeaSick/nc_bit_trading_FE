@@ -1,9 +1,9 @@
 export type CommonInitialState = {
   activePage: string;
   pagiNation: string;
-  lineOneRange: string;
-  lineTwoRange: string;
-  lineThreeRange: string;
+  lineOneRange: number | string;
+  lineTwoRange: number | string;
+  lineThreeRange: number | string;
   lineOneColor: string;
   lineTwoColor: string;
   lineThreeColor: string;
