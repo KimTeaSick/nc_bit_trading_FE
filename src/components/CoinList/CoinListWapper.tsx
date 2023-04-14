@@ -18,7 +18,6 @@ const CoinListWapper: FC = () => {
 
   return (
     <div>
-      <p>Coin List</p>
       <CL.CoinListWapper>
         {coinList.map((coin: CoinType, index: number) =>
           coin[0] === "date" ? (

@@ -13,7 +13,6 @@ const WalletPage: FC = () => {
   return (
     <div>
       <WalletTopSection>
-        <p>Wallet</p>
         <p>{krwChage(String(money))} 원</p>
       </WalletTopSection>
       <WalletSide />

@@ -1,23 +1,25 @@
+import { Dispatch } from "react";
 import { globalColor } from "./../../styles/globalStyle";
 import styled from "styled-components";
 
 export const CalenderSection = styled.div`
   .react-calendar__navigation {
-    height: 35px;
+    height: 45px;
     display: flex;
     justify-content: center;
-    border-bottom: 2px solid #000;
+    align-items: center;
   }
-
   .react-calendar__navigation__label,
   .react-calendar__navigation__label__prev,
   .react-calendar__navigation__arrow,
   .react-calendar__navigation__next-button {
-    color: #000;
+    color: #fff;
     border: none;
-    font-size: 13px;
-    font-weight: 500;
-    background-color: #fff;
+    margin: 10px;
+    font-size: 32px;
+    line-height: 16px;
+    font-weight: bold;
+    justify-content: center;
   }
   .react-calendar__navigation__label > span {
     color: #000;
@@ -30,13 +32,17 @@ export const CalenderSection = styled.div`
     width: 25px;
   }
   .react-calendar__month-view__weekdays {
-    width: 100%;
+    /* width: 100%; */
     background: #fff;
-    padding-top: 10px;
+    padding: 5px;
+    margin: 10px;
+    box-sizing: border-box;
     text-align: center;
+    background-color: #dcdcdc;
     abbr {
       color: #000;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      font-weight: bold;
       text-decoration: none;
     }
   }
@@ -56,16 +62,16 @@ export const CalenderSection = styled.div`
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
     color: #fff;
-    background-color: ${globalColor.buttonPointColor};
+    background-color: #4318ff;
   }
   .react-calendar__tile--rangeStart,
   .react-calendar__tile--rangeEnd {
     width: 15px;
     color: #fff;
-    background-color: ${globalColor.buttonPointColor};
+    background-color: #4318ff;
   }
   .react-calendar--selectRange {
-    background-color: pink;
+    /* background-color: pink; */
   }
   .buttonSection {
     display: flex;
@@ -82,5 +88,5 @@ export const Button = styled.button`
   padding: 15px;
   font-weight: bold;
   border-radius: 5px;
-  background-color: ${globalColor.buttonPointColor};
+  background-color: #4318ff;
 `;
