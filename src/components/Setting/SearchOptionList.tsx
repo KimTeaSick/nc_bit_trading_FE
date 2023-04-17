@@ -9,10 +9,9 @@ import { EMPTY_SEARCH_OPTION } from "@/lib/const_val";
 
 const SearchOptionList: FC = () => {
   const dispatch = useDispatch<any>();
+
   const request = useSearchOptionListQuery();
-
   const plusClickEvent = () => dispatch(setSearchOption(EMPTY_SEARCH_OPTION));
-
   const listClickEvent = (value: SearchOptionType) =>
     dispatch(setSearchOption(value));
 

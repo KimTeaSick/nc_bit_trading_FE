@@ -1,4 +1,4 @@
-import DisparityOption from "./components/\bdisparityOption";
+import DisparityOption from "./components/DisparityOption";
 import TradingOption from "./components/TradingOption";
 import TrendOption from "./components/TrendOption";
 

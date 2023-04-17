@@ -24,7 +24,6 @@ export const useDisparityLineQuery = () => {
 
 export const useDisparityLineMutation = (body: any) => {
   console.log("body :::::::: ", body);
-
   const mutationFn = async () => {
     await axios
       .post("http://localhost:8000/setting/updateDisparity", body)
@@ -45,6 +44,8 @@ export const useSearchOptionListQuery = () => {
 };
 
 export const searchOptionInsert = async (body: SearchOptionType) => {
+  console.log(body);
+
   const response = await post("setting/registerSearchOption", body);
   return response;
 };

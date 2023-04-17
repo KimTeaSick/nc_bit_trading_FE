@@ -1,6 +1,6 @@
-import CoinDetailPage from "@/components/CoinDetail/CoinDetailPage";
+// import CoinDetailPage from "@/components/CoinDetail/CoinDetailPage";
 import { DetailCoinType } from "@/@types/CoinList";
-import LayoutComponent from "@/components/common/Layout";
+import CoinDetailPage from "@/views/admin/coindetail/index";
 import { useCallback, useEffect, useState } from "react";
 import {
   getCoinDetailInfo,
@@ -76,9 +76,9 @@ const CoinDetail: NextPage = () => {
         <Loading />
       ) : (
         <CoinDetailPage
-          selectCoin={selectCoin}
-          data={chartData}
-          coinName={id}
+        // selectCoin={selectCoin}
+        // data={chartData}
+        // coinName={id}
         />
       )}
     </Admin>

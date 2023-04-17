@@ -29,7 +29,9 @@ type RowObj = {
 function CheckTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  let defaultData = tableData;
+
+  let defaultData = tableData.length === 0 ? [] : tableData;
+
   const columns = [
     columnHelper.accessor("name", {
       id: "name",
@@ -153,13 +155,14 @@ function CheckTable(props: { tableData: any }) {
     getSortedRowModel: getSortedRowModel(),
     debugTable: true,
   });
+  console.log("dash board tableData", tableData);
+
   return (
     <Card extra={"w-full h-full sm:overflow-auto px-6"}>
       <header className="relative flex items-center justify-between pt-4">
         <div className="text-xl font-bold text-navy-700 dark:text-white">
           📚 실시간 종목
         </div>
-
         <CardMenu />
       </header>
 

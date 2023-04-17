@@ -20,9 +20,14 @@ import { FC } from "react";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 
-const Dashboard: FC = () => {
+interface DashboardProps {
+  rpLoading: boolean;
+}
+
+const Dashboard: FC<DashboardProps> = ({ rpLoading }) => {
   const { accountInfo } = useSelector((state: RootStateType) => state.dash);
   const tableDataComplex = useTableDataComplex();
+  console.log("rpLoading", rpLoading);
 
   return (
     <div className="flex flex-row">
@@ -60,10 +65,11 @@ const Dashboard: FC = () => {
         <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-1">
           {/* Check Table */}
           <div>
-            <CheckTable tableData={tableDataCheck} />
+            {rpLoading === true ? null : (
+              <CheckTable tableData={tableDataCheck} />
+            )}
           </div>
           {/* Complex Table , Task & Calendar */}
-
           <ComplexTable tableData={tableDataComplex} />
         </div>
       </div>

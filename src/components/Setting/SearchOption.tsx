@@ -82,10 +82,12 @@ const SearchOption = () => {
     searchOptionUpdate(event);
     alert("설정이 수정되었습니다.");
   };
+
   const useSearchOptionEvent = () => {
     useSearchOption({ num: event.idx });
     alert("설정이 변경되었습니다.");
   };
+
   return (
     <SearchSection>
       <div className="left">

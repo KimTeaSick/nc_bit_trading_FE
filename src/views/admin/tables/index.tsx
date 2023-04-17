@@ -18,6 +18,8 @@ const Tables = () => {
   const HandleModalShow = () => {
     setModalOpen(false);
   };
+  console.log("data", data);
+
   return (
     <div>
       <div className="mt-5 mb-3 grid h-full grid-cols-1 gap-5 md:grid-cols-1 relative">

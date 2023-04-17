@@ -1,11 +1,10 @@
-import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { MdAccountBalance } from "react-icons/md";
 import { TbMoneybag } from "react-icons/tb";
-import { GiReceiveMoney, GiPayMoney } from "react-icons/gi";
 import { SiBitcoinsv } from "react-icons/si";
 
 import { useState } from "react";
 import Card from "@/components/card";
+import { sell } from "@/pages/api/walletAPIs";
 
 const BitCard = (props: {
   account: string;
@@ -14,8 +13,20 @@ const BitCard = (props: {
   balance: any;
 }) => {
   const { account, image, coinList, balance } = props;
-  const [heart, setHeart] = useState(true);
-  console.log(balance);
+  const [unit, setUnit] = useState<string>("0");
+
+  const sellButtonEvent = (coin: string, unit: string) => {
+    if (unit === "") {
+      alert("갯수를 입력해주세요");
+      return;
+    }
+    const body = {
+      coin: coin.slice(6, coin.length),
+      unit: parseFloat(unit),
+    };
+    sell(body);
+  };
+
   return (
     <Card extra={`flex flex-row w-full h-full !p-4 3xl:p-![18px] bg-white`}>
       <div className="h-full w-full flex flex-row">
@@ -23,7 +34,7 @@ const BitCard = (props: {
           <img
             src={image}
             className="mb-3 h-full w-full rounded-xl 3xl:h-full 3xl:w-full"
-            alt="ㅁㄴㅇ"
+            alt="img loading..."
           />
         </div>
 
@@ -68,11 +79,14 @@ const BitCard = (props: {
                   {" 원"}
                   <input
                     type="number"
-                    id=""
                     placeholder="00"
+                    onChange={(e) => setUnit(e.target.value)}
                     className="mx-3 rounded-xl border bg-white/0 p-3 text-sm outline-none border-gray-200 dark:!border-white/10 dark:text-white"
-                  ></input>
-                  <button className="linear w-auto rounded-xl bg-brand-500 py-[12px] px-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
+                  />
+                  <button
+                    onClick={() => sellButtonEvent(coin[0], unit)}
+                    className="linear w-auto rounded-xl bg-brand-500 py-[12px] px-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+                  >
                     판매
                   </button>
                 </div>

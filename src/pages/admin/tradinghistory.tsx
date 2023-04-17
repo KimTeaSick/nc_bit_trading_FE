@@ -7,11 +7,13 @@ import { RootStateType } from "@/module/rootReducer.d";
 import Admin from "@/layouts/admin";
 import Tables from "@/views/admin/tables";
 import { getOrderList } from "../api/tradingList";
+import PaginNation from "@/components/common/PaginNation";
+import { PagiNationSection } from "@/components/common/PagiNation.styked";
 
 const TradingList = () => {
   const dispatch = useDispatch<any>();
   const [nowPage, setNowPage] = useState(1);
-  const { orderList, orderListPage, orderListStatus } = useSelector(
+  const { orderListPage, orderListStatus } = useSelector(
     (state: RootStateType) => state.trading
   );
   useEffect(() => {
@@ -22,6 +24,9 @@ const TradingList = () => {
   return (
     <Admin>
       <Tables />
+      <PagiNationSection>
+        <PaginNation page={orderListPage} setNowPage={setNowPage} />
+      </PagiNationSection>
     </Admin>
   );
 };

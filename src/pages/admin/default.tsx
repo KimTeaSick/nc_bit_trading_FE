@@ -16,6 +16,7 @@ const Home: NextPage = () => {
   const [recommandPriceData, setRecommandPrice] = useState([]);
   const now = new Date();
   const { request: recommandPrice }: any = useRecommendPrice();
+  console.log(recommandPrice);
 
   useEffect(() => {
     setRecommandPrice(recommandPrice.data);
@@ -31,7 +32,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Admin>
-        <Dashboard />
+        <Dashboard rpLoading={recommandPrice.isLoading} />
       </Admin>
     </>
   );

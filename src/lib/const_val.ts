@@ -1,7 +1,7 @@
 export const EMPTY_SEARCH_OPTION = {
   name: "",
   price: "",
-  trends_idx: "",
+  trends_idx: "1",
   trends: "",
   transaction_amount: "",
   avg_volume: "",

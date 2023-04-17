@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import CardMenu from "@/components/card/CardMenu";
 import { DiApple } from "react-icons/di";
 import { DiAndroid } from "react-icons/di";
@@ -128,6 +128,9 @@ function CheckTable(props: {
     getSortedRowModel: getSortedRowModel(),
     debugTable: true,
   });
+  useEffect(() => {
+    setData(tableData);
+  }, [tableData]);
   return (
     <Card extra={"w-full h-full sm:overflow-auto px-6"}>
       <header className="relative flex items-center justify-between pt-4">

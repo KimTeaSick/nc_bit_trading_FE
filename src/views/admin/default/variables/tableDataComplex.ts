@@ -28,7 +28,6 @@ type RowObj = {
 // <div>{Number(coin.info.rate).toFixed(2)} %</div>
 const useTableDataComplex = () => {
   const { possessionCoin } = useSelector((state: RootStateType) => state.dash);
-
   const tableData: any[] = possessionCoin.map((coin, index) => {
     return {
       number: index + 1,
