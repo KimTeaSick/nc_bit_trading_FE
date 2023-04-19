@@ -76,7 +76,7 @@ const BitCard = (props: {
                   <span className="text-brand-500 dark:text-white px-2">
                     {Number(coin[1]).toFixed(2)}
                   </span>
-                  {" 원"}
+                  {" 개"}
                   <input
                     type="number"
                     placeholder="00"

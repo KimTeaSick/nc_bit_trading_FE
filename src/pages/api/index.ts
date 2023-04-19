@@ -1,7 +1,7 @@
 import axios from "axios";
 import { timeout } from "d3-timer";
 
-const BASE_URL = "http://localhost:8000/";
+const BASE_URL = "http://192.168.10.119:8000/";
 
 export const get = async (uri: string, params = {}, headers = {}) => {
   try {

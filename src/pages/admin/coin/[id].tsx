@@ -25,6 +25,8 @@ const CoinDetail: NextPage = () => {
   const { line_one, line_two, line_three } = useSelector(
     (state: RootStateType) => state.setting
   );
+  console.log(line_one);
+
   const {
     chartData,
     chartTerm,
@@ -76,9 +78,9 @@ const CoinDetail: NextPage = () => {
         <Loading />
       ) : (
         <CoinDetailPage
-        // selectCoin={selectCoin}
-        // data={chartData}
-        // coinName={id}
+          selectCoin={selectCoin}
+          data={chartData}
+          coinName={id}
         />
       )}
     </Admin>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardMenu from "@/components/card/CardMenu";
 import Card from "@/components/card";
 import {
@@ -158,6 +158,12 @@ export default function ComplexTable(props: { tableData: any }) {
     getSortedRowModel: getSortedRowModel(),
     debugTable: true,
   });
+
+  // useEffect(() => {
+  //   console.log(tableData);
+  //   setData(tableData);
+  // }, [tableData]);
+
   return (
     <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>
       <div className="relative flex items-center justify-between pt-4">

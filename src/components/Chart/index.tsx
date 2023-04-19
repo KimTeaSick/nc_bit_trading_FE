@@ -26,7 +26,7 @@ const Chart: FC = () => {
     };
   };
   return (
-    <div onWheel={dataWheelHandler}>
+    <div onWheel={dataWheelHandler} className="w-full">
       {chartData.length === 0 ? (
         <Loading />
       ) : (

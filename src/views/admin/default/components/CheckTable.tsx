@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardMenu from "@/components/card/CardMenu";
 import Checkbox from "@/components/checkbox";
 import Card from "@/components/card";
@@ -31,6 +31,8 @@ function CheckTable(props: { tableData: any }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   let defaultData = tableData.length === 0 ? [] : tableData;
+  // let defaultData = [];
+  console.log(tableData);
 
   const columns = [
     columnHelper.accessor("name", {
@@ -155,6 +157,12 @@ function CheckTable(props: { tableData: any }) {
     getSortedRowModel: getSortedRowModel(),
     debugTable: true,
   });
+
+  useEffect(() => {
+    console.log(tableData);
+
+    // setData(tableData);
+  }, [tableData]);
   console.log("dash board tableData", tableData);
 
   return (

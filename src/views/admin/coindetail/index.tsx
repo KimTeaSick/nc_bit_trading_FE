@@ -1,12 +1,24 @@
 import Widget from "@/components/widget/Widget";
 import DetailCard from "./components/coindetailCard";
+import { FC } from "react";
 import { IoDocuments } from "react-icons/io5";
-import Card from "@/components/card";
-import tableDataTopCreators from "@/views/admin/coinlist/variables/tableDataTopCreators";
-import HistoryCard from "./components/HistoryCard";
-import TopCreatorTable from "./components/TableTopCreators";
+import { RootStateType } from "@/module/rootReducer.d";
+import { useSelector } from "react-redux";
+import { krwChage } from "@/lib/krwChage";
 
-const CoinDetail = () => {
+interface CoinDetailProps {
+  selectCoin: any;
+  data: any;
+  coinName: any;
+}
+
+const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, data, coinName }) => {
+  console.log("selectCoin, dataselectCoin, data", selectCoin, data);
+
+  const { avg5DataTrend } = useSelector((state: RootStateType) => state.coin);
+
+  console.log("avg5DataTrend", selectCoin);
+
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
       <div className="col-span-1 h-fit w-full xl:col-span-1 2xl:col-span-2">
@@ -22,7 +34,7 @@ const CoinDetail = () => {
           <Widget
             icon={<IoDocuments className="h-6 w-6" />}
             title={""}
-            subtitle={"ETC"}
+            subtitle={coinName}
           />
           <Widget
             icon={<IoDocuments className="h-6 w-6" />}
@@ -31,11 +43,15 @@ const CoinDetail = () => {
           />
           <Widget
             icon={<IoDocuments className="h-6 w-6" />}
-            title={"금일 최고가 : 27,130원   금일 최저가 : 27,130원 "}
+            title={`금일 최고가 : ${krwChage(
+              String(selectCoin?.data?.max_price)
+            )} 원   금일 최저가 : ${krwChage(
+              String(selectCoin?.data?.min_price)
+            )} 원 `}
             subtitle={""}
           />
         </div>
-        <div>
+        <div className="w-full">
           <DetailCard />
         </div>
       </div>

@@ -20,14 +20,20 @@ const TrendList: FC<TrendListProps> = ({ list }) => {
     dispatch(setSearchOption(value));
 
   return (
-    <>
+    <div className="overflow-y-scroll h-16 flex-col justify-center items-center">
       {request?.data?.map((content: any, index: number) => (
-        <div key={index} onClick={() => listClickEvent(content)}>
+        <div
+          key={index}
+          onClick={() => listClickEvent(content)}
+          className="w-full h-10 flex justify-center p-3 border-r-orange-300 font-bold cursor-pointer"
+        >
           {content.name}
         </div>
       ))}
-      <PlusButton background={PLUS_URL.src} onClick={plusClickEvent} />
-    </>
+      <div className="w-full flex justify-center items-center">
+        <PlusButton background={PLUS_URL.src} onClick={plusClickEvent} />
+      </div>
+    </div>
   );
 };
 

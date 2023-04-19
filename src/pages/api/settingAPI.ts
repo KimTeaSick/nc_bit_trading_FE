@@ -16,7 +16,7 @@ export const useDisparityLineQuery = () => {
   const queryKey = "setting/getDisparity" as const;
   const queryFn = async () =>
     await axios
-      .get("http://localhost:8000/" + queryKey)
+      .get("http://192.168.10.119:8000/" + queryKey)
       .then((res) => res.data);
   const request = useQuery([queryKey], queryFn);
   return request;
@@ -26,7 +26,7 @@ export const useDisparityLineMutation = (body: any) => {
   console.log("body :::::::: ", body);
   const mutationFn = async () => {
     await axios
-      .post("http://localhost:8000/setting/updateDisparity", body)
+      .post("http://192.168.10.119:8000/setting/updateDisparity", body)
       .then((res) => res.data);
   };
   const response = useMutation(mutationFn);
@@ -37,7 +37,7 @@ export const useSearchOptionListQuery = () => {
   const queryKey = "setting/getSearchOptionList" as const;
   const queryFn = async () =>
     await axios
-      .get("http://localhost:8000/" + queryKey)
+      .get("http://192.168.10.119:8000/" + queryKey)
       .then((res) => res.data);
   const request = useQuery([queryKey], queryFn);
   return request;

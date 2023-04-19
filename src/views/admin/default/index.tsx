@@ -14,7 +14,7 @@ import ComplexTable from "@/views/admin/default/components/ComplexTable";
 import DailyTraffic from "@/views/admin/default/components/DailyTraffic";
 import OptionSearch from "@/views/admin/default/components/OptionSearch";
 import TaskCard from "@/views/admin/default/components/TaskCard";
-import tableDataCheck from "./variables/tableDataCheck";
+import useSearchData from "./variables/tableDataCheck";
 import useTableDataComplex from "./variables/tableDataComplex";
 import { FC } from "react";
 import { useSelector } from "react-redux";
@@ -26,8 +26,9 @@ interface DashboardProps {
 
 const Dashboard: FC<DashboardProps> = ({ rpLoading }) => {
   const { accountInfo } = useSelector((state: RootStateType) => state.dash);
-  const tableDataComplex = useTableDataComplex();
   console.log("rpLoading", rpLoading);
+  const CheckTableDataComplex = useSearchData();
+  const tableDataComplex = useTableDataComplex();
 
   return (
     <div className="flex flex-row">
@@ -66,10 +67,11 @@ const Dashboard: FC<DashboardProps> = ({ rpLoading }) => {
           {/* Check Table */}
           <div>
             {rpLoading === true ? null : (
-              <CheckTable tableData={tableDataCheck} />
+              <CheckTable tableData={CheckTableDataComplex} />
             )}
           </div>
           {/* Complex Table , Task & Calendar */}
+
           <ComplexTable tableData={tableDataComplex} />
         </div>
       </div>
