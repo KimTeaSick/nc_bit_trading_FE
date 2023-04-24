@@ -50,3 +50,11 @@ export const get60AvgData = createAsyncThunk(
     return data;
   }
 );
+
+export const updateCoinWarning = async (body: {
+  value: number;
+  coin_name: string;
+}) => {
+  const response = await post("coinDetail/updateWarning", body);
+  return response;
+};

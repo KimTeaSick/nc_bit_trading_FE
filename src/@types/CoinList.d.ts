@@ -14,6 +14,7 @@ type CoinArrayTwo = {
   opening_price: string;
   prev_closing_price: string;
   units_traded: string;
+  warning: boolean;
   units_traded_24H: string;
 };
 

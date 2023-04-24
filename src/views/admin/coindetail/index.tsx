@@ -5,6 +5,8 @@ import { IoDocuments } from "react-icons/io5";
 import { RootStateType } from "@/module/rootReducer.d";
 import { useSelector } from "react-redux";
 import { krwChage } from "@/lib/krwChage";
+import WarningButton from "./components/WarningButton";
+import { updateCoinWarning } from "@/pages/api/coinListAPIs";
 
 interface CoinDetailProps {
   selectCoin: any;
@@ -35,6 +37,24 @@ const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, data, coinName }) => {
             icon={<IoDocuments className="h-6 w-6" />}
             title={""}
             subtitle={coinName}
+            button={
+              <WarningButton
+                isWarning={selectCoin?.data.warning === "1"}
+                event={
+                  selectCoin?.data.warning === "1"
+                    ? () =>
+                        updateCoinWarning({
+                          value: 0,
+                          coin_name: coinName + "_KRW",
+                        })
+                    : () =>
+                        updateCoinWarning({
+                          value: 1,
+                          coin_name: coinName + "_KRW",
+                        })
+                }
+              />
+            }
           />
           <Widget
             icon={<IoDocuments className="h-6 w-6" />}

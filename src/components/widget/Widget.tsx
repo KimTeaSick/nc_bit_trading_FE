@@ -1,13 +1,15 @@
 import Card from "@/components/card";
+import { ReactNode } from "react";
 
 const Widget = (props: {
   icon: JSX.Element;
   title: string;
   subtitle: string;
+  button?: ReactNode;
 }) => {
-  const { icon, title, subtitle } = props;
+  const { icon, title, subtitle, button } = props;
   return (
-    <Card extra="!flex-row flex-grow items-center rounded-[20px]">
+    <Card extra="!flex-row flex-grow items-center rounded-[20px] p-1">
       <div className="ml-[18px] flex h-[90px] w-auto flex-row items-center">
         <div className="rounded-full bg-lightPrimary p-3 dark:bg-navy-700">
           <span className="flex items-center text-brand-500 dark:text-white">
@@ -16,12 +18,15 @@ const Widget = (props: {
         </div>
       </div>
 
-      <div className="h-50 ml-4 flex w-auto flex-col justify-center">
-        <p className="font-dm text-sm font-medium text-gray-600">{title}</p>
-        <h4 className="text-xl font-bold text-navy-700 dark:text-white">
-          {subtitle}
-        </h4>
+      <div className="!flex-row flex-grow items-center rounded-[20px]">
+        <div className="h-50 ml-4 flex w-auto flex-col justify-center">
+          <p className="font-dm text-sm font-medium text-gray-600">{title}</p>
+          <h4 className="text-xl font-bold text-navy-700 dark:text-white">
+            {subtitle}
+          </h4>
+        </div>
       </div>
+      <div>{button}</div>
     </Card>
   );
 };
