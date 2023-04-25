@@ -1,14 +1,13 @@
-import CoinListWapper from "@/components/CoinList/CoinListWapper";
 import CoinPage from "@/views/admin/coinlist/index";
 import Loading from "@/components/common/Loading";
 import Admin from "@/layouts/admin";
 import { setPageActive } from "@/module/common";
-import { setDisparityLineOption } from "@/module/setting";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useDisparityLineQuery } from "../api/settingAPI";
 import { CoinType } from "@/@types/CoinList";
 import { getCoinList } from "../api/coinListAPIs";
+import { useDisparityLineQuery } from "../api/settingAPI";
+import { setDisparityLineOption } from "@/module/setting";
 
 const CoinList = () => {
   const dispatch = useDispatch();
@@ -30,7 +29,9 @@ const CoinList = () => {
   }, [dispatch, isLoading]);
 
   return (
-    <Admin>{isLoading ? <Loading /> : <CoinPage coinList={coinList} />}</Admin>
+    <Admin>
+      {coinList.length === 0 ? <Loading /> : <CoinPage coinList={coinList} />}
+    </Admin>
   );
 };
 export default CoinList;

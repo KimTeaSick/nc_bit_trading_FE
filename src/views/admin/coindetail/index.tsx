@@ -1,25 +1,42 @@
 import Widget from "@/components/widget/Widget";
 import DetailCard from "./components/coindetailCard";
-import { FC } from "react";
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useState,
+  WheelEvent,
+} from "react";
 import { IoDocuments } from "react-icons/io5";
 import { RootStateType } from "@/module/rootReducer.d";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { krwChage } from "@/lib/krwChage";
 import WarningButton from "./components/WarningButton";
 import { updateCoinWarning } from "@/pages/api/coinListAPIs";
+import { getDisparityOptionThunk } from "@/pages/api/settingAPI";
 
 interface CoinDetailProps {
   selectCoin: any;
   data: any;
   coinName: any;
+  flag: any;
+  setFlag: Dispatch<SetStateAction<number>>;
 }
 
-const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, data, coinName }) => {
-  console.log("selectCoin, dataselectCoin, data", selectCoin, data);
+const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, coinName }) => {
+  const dispatch = useDispatch<any>();
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
 
-  const { avg5DataTrend } = useSelector((state: RootStateType) => state.coin);
+  const chartScrollEvent = () =>
+    (window.document.body.style.overflow = "hidden");
 
-  console.log("avg5DataTrend", selectCoin);
+  useEffect(() => {
+    dispatch(getDisparityOptionThunk());
+  }, [dispatch]);
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
@@ -71,7 +88,12 @@ const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, data, coinName }) => {
             subtitle={""}
           />
         </div>
-        <div className="w-full">
+        <div
+          id="chart_section"
+          className="w-full"
+          onWheel={() => (window.document.body.style.overflow = "hidden")}
+          onMouseLeave={() => (window.document.body.style.overflow = "auto")}
+        >
           <DetailCard />
         </div>
       </div>

@@ -12,6 +12,7 @@ const initialState: SettingInitialStateType = {
   avg_volume: "",
   first_disparity: "",
   second_disparity: "",
+  disparityStatus: "",
   line_one: null,
   line_two: null,
   line_three: null,
@@ -33,14 +34,24 @@ const SettingSlice = createSlice({
       state.second_disparity = action.payload.second_disparity;
     },
     setDisparityLineOption: (state, action) => {
-      console.log("action.payloadaction.payload", action.payload);
-
       state.line_one = action.payload?.line_one;
       state.line_two = action.payload?.line_two;
       state.line_three = action.payload?.line_three;
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(getDisparityOptionThunk.pending, (state) => {
+      state.disparityStatus = "Loading";
+    });
+    builder.addCase(getDisparityOptionThunk.fulfilled, (state, action) => {
+      state.line_one = action.payload?.line_one;
+      state.line_two = action.payload?.line_two;
+      state.line_three = action.payload?.line_three;
+    });
+    builder.addCase(getDisparityOptionThunk.rejected, (state, action) => {
+      state.disparityStatus = `error ${action.error}`;
+    });
+  },
 });
 
 export const { setSearchOption, setDisparityLineOption } = SettingSlice.actions;

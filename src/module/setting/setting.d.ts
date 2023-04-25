@@ -8,6 +8,7 @@ export type SettingInitialStateType = {
   avg_volume: string;
   first_disparity: string;
   second_disparity: string;
+  disparityStatus: string;
   line_one: Line_Type | null;
   line_two: Line_Type | null;
   line_three: Line_Type | null;

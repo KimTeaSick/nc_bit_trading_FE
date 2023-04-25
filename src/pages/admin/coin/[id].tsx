@@ -1,7 +1,7 @@
 // import CoinDetailPage from "@/components/CoinDetail/CoinDetailPage";
 import { DetailCoinType } from "@/@types/CoinList";
 import CoinDetailPage from "@/views/admin/coindetail/index";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import {
   getCoinDetailInfo,
   getChartData,
@@ -16,16 +16,17 @@ import { RootStateType } from "@/module/rootReducer.d";
 import { setDetailCoin } from "@/module/coin";
 import Loading from "@/components/common/Loading";
 import Admin from "@/layouts/admin";
+import { getDisparityOptionThunk } from "@/pages/api/settingAPI";
 
 const CoinDetail: NextPage = () => {
   const router = useRouter();
-  const { id } = router.query;
   const dispatch = useDispatch<any>();
+  const [flag, setFlag] = useState(0);
+  const { id } = router.query;
   const [selectCoin, setSelectCoin] = useState<DetailCoinType>();
   const { line_one, line_two, line_three } = useSelector(
     (state: RootStateType) => state.setting
   );
-  console.log(line_one);
 
   const {
     chartData,
@@ -35,39 +36,53 @@ const CoinDetail: NextPage = () => {
     avg20DataStatus,
     avg5DataStatus,
   } = useSelector((state: RootStateType) => state.coin);
+  console.log(line_one);
 
   const setCoin = useCallback(async () => {
-    const coinData = await getCoinDetailInfo(id);
     const body = { id, term: chartTerm };
-    dispatch(
-      get5AvgData({
-        range: line_one?.range,
-        coin: id,
-        term: chartTerm,
-      })
-    );
-    dispatch(
-      get20AvgData({
-        range: line_two?.range,
-        coin: id,
-        term: chartTerm,
-      })
-    );
-    dispatch(
-      get60AvgData({
-        range: line_three?.range,
-        coin: id,
-        term: chartTerm,
-      })
-    );
-    dispatch(setDetailCoin(id));
-    dispatch(getChartData(body));
-    setSelectCoin(coinData);
-  }, [id, dispatch, chartTerm]);
+    dispatch(getDisparityOptionThunk());
+
+    if (id !== undefined) {
+      const coinData = await getCoinDetailInfo(id);
+      dispatch(setDetailCoin(id));
+      dispatch(getChartData(body));
+      setSelectCoin(coinData);
+      if (line_one !== null) {
+        dispatch(
+          get5AvgData({
+            range: line_one?.range,
+            coin: id,
+            term: chartTerm,
+          })
+        );
+        dispatch(
+          get20AvgData({
+            range: line_two?.range,
+            coin: id,
+            term: chartTerm,
+          })
+        );
+        dispatch(
+          get60AvgData({
+            range: line_three?.range,
+            coin: id,
+            term: chartTerm,
+          })
+        );
+      }
+    }
+  }, [
+    id,
+    dispatch,
+    chartTerm,
+    line_one?.range,
+    line_two?.range,
+    line_three?.range,
+  ]);
 
   useEffect(() => {
     setCoin();
-  }, [setCoin]);
+  }, [setCoin, dispatch, flag, id]);
 
   return (
     <Admin>
@@ -78,6 +93,8 @@ const CoinDetail: NextPage = () => {
         <Loading />
       ) : (
         <CoinDetailPage
+          flag={line_one}
+          setFlag={setFlag}
           selectCoin={selectCoin}
           data={chartData}
           coinName={id}

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 interface WarningButtonProps {
   isWarning: boolean;
@@ -6,14 +6,18 @@ interface WarningButtonProps {
 }
 
 const WarningButton: FC<WarningButtonProps> = ({ isWarning, event }) => {
+  const [flag, setFlag] = useState<boolean>(isWarning);
   return (
     <button
-      onClick={() => event()}
+      onClick={() => {
+        setFlag(!flag);
+        event();
+      }}
       className={` border-solid border-red w-28 rounded h-10 text-white font-bold m-4 ${
-        isWarning ? "bg-red-500" : "bg-blue-700"
+        flag ? "bg-red-500" : "bg-blue-700"
       } `}
     >
-      {isWarning ? "유의종목 해제" : "유의종목 등록"}
+      {flag ? "유의종목 해제" : "유의종목 등록"}
     </button>
   );
 };
