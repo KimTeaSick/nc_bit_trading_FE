@@ -30,9 +30,9 @@ function CheckTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  let defaultData = tableData.length === 0 ? [] : tableData;
+  let defaultData = tableData;
   // let defaultData = [];
-  console.log(tableData);
+  console.log("table Data", tableData);
 
   const columns = [
     columnHelper.accessor("name", {
@@ -159,11 +159,9 @@ function CheckTable(props: { tableData: any }) {
   });
 
   useEffect(() => {
-    console.log(tableData);
-
+    console.log("tableData in useEffect", tableData);
     // setData(tableData);
   }, [tableData]);
-  console.log("dash board tableData", tableData);
 
   return (
     <Card extra={"w-full h-full sm:overflow-auto px-6"}>

@@ -22,7 +22,6 @@ const Chart: FC = () => {
         : setDataLength(
             dataLength > chartData?.length - 8 ? dataLength + 0 : dataLength + 8
           );
-      console.log(dataLength);
     };
   };
   return (

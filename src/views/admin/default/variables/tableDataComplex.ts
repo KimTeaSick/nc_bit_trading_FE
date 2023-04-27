@@ -30,8 +30,6 @@ type RowObj = {
 
 const useTableDataComplex = () => {
   const { possessionCoin } = useSelector((state: RootStateType) => state.dash);
-  console.log("isArray(possessionCoin)", Array.isArray(possessionCoin));
-
   const tableData: any[] = Array.isArray(possessionCoin)
     ? possessionCoin?.map((coin, index) => {
         return {

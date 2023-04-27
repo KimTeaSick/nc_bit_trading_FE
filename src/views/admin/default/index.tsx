@@ -21,13 +21,14 @@ import { useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 
 interface DashboardProps {
-  rpLoading: boolean;
+  rpLoading?: boolean;
 }
 
 const Dashboard: FC<DashboardProps> = ({ rpLoading }) => {
   const { accountInfo } = useSelector((state: RootStateType) => state.dash);
   console.log("rpLoading", rpLoading);
   const CheckTableDataComplex = useSearchData();
+  console.log("CheckTableDataComplex", CheckTableDataComplex);
   const tableDataComplex = useTableDataComplex();
 
   return (

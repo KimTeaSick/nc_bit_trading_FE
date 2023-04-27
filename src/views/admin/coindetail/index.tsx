@@ -26,14 +26,6 @@ interface CoinDetailProps {
 
 const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, coinName }) => {
   const dispatch = useDispatch<any>();
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
-  });
-
-  const chartScrollEvent = () =>
-    (window.document.body.style.overflow = "hidden");
-
   useEffect(() => {
     dispatch(getDisparityOptionThunk());
   }, [dispatch]);

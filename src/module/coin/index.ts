@@ -53,9 +53,11 @@ const coinSlice = createSlice({
     builder.addCase(get5AvgData.fulfilled, (state, action) => {
       state.avg5DataStatus = "Success";
       state.avg5DataTrend = action.payload[0];
-      state.avg5Data = action.payload[1]?.filter(
-        (element: number | "undefined") => element !== "undefined"
-      );
+      state.avg5Data = Array.isArray(action.payload[1])
+        ? action.payload[1]?.filter(
+            (element: number | "undefined") => element !== "undefined"
+          )
+        : [];
     });
     builder.addCase(get5AvgData.rejected, (state, action) => {
       state.avg5DataStatus = `error ${action.error}`;
@@ -67,9 +69,11 @@ const coinSlice = createSlice({
     builder.addCase(get20AvgData.fulfilled, (state, action) => {
       state.avg20DataStatus = "Success";
       state.avg20DataTrend = action.payload[0];
-      state.avg20Data = action.payload[1]?.filter(
-        (element: number | "undefined") => element !== "undefined"
-      );
+      state.avg20Data = Array.isArray(action.payload[1])
+        ? action.payload[1]?.filter(
+            (element: number | "undefined") => element !== "undefined"
+          )
+        : [];
     });
     builder.addCase(get20AvgData.rejected, (state, action) => {
       state.avg20DataStatus = `error ${action.error}`;
@@ -81,9 +85,11 @@ const coinSlice = createSlice({
     builder.addCase(get60AvgData.fulfilled, (state, action) => {
       state.avg60DataStatus = "Success";
       state.avg60DataTrend = action.payload[0];
-      state.avg60Data = action.payload[1]?.filter(
-        (element: number | "undefined") => element !== "undefined"
-      );
+      state.avg60Data = Array.isArray(action.payload[1])
+        ? action.payload[1]?.filter(
+            (element: number | "undefined") => element !== "undefined"
+          )
+        : [];
     });
     builder.addCase(get60AvgData.rejected, (state, action) => {
       state.avg60DataStatus = `error ${action.error}`;
