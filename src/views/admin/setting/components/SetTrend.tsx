@@ -1,5 +1,5 @@
 import Card from "@/components/card";
-import Selection from "@/components/common/Selection";
+import Selection from "@/components/common/select/SelectBox";
 import { FC, ReactNode } from "react";
 import { AiOutlineRise } from "react-icons/ai";
 import { RxDot } from "react-icons/rx";

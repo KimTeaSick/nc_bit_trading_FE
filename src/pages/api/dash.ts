@@ -4,14 +4,12 @@ import axios from "axios";
 import { get } from ".";
 
 export const useRecommendPrice = () => {
-  const queryKey = "dash/getRecommendPrice" as const;
+  const queryKey = "dash/recommendCoin" as const;
   const queryFn = async () =>
     await axios
-      .get("http://localhost:8000/" + queryKey)
+      .get("http://192.168.10.119:8000/" + queryKey)
       .then((res) => res.data);
-  const request = useQuery([queryKey], queryFn, {
-    staleTime: 300000,
-  });
+  const request = useQuery([queryKey], queryFn);
   return { request };
   // return 1;
 };

@@ -1,4 +1,4 @@
-import { Input } from "@/components/common/Input";
+import { Input } from "@/components/common/input/index";
 import { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 import { AvgLineDetailOptionSection } from "./Setting.styled";
 

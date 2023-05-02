@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 interface SelectionProps {
   width: number;
-  itemList: any[];
   value?: string;
+  itemList: any[];
   event: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -22,7 +22,7 @@ const Select = styled.select`
   border-radius: 5px;
 `;
 
-const Selection: FC<SelectionProps> = ({ width, itemList, event, value }) => {
+const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   return (
     <Select width={width} onChange={event} value={value || undefined}>
       {itemList.map((value: any, index) => (
@@ -34,4 +34,4 @@ const Selection: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   );
 };
 
-export default Selection;
+export default SelectBox;

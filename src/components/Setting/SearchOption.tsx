@@ -1,9 +1,9 @@
-import { Input } from "@/components/common/Input";
+import { Input } from "@/components/common/input/index";
 import { RootStateType } from "@/module/rootReducer.d";
 import { SearchOptionType } from "@/module/setting/setting";
 import { useEffect, useReducer } from "react";
 import { useSelector } from "react-redux";
-import Selection from "../common/Selection";
+import Selection from "../common/select/SelectBox";
 import SettingButton from "./SettingButton";
 import SearchContent from "./SearchContent";
 import { SearchSection } from "./Setting.styled";

@@ -3,10 +3,10 @@ import { InputStyle } from "@/styles/globalStyle";
 
 interface InputProps {
   width: number;
-  type?: "number" | "text" | "password";
   placeholder?: string;
   value?: string | number;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  type?: "number" | "text" | "password";
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: FC<InputProps> = ({

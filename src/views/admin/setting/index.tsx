@@ -1,3 +1,5 @@
+import ConditionDetail from "./components/ConditionDetail";
+import ConditionTreeList from "./components/ConditionTreeList";
 import DisparityOption from "./components/DisparityOption";
 import TradingOption from "./components/TradingOption";
 import TrendOption from "./components/TrendOption";
@@ -9,15 +11,18 @@ const Marketplace = () => {
         {/* Header */}
         <div className="mb-4 mt-5 flex flex-row justify-between px-4 md:flex-row md:items-center">
           <h4 className="ml-1 text-2xl font-bold text-navy-700 dark:text-white">
-            내 지갑 현황
+            자동 매매
           </h4>
         </div>
 
         {/* trending card */}
         <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
-          <DisparityOption />
-          <TrendOption />
-          <TradingOption />
+          <ConditionTreeList />
+          <ConditionDetail />
+          {/* <ConditionTreeList /> */}
+          {/* <DisparityOption /> */}
+          {/* <TrendOption /> */}
+          {/* <TradingOption /> */}
         </div>
       </div>
     </div>

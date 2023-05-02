@@ -22,12 +22,16 @@ import { RootStateType } from "@/module/rootReducer.d";
 
 interface DashboardProps {
   rpLoading?: boolean;
+  CheckTableDataComplex: any;
 }
 
-const Dashboard: FC<DashboardProps> = ({ rpLoading }) => {
+const Dashboard: FC<DashboardProps> = ({
+  rpLoading,
+  CheckTableDataComplex,
+}) => {
   const { accountInfo } = useSelector((state: RootStateType) => state.dash);
   console.log("rpLoading", rpLoading);
-  const CheckTableDataComplex = useSearchData();
+  // const CheckTableDataComplex = useSearchData();
   console.log("CheckTableDataComplex", CheckTableDataComplex);
   const tableDataComplex = useTableDataComplex();
 

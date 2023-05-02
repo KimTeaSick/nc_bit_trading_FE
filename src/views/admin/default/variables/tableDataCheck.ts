@@ -21,15 +21,15 @@ const useSearchData = () => {
   if (!recommandPrice?.isLoading && recommandPrice?.data !== 333) {
     recommandPrice?.data.map((coin: any, index: number) => {
       reponse.push({
-        name: coin.coin.coin,
-        previousclosingprice: coin.coin.data?.prev_closing_price,
-        marketprice: coin.coin.data?.opening_price,
-        closingprice: coin.coin.data?.closing_price,
-        highprice: coin.coin.data?.max_price,
-        lowprice: coin.coin.data?.min_price,
-        tradingvolume24: coin.coin.data?.units_traded_24H,
-        floatingprice: coin.coin.data?.fluctate_24H,
-        ratechange: coin.coin.data?.opening_price,
+        name: coin.coin,
+        previousclosingprice: coin.data?.prev_closing_price,
+        marketprice: coin.data?.opening_price,
+        closingprice: coin.data?.closing_price,
+        highprice: coin.data?.max_price,
+        lowprice: coin.data?.min_price,
+        tradingvolume24: coin.data?.units_traded_24H,
+        floatingprice: coin.data?.fluctate_24H,
+        ratechange: coin.data?.opening_price,
       });
     });
   }

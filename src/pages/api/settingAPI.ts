@@ -3,6 +3,7 @@ import { useQuery, useMutation, UseQueryOptions } from "@tanstack/react-query";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { get, post } from ".";
 import { SearchOptionType } from "@/module/setting/setting";
+import { conditionFormat } from "@/lib/dateFormat";
 
 export const getDisparityOptionThunk = createAsyncThunk(
   "getDisparityOptionThunk",
@@ -56,5 +57,12 @@ export const searchOptionUpdate = async (body: SearchOptionType) => {
 
 export const useSearchOption = async (body: { num: string }) => {
   const response = await post("setting/updateUseSearchOption", body);
+  return response;
+};
+
+export const getConditionList = async () => {
+  const condition = await get("autotrading/getConditionList");
+  const group = await get("autotrading/getConditionGroupList");
+  const response = conditionFormat(group, condition);
   return response;
 };

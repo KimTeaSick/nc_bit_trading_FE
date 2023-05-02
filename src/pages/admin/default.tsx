@@ -19,7 +19,7 @@ const Home: NextPage = () => {
   console.log(recommandPrice);
 
   useEffect(() => {
-    // setRecommandPrice(recommandPrice.data);
+    setRecommandPrice(recommandPrice.data);
     dispatch(setPageActive("Dash"));
     dispatch(getPossessionCoin());
     dispatch(
@@ -33,7 +33,8 @@ const Home: NextPage = () => {
     <>
       <Admin>
         <Dashboard
-        // rpLoading={recommandPrice.isLoading}
+          CheckTableDataComplex={recommandPriceData}
+          // rpLoading={recommandPrice.isLoading}
         />
       </Admin>
     </>
