@@ -1,10 +1,15 @@
+import Condition from "@/components/condition";
 import ConditionDetail from "./components/ConditionDetail";
 import ConditionTreeList from "./components/ConditionTreeList";
 import DisparityOption from "./components/DisparityOption";
 import TradingOption from "./components/TradingOption";
 import TrendOption from "./components/TrendOption";
+import { useState } from "react";
+import { CHOICE_TYPE } from "@/components/condition/condition";
 
 const Marketplace = () => {
+  const [choice, select] = useState<CHOICE_TYPE>("주가 범위");
+
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
       <div className="col-span-1 h-fit w-full xl:col-span-1 2xl:col-span-2">
@@ -16,9 +21,9 @@ const Marketplace = () => {
         </div>
 
         {/* trending card */}
-        <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
-          <ConditionTreeList />
-          <ConditionDetail />
+        <div className="z-20 flex gap-1">
+          <ConditionTreeList select={select} />
+          <Condition CHOICE={choice} />
           {/* <ConditionTreeList /> */}
           {/* <DisparityOption /> */}
           {/* <TrendOption /> */}

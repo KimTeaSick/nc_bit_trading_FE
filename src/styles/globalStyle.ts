@@ -36,9 +36,10 @@ interface InputProps {
 export const InputStyle = styled.input`
   width: ${(props: InputProps) => props.width}px;
   color: #000;
-  height: 25px;
+  height: 27px;
+  padding: 0 0 0 10px;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   border-radius: 5px;
 `;

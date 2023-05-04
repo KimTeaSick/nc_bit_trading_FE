@@ -25,7 +25,7 @@ const Select = styled.select`
 const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   return (
     <Select width={width} onChange={event} value={value || undefined}>
-      {itemList.map((value: any, index) => (
+      {itemList?.map((value: any, index) => (
         <option value={value?.idx} key={index}>
           {value?.name}
         </option>
