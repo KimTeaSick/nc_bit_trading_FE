@@ -12,7 +12,7 @@ const D_rangeRV = () => {
       <div className="flex gap-2">
         기간
         <Input width={70} type="number" />
-        <SelectBox width={70} /> 주기 이격도
+        이격도
         <Input width={70} type="number" /> -
         <Input width={70} type="number" />
       </div>

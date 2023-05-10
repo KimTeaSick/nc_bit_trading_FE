@@ -11,20 +11,20 @@ const MASP_comparison_double = () => {
         봉전 기준
       </div>
       <div className="flex gap-2">
-        <SelectBox width={70} itemList={["1일", "2일"]} />
+        종가
         <SelectBox width={70} itemList={["1일", "2일"]} />
         이평
         <SelectBox width={70} itemList={["1일", "2일"]} />
-        <SelectBox width={70} itemList={["1일", "2일"]} />
+        종가
         <SelectBox width={70} itemList={["1일", "2일"]} />
         이평,
       </div>
       <div className="flex gap-2">
-        <SelectBox width={70} itemList={["1일", "2일"]} />
+        종가
         <SelectBox width={70} itemList={["1일", "2일"]} />
         이평
         <SelectBox width={70} itemList={["1일", "2일"]} />
-        <SelectBox width={70} itemList={["1일", "2일"]} />
+        종가
         <SelectBox width={70} itemList={["1일", "2일"]} />
         이평
       </div>

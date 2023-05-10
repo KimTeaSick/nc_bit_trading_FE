@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import D_overRV from "./D_overRV";
 import D_reverse from "./D_reverse";
-import D_overRV_up_down from "./D_overRV_up_down";
+import D_overRV_up_down from "./D_RV_up_down";
 import D_rangeRV from "./D_rangeRV";
 import D_trend from "./D_trend";
 import MACD_line_over from "./MACD_line_over";

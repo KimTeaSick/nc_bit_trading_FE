@@ -25,9 +25,26 @@ const Select = styled.select`
 const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   return (
     <Select width={width} onChange={event} value={value || undefined}>
-      {itemList?.map((value: any, index) => (
-        <option value={value?.idx} key={index}>
-          {value?.name}
+      {itemList?.map((item: any, index) => (
+        <option value={item?.idx} key={index}>
+          {item?.name}
+        </option>
+      ))}
+    </Select>
+  );
+};
+
+export const TermSelectBox: FC<SelectionProps> = ({
+  width,
+  itemList,
+  event,
+  value,
+}) => {
+  return (
+    <Select width={width} onChange={event} value={value}>
+      {itemList?.map((item: any, index) => (
+        <option value={item} key={index}>
+          {item}
         </option>
       ))}
     </Select>
