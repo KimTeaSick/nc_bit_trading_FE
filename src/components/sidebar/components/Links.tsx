@@ -15,7 +15,7 @@ export const SidebarLinks = ({ routes }: { routes: any[] }): JSX.Element => {
 
   const createLinks = (routes: any[]) => {
     return routes.map((route, index) => (
-      <Link href={route.layout + "/" + route.path}>
+      <Link href={route.layout + "/" + route.path} key={index}>
         <div className="relative mb-3 flex hover:cursor-pointer">
           <li className="my-[3px] flex cursor-pointer items-center px-8">
             <span

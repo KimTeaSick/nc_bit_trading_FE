@@ -1,10 +1,11 @@
 import { ChangeEvent, FC } from "react";
 import styled from "styled-components";
+import { CANDLE_TIME_OPTION } from "./option";
 
 interface SelectionProps {
   width: number;
   value?: string;
-  itemList: any[];
+  itemList?: any[];
   event: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -22,7 +23,12 @@ const Select = styled.select`
   border-radius: 5px;
 `;
 
-const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
+export const SelectBox: FC<SelectionProps> = ({
+  width,
+  itemList,
+  event,
+  value,
+}) => {
   return (
     <Select width={width} onChange={event} value={value || undefined}>
       {itemList?.map((item: any, index) => (
@@ -34,12 +40,8 @@ const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   );
 };
 
-export const TermSelectBox: FC<SelectionProps> = ({
-  width,
-  itemList,
-  event,
-  value,
-}) => {
+export const TermSelectBox: FC<SelectionProps> = ({ width, event, value }) => {
+  const itemList = CANDLE_TIME_OPTION;
   return (
     <Select width={width} onChange={event} value={value}>
       {itemList?.map((item: any, index) => (
@@ -51,4 +53,63 @@ export const TermSelectBox: FC<SelectionProps> = ({
   );
 };
 
-export default SelectBox;
+export const MorethanLessSelectBox: FC<SelectionProps> = ({
+  width,
+  event,
+  value,
+}) => {
+  const itemList: ["<", ">"] = ["<", ">"];
+  return (
+    <Select width={width} onChange={event} value={value}>
+      {itemList?.map((item: "<" | ">", index: number) => (
+        <option value={item} key={index}>
+          {item}
+        </option>
+      ))}
+    </Select>
+  );
+};
+
+export const TrendSelectBox: FC<SelectionProps> = ({ width, event, value }) => {
+  const itemList: ["상승", "하락"] = ["상승", "하락"];
+  return (
+    <Select width={width} onChange={event} value={value}>
+      {itemList?.map((item: "상승" | "하락", index: number) => (
+        <option value={item} key={index}>
+          {item}
+        </option>
+      ))}
+    </Select>
+  );
+};
+
+export const OverSelectBox: FC<SelectionProps> = ({ width, event, value }) => {
+  const itemList: ["상향", "하향"] = ["상향", "하향"];
+  return (
+    <Select width={width} onChange={event} value={value}>
+      {itemList?.map((item: "상향" | "하향", index: number) => (
+        <option value={item} key={index}>
+          {item}
+        </option>
+      ))}
+    </Select>
+  );
+};
+
+export const UpDownSelectBox: FC<SelectionProps> = ({
+  width,
+  event,
+  value,
+}) => {
+  const itemList: ["이상", "이하"] = ["이상", "이하"];
+
+  return (
+    <Select width={width} onChange={event} value={value}>
+      {itemList?.map((item: "이상" | "이하", index: number) => (
+        <option value={item} key={index}>
+          {item}
+        </option>
+      ))}
+    </Select>
+  );
+};

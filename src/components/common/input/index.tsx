@@ -6,6 +6,7 @@ interface InputProps {
   placeholder?: string;
   value?: string | number;
   type?: "number" | "text" | "password";
+  onClick?: () => void;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -13,6 +14,7 @@ export const Input: FC<InputProps> = ({
   type,
   width,
   value,
+  onClick,
   onChange,
   placeholder,
 }) => {
@@ -22,6 +24,7 @@ export const Input: FC<InputProps> = ({
       width={width}
       value={value}
       onChange={onChange}
+      onClick={onClick && onClick}
       placeholder={placeholder}
     />
   );

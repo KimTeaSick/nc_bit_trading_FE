@@ -53,10 +53,10 @@ const routes = [
     path: "tradinghistory",
   },
   {
-    name: "Setting",
+    name: "Search",
     layout: "/admin",
     icon: <IoSettingsSharp className="h-6 w-6" />,
-    path: "setting",
+    path: "search",
   },
   {
     name: "Profile",
