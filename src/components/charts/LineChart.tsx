@@ -39,6 +39,7 @@ class LineChart extends React.Component<ChartProps, ChartState> {
         },
       },
     };
+    console.log("chartData", this.props.chartData);
 
     const data = [
       {
@@ -64,8 +65,8 @@ class LineChart extends React.Component<ChartProps, ChartState> {
     return (
       <ReactApexChart
         options={options}
-        // series={this.state.chartData}
-        series={data}
+        series={this.state.chartData}
+        // series={this.props.chartData}
         width="100%"
         height="100%"
       />

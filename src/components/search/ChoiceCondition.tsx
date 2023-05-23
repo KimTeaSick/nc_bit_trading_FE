@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import CardMenu from "@/components/card/CardMenu";
 import Card from "@/components/card";
-
 import {
   createColumnHelper,
   flexRender,
@@ -10,38 +9,28 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import { SearchButton } from "./Condition";
+import { getConditionDetail } from "@/pages/api/searchAPIs";
+import { useDispatch } from "react-redux";
+import { setConditionDetail } from "@/module/search";
 
-function CheckTable(props: { tableData: any; title: string }) {
-  const { tableData, title } = props;
+function ChoiceCondition(props: {
+  tableData: any;
+  setch: any;
+  registerBtnEvent: any;
+}) {
+  const { tableData, setch, registerBtnEvent } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  let defaultData = tableData ? tableData : [];
 
-  let defaultData =
-    tableData !== undefined
-      ? tableData?.map((coin: any, index: number) => {
-          const key = Object.keys(coin);
-          const value: any = Object.values(coin);
-          return {
-            closingprice: value[0].closing_price,
-            floatingprice: value[0].fluctate_24H,
-            highprice: value[0].max_price,
-            lowprice: value[0].min_price,
-            marketprice: value[0].opening_price,
-            name: key,
-            previousclosingprice: value[0].prev_closing_price,
-            ratechange: value[0].fluctate_rate_24H,
-            tradingvolume24: value[0].acc_trade_value_24H,
-          };
-        })
-      : [];
-
-  console.log("tableData ::::::::::::", defaultData);
+  const dispatch = useDispatch();
 
   const columns = [
-    columnHelper.accessor("name", {
-      id: "name",
+    columnHelper.accessor("Name", {
+      id: "Name",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          종목명
+          조건 이름
         </p>
       ),
       cell: (info) => (
@@ -50,11 +39,11 @@ function CheckTable(props: { tableData: any; title: string }) {
         </p>
       ),
     }),
-    columnHelper.accessor("previousclosingprice", {
-      id: "previousclosingprice",
+    columnHelper.accessor("Create_date", {
+      id: "Create_date",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          전일종가
+          생성일
         </p>
       ),
       cell: (info) => (
@@ -63,86 +52,16 @@ function CheckTable(props: { tableData: any; title: string }) {
         </p>
       ),
     }),
-    columnHelper.accessor("marketprice", {
-      id: "marketprice",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">시가</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("closingprice", {
-      id: "closingprice",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">종가</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("highprice", {
-      id: "highprice",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">고가</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("lowprice", {
-      id: "lowprice",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">저가</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("tradingvolume24", {
-      id: "tradingvolume24",
+    columnHelper.accessor("Update_date", {
+      id: "Update_date",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          24시간 거래량
+          수정일
         </p>
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("floatingprice", {
-      id: "floatingprice",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">
-          변동가
-        </p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("ratechange", {
-      id: "ratechange",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">
-          변동율
-        </p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {info.getValue() === null ? "-" : info.getValue()}
         </p>
       ),
     }),
@@ -150,6 +69,7 @@ function CheckTable(props: { tableData: any; title: string }) {
 
   // eslint-disable-next-line
   const [data, setData] = React.useState(() => [...defaultData]);
+
   const table = useReactTable({
     data,
     columns,
@@ -162,24 +82,20 @@ function CheckTable(props: { tableData: any; title: string }) {
     debugTable: true,
   });
 
-  // useEffect(() => {
-  //   console.log("tableData in useEffect", tableData);
-  // }, [tableData]);
+  useEffect(() => {
+    console.log("tableData in useEffect", tableData);
+    setData(defaultData);
+  }, [tableData]);
 
   return (
     <div>
-      {/* <div className="w-5/6 bg-navy-200 rounded-md p-1"> */}
       <Card extra={"w-full h-full sm:overflow-auto px-6"}>
         <header className="relative flex items-center justify-between pt-4">
           <div className="text-xl font-bold text-navy-700 dark:text-white">
-            {title} 조건 검색 결과
+            조건 리스트
           </div>
-          <div className="w-20 text-2xl font-bold">
-            {`${tableData.length}`} 개
-          </div>
-          {/* <CardMenu /> */}
+          <CardMenu />
         </header>
-
         <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64">
           <table className="w-full">
             <thead>
@@ -218,12 +134,24 @@ function CheckTable(props: { tableData: any; title: string }) {
                 .rows.slice(0, table.legnth)
                 .map((row) => {
                   return (
-                    <tr key={row.id}>
+                    <tr
+                      key={row.id}
+                      className={`${
+                        row.original.used === 1 ? "bg-red-100" : ""
+                      }`}
+                      onClick={async () => {
+                        const detail = await getConditionDetail({
+                          option: row.original.Name,
+                        });
+                        dispatch(setConditionDetail(detail));
+                        setch(1);
+                      }}
+                    >
                       {row.getVisibleCells().map((cell) => {
                         return (
                           <td
                             key={cell.id}
-                            className="min-w-[150px] border-white/0 py-3  pr-4"
+                            className="min-w-[150px] border-white/0 py-3 pr-4 cursor-pointer"
                           >
                             {flexRender(
                               cell.column.columnDef.cell,
@@ -238,11 +166,14 @@ function CheckTable(props: { tableData: any; title: string }) {
             </tbody>
           </table>
         </div>
+        <div className="w-1/6 flex gap-2 self-end p-2">
+          <SearchButton event={() => registerBtnEvent()} title="등록" />
+        </div>
       </Card>
     </div>
   );
 }
 
-export default CheckTable;
+export default ChoiceCondition;
 // const columnHelper = createColumnHelper<RowObj>();
-const columnHelper = createColumnHelper<RowObj>();
+const columnHelper = createColumnHelper<any>();

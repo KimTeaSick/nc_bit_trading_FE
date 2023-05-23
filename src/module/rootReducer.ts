@@ -7,6 +7,7 @@ import coinSlice from "./coin";
 import tradingSlice from "./trading";
 import dashSlice from "./dash";
 import settingSlice from "./setting";
+import searchSlice from "./search";
 
 const rootReducer = (
   state: RootStateType,
@@ -23,6 +24,7 @@ const rootReducer = (
         trading: tradingSlice,
         dash: dashSlice,
         setting: settingSlice,
+        search: searchSlice,
       });
       return combineReducer(state, action);
     }

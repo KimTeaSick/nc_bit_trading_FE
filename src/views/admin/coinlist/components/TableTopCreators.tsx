@@ -1,7 +1,7 @@
 import React from "react";
-import CardMenu from "components/card/CardMenu";
-import Progress from "components/progress";
-import Card from "components/card";
+import CardMenu from "@/components/card/CardMenu";
+import Progress from "@/components/progress";
+import Card from "@/components/card";
 
 import {
   createColumnHelper,

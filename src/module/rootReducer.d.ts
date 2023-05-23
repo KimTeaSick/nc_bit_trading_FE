@@ -4,6 +4,7 @@ import { WalletInitialState } from "./wallet/wallet.d";
 import { CommonInitialState } from "./common/common.d";
 import { CoinInitialState } from "./coin/coin";
 import { DashInitialState } from "./dash/dash";
+import { SearchInitialStateType } from "./search/search";
 
 export type RootStateType = {
   common: CommonInitialState;
@@ -12,4 +13,5 @@ export type RootStateType = {
   trading: TradingInitialState;
   dash: DashInitialState;
   setting: SettingInitialStateType;
+  search: SearchInitialStateType;
 };

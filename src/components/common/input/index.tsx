@@ -3,6 +3,7 @@ import { InputStyle } from "@/styles/globalStyle";
 
 interface InputProps {
   width: number;
+  height?: number;
   placeholder?: string;
   value?: string | number;
   type?: "number" | "text" | "password";
@@ -14,6 +15,7 @@ export const Input: FC<InputProps> = ({
   type,
   width,
   value,
+  height,
   onClick,
   onChange,
   placeholder,
@@ -22,6 +24,7 @@ export const Input: FC<InputProps> = ({
     <InputStyle
       type={type}
       width={width}
+      height={height ? height : 27}
       value={value}
       onChange={onChange}
       onClick={onClick && onClick}
