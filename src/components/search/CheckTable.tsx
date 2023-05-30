@@ -194,7 +194,7 @@ function CheckTable(props: { tableData: any; title: string }) {
                         key={header.id}
                         colSpan={header.colSpan}
                         onClick={header.column.getToggleSortingHandler()}
-                        className="cursor-pointer border-b-[1px] border-gray-200 pt-4 pb-2 pr-4 text-start"
+                        className="cursor-pointer border-b-[1px] border-gray-200 pt-4 pb-2 pr-2 text-start"
                       >
                         <div className="items-center justify-between text-xs text-gray-200">
                           {flexRender(
@@ -215,7 +215,7 @@ function CheckTable(props: { tableData: any; title: string }) {
             <tbody>
               {table
                 .getRowModel()
-                .rows.slice(0, table.legnth)
+                .rows.slice(0, tableData?.length)
                 .map((row) => {
                   return (
                     <tr key={row.id}>
@@ -223,7 +223,7 @@ function CheckTable(props: { tableData: any; title: string }) {
                         return (
                           <td
                             key={cell.id}
-                            className="min-w-[150px] border-white/0 py-3  pr-4"
+                            className="min-w-[100px] border-white/0 py-3  pr-4"
                           >
                             {flexRender(
                               cell.column.columnDef.cell,
@@ -245,4 +245,4 @@ function CheckTable(props: { tableData: any; title: string }) {
 
 export default CheckTable;
 // const columnHelper = createColumnHelper<RowObj>();
-const columnHelper = createColumnHelper<RowObj>();
+const columnHelper = createColumnHelper<any>();

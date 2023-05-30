@@ -131,7 +131,7 @@ function ChoiceCondition(props: {
             <tbody>
               {table
                 .getRowModel()
-                .rows.slice(0, table.legnth)
+                .rows.slice(0, tableData?.legnth)
                 .map((row) => {
                   return (
                     <tr

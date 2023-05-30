@@ -2,14 +2,13 @@ import {
   Dispatch,
   FC,
   SetStateAction,
+  useCallback,
   useEffect,
   useReducer,
   useState,
 } from "react";
 import { Input } from "../common/input";
 import * as Type from "./ConditionType";
-import IMG_URL from "@/assets/img/search/bitcoin.png";
-
 import SelectBox, {
   CHART_TERM,
   COMPARISON,
@@ -17,7 +16,9 @@ import SelectBox, {
   UP_DOWN,
 } from "./SelectBox";
 import CheckTable from "./CheckTable";
-import LineChart from "./Chart";
+import CheckBox from "./CheckBox";
+import Loading from "../common/Loading";
+import styled, { keyframes } from "styled-components";
 
 interface ConditionProps {
   conditionData: any;
@@ -32,14 +33,13 @@ const Price: FC<ConditionProps> = ({
   state,
   setStateAction,
 }) => {
-  console.log("conditionData", conditionData);
-
   const [resultShow, setShow] = useState(false);
   const [condition, setCondition] = useReducer(
     (prev: Type.PriceType, next: Type.PriceType) => {
       return { ...prev, ...next };
     },
     {
+      flag: conditionData !== null ? conditionData[0].Price.flag : 1,
       low_price:
         conditionData !== null ? conditionData[0].Price.low_price : "0",
       high_price:
@@ -50,11 +50,14 @@ const Price: FC<ConditionProps> = ({
   useEffect(() => {
     setStateAction({ ...state, Price: condition });
   }, [condition]);
-  console.log(data);
+
+  const flagEvent = useCallback(() => {
+    setCondition({ ...condition, flag: condition.flag === 1 ? 0 : 1 });
+  }, [condition, setCondition]);
 
   return (
     <div className="w-full flex items-center">
-      <img src={IMG_URL.src} className=" w-8 mr-3" />
+      <CheckBox flag={condition.flag} event={flagEvent} />
       <div className="w-1/12 font-bold text-lg">가격 :</div>
       <div className="w-11/12 bg-navy-50 rounded-md p-5">
         <div className="flex justify-between">
@@ -86,15 +89,7 @@ const Price: FC<ConditionProps> = ({
           )}{" "}
         </div>
         <div className="mt-2 flex flex-col gap-2">
-          {resultShow && (
-            <>
-              <CheckTable title="가격" tableData={data} />
-              {/* <LineChart data={data} /> */}
-              {/* <div className="w-full overflow-y-auto h-72">{`${JSON.stringify(
-              data
-            )}`}</div> */}
-            </>
-          )}
+          {resultShow && <CheckTable title="가격" tableData={data} />}
         </div>
       </div>
     </div>
@@ -113,6 +108,8 @@ const TransactionAmount: FC<ConditionProps> = ({
       return { ...prev, ...next };
     },
     {
+      flag:
+        conditionData !== null ? conditionData[0].TransactionAmount.flag : "1",
       low_transaction_amount:
         conditionData !== null
           ? conditionData[0].TransactionAmount.low_transaction_amount
@@ -128,9 +125,13 @@ const TransactionAmount: FC<ConditionProps> = ({
     setStateAction({ ...state, TransactionAmount: condition });
   }, [condition]);
 
+  const flagEvent = useCallback(() => {
+    setCondition({ ...condition, flag: condition.flag === 1 ? 0 : 1 });
+  }, [condition, setCondition]);
+
   return (
     <div className="w-full flex items-center">
-      <img src={IMG_URL.src} className=" w-8 mr-3" />
+      <CheckBox flag={condition.flag} event={flagEvent} />
       <div className="w-1/12 font-bold text-lg">가격 대금 :</div>
       <div className="w-11/12 bg-navy-50 rounded-md p-5">
         <div className="flex justify-between">
@@ -172,15 +173,7 @@ const TransactionAmount: FC<ConditionProps> = ({
           )}
         </div>
         <div className="mt-2">
-          {resultShow && (
-            <>
-              <CheckTable title="거래 대금" tableData={data} />
-              {/* <LineChart data={data} /> */}
-              {/* <div className="w-full overflow-y-auto h-72">{`${JSON.stringify(
-              data
-            )}`}</div> */}
-            </>
-          )}
+          {resultShow && <CheckTable title="거래 대금" tableData={data} />}
         </div>
       </div>
     </div>
@@ -199,8 +192,9 @@ const MASP: FC<ConditionProps> = ({
       return { ...prev, ...next };
     },
     {
+      flag: conditionData !== null ? conditionData[0].MASP.flag : "1",
       chart_term:
-        conditionData !== null ? conditionData[0].MASP.chart_term : "1m",
+        conditionData !== null ? conditionData[0].MASP.chart_term : "1h",
       first_disparity:
         conditionData !== null ? conditionData[0].MASP.first_disparity : "0",
       comparison:
@@ -214,15 +208,20 @@ const MASP: FC<ConditionProps> = ({
     setStateAction({ ...state, MASP: condition });
   }, [condition]);
 
+  const flagEvent = useCallback(() => {
+    setCondition({ ...condition, flag: condition.flag === 1 ? 0 : 1 });
+  }, [condition, setCondition]);
+
   return (
     <div className="flex items-center w-full">
-      <img src={IMG_URL.src} className=" w-8 mr-3" />
+      <CheckBox flag={condition.flag} event={flagEvent} />
       <div className="w-1/12 font-bold text-lg">이평선 비교 :</div>
       <div className="w-11/12 bg-navy-50 rounded-md p-5">
         <div className="flex justify-between">
           <div className="flex items-center gap-2 text-xl">
             <SelectBox
               width={80}
+              value={condition.chart_term}
               itemList={CHART_TERM}
               event={(e) =>
                 setCondition({ ...condition, chart_term: e.target.value })
@@ -243,6 +242,7 @@ const MASP: FC<ConditionProps> = ({
             <SelectBox
               width={80}
               itemList={COMPARISON}
+              value={condition.comparison}
               event={(e) =>
                 setCondition({ ...condition, comparison: e.target.value })
               }
@@ -266,15 +266,7 @@ const MASP: FC<ConditionProps> = ({
           )}
         </div>
         <div className="mt-2 flex flex-col gap-2">
-          {resultShow && (
-            <>
-              <CheckTable title="이평선 비교" tableData={data} />
-              {/* <LineChart data={data} /> */}
-              {/* <div className="w-full overflow-y-auto h-72">{`${JSON.stringify(
-              data
-            )}`}</div> */}
-            </>
-          )}
+          {resultShow && <CheckTable title="이평선 비교" tableData={data} />}
         </div>
       </div>
     </div>
@@ -293,12 +285,14 @@ const MACD: FC<ConditionProps> = ({
       return { ...prev, ...next };
     },
     {
+      flag: conditionData !== null ? conditionData[0].MACD.flag : "1",
       chart_term:
-        conditionData !== null ? conditionData[0].MACD.chart_term : "1m",
+        conditionData !== null ? conditionData[0].MACD.chart_term : "1h",
       short_disparity:
         conditionData !== null ? conditionData[0].MACD.short_disparity : "12",
       long_disparity:
         conditionData !== null ? conditionData[0].MACD.long_disparity : "24",
+      signal: conditionData !== null ? conditionData[0].MACD.signal : "9",
       up_down: conditionData !== null ? conditionData[0].MACD.up_down : "이하",
     }
   );
@@ -307,15 +301,20 @@ const MACD: FC<ConditionProps> = ({
     setStateAction({ ...state, MACD: condition });
   }, [condition]);
 
+  const flagEvent = useCallback(() => {
+    setCondition({ ...condition, flag: condition.flag === 1 ? 0 : 1 });
+  }, [condition, setCondition]);
+
   return (
     <div className="flex items-center w-full">
-      <img src={IMG_URL.src} className=" w-8 mr-3" />
+      <CheckBox flag={condition.flag} event={flagEvent} />
       <div className="w-1/12 font-bold text-lg">MACD :</div>
       <div className="w-11/12 bg-navy-50 rounded-md p-5">
         <div className="flex justify-between">
           <div className="flex items-center gap-2 text-xl">
             <SelectBox
               width={80}
+              value={condition.chart_term}
               itemList={CHART_TERM}
               event={(e) =>
                 setCondition({ ...condition, chart_term: e.target.value })
@@ -342,10 +341,20 @@ const MACD: FC<ConditionProps> = ({
                 setCondition({ ...condition, long_disparity: e.target.value })
               }
             />
+            <div>signal</div>
+            <Input
+              width={50}
+              value={condition.signal}
+              onClick={() => setCondition({ ...condition, signal: "" })}
+              onChange={(e) =>
+                setCondition({ ...condition, signal: e.target.value })
+              }
+            />
             <div>MACD,</div>
             <div>0선</div>
             <SelectBox
               width={80}
+              value={condition.up_down}
               itemList={UP_DOWN}
               event={(e) =>
                 setCondition({ ...condition, up_down: e.target.value })
@@ -359,15 +368,7 @@ const MACD: FC<ConditionProps> = ({
           )}{" "}
         </div>
         <div className="mt-2 flex flex-col gap-2">
-          {resultShow && (
-            <>
-              <CheckTable title="MACD" tableData={data} />
-              {/* <LineChart data={data} /> */}
-              {/* <div className="w-full overflow-y-auto h-72">{`${JSON.stringify(
-              data
-            )}`}</div> */}
-            </>
-          )}
+          {resultShow && <CheckTable title="MACD" tableData={data} />}
         </div>
       </div>
     </div>
@@ -386,15 +387,16 @@ const Trend: FC<ConditionProps> = ({
       return { ...prev, ...next };
     },
     {
+      flag: conditionData !== null ? conditionData[0].Trend.flag : "1",
       chart_term:
-        conditionData !== null ? conditionData[0].Trend.chartTerm : "1m",
+        conditionData !== null ? conditionData[0].Trend.chart_term : "1h",
       MASP: conditionData !== null ? conditionData[0].Trend.MASP : "5",
       trend_term:
         conditionData !== null ? conditionData[0].Trend.trend_term : "0",
       trend_type:
         conditionData !== null ? conditionData[0].Trend.trend_type : "상승",
       trend_reverse:
-        conditionData !== null ? conditionData[0].Trend.trend_reverse : "1",
+        conditionData !== null ? conditionData[0].Trend.trend_reverse : "0",
     }
   );
 
@@ -402,9 +404,13 @@ const Trend: FC<ConditionProps> = ({
     setStateAction({ ...state, Trend: condition });
   }, [condition]);
 
+  const flagEvent = useCallback(() => {
+    setCondition({ ...condition, flag: condition.flag === 1 ? 0 : 1 });
+  }, [condition, setCondition]);
+
   return (
     <div className="flex w-full items-center">
-      <img src={IMG_URL.src} className=" w-8 mr-3" />
+      <CheckBox flag={condition.flag} event={flagEvent} />
       <div className="w-1/12 font-bold text-lg">추세 :</div>
       <div className="w-11/12 bg-navy-50 rounded-md p-5">
         <div className="flex justify-between">
@@ -445,6 +451,7 @@ const Trend: FC<ConditionProps> = ({
               }
             />
             <div>추세,</div>
+            <div>반전</div>
             <SelectBox
               itemList={TREND_TYPE(true)}
               value={condition.trend_reverse}
@@ -453,7 +460,6 @@ const Trend: FC<ConditionProps> = ({
                 setCondition({ ...condition, trend_reverse: e.target.value })
               }
             />
-            <div>반전</div>
           </div>
           {data && data.length !== 0 && (
             <div className="flex justify-end pr-3 w-16">
@@ -462,15 +468,7 @@ const Trend: FC<ConditionProps> = ({
           )}{" "}
         </div>
         <div className="mt-2 flex flex-col gap-2">
-          {resultShow && (
-            <>
-              <CheckTable title="추세" tableData={data} />
-              {/* <LineChart data={data} /> */}
-              {/* <div className="w-full overflow-y-auto h-72">{`${JSON.stringify(
-              data
-            )}`}</div> */}
-            </>
-          )}
+          {resultShow && <CheckTable title="추세" tableData={data} />}
         </div>
       </div>
     </div>
@@ -489,8 +487,9 @@ const Disparity: FC<ConditionProps> = ({
       return { ...prev, ...next };
     },
     {
+      flag: conditionData !== null ? conditionData[0].Disparity.flag : "1",
       chart_term:
-        conditionData !== null ? conditionData[0].Disparity.chart_term : "1m",
+        conditionData !== null ? conditionData[0].Disparity.chart_term : "1h",
       disparity_term:
         conditionData !== null
           ? conditionData[0].Disparity.disparity_term
@@ -508,15 +507,20 @@ const Disparity: FC<ConditionProps> = ({
     setStateAction({ ...state, Disparity: condition });
   }, [condition]);
 
+  const flagEvent = useCallback(() => {
+    setCondition({ ...condition, flag: condition.flag === 1 ? 0 : 1 });
+  }, [condition, setCondition]);
+
   return (
     <div className="flex w-full items-center">
-      <img src={IMG_URL.src} className=" w-8 mr-3" />
+      <CheckBox flag={condition.flag} event={flagEvent} />
       <div className="w-1/12 font-bold text-lg">이격도 :</div>
       <div className="w-11/12 bg-navy-50 rounded-md p-5">
         <div className="flex justify-between">
           <div className="flex items-center gap-2 text-xl">
             <SelectBox
               width={80}
+              value={condition.chart_term}
               itemList={CHART_TERM}
               event={(e) =>
                 setCondition({ ...condition, chart_term: e.target.value })
@@ -558,15 +562,7 @@ const Disparity: FC<ConditionProps> = ({
           )}{" "}
         </div>
         <div className="mt-2 flex flex-col gap-2">
-          {resultShow && (
-            <>
-              <CheckTable title="이격도" tableData={data} />
-              {/* <LineChart data={data} /> */}
-              {/* <div className="w-full overflow-y-auto h-72">{`${JSON.stringify(
-              data
-            )}`}</div> */}
-            </>
-          )}
+          {resultShow && <CheckTable title="이격도" tableData={data} />}
         </div>
       </div>
     </div>
@@ -577,18 +573,40 @@ interface Props {
   title?: string;
   disable?: boolean;
   event: () => any;
+  loading?: boolean;
 }
 
-const SearchButton: FC<Props> = ({ event, title, disable }) => {
+const spin = keyframes`
+from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+`;
+
+const Spinner = styled.div`
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  border-radius: 50%;
+  border: 3px solid #e0e0e0;
+  border-bottom: 5px solid #f54329;
+  animation: ${spin} 1s linear infinite;
+  position: relative;
+`;
+
+const SearchButton: FC<Props> = ({ event, title, disable, loading }) => {
   return (
     <button
       disabled={disable ? disable : false}
-      className={`rounded-lg ${
-        disable ? "bg-gray-400" : "bg-blueSecondary"
-      } w-full p-2 text-center font-bold text-white cursor-pointer`}
+      className={`rounded-lg flex h-16
+      ${disable ? "bg-gray-400" : "bg-blueSecondary"} 
+      w-full p-1 text-center font-bold text-white cursor-pointer items-center justify-center`}
       onClick={event}
     >
-      {title ? title : "결과 보기"}
+      <div>{title ? title : "결과 보기"}</div>
+      {loading ? <Spinner /> : null}
     </button>
   );
 };

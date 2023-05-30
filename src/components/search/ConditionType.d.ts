@@ -1,14 +1,17 @@
 export type PriceType = {
+  flag: 1 | 0;
   low_price: string;
   high_price: string;
 };
 
 export type TransactionAmount = {
+  flag: 1 | 0;
   low_transaction_amount: string;
   high_transaction_amount: string;
 };
 
 export type MASPType = {
+  flag: 1 | 0;
   chart_term: any;
   first_disparity: string;
   comparison: any;
@@ -16,6 +19,7 @@ export type MASPType = {
 };
 
 export type DisparityType = {
+  flag: 1 | 0;
   chart_term: any;
   disparity_term: string;
   low_disparity: string;
@@ -23,6 +27,7 @@ export type DisparityType = {
 };
 
 export type TrendType = {
+  flag: 1 | 0;
   chart_term: any;
   MASP: string;
   trend_term: string;
@@ -31,13 +36,16 @@ export type TrendType = {
 };
 
 export type MACDType = {
+  flag: 1 | 0;
   chart_term: any;
   short_disparity: string;
   long_disparity: string;
+  signal: string;
   up_down: any;
 };
 
 type TableDataType = {
+  flag: 1 | 0;
   name: string;
   previousclosingprice: number;
   marketprice: number;

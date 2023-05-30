@@ -2,17 +2,16 @@ import { ChangeEvent, FC } from "react";
 import styled from "styled-components";
 
 const CHART_TERM = [
-  { key: "1시간", value: "1" },
-  { key: "4시간", value: "4" },
-  { key: "24시간", value: "24" },
+  { key: "1시간", value: "1h" },
+  { key: "4시간", value: "4h" },
+  { key: "24시간", value: "24h" },
 ];
 
 const TREND_TYPE = (use: boolean) => {
   return use
     ? [
-        { key: "사용안함", value: "1" },
-        { key: "상승", value: "up_trend" },
-        { key: "하락", value: "down_trend" },
+        { key: "사용안함", value: "0" },
+        { key: "사용", value: "1" },
       ]
     : [
         { key: "상승", value: "up_trend" },

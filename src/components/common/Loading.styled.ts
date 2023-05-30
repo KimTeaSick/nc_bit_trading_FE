@@ -19,10 +19,10 @@ from {
 `;
 
 export const Spinner = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  border: 5px solid #e0e0e0;
+  border: 3px solid #e0e0e0;
   border-bottom: 5px solid #f54329;
   animation: ${spin} 1s linear infinite;
   position: relative;

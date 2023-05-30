@@ -1,10 +1,31 @@
 import axios from "axios";
 
-const URL = "http://121.165.242.171:34256";
+// const URL = "http://121.165.242.171:34256";
+const URL = "http://192.168.10.43:8888";
+
+const validationCheck = (body: any) => {
+  console.log("CoinSearchBody", body);
+  const keys = Object.keys(body);
+  for (const key of keys) {
+    const values = Object.values(body[key]);
+    for (const element of values) {
+      if (element === "") {
+        return false;
+      }
+    }
+  }
+  return true;
+};
 
 export const CoinSearch = async (body: any) => {
-  const response = await axios.post(URL + "/dash/getRecommendCoin", body);
-  return response.data;
+  const flag = validationCheck(body);
+  if (flag) {
+    const response = await axios.post(URL + "/dash/getRecommendCoin", body);
+    return response.data;
+  } else {
+    alert("값을 다 채워주세요!");
+    return flag;
+  }
 };
 
 export const ConditionRegister = async (body: any) => {

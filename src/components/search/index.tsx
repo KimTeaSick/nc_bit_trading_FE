@@ -21,6 +21,7 @@ import ChoiceCondition from "./ChoiceCondition";
 import CheckTable from "./CheckTable";
 import Card from "../card";
 import IMG_URL from "@/assets/img/search/bitcoin.png";
+import { PURE_CONDITION_STATUS } from "@/variables/coinName";
 
 const SearchPage: FC = () => {
   const dispatch = useDispatch<any>();
@@ -31,7 +32,11 @@ const SearchPage: FC = () => {
 
   const searchBtnEvent = useCallback(async () => {
     const data = await CoinSearch(searchCondiotion);
-    dispatch(setSearchResultData(data));
+    if (data === false) {
+      return;
+    } else {
+      dispatch(setSearchResultData(data));
+    }
   }, [dispatch, searchCondiotion]);
 
   const conditionListSetter = useCallback(async () => {
@@ -48,56 +53,20 @@ const SearchPage: FC = () => {
     return () => dispatch(setResultDataRollback());
   }, [dispatch, conditionListSetter, ch, setch]);
 
+  const registerBtnClick = () => {
+    dispatch(setConditionDetailRollBack());
+    setch(1);
+  };
+
   useEffect(() => {
     const madeCondition =
       searchResult.conditionDetail !== null
         ? Object.values(searchResult.conditionDetail)
         : null;
     const initialCondition =
-      madeCondition !== null
-        ? madeCondition[0]
-        : {
-            Price: {
-              low_price: "0",
-              high_price: "0",
-            },
-            TransactionAmount: {
-              low_transaction_amount: "0",
-              high_transaction_amount: "0",
-            },
-            MASP: {
-              chart_term: "1m",
-              first_disparity: "0",
-              comparison: ">=",
-              second_disparity: "0",
-            },
-            Disparity: {
-              chart_term: "1m",
-              disparity_term: "12",
-              low_disparity: "0",
-              high_disparity: "100",
-            },
-            Trend: {
-              chart_term: "1m",
-              MASP: "5",
-              trend_term: "0",
-              trend_type: "상승",
-              trend_reverse: "1",
-            },
-            MACD: {
-              chart_term: "1m",
-              short_disparity: "12",
-              long_disparity: "24",
-              up_down: "이하",
-            },
-          };
+      madeCondition !== null ? madeCondition[0] : PURE_CONDITION_STATUS;
     setSearchCondiotion(initialCondition);
   }, [searchResult.conditionDetail]);
-
-  const registerBtnClick = () => {
-    dispatch(setConditionDetailRollBack());
-    setch(1);
-  };
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
@@ -206,8 +175,13 @@ const SearchPage: FC = () => {
                 </div>
               </div>
 
-              <div className="w-1/4 flex  my-2 gap-1">
-                <C.SearchButton title="검색" event={() => searchBtnEvent()} />
+              <div className="w-1/3 flex my-2 gap-1">
+                <C.SearchButton
+                  title="검색"
+                  event={() => searchBtnEvent()}
+                  // disable={true}
+                  // loading={true}
+                />
                 <C.SearchButton
                   // disable={name.length === 0 ? true : false}
                   title={
@@ -220,11 +194,13 @@ const SearchPage: FC = () => {
                             Object.keys(searchResult.conditionDetail),
                             searchCondiotion
                           ).then(() => setch(0))
-                      : () =>
+                      : () => {
+                          console.log("searchCondiotion", searchCondiotion);
                           ConditionRegister({
                             Name: name,
                             ...searchCondiotion,
-                          }).then(() => setch(0))
+                          }).then(() => setch(0));
+                        }
                   }
                 />
                 {searchResult.conditionDetail !== null ? (
