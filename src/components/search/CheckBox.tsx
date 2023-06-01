@@ -9,8 +9,6 @@ interface Props {
 }
 
 const CheckBox: FC<Props> = ({ flag, event }) => {
-  console.log(flag);
-
   return (
     <div onClick={event} className="m-3">
       {flag ? (

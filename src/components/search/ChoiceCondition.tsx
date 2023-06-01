@@ -16,12 +16,18 @@ import { setConditionDetail } from "@/module/search";
 
 function ChoiceCondition(props: {
   tableData: any;
-  setch: any;
+  setStage: any;
   registerBtnEvent: any;
 }) {
-  const { tableData, setch, registerBtnEvent } = props;
+  const { tableData, setStage, registerBtnEvent } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  let defaultData = tableData ? tableData : [];
+  const [defaultData, setDefaultData] = React.useState<SortingState>([]);
+  const [data, setData] = React.useState(() => [...defaultData]);
+
+  useEffect(() => {
+    setDefaultData(tableData ? tableData : []);
+    setData(defaultData);
+  }, [defaultData, tableData]);
 
   const dispatch = useDispatch();
 
@@ -68,7 +74,6 @@ function ChoiceCondition(props: {
   ];
 
   // eslint-disable-next-line
-  const [data, setData] = React.useState(() => [...defaultData]);
 
   const table = useReactTable({
     data,
@@ -82,11 +87,6 @@ function ChoiceCondition(props: {
     debugTable: true,
   });
 
-  useEffect(() => {
-    console.log("tableData in useEffect", tableData);
-    setData(defaultData);
-  }, [tableData]);
-
   return (
     <div>
       <Card extra={"w-full h-full sm:overflow-auto px-6"}>
@@ -94,7 +94,6 @@ function ChoiceCondition(props: {
           <div className="text-xl font-bold text-navy-700 dark:text-white">
             조건 리스트
           </div>
-          <CardMenu />
         </header>
         <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64">
           <table className="w-full">
@@ -144,7 +143,7 @@ function ChoiceCondition(props: {
                           option: row.original.Name,
                         });
                         dispatch(setConditionDetail(detail));
-                        setch(1);
+                        setStage(1);
                       }}
                     >
                       {row.getVisibleCells().map((cell) => {

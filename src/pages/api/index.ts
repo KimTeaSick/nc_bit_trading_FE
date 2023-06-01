@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://192.168.10.43:8888/";
-// const BASE_URL = "http://121.165.242.171:34256/";
+// const BASE_URL = "http://192.168.10.43:8888/";
+const BASE_URL = "http://121.165.242.171:34256/";
 
 export const get = async (uri: string, params = {}, headers = {}) => {
   try {

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import CardMenu from "@/components/card/CardMenu";
 import Card from "@/components/card";
 
 import {
@@ -10,9 +9,15 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import { coinNameChange } from "@/variables/coinNameChange";
+import { conditionNameChange } from "@/variables/conditionNameChange";
 
-function CheckTable(props: { tableData: any; title: string }) {
-  const { tableData, title } = props;
+function CheckTable(props: {
+  tableData: any;
+  title?: string;
+  optionList?: string[];
+}) {
+  const { tableData, title, optionList } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   let defaultData =
@@ -33,8 +38,6 @@ function CheckTable(props: { tableData: any; title: string }) {
           };
         })
       : [];
-
-  console.log("tableData ::::::::::::", defaultData);
 
   const columns = [
     columnHelper.accessor("name", {
@@ -165,6 +168,7 @@ function CheckTable(props: { tableData: any; title: string }) {
   // useEffect(() => {
   //   console.log("tableData in useEffect", tableData);
   // }, [tableData]);
+  console.log("optionList :::::::::::::: ", optionList);
 
   return (
     <div>
@@ -179,7 +183,15 @@ function CheckTable(props: { tableData: any; title: string }) {
           </div>
           {/* <CardMenu /> */}
         </header>
-
+        <div className="font-bold flex gap-2">
+          {conditionNameChange(optionList)?.map(
+            (value: string, index: number) => (
+              <div key={index}>
+                {index + 1}. {value}
+              </div>
+            )
+          )}
+        </div>
         <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64">
           <table className="w-full">
             <thead>
@@ -223,12 +235,14 @@ function CheckTable(props: { tableData: any; title: string }) {
                         return (
                           <td
                             key={cell.id}
-                            className="min-w-[100px] border-white/0 py-3  pr-4"
+                            className="min-w-[100px] border-white/0 py-3  pr-4 text-sm font-bold"
                           >
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )}
+                            {cell.id.slice(-4) === "name"
+                              ? coinNameChange(row.original.name[0])
+                              : flexRender(
+                                  cell.column.columnDef.cell,
+                                  cell.getContext()
+                                )}
                           </td>
                         );
                       })}

@@ -18,13 +18,19 @@ const validationCheck = (body: any) => {
 };
 
 export const CoinSearch = async (body: any) => {
-  const flag = validationCheck(body);
-  if (flag) {
-    const response = await axios.post(URL + "/dash/getRecommendCoin", body);
-    return response.data;
-  } else {
-    alert("값을 다 채워주세요!");
-    return flag;
+  try {
+    const flag = validationCheck(body);
+    if (flag) {
+      const response = await axios.post(URL + "/dash/getRecommendCoin", body);
+      console.log("response.data", response.data);
+      return { data: response.data };
+    } else {
+      alert("값을 다 채워주세요!");
+      return flag;
+    }
+  } catch (e) {
+    console.error(e);
+    return false;
   }
 };
 
@@ -67,6 +73,7 @@ export const getConditionDetail = async (body: any) => {
 export const conditionDelete = async (name: any) => {
   const body = { option: name[0] };
   const response = await axios.post(URL + "/option/deleteOption", body);
+  if (response.data === "delete sucess") alert("조건이 삭제되었습니다");
   return response.data;
 };
 

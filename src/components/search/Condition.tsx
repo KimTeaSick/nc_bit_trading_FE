@@ -17,34 +17,21 @@ import SelectBox, {
 } from "./SelectBox";
 import CheckTable from "./CheckTable";
 import CheckBox from "./CheckBox";
-import Loading from "../common/Loading";
 import styled, { keyframes } from "styled-components";
 
 interface ConditionProps {
-  conditionData: any;
   data?: any;
   state: any;
   setStateAction: Dispatch<SetStateAction<any>>;
 }
 
-const Price: FC<ConditionProps> = ({
-  conditionData,
-  data,
-  state,
-  setStateAction,
-}) => {
+const Price: FC<ConditionProps> = ({ data, state, setStateAction }) => {
   const [resultShow, setShow] = useState(false);
   const [condition, setCondition] = useReducer(
     (prev: Type.PriceType, next: Type.PriceType) => {
       return { ...prev, ...next };
     },
-    {
-      flag: conditionData !== null ? conditionData[0].Price.flag : 1,
-      low_price:
-        conditionData !== null ? conditionData[0].Price.low_price : "0",
-      high_price:
-        conditionData !== null ? conditionData[0].Price.high_price : "0",
-    }
+    { ...state.Price }
   );
 
   useEffect(() => {
@@ -97,7 +84,6 @@ const Price: FC<ConditionProps> = ({
 };
 
 const TransactionAmount: FC<ConditionProps> = ({
-  conditionData,
   data,
   state,
   setStateAction,
@@ -107,18 +93,7 @@ const TransactionAmount: FC<ConditionProps> = ({
     (prev: Type.TransactionAmount, next: Type.TransactionAmount) => {
       return { ...prev, ...next };
     },
-    {
-      flag:
-        conditionData !== null ? conditionData[0].TransactionAmount.flag : "1",
-      low_transaction_amount:
-        conditionData !== null
-          ? conditionData[0].TransactionAmount.low_transaction_amount
-          : "0",
-      high_transaction_amount:
-        conditionData !== null
-          ? conditionData[0].TransactionAmount.high_transaction_amount
-          : "0",
-    }
+    { ...state.TransactionAmount }
   );
 
   useEffect(() => {
@@ -136,7 +111,16 @@ const TransactionAmount: FC<ConditionProps> = ({
       <div className="w-11/12 bg-navy-50 rounded-md p-5">
         <div className="flex justify-between">
           <div className="flex items-center gap-2 text-xl">
-            <div>24시간 거래 대금이</div>
+            <SelectBox
+              width={80}
+              value={condition.chart_term}
+              itemList={CHART_TERM}
+              event={(e) =>
+                setCondition({ ...condition, chart_term: e.target.value })
+              }
+            />
+            <div>차트기준, </div>
+            <div>거래 대금이</div>
             <Input
               width={150}
               value={condition.low_transaction_amount}
@@ -173,35 +157,22 @@ const TransactionAmount: FC<ConditionProps> = ({
           )}
         </div>
         <div className="mt-2">
-          {resultShow && <CheckTable title="거래 대금" tableData={data} />}
+          {data && resultShow && (
+            <CheckTable title="거래 대금" tableData={data} />
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-const MASP: FC<ConditionProps> = ({
-  conditionData,
-  data,
-  state,
-  setStateAction,
-}) => {
+const MASP: FC<ConditionProps> = ({ data, state, setStateAction }) => {
   const [resultShow, setShow] = useState(false);
   const [condition, setCondition] = useReducer(
     (prev: Type.MASPType, next: Type.MASPType) => {
       return { ...prev, ...next };
     },
-    {
-      flag: conditionData !== null ? conditionData[0].MASP.flag : "1",
-      chart_term:
-        conditionData !== null ? conditionData[0].MASP.chart_term : "1h",
-      first_disparity:
-        conditionData !== null ? conditionData[0].MASP.first_disparity : "0",
-      comparison:
-        conditionData !== null ? conditionData[0].MASP.comparison : ">=",
-      second_disparity:
-        conditionData !== null ? conditionData[0].MASP.second_disparity : "0",
-    }
+    { ...state.MASP }
   );
 
   useEffect(() => {
@@ -227,7 +198,7 @@ const MASP: FC<ConditionProps> = ({
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준</div>
+            <div>차트기준,</div>
             <Input
               width={50}
               value={condition.first_disparity}
@@ -273,28 +244,13 @@ const MASP: FC<ConditionProps> = ({
   );
 };
 
-const MACD: FC<ConditionProps> = ({
-  conditionData,
-  data,
-  state,
-  setStateAction,
-}) => {
+const MACD: FC<ConditionProps> = ({ data, state, setStateAction }) => {
   const [resultShow, setShow] = useState(false);
   const [condition, setCondition] = useReducer(
     (prev: Type.MACDType, next: Type.MACDType) => {
       return { ...prev, ...next };
     },
-    {
-      flag: conditionData !== null ? conditionData[0].MACD.flag : "1",
-      chart_term:
-        conditionData !== null ? conditionData[0].MACD.chart_term : "1h",
-      short_disparity:
-        conditionData !== null ? conditionData[0].MACD.short_disparity : "12",
-      long_disparity:
-        conditionData !== null ? conditionData[0].MACD.long_disparity : "24",
-      signal: conditionData !== null ? conditionData[0].MACD.signal : "9",
-      up_down: conditionData !== null ? conditionData[0].MACD.up_down : "이하",
-    }
+    { ...state.MACD }
   );
 
   useEffect(() => {
@@ -320,7 +276,7 @@ const MACD: FC<ConditionProps> = ({
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준</div>
+            <div>차트기준,</div>
             <div>단기 이평</div>
             <Input
               width={50}
@@ -375,29 +331,13 @@ const MACD: FC<ConditionProps> = ({
   );
 };
 
-const Trend: FC<ConditionProps> = ({
-  conditionData,
-  data,
-  state,
-  setStateAction,
-}) => {
+const Trend: FC<ConditionProps> = ({ data, state, setStateAction }) => {
   const [resultShow, setShow] = useState(false);
   const [condition, setCondition] = useReducer(
     (prev: Type.TrendType, next: Type.TrendType) => {
       return { ...prev, ...next };
     },
-    {
-      flag: conditionData !== null ? conditionData[0].Trend.flag : "1",
-      chart_term:
-        conditionData !== null ? conditionData[0].Trend.chart_term : "1h",
-      MASP: conditionData !== null ? conditionData[0].Trend.MASP : "5",
-      trend_term:
-        conditionData !== null ? conditionData[0].Trend.trend_term : "0",
-      trend_type:
-        conditionData !== null ? conditionData[0].Trend.trend_type : "상승",
-      trend_reverse:
-        conditionData !== null ? conditionData[0].Trend.trend_reverse : "0",
-    }
+    { ...state.Trend }
   );
 
   useEffect(() => {
@@ -423,7 +363,7 @@ const Trend: FC<ConditionProps> = ({
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준</div>
+            <div>차트기준,</div>
             <Input
               width={50}
               value={condition.MASP}
@@ -468,39 +408,20 @@ const Trend: FC<ConditionProps> = ({
           )}{" "}
         </div>
         <div className="mt-2 flex flex-col gap-2">
-          {resultShow && <CheckTable title="추세" tableData={data} />}
+          {data && resultShow && <CheckTable title="추세" tableData={data} />}
         </div>
       </div>
     </div>
   );
 };
 
-const Disparity: FC<ConditionProps> = ({
-  conditionData,
-  data,
-  state,
-  setStateAction,
-}) => {
+const Disparity: FC<ConditionProps> = ({ data, state, setStateAction }) => {
   const [resultShow, setShow] = useState(false);
   const [condition, setCondition] = useReducer(
     (prev: Type.DisparityType, next: Type.DisparityType) => {
       return { ...prev, ...next };
     },
-    {
-      flag: conditionData !== null ? conditionData[0].Disparity.flag : "1",
-      chart_term:
-        conditionData !== null ? conditionData[0].Disparity.chart_term : "1h",
-      disparity_term:
-        conditionData !== null
-          ? conditionData[0].Disparity.disparity_term
-          : "12",
-      low_disparity:
-        conditionData !== null ? conditionData[0].Disparity.low_disparity : "0",
-      high_disparity:
-        conditionData !== null
-          ? conditionData[0].Disparity.high_disparity
-          : "100",
-    }
+    { ...state.Disparity }
   );
 
   useEffect(() => {
@@ -526,7 +447,7 @@ const Disparity: FC<ConditionProps> = ({
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준</div>
+            <div>차트기준,</div>
             <Input
               width={50}
               value={condition.disparity_term}
@@ -600,7 +521,7 @@ const SearchButton: FC<Props> = ({ event, title, disable, loading }) => {
   return (
     <button
       disabled={disable ? disable : false}
-      className={`rounded-lg flex h-16
+      className={`rounded-lg flex h-14 text-base
       ${disable ? "bg-gray-400" : "bg-blueSecondary"} 
       w-full p-1 text-center font-bold text-white cursor-pointer items-center justify-center`}
       onClick={event}

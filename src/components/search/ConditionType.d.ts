@@ -6,6 +6,8 @@ export type PriceType = {
 
 export type TransactionAmount = {
   flag: 1 | 0;
+  chart_term: any;
+
   low_transaction_amount: string;
   high_transaction_amount: string;
 };
