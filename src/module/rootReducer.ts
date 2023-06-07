@@ -8,6 +8,7 @@ import tradingSlice from "./trading";
 import dashSlice from "./dash";
 import settingSlice from "./setting";
 import searchSlice from "./search";
+import autotradingSlice from "./autotrading";
 
 const rootReducer = (
   state: RootStateType,
@@ -25,6 +26,7 @@ const rootReducer = (
         dash: dashSlice,
         setting: settingSlice,
         search: searchSlice,
+        autotrading: autotradingSlice,
       });
       return combineReducer(state, action);
     }

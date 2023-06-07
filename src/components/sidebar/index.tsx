@@ -23,9 +23,10 @@ const Sidebar = (props: {
       </span>
 
       <div className={`mx-[5%] mt-[50px] flex items-center`}>
-        <div className="ml-1 mt-1 h-2.5 font-poppins text-[26px] font-bold uppercase text-navy-700 dark:text-white flex justify-center">
+        <div className="ml-1 mt-1 h-2.5 font-poppins font-bold uppercase text-navy-700 dark:text-white flex flex-col justify-center items-center">
           <div>
-            NCbit <span className="font-medium">Trading</span>
+            <div className="text-2xl">4SEASON</div>
+            <span className="font-medium text-xs">Trading</span>
           </div>
         </div>
       </div>

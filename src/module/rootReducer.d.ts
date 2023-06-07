@@ -5,6 +5,7 @@ import { CommonInitialState } from "./common/common.d";
 import { CoinInitialState } from "./coin/coin";
 import { DashInitialState } from "./dash/dash";
 import { SearchInitialStateType } from "./search/search";
+import { AutoInitialStateType } from "./autotrading";
 
 export type RootStateType = {
   common: CommonInitialState;
@@ -14,4 +15,5 @@ export type RootStateType = {
   dash: DashInitialState;
   setting: SettingInitialStateType;
   search: SearchInitialStateType;
+  autotrading: AutoInitialStateType;
 };

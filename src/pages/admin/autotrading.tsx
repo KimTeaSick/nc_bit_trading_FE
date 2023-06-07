@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { setPageActive } from "@/module/common";
-import Dashboard from "@/views/admin/default";
+import AutoTradingComponent from "@/components/autoTrading/index";
 import Admin from "@/layouts/admin";
 
 const Autotrading: NextPage = () => {
@@ -15,7 +15,9 @@ const Autotrading: NextPage = () => {
 
   return (
     <>
-      <Admin>ㅁㄴㅇ</Admin>
+      <Admin>
+        <AutoTradingComponent />
+      </Admin>
     </>
   );
 };
