@@ -41,6 +41,7 @@ const SearchPage: FC = () => {
     const response = await CoinSearch(searchCondiotion);
     if (response === false) {
       setLoading(false);
+      alert("검색 중 에러가 발생했습니다!");
       return;
     } else {
       dispatch(setSearchResultData(response.data));

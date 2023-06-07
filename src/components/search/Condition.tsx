@@ -75,8 +75,11 @@ const Price: FC<ConditionProps> = ({ data, state, setStateAction }) => {
             </div>
           )}{" "}
         </div>
-        <div className="mt-2 flex flex-col gap-2">
-          {resultShow && <CheckTable title="가격" tableData={data} />}
+
+        <div className="flex w-full justify-center">
+          <div className="mt-2 flex w-11/12 flex-col">
+            {resultShow && <CheckTable title="가격" tableData={data} />}
+          </div>
         </div>
       </div>
     </div>
@@ -156,10 +159,12 @@ const TransactionAmount: FC<ConditionProps> = ({
             </div>
           )}
         </div>
-        <div className="mt-2">
-          {data && resultShow && (
-            <CheckTable title="거래 대금" tableData={data} />
-          )}
+        <div className="flex w-full justify-center">
+          <div className="mt-2 flex w-11/12 flex-col">
+            {data && resultShow && (
+              <CheckTable title="거래 대금" tableData={data} />
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -198,7 +203,7 @@ const MASP: FC<ConditionProps> = ({ data, state, setStateAction }) => {
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준,</div>
+            <div>차트기준</div>
             <Input
               width={50}
               value={condition.first_disparity}
@@ -236,8 +241,10 @@ const MASP: FC<ConditionProps> = ({ data, state, setStateAction }) => {
             </div>
           )}
         </div>
-        <div className="mt-2 flex flex-col gap-2">
-          {resultShow && <CheckTable title="이평선 비교" tableData={data} />}
+        <div className="flex w-full justify-center">
+          <div className="mt-2 flex w-11/12 flex-col">
+            {resultShow && <CheckTable title="이평선 비교" tableData={data} />}
+          </div>
         </div>
       </div>
     </div>
@@ -276,7 +283,7 @@ const MACD: FC<ConditionProps> = ({ data, state, setStateAction }) => {
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준,</div>
+            <div>차트기준</div>
             <div>단기 이평</div>
             <Input
               width={50}
@@ -323,8 +330,10 @@ const MACD: FC<ConditionProps> = ({ data, state, setStateAction }) => {
             </div>
           )}{" "}
         </div>
-        <div className="mt-2 flex flex-col gap-2">
-          {resultShow && <CheckTable title="MACD" tableData={data} />}
+        <div className="flex w-full justify-center">
+          <div className="mt-2 flex w-11/12 flex-col">
+            {resultShow && <CheckTable title="MACD" tableData={data} />}
+          </div>
         </div>
       </div>
     </div>
@@ -363,7 +372,7 @@ const Trend: FC<ConditionProps> = ({ data, state, setStateAction }) => {
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준,</div>
+            <div>차트기준</div>
             <Input
               width={50}
               value={condition.MASP}
@@ -407,8 +416,10 @@ const Trend: FC<ConditionProps> = ({ data, state, setStateAction }) => {
             </div>
           )}{" "}
         </div>
-        <div className="mt-2 flex flex-col gap-2">
-          {data && resultShow && <CheckTable title="추세" tableData={data} />}
+        <div className="flex w-full justify-center">
+          <div className="mt-2 flex w-11/12 flex-col">
+            {data && resultShow && <CheckTable title="추세" tableData={data} />}
+          </div>
         </div>
       </div>
     </div>
@@ -447,7 +458,7 @@ const Disparity: FC<ConditionProps> = ({ data, state, setStateAction }) => {
                 setCondition({ ...condition, chart_term: e.target.value })
               }
             />
-            <div>차트기준,</div>
+            <div>차트기준</div>
             <Input
               width={50}
               value={condition.disparity_term}
@@ -482,8 +493,10 @@ const Disparity: FC<ConditionProps> = ({ data, state, setStateAction }) => {
             </div>
           )}{" "}
         </div>
-        <div className="mt-2 flex flex-col gap-2">
-          {resultShow && <CheckTable title="이격도" tableData={data} />}
+        <div className="flex w-full justify-center">
+          <div className="mt-2 flex w-11/12 flex-col">
+            {resultShow && <CheckTable title="이격도" tableData={data} />}
+          </div>
         </div>
       </div>
     </div>

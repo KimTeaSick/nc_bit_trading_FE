@@ -58,3 +58,10 @@ type TableDataType = {
   floatingprice: number;
   ratechange: number;
 };
+
+export type OptionType = {
+  Name: string;
+  Create_date: string;
+  Update_date: string;
+  used: 0 | 1;
+};

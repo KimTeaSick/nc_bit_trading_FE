@@ -19,6 +19,7 @@ function CheckTable(props: {
 }) {
   const { tableData, title, optionList } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  // const [defaultData, setDefaultData] = React.useState<SortingState>([]);
 
   let defaultData =
     tableData !== undefined
@@ -38,6 +39,10 @@ function CheckTable(props: {
           };
         })
       : [];
+
+  useEffect(() => {
+    setData(defaultData);
+  }, [tableData]);
 
   const columns = [
     columnHelper.accessor("name", {
@@ -171,89 +176,84 @@ function CheckTable(props: {
   console.log("optionList :::::::::::::: ", optionList);
 
   return (
-    <div>
-      {/* <div className="w-5/6 bg-navy-200 rounded-md p-1"> */}
-      <Card extra={"w-full h-full sm:overflow-auto px-6"}>
-        <header className="relative flex items-center justify-between pt-4">
-          <div className="text-xl font-bold text-navy-700 dark:text-white">
-            {title} 조건 검색 결과
-          </div>
-          <div className="w-20 text-2xl font-bold">
-            {`${tableData.length}`} 개
-          </div>
-          {/* <CardMenu /> */}
-        </header>
-        <div className="font-bold flex gap-2">
-          {conditionNameChange(optionList)?.map(
-            (value: string, index: number) => (
-              <div key={index}>
-                {index + 1}. {value}
-              </div>
-            )
-          )}
+    // {/* <div className="w-5/6 bg-navy-200 rounded-md p-1"> */}
+    <Card extra={"w-full h-full sm:overflow-auto px-6"}>
+      <header className="relative flex items-center justify-between pt-4">
+        <div className="text-xl font-bold text-navy-700 dark:text-white">
+          {title} 조건 검색 결과
         </div>
-        <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64">
-          <table className="w-full">
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr
-                  key={headerGroup.id}
-                  className="!border-px !border-gray-400"
-                >
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <th
-                        key={header.id}
-                        colSpan={header.colSpan}
-                        onClick={header.column.getToggleSortingHandler()}
-                        className="cursor-pointer border-b-[1px] border-gray-200 pt-4 pb-2 pr-2 text-start"
-                      >
-                        <div className="items-center justify-between text-xs text-gray-200">
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                          {{
-                            asc: "",
-                            desc: "",
-                          }[header.column.getIsSorted() as string] ?? null}
-                        </div>
-                      </th>
-                    );
-                  })}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table
-                .getRowModel()
-                .rows.slice(0, tableData?.length)
-                .map((row) => {
+        <div className="w-20 text-2xl font-bold">
+          {`${tableData.length}`} 개
+        </div>
+        {/* <CardMenu /> */}
+      </header>
+      <div className="font-bold flex gap-2">
+        {conditionNameChange(optionList)?.map(
+          (value: string, index: number) => (
+            <div key={index}>
+              {index + 1}. {value}
+            </div>
+          )
+        )}
+      </div>
+      <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64">
+        <table className="w-full">
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id} className="!border-px !border-gray-400">
+                {headerGroup.headers.map((header) => {
                   return (
-                    <tr key={row.id}>
-                      {row.getVisibleCells().map((cell) => {
-                        return (
-                          <td
-                            key={cell.id}
-                            className="min-w-[100px] border-white/0 py-3  pr-4 text-sm font-bold"
-                          >
-                            {cell.id.slice(-4) === "name"
-                              ? coinNameChange(row.original.name[0])
-                              : flexRender(
-                                  cell.column.columnDef.cell,
-                                  cell.getContext()
-                                )}
-                          </td>
-                        );
-                      })}
-                    </tr>
+                    <th
+                      key={header.id}
+                      colSpan={header.colSpan}
+                      onClick={header.column.getToggleSortingHandler()}
+                      className="cursor-pointer border-b-[1px] border-gray-200 pt-4 pb-2 pr-2 text-start"
+                    >
+                      <div className="items-center justify-between text-xs text-gray-200">
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                        {{
+                          asc: "",
+                          desc: "",
+                        }[header.column.getIsSorted() as string] ?? null}
+                      </div>
+                    </th>
                   );
                 })}
-            </tbody>
-          </table>
-        </div>
-      </Card>
-    </div>
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table
+              .getRowModel()
+              .rows.slice(0, tableData?.length)
+              .map((row) => {
+                return (
+                  <tr key={row.id}>
+                    {row.getVisibleCells().map((cell) => {
+                      return (
+                        <td
+                          key={cell.id}
+                          className="min-w-[70px] border-white/0 py-3  pr-4 text-sm font-bold"
+                        >
+                          {cell.id.slice(-4) === "name"
+                            ? coinNameChange(row.original.name[0])
+                            : flexRender(
+                                cell.column.columnDef.cell,
+                                cell.getContext()
+                              )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+      </div>
+    </Card>
   );
 }
 

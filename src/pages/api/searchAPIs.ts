@@ -1,7 +1,7 @@
-import axios from "axios";
+import { post, get } from ".";
 
-// const URL = "http://121.165.242.171:34256";
-const URL = "http://192.168.10.43:8888";
+const URL = "http://121.165.242.171:34256";
+// const URL = "http://192.168.10.43:8888";
 
 const validationCheck = (body: any) => {
   console.log("CoinSearchBody", body);
@@ -21,9 +21,9 @@ export const CoinSearch = async (body: any) => {
   try {
     const flag = validationCheck(body);
     if (flag) {
-      const response = await axios.post(URL + "/dash/getRecommendCoin", body);
-      console.log("response.data", response.data);
-      return { data: response.data };
+      const response = await post("dash/getRecommendCoin", body);
+      console.log("response.data", response);
+      return { data: response };
     } else {
       alert("값을 다 채워주세요!");
       return flag;
@@ -35,8 +35,8 @@ export const CoinSearch = async (body: any) => {
 };
 
 export const ConditionRegister = async (body: any) => {
-  const response = await axios.post(URL + "/option/insertOption", body);
-  if (response.data === "Insert sucess") {
+  const response = await post("option/insertOption", body);
+  if (response === "Insert sucess") {
     alert("조건이 등록되었습니다!");
     return 200;
   } else {
@@ -50,8 +50,8 @@ export const ConditionEdit = async (name: string[], condition: any) => {
     Name: name[0],
     ...condition,
   };
-  const response = await axios.post(URL + "/option/updateOption", body);
-  if (response.data === "Insert sucess") {
+  const response = await post("option/updateOption", body);
+  if (response === "Insert sucess") {
     alert("조건이 수정되었습니다!");
     return 200;
   } else {
@@ -61,24 +61,25 @@ export const ConditionEdit = async (name: string[], condition: any) => {
 };
 
 export const getConditionList = async () => {
-  const response = await axios.get(URL + "/option/optionList");
-  return response.data;
+  const response = await get("option/optionList");
+  console.log(response);
+  return response;
 };
 
 export const getConditionDetail = async (body: any) => {
-  const response = await axios.post(URL + "/option/optionDetail", body);
-  return response.data;
+  const response = await post("option/optionDetail", body);
+  return response;
 };
 
 export const conditionDelete = async (name: any) => {
   const body = { option: name[0] };
-  const response = await axios.post(URL + "/option/deleteOption", body);
-  if (response.data === "delete sucess") alert("조건이 삭제되었습니다");
-  return response.data;
+  const response = await post("option/deleteOption", body);
+  if (response === "delete sucess") alert("조건이 삭제되었습니다");
+  return response;
 };
 
 export const setUseCondition = async (name: any) => {
   const body = { option: name[0] };
-  const response = await axios.post(URL + "/option/useOption", body);
-  return response.data;
+  const response = await post("option/useOption", body);
+  return response;
 };

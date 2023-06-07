@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect } from "react";
-import CardMenu from "@/components/card/CardMenu";
+import React, { useEffect } from "react";
 import Card from "@/components/card";
 import {
   createColumnHelper,
@@ -13,6 +12,8 @@ import { SearchButton } from "./Condition";
 import { getConditionDetail } from "@/pages/api/searchAPIs";
 import { useDispatch } from "react-redux";
 import { setConditionDetail } from "@/module/search";
+import { flagDistinguish } from "./lib/flagDistinguish";
+import Link from "next/link";
 
 function ChoiceCondition(props: {
   tableData: any;
@@ -23,7 +24,7 @@ function ChoiceCondition(props: {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [defaultData, setDefaultData] = React.useState<SortingState>([]);
   const [data, setData] = React.useState(() => [...defaultData]);
-
+  const flag = flagDistinguish(tableData);
   useEffect(() => {
     setDefaultData(tableData ? tableData : []);
     setData(defaultData);
@@ -90,7 +91,7 @@ function ChoiceCondition(props: {
   return (
     <div>
       <Card extra={"w-full h-full sm:overflow-auto px-6"}>
-        <header className="relative flex items-center justify-between pt-4">
+        <header className="relative flex items-center justify-between pt-4 ">
           <div className="text-xl font-bold text-navy-700 dark:text-white">
             조건 리스트
           </div>
@@ -150,7 +151,7 @@ function ChoiceCondition(props: {
                         return (
                           <td
                             key={cell.id}
-                            className="min-w-[150px] border-white/0 py-3 pr-4 cursor-pointer"
+                            className="min-w-[150px] border-white/0 py-3 pr-4 cursor-pointer px-2"
                           >
                             {flexRender(
                               cell.column.columnDef.cell,
@@ -167,6 +168,14 @@ function ChoiceCondition(props: {
         </div>
         <div className="w-1/6 flex gap-2 self-end p-2">
           <SearchButton event={() => registerBtnEvent()} title="등록" />
+          {flag && (
+            <Link className="w-full" href={"/admin/autotrading"}>
+              <SearchButton
+                event={() => console.log("asd")}
+                title="매매 시작"
+              />
+            </Link>
+          )}
         </div>
       </Card>
     </div>
