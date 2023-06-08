@@ -1,13 +1,31 @@
 import { FC } from "react";
-import BuyCondition from "./components/BuyCondition";
-import SellCondition from "./components/SellCondition";
+import ConditionList from "./components/list/ConditionList";
 import { useSellCondition } from "./lib/useSellCondition";
 import { useBuyCondition } from "./lib/useBuyCondition";
-import { test } from "@/pages/api/autotrading";
+import SellCondition from "./components/SellCondition";
+import BuyCondition from "./components/BuyCondition";
+import NameInput from "./components/NameInput";
+import { DUMMY_DATA } from "./lib/construct";
+import { useName } from "./lib/useName";
+import axios from "axios";
 
 const AutoTrading: FC = () => {
   const [sellCondition, setSellCondition] = useSellCondition();
   const [buyCondition, setBuyCondition] = useBuyCondition();
+  const [name, setName] = useName();
+
+  const RegisterEvent = async () => {
+    const body = {
+      sell: sellCondition,
+      buy: buyCondition,
+      // name,
+    };
+    const res = await axios.post(
+      "http://192.168.10.43:8888/trade/tradingOption",
+      body
+    );
+    console.log("body", res);
+  };
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
@@ -17,18 +35,26 @@ const AutoTrading: FC = () => {
             자동 매매
           </h4>
         </div>
-        <div className="flex gap-2">
-          <BuyCondition
-            buyCondition={buyCondition}
-            setBuyCondition={setBuyCondition}
-          />
-          <SellCondition
-            sellCondition={sellCondition}
-            setSellCondition={setSellCondition}
+        <div className="w-full bg-navy-50 rounded-lg h-auto p-3">
+          <div className="w-full flex gap-3 mb-3">
+            <ConditionList itemList={DUMMY_DATA} />
+            <BuyCondition
+              buyCondition={buyCondition}
+              setBuyCondition={setBuyCondition}
+            />
+            <SellCondition
+              sellCondition={sellCondition}
+              setSellCondition={setSellCondition}
+            />
+          </div>
+          <NameInput
+            name={name}
+            setName={setName}
+            registerEvent={RegisterEvent}
+            ATEvent={() => console.log("asd")}
           />
         </div>
       </div>
-      <button onClick={() => test(buyCondition, sellCondition)}>asd</button>
     </div>
   );
 };

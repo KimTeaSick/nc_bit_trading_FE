@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import SelectBox, { CALL_PRICE } from "../SelectBox";
-import { UseBuyConditionType } from "../type/autoTrading";
+import { UseBuyConditionType } from "../../type/autoTrading";
 
 interface Props {
   value: UseBuyConditionType;

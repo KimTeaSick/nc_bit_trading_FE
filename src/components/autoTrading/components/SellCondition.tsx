@@ -5,7 +5,7 @@ import PercentSellCondtion from "./Sell/PercentSellCondition";
 import PercentSellMethod from "./Sell/PercentSellMethod";
 import PriceCriteria from "./Sell/PriceCriteria";
 import TradingConditionCover from "./TradingConditionCover";
-import { UseSellConditionType } from "./type/autoTrading";
+import { UseSellConditionType } from "../type/autoTrading";
 
 interface Props {
   sellCondition: UseSellConditionType;
@@ -54,14 +54,14 @@ const SellCondition: FC<Props> = ({ sellCondition, setSellCondition }) => {
         <div id="BuyMethod" className="p-1">
           <p className="text-xl font-bold">매도 방법</p>
           <div className="p-1">
-            <p className="font-bold">가격 기준</p>
+            <p className="font-bold">1. 가격 기준</p>
             <PriceCriteria value={sellCondition} setValue={setSellCondition} />
             <p className="pl-2 font-semibold">
               현재가 기준 -2 % 범위 안에서 가격 균등 배분
             </p>
           </div>
           <div className="p-1">
-            <p className="font-bold">수량 기준</p>
+            <p className="font-bold">2. 수량 기준</p>
             <PercentSellMethod
               value={sellCondition}
               setValue={setSellCondition}

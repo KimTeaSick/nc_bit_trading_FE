@@ -1,9 +1,13 @@
 import {
   UseBuyConditionType,
   UseSellConditionType,
-} from "@/components/autoTrading/components/type/autoTrading";
+} from "@/components/autoTrading/type/autoTrading";
 
-export const test = (buy: UseBuyConditionType, sell: UseSellConditionType) => {
-  const body = { buy, sell };
+export const test = (
+  buy: UseBuyConditionType,
+  sell: UseSellConditionType,
+  name: string
+) => {
+  const body = { buy, sell, name };
   console.log("body :::::::::: ", body);
 };

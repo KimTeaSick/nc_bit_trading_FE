@@ -1,7 +1,6 @@
 import { FC } from "react";
-import SearchPage from "@/components/search/index";
+import SearchPage from "@/components/search/next_index";
 import Admin from "@/layouts/admin";
-import dynamic from "next/dynamic";
 
 const Search: FC = () => {
   return (

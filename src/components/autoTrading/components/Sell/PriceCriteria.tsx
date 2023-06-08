@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import SelectBox, { CALL_PRICE } from "../SelectBox";
-import { UseSellConditionType } from "../type/autoTrading";
+import { UseSellConditionType } from "../../type/autoTrading";
 
 interface Props {
   value: UseSellConditionType;
@@ -14,9 +14,9 @@ const PriceCriteria: FC<Props> = ({ value, setValue }) => {
       <SelectBox
         width={90}
         itemList={CALL_PRICE}
-        value={value.call_money_sell_method}
+        value={value.call_money_to_sell_method}
         event={(e) =>
-          setValue({ ...value, call_money_sell_method: e.target.value })
+          setValue({ ...value, call_money_to_sell_method: e.target.value })
         }
       />
       <p>로 주문</p>

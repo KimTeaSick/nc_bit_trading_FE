@@ -5,8 +5,7 @@ import { useDispatch } from "react-redux";
 // import SettingPage from "@/components/Setting/SettingPage";
 import { getDisparityOptionThunk } from "../api/settingAPI";
 import Admin from "@/layouts/admin";
-import SelectBox from "@/components/common/select/SelectBox";
-import { Input } from "@/components/common/input/index";
+import Search from "@/components/search/next_index";
 
 const Setting: FC = () => {
   const dispatch = useDispatch<any>();
@@ -28,12 +27,7 @@ const Setting: FC = () => {
           rowGap: 15,
         }}
       >
-        <Input width={150} onChange={(e) => console.log(e.target.value)} />
-        <SelectBox
-          width={150}
-          itemList={TEST_ARRAY}
-          event={() => console.log("ASD")}
-        />
+        <Search />
       </div>
     </Admin>
   );

@@ -1,6 +1,6 @@
 import { Input } from "@/components/common/input";
 import { Dispatch, FC, SetStateAction } from "react";
-import { UseBuyConditionType } from "../type/autoTrading";
+import { UseBuyConditionType } from "../../type/autoTrading";
 
 interface Props {
   value: UseBuyConditionType;

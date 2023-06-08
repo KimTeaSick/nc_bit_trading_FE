@@ -53,8 +53,6 @@ const SearchPage: FC = () => {
   const conditionListSetter = useCallback(async () => {
     const list = await getConditionList();
     setConditionList(list);
-    // dispatch(setCondiotionList(list));
-    console.log("list", list);
   }, []);
 
   const registerBtnClick = () => {
@@ -123,13 +121,11 @@ const SearchPage: FC = () => {
         </h4>
       </div>
       {stage === 0 ? (
-        <>
-          <ChoiceCondition
-            tableData={conditionList}
-            registerBtnEvent={registerBtnClick}
-            setStage={setStage}
-          />
-        </>
+        <ChoiceCondition
+          tableData={conditionList}
+          registerBtnEvent={registerBtnClick}
+          setStage={setStage}
+        />
       ) : (
         <Card extra="p-3 shadow-3xl">
           <div className="col-span-1 h-fit w-full xl:col-span-1 2xl:col-span-2">
