@@ -14,6 +14,9 @@ export const useSellCondition = (): [
     down_percent_to_disparity_condition: "1",
     call_money_to_sell_method: "+1",
     percent_to_split_sell: "25",
+    shot_MACD_value: "15",
+    long_MACD_value: "60",
+    MACD_signal_value: "9",
   });
   return [sellCondition, setSellCondition];
 };

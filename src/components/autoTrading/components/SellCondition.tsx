@@ -6,6 +6,7 @@ import PercentSellMethod from "./Sell/PercentSellMethod";
 import PriceCriteria from "./Sell/PriceCriteria";
 import TradingConditionCover from "./TradingConditionCover";
 import { UseSellConditionType } from "../type/autoTrading";
+import MACDCondition from "./Sell/MACDCondition";
 
 interface Props {
   sellCondition: UseSellConditionType;
@@ -47,7 +48,10 @@ const SellCondition: FC<Props> = ({ sellCondition, setSellCondition }) => {
           <div className="flex flex-col gap-2 p-1">
             <p className="font-bold">3. MACD 기준</p>
             <p className="pl-2 font-bold">
-              MACD가 MACD Signal을 하향 돌파할 경우
+              <MACDCondition
+                value={sellCondition}
+                setValue={setSellCondition}
+              />
             </p>
           </div>
         </div>

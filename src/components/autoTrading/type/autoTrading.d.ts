@@ -15,4 +15,7 @@ export type UseSellConditionType = {
   down_percent_to_disparity_condition: string;
   call_money_to_sell_method: string;
   percent_to_split_sell: string;
+  shot_MACD_value: string;
+  long_MACD_value: string;
+  MACD_signal_value: string;
 };

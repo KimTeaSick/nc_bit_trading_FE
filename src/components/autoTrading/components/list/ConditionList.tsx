@@ -12,7 +12,7 @@ interface Props {
 const ConditionList: FC<Props> = ({ itemList }) => {
   return (
     <div className={COVER_CLASS}>
-      <p>title,,,</p>
+      <p className="text-xl font-bold">조건 리스트</p>
       <table className={TABLE_CLASS}>
         <thead className={TABLE_HEAD_CLASS}>
           <tr className={TR_CLASS}>
