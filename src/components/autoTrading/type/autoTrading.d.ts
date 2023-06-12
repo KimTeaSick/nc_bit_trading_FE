@@ -19,3 +19,17 @@ export type UseSellConditionType = {
   long_MACD_value: string;
   MACD_signal_value: string;
 };
+
+export type useAccountType = {
+  price_count: string;
+  loss_cut_under_percent: string;
+  loss_cut_under_call_price_sell_all: string;
+  loss_cut_under_coin_specific_percent: string;
+  loss_cut_under_call_price_specific_coin: string;
+  loss_cut_over_percent: string;
+  loss_cut_over_call_price_sell_all: string;
+  loss_cut_over_coin_specific_percent: string;
+  loss_cut_over_call_price_specific_coin: string;
+  buy_cancle_time: string;
+  sell_cancle_time: string;
+};

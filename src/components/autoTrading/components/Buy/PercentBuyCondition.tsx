@@ -1,5 +1,5 @@
 import { Input } from "@/components/common/input";
-import { Dispatch, FC, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 import { UseBuyConditionType } from "../../type/autoTrading";
 
 interface Props {
@@ -15,7 +15,7 @@ const PercentBuyCondition: FC<Props> = ({ value, setValue }) => {
         width={70}
         value={value.percent_to_buy_condition}
         onClick={() => setValue({ ...value, percent_to_buy_condition: "" })}
-        onChange={(e) =>
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setValue({ ...value, percent_to_buy_condition: e.target.value })
         }
       />

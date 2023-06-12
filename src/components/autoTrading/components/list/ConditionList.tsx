@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CONDITION_COLUMN } from "../../lib/construct";
 
-const COVER_CLASS = "w-1/2 bg-white rounded-lg h-auto p-3";
+const COVER_CLASS = "w-1/5 bg-white rounded-lg h-auto p-3";
 const TABLE_CLASS = "px-3 font-semibold text-gray-700 w-full";
 const TABLE_HEAD_CLASS = "border-gray-200 border-b-2";
 const TR_CLASS = "flex justify-between";

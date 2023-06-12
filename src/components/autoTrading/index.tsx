@@ -2,14 +2,17 @@ import { FC } from "react";
 import ConditionList from "./components/list/ConditionList";
 import { useSellCondition } from "./lib/useSellCondition";
 import { useBuyCondition } from "./lib/useBuyCondition";
+import AccountComponent from "./components/Account/index";
 import SellCondition from "./components/SellCondition";
 import BuyCondition from "./components/BuyCondition";
 import NameInput from "./components/NameInput";
 import { DUMMY_DATA } from "./lib/construct";
 import { useName } from "./lib/useName";
 import axios from "axios";
+import { useAccount } from "./lib/useAccount";
 
 const AutoTrading: FC = () => {
+  const [actCondition, setActCondition] = useAccount();
   const [sellCondition, setSellCondition] = useSellCondition();
   const [buyCondition, setBuyCondition] = useBuyCondition();
   const [name, setName] = useName();
@@ -38,14 +41,22 @@ const AutoTrading: FC = () => {
         <div className="w-full bg-navy-50 rounded-lg h-auto p-3">
           <div className="w-full flex gap-3 mb-3">
             <ConditionList itemList={DUMMY_DATA} />
-            <BuyCondition
-              buyCondition={buyCondition}
-              setBuyCondition={setBuyCondition}
-            />
-            <SellCondition
-              sellCondition={sellCondition}
-              setSellCondition={setSellCondition}
-            />
+            <div className="w-full flex flex-col gap-3">
+              <AccountComponent
+                value={actCondition}
+                setValue={setActCondition}
+              />
+              <div className="flex gap-3 mb-3">
+                <BuyCondition
+                  buyCondition={buyCondition}
+                  setBuyCondition={setBuyCondition}
+                />
+                <SellCondition
+                  sellCondition={sellCondition}
+                  setSellCondition={setSellCondition}
+                />
+              </div>
+            </div>
           </div>
           <NameInput
             name={name}
