@@ -169,7 +169,7 @@ function ChoiceCondition(props: {
         <div className="w-1/6 flex gap-2 self-end p-2">
           <SearchButton event={() => registerBtnEvent()} title="등록" />
           {flag && (
-            <Link className="w-full" href={"/admin/autotrading"}>
+            <Link className="w-full" href={"/admin/autotradingcondition"}>
               <SearchButton
                 event={() => console.log("asd")}
                 title="매매 시작"

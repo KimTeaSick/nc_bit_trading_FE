@@ -3,7 +3,7 @@ export type UseBuyConditionType = {
   percent_to_buy_method: string;
   price_to_buy_method: string;
   callmoney_to_buy_method: string;
-  checkbox: string;
+  checkbox: number;
 };
 
 export type UseSellConditionType = {
@@ -32,4 +32,11 @@ export type useAccountType = {
   loss_cut_over_call_price_specific_coin: string;
   buy_cancle_time: string;
   sell_cancle_time: string;
+};
+
+export type TradingOptionType = {
+  buy: UseBuyConditionType;
+  sell: UseSellConditionType;
+  account: useAccountType;
+  name: string;
 };

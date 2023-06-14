@@ -9,8 +9,8 @@ export const useBuyCondition = (): [
     // percent_to_buy_condition: "3",
     percent_to_buy_method: "5",
     price_to_buy_method: "10",
-    callmoney_to_buy_method: "+1",
-    checkbox: "1",
+    callmoney_to_buy_method: "0",
+    checkbox: 1,
   });
   return [buyCondition, setBuyCondition];
 };

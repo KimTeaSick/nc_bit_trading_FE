@@ -4,9 +4,9 @@ import CHECKED from "@/assets/svg/ConditionAbled.svg";
 import UNCHECKED from "@/assets/svg/ConditionDisabled.svg";
 
 interface Props {
-  value: string;
+  value: number;
   setValue: Dispatch<SetStateAction<any>>;
-  initialValue: string;
+  initialValue: number;
 }
 
 const RadioButton: FC<Props> = ({ value, setValue, initialValue }) => {

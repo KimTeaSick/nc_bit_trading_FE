@@ -7,6 +7,7 @@ interface InputProps {
   placeholder?: string;
   value?: string | number;
   type?: "number" | "text" | "password";
+  disable?: boolean;
   onClick?: () => void;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -18,6 +19,7 @@ export const Input: FC<InputProps> = ({
   height,
   onClick,
   onChange,
+  disable,
   placeholder,
 }) => {
   return (
@@ -26,6 +28,7 @@ export const Input: FC<InputProps> = ({
       width={width}
       height={height ? height : 27}
       value={value}
+      disabled={disable}
       onChange={onChange}
       onClick={onClick && onClick}
       placeholder={placeholder}

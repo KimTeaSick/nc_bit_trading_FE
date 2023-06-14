@@ -15,8 +15,8 @@ const useAccount = (): [
     loss_cut_over_call_price_sell_all: "0",
     loss_cut_over_coin_specific_percent: "0",
     loss_cut_over_call_price_specific_coin: "0",
-    buy_cancle_time: "0",
-    sell_cancle_time: "0",
+    buy_cancle_time: "60",
+    sell_cancle_time: "60",
   });
   return [value, setValue];
 };

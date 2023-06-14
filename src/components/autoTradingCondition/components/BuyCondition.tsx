@@ -12,7 +12,11 @@ interface Props {
   setBuyCondition: Dispatch<SetStateAction<UseBuyConditionType>>;
 }
 
-const BuyCondition: FC<Props> = ({ buyCondition, setBuyCondition }) => {
+const BuyCondition: FC<Props> = ({
+  buyCondition,
+  setBuyCondition,
+  // checkValue,
+}) => {
   return (
     <TradingConditionCover title="매수">
       <div>
@@ -33,10 +37,10 @@ const BuyCondition: FC<Props> = ({ buyCondition, setBuyCondition }) => {
             <p className="font-bold">2. 수량 기준</p>
             <div className="flex items-center">
               <RadioButton
-                value="1"
+                value={1}
                 initialValue={buyCondition.checkbox}
                 setValue={() =>
-                  setBuyCondition({ ...buyCondition, checkbox: "1" })
+                  setBuyCondition({ ...buyCondition, checkbox: 1 })
                 }
               />
               <FixMoneyBuyMethod
@@ -46,10 +50,10 @@ const BuyCondition: FC<Props> = ({ buyCondition, setBuyCondition }) => {
             </div>
             <div className="flex items-center">
               <RadioButton
-                value="2"
+                value={2}
                 initialValue={buyCondition.checkbox}
                 setValue={() =>
-                  setBuyCondition({ ...buyCondition, checkbox: "2" })
+                  setBuyCondition({ ...buyCondition, checkbox: 2 })
                 }
               />
               <PercentMoneyBuyMethod
