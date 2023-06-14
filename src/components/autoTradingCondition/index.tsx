@@ -14,7 +14,7 @@ import {
   deleteTradingOption,
   detailTradingOption,
   getTradingOptionList,
-} from "@/pages/api/autotradingcondition";
+} from "@/pages/api/autotrading";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 

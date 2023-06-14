@@ -89,15 +89,15 @@ function ChoiceCondition(props: {
   });
 
   return (
-    <div>
+    <div className="h-[80vh]">
       <Card extra={"w-full h-full sm:overflow-auto px-6"}>
         <header className="relative flex items-center justify-between pt-4 ">
           <div className="text-xl font-bold text-navy-700 dark:text-white">
             조건 리스트
           </div>
         </header>
-        <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64">
-          <table className="w-full">
+        <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden">
+          <table className="w-full h-full">
             <thead>
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr
@@ -166,7 +166,7 @@ function ChoiceCondition(props: {
             </tbody>
           </table>
         </div>
-        <div className="w-1/6 flex gap-2 self-end p-2">
+        <div className="w-1/6 flex gap-2 self-end p-2 absolute bottom-1">
           <SearchButton event={() => registerBtnEvent()} title="등록" />
           {flag && (
             <Link className="w-full" href={"/admin/autotradingcondition"}>

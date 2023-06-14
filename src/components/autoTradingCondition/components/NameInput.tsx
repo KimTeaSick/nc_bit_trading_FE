@@ -45,7 +45,7 @@ const NameInput: FC<Props> = ({
             type ? registerEvent("regist") : registerEvent("update")
           }
         />
-        <Link className="w-full" href={"/admin/autotrading"}>
+        <Link href={"/admin/autotrading"}>
           <Button title="자동매매" event={() => console.log("asd")} />
         </Link>
       </div>

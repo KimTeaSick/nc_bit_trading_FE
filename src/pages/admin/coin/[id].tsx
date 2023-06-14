@@ -1,6 +1,6 @@
 // import CoinDetailPage from "@/components/CoinDetail/CoinDetailPage";
 import { DetailCoinType } from "@/@types/CoinList";
-import CoinDetailPage from "@/views/admin/coindetail/index";
+// import CoinDetailPage from "@/components/coindetail/index";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import {
   getCoinDetailInfo,

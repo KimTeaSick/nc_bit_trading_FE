@@ -4,11 +4,8 @@ import {
   PossessionSection,
   RTSRSection,
 } from "./Dash.styled";
-import { RootStateType } from "@/module/rootReducer.d";
-import { useSelector } from "react-redux";
 import { FC } from "react";
 import AccountInfo from "./AccountInfo";
-import Loading from "../common/Loading";
 import Possession from "./Possession";
 import RTSR from "./RTSR";
 import { PossessionCoinType } from "@/@types/Dash.d";

@@ -1,14 +1,19 @@
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
 import Footer from "@/components/footer/Footer";
 import { Routes, Route, Navigate } from "react-router-dom";
-import routes from "../../routes";
 
-export default function Admin({ children }: { children: ReactNode }) {
+interface Props {
+  children: ReactNode;
+  extract?: string;
+}
+
+const Admin: FC<Props> = ({ children, extract }) => {
   document.documentElement.dir = "ltr";
+
   return (
-    <div className="flex h-full w-full">
+    <div className={extract + " flex h-full w-full"}>
       <Sidebar open={true} />
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
@@ -36,4 +41,6 @@ export default function Admin({ children }: { children: ReactNode }) {
       </div>
     </div>
   );
-}
+};
+
+export default Admin;

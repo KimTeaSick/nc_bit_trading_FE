@@ -1,7 +1,7 @@
 import {
   detailTradingOption,
   getTradingOptionList,
-} from "@/pages/api/autotradingcondition";
+} from "@/pages/api/autotrading";
 import { AutoInitialStateType } from "./index.d";
 import { createSlice } from "@reduxjs/toolkit";
 
