@@ -1,5 +1,3 @@
-import LayoutComponent from "@/components/common/Layout";
-import WalletPage from "@/components/Wallet/WalletPage";
 import MyWallet from "@/views/admin/mywallet/index";
 import { NextPage } from "next";
 import { useEffect } from "react";

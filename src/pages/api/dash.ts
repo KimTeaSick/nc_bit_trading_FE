@@ -35,9 +35,11 @@ export const getPossessionCoin = createAsyncThunk(
 export const getAccountThunk = createAsyncThunk(
   "dash/accountInfo",
   async (body: { date: string[] }) => {
-    const response = get("dash/accountInfo/", {
+    console.log("body", body);
+    const response = await get("dash/accountInfo/", {
       params: { date1: body.date[0], date2: body.date[1] },
     });
+    console.log("response", response);
     return response;
   }
 );

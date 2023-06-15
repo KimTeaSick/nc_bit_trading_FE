@@ -19,11 +19,13 @@ const AccountPrice: FC<Props> = ({ priceList }) => {
       <div className={ROW_COVER}>
         {priceList.map((value, index) => (
           <div className={ROW_STYLE_CLASS} key={index}>
-            <p className={ITEM_STYLE_CLASS}>test</p>
-            <p className={ITEM_STYLE_CLASS}>test</p>
-            <p className={ITEM_STYLE_CLASS}>test</p>
-            <p className={ITEM_STYLE_CLASS}>test</p>
-            <p className={ITEM_STYLE_CLASS}>test</p>
+            <p className={ITEM_STYLE_CLASS}>{value.coin}</p>
+            <p className={ITEM_STYLE_CLASS}>
+              {String(value.info.rate).slice(0, 5)}
+            </p>
+            <p className={ITEM_STYLE_CLASS}>{value.info.buy_price}</p>
+            <p className={ITEM_STYLE_CLASS}>{value.info.unit}</p>
+            <p className={ITEM_STYLE_CLASS}>{value.info.unit}</p>
           </div>
         ))}
       </div>

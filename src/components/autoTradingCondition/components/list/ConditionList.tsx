@@ -17,7 +17,7 @@ interface Props {
 
 const ConditionList: FC<Props> = ({ itemList, onClick }) => {
   const { optionList } = useSelector(
-    (state: RootStateType) => state.autotrading
+    (state: RootStateType) => state.autotradingCondition
   );
 
   return (

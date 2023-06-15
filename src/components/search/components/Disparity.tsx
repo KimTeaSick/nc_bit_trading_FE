@@ -16,7 +16,12 @@ const Disparity: FC<Props> = ({ value, data, setValue }) => {
   const [resultShow, setShow] = useState(false);
 
   return (
-    <SearchConditionCover title="이격도 : " value={value} setValue={setValue}>
+    <SearchConditionCover
+      title="이격도 : "
+      value={value}
+      setValue={setValue}
+      checkDisable={true}
+    >
       <div className="flex justify-between">
         <div className="flex items-center gap-2 text-xl">
           <SelectBox

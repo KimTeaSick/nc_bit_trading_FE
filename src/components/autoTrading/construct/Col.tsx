@@ -3,9 +3,9 @@ import { FC } from "react";
 export const SEARCH_RESULT_COL = [
   "종목명",
   "현재가",
-  "등락률",
-  "포착 후 등락률",
-  "거래량",
+  // "등락률",
+  // "포착 후 등락률",
+  // "거래량",
 ];
 
 export const TRADING_STATUS_COL = [

@@ -14,12 +14,14 @@ import {
   deleteTradingOption,
   detailTradingOption,
   getTradingOptionList,
-} from "@/pages/api/autotrading";
+} from "@/pages/api/autotradingCondition";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 
 const AutoTradingConditon: FC = () => {
-  const ATState = useSelector((state: RootStateType) => state.autotrading);
+  const ATState = useSelector(
+    (state: RootStateType) => state.autotradingCondition
+  );
   const [actCondition, setActCondition] = useAccount();
   const [sellCondition, setSellCondition] = useSellCondition();
   const [buyCondition, setBuyCondition] = useBuyCondition();

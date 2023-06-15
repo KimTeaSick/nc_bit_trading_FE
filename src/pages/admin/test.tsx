@@ -1,11 +1,12 @@
 import { FC } from "react";
 import { setPageActive } from "@/module/common";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-// import SettingPage from "@/components/Setting/SettingPage";
+import { useDispatch, useSelector } from "react-redux";
 import { getDisparityOptionThunk } from "../api/settingAPI";
 import Admin from "@/layouts/admin";
-import Search from "@/components/search/next_index";
+import ConditionModal from "@/components/autoTrading/components/ConditionModal";
+import { getNowUsedCondition } from "../api/autotrading";
+import { RootStateType } from "@/module/rootReducer.d";
 
 const Setting: FC = () => {
   const dispatch = useDispatch<any>();
@@ -13,8 +14,11 @@ const Setting: FC = () => {
   useEffect(() => {
     dispatch(setPageActive("Setting"));
     dispatch(getDisparityOptionThunk());
+    dispatch(getNowUsedCondition());
   }, [dispatch]);
 
+  const at = useSelector((state: RootStateType) => state.autotrading);
+  console.log("at.searchCondition", at.searchCondition);
   const TEST_ARRAY = [1, 2, 3];
 
   return (
@@ -27,7 +31,18 @@ const Setting: FC = () => {
           rowGap: 15,
         }}
       >
-        <Search />
+        <ConditionModal
+          type="search"
+          condition={Object.values(
+            at.searchCondition ? at.searchCondition : []
+          )}
+        />
+        <ConditionModal
+          type="trading"
+          condition={Object.values(
+            at.tradingCondition ? at.tradingCondition : []
+          )}
+        />
       </div>
     </Admin>
   );

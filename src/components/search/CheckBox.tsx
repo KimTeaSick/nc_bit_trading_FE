@@ -27,16 +27,4 @@ const CheckBox: FC<Props> = ({ value, setValue }) => {
   );
 };
 
-// const CheckBox: FC<Props> = ({ flag, event }) => {
-//   return (
-//     <div onClick={event} className="m-3">
-//       {flag ? (
-//         <Image src={ConditionAbled} alt="check" width={20} height={20} />
-//       ) : (
-//         <Image src={ConditionDisabled} alt="uncheck" width={20} height={20} />
-//       )}
-//     </div>
-//   );
-// };
-
 export default CheckBox;

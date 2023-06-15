@@ -1,39 +1,26 @@
-import { TradingOptionType } from "@/components/autoTradingCondition/type/autoTrading";
-import { get, post } from ".";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { get, post } from ".";
 
-export const getTradingOptionList = createAsyncThunk(
-  "getTradingOptionList",
-  async (): Promise<any> => {
-    const response = await get("trade/tradingOptionList");
+export const getSearchCoinList = createAsyncThunk(
+  "getSearchCoinList",
+  async () => {
+    const response = await get("trade/getSearchPriceList");
     return response;
   }
 );
 
-export const RUTradingOptionList = async (
-  body: TradingOptionType,
-  url: string
-) => {
-  const response = await post(`trade/${url}`, body);
-  return response;
-};
-
-export const detailTradingOption = createAsyncThunk(
-  "detailTradingOption",
-  async (name: string) => {
-    const response = await post(`trade/tradingOptionDetail`, { name });
-    const returnOptionName = Object.keys(response);
-    const returnValue: TradingOptionType[] = Object.values(response);
-    return { name: returnOptionName[0], value: returnValue[0] };
+export const getNowUsedCondition = createAsyncThunk(
+  "getNowUsedCondition",
+  async () => {
+    const response = await get("trade/getNowUsedCondition");
+    return response;
   }
 );
 
-export const activeTradingOption = async (name: string) => {
-  const response = await post("option/useTradingOption", { name });
-  return response;
-};
-
-export const deleteTradingOption = async (name: string) => {
-  const response = await post("trade/deleteTradingOption", { name });
-  return response;
-};
+export const getCoinInAccount = createAsyncThunk(
+  "getCoinInAccount",
+  async () => {
+    const response = await get("dash/getPossessoionCoinInfo");
+    return response;
+  }
+);
