@@ -18,7 +18,14 @@ const initialState: AutoInitialStateType = {
 const AutoTradingSlice = createSlice({
   name: "AutoTradingSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    resetConditoin: (state) => {
+      state.sell = null;
+      state.buy = null;
+      state.account = null;
+      state.name = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getTradingOptionList.pending, (state) => {
       state.optionListState = "Loading...";
@@ -46,4 +53,5 @@ const AutoTradingSlice = createSlice({
   },
 });
 
+export const { resetConditoin } = AutoTradingSlice.actions;
 export default AutoTradingSlice.reducer;

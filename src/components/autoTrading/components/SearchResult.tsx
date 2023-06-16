@@ -18,12 +18,13 @@ const SearchResult: FC<Props> = ({ searchList }) => {
       <p className="text-2xl font-bold">검색된 종목</p>
       <Col itemCol={SEARCH_RESULT_COL} colCount="2" />
       <div className={ROW_COVER}>
-        {searchList.map((value, index) => (
-          <div className={ROW_STYLE_CLASS} key={index}>
-            <p className={ITEM_STYLE_CLASS}>{value.name}</p>
-            <p className={ITEM_STYLE_CLASS}>{value.catch_price}</p>
-          </div>
-        ))}
+        {Array.isArray(searchList) &&
+          searchList?.map((value, index) => (
+            <div className={ROW_STYLE_CLASS} key={index}>
+              <p className={ITEM_STYLE_CLASS}>{value.name}</p>
+              <p className={ITEM_STYLE_CLASS}>{value.catch_price}</p>
+            </div>
+          ))}
       </div>
     </div>
   );

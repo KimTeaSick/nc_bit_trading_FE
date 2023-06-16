@@ -2,13 +2,27 @@
 
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
-import routes from "../../routes";
+import { ROUTES, AUTH_ROUTES } from "../../routes";
+import { useDispatch, useSelector } from "react-redux";
+import { RootStateType } from "@/module/rootReducer.d";
+import { useEffect } from "react";
+import { getNowUsedCondition } from "@/pages/api/autotrading";
 
 const Sidebar = (props: {
   open?: boolean;
   onClose?: React.MouseEventHandler<HTMLSpanElement>;
 }) => {
+  const dispatch = useDispatch<any>();
   const { open, onClose } = props;
+  const { autoTradingStatus } = useSelector(
+    (state: RootStateType) => state.common
+  );
+  useEffect(() => {
+    dispatch(getNowUsedCondition());
+  }, [dispatch]);
+
+  console.log("autoTradingStatus ::::::: ", autoTradingStatus);
+
   return (
     <div
       className={`sm:none duration-175 linear fixed !z-50 flex min-h-full flex-col bg-white pb-10 shadow-2xl shadow-white/5 transition-all dark:!bg-navy-800 dark:text-white md:!z-50 lg:!z-50 xl:!z-0 ${
@@ -34,7 +48,7 @@ const Sidebar = (props: {
       {/* Nav item */}
 
       <ul className="mb-auto pt-1">
-        <Links routes={routes} />
+        <Links routes={autoTradingStatus === 0 ? ROUTES : AUTH_ROUTES} />
       </ul>
 
       {/* Free Horizon Card */}

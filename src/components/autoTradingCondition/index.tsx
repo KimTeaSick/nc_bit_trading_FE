@@ -17,18 +17,26 @@ import {
 } from "@/pages/api/autotradingCondition";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
+import { resetConditoin } from "@/module/autotradingCondition";
 
 const AutoTradingConditon: FC = () => {
   const ATState = useSelector(
     (state: RootStateType) => state.autotradingCondition
   );
-  const [actCondition, setActCondition] = useAccount();
-  const [sellCondition, setSellCondition] = useSellCondition();
-  const [buyCondition, setBuyCondition] = useBuyCondition();
+  const { autoTradingStatus } = useSelector(
+    (state: RootStateType) => state.common
+  );
+  const [actCondition, setActCondition, resetAC] = useAccount();
+  const [sellCondition, setSellCondition, resetSell] = useSellCondition();
+  const [buyCondition, setBuyCondition, resetBuy] = useBuyCondition();
   const [name, setName, settingName] = useName();
   const dispatch = useDispatch<any>();
 
   const RUEvent = async (type: string) => {
+    if (autoTradingStatus) {
+      alert("자동매매 실행 중 조건을 변경 / 등록 할 수 없습니다.");
+      return;
+    }
     let url = "";
     const body = {
       account: actCondition,
@@ -44,9 +52,18 @@ const AutoTradingConditon: FC = () => {
     return response;
   };
 
-  const getDetailOption = (name: string) => dispatch(detailTradingOption(name));
+  const getDetailOption = useCallback(
+    (name: string) => dispatch(detailTradingOption(name)),
+    [dispatch]
+  );
 
   const activeNdelete = async (name: string, type: number) => {
+    if (autoTradingStatus) {
+      alert(
+        `자동매매 실행 중 조건을 ${type ? "변경" : "삭제"} 할 수 없습니다.`
+      );
+      return;
+    }
     type ? await activeTradingOption(name) : await deleteTradingOption(name);
     dispatch(getTradingOptionList());
   };
@@ -68,6 +85,14 @@ const AutoTradingConditon: FC = () => {
     setBuyCondition,
   ]);
 
+  const resetEvent = useCallback(() => {
+    resetAC();
+    resetSell();
+    resetBuy();
+    settingName("");
+    dispatch(resetConditoin());
+  }, [dispatch, resetAC, resetSell, resetBuy, settingName]);
+
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
       <div className="col-span-1 h-fit w-full xl:col-span-1 2xl:col-span-2">
@@ -79,8 +104,10 @@ const AutoTradingConditon: FC = () => {
         <div className="w-full bg-navy-50 rounded-lg h-auto p-3">
           <div className="w-full flex gap-3 mb-3">
             <ConditionList
+              name={name}
               itemList={ATState.optionList}
               onClick={getDetailOption}
+              resetEvent={resetEvent}
             />
             <div className="w-full flex flex-col gap-3">
               <AccountComponent

@@ -2,6 +2,7 @@ import { Input } from "@/components/common/input";
 import { ChangeEvent, FC } from "react";
 import Button from "./Button";
 import Link from "next/link";
+import { controlAuto } from "@/pages/api/autotradingCondition";
 
 interface Props {
   name: string;
@@ -46,7 +47,7 @@ const NameInput: FC<Props> = ({
           }
         />
         <Link href={"/admin/autotrading"}>
-          <Button title="자동매매" event={() => console.log("asd")} />
+          <Button title="자동매매" event={() => controlAuto(true)} />
         </Link>
       </div>
     </div>

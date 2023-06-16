@@ -22,7 +22,9 @@ const SearchPage: FC = () => {
   const [stage, setStage] = useState(0);
   const [conditionList, setConditionList] = useState<string[]>(); // 검색에 사용된 컨디션
   const searchSlice = useSelector((state: RootStateType) => state.search);
-
+  const { autoTradingStatus } = useSelector(
+    (state: RootStateType) => state.common
+  );
   const conditionListSetter = useCallback(async () => {
     const list = await getConditionList();
     setConditionList(list);
@@ -35,6 +37,12 @@ const SearchPage: FC = () => {
 
   const btnEvent = useCallback(
     async (type: string, body?: any, name?: string) => {
+      if (autoTradingStatus) {
+        alert(
+          "자동매매 실행 중 조건을 변경 / 삭제 / 수정 / 등록 할 수 없습니다."
+        );
+        return;
+      }
       const BTN_EVENT: BTN_EVENT_TYPE = {
         registerCondition: async () =>
           await ConditionRegister({ Name: name, ...body }),

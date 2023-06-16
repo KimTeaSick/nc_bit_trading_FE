@@ -5,6 +5,8 @@ import { SiBitcoinsv } from "react-icons/si";
 import { useState } from "react";
 import Card from "@/components/card";
 import { sell } from "@/pages/api/walletAPIs";
+import Image from "next/image";
+import { fixed } from "../autoTrading/lib/tool";
 
 const BitCard = (props: {
   account: string;
@@ -31,7 +33,9 @@ const BitCard = (props: {
     <Card extra={`flex flex-row w-full h-full !p-4 3xl:p-![18px] bg-white`}>
       <div className="h-full w-full flex flex-row">
         <div className="relative w-[320px]">
-          <img
+          <Image
+            width={100}
+            height={100}
             src={image}
             className="mb-3 h-full w-full rounded-xl 3xl:h-full 3xl:w-full"
             alt="img loading..."
@@ -46,8 +50,8 @@ const BitCard = (props: {
                   <MdAccountBalance className="mr-2" />
                   계좌 보유 금액
                 </span>
-                <span className="text-brand-500 dark:text-white px-2">
-                  {Number(account).toFixed(0)}
+                <span className="text-brand-500 dark:text-white px-2 w-[100px]">
+                  {fixed(account, 0)}
                 </span>
                 {"원"}
               </div>
@@ -58,8 +62,8 @@ const BitCard = (props: {
                   <TbMoneybag className="mr-2" />
                   예수금
                 </span>
-                <span className="text-brand-500 dark:text-white px-2">
-                  {Number(balance).toFixed(0)}
+                <span className="text-brand-500 dark:text-white px-2 w-[100px]">
+                  {fixed(balance, 0)}
                 </span>
                 {" 원"}
               </div>
@@ -73,10 +77,10 @@ const BitCard = (props: {
                   <span className="flex items-center w-[200px]">
                     <SiBitcoinsv className="mr-2" /> {coin[0]}
                   </span>
-                  <span className="text-brand-500 dark:text-white px-2">
-                    {Number(coin[1]).toFixed(2)}
+                  <span className="text-brand-500 dark:text-white px-2 w-[100px]">
+                    {fixed(coin[1], 4)}
                   </span>
-                  {" 개"}
+                  {"개"}
                   <input
                     type="number"
                     placeholder="00"

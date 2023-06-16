@@ -7,4 +7,6 @@ export type CommonInitialState = {
   lineOneColor: string;
   lineTwoColor: string;
   lineThreeColor: string;
+  autoTradingStatus: number;
+  ATStatus: string;
 };

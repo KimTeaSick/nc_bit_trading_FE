@@ -1,22 +1,12 @@
-import MiniCalendar from "@/components/calendar/MiniCalendar";
-import WeeklyRevenue from "@/views/admin/default/components/WeeklyRevenue";
-import TotalSpent from "@/views/admin/default/components/TotalSpent";
-import PieChartCard from "@/views/admin/default/components/PieChartCard";
-import { IoMdHome } from "react-icons/io";
-import { IoDocuments } from "react-icons/io5";
+import { FC } from "react";
 import { TbPigMoney, TbMoneybag } from "react-icons/tb";
 import { RiHandCoinFill, RiHandCoinLine } from "react-icons/ri";
-import { MdBarChart, MdDashboard, MdAccountBalance } from "react-icons/md";
+import { MdAccountBalance } from "react-icons/md";
 
 import Widget from "@/components/widget/Widget";
 import CheckTable from "@/views/admin/default/components/CheckTable";
 import ComplexTable from "@/views/admin/default/components/ComplexTable";
-import DailyTraffic from "@/views/admin/default/components/DailyTraffic";
-import OptionSearch from "@/views/admin/default/components/OptionSearch";
-import TaskCard from "@/views/admin/default/components/TaskCard";
-import useSearchData from "./variables/tableDataCheck";
 import useTableDataComplex from "./variables/tableDataComplex";
-import { FC } from "react";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 
@@ -78,12 +68,6 @@ const Dashboard: FC<DashboardProps> = ({
           {/* Complex Table , Task & Calendar */}
 
           <ComplexTable tableData={tableDataComplex} />
-        </div>
-      </div>
-      <div className="mt-3 ml-3 basis-1/6">
-        {/* Option */}
-        <div className="mt-3 ">
-          <OptionSearch />
         </div>
       </div>
     </div>

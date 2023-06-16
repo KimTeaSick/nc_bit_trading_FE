@@ -2,17 +2,17 @@ import { ChangeEvent, FC } from "react";
 import styled from "styled-components";
 
 const CALL_PRICE = [
-  { key: "+5 호가", value: "+5" },
-  { key: "+4 호가", value: "+4" },
-  { key: "+3 호가", value: "+3" },
-  { key: "+2 호가", value: "+2" },
-  { key: "+1 호가", value: "+1" },
-  { key: "시장가", value: "0" },
-  { key: "-1 호가", value: "-1" },
-  { key: "-2 호가", value: "-2" },
-  { key: "-3 호가", value: "-3" },
-  { key: "-4 호가", value: "-4" },
-  { key: "-5 호가", value: "-5" },
+  { key: "+5 호가", value: +5 },
+  { key: "+4 호가", value: +4 },
+  { key: "+3 호가", value: +3 },
+  { key: "+2 호가", value: +2 },
+  { key: "+1 호가", value: +1 },
+  { key: "시장가", value: 0 },
+  { key: "-1 호가", value: -1 },
+  { key: "-2 호가", value: -2 },
+  { key: "-3 호가", value: -3 },
+  { key: "-4 호가", value: -4 },
+  { key: "-5 호가", value: -5 },
 ];
 
 interface SelectionProps {
@@ -37,7 +37,7 @@ const Select = styled.select`
 
 const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   return (
-    <Select width={width} onChange={event} value={value || undefined}>
+    <Select width={width} onChange={event} value={value}>
       {itemList?.map((item: any, index) => (
         <option value={item?.value} key={index}>
           {item?.key}

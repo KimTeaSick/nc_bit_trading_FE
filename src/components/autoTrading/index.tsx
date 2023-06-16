@@ -7,9 +7,10 @@ import AccountPrice from "./components/AccountPrice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import {
-  getCoinInAccount,
   getNowUsedCondition,
-  getSearchCoinList,
+  usePossessionCoin,
+  useRecommendCoin,
+  useTradingHis,
 } from "@/pages/api/autotrading";
 import { getProperty } from "@/pages/api/walletAPIs";
 import ConditionModal from "./components/ConditionModal";
@@ -17,11 +18,12 @@ import ConditionModal from "./components/ConditionModal";
 const AutoTrading: FC = () => {
   const dispatch = useDispatch<any>();
   const [show, setShow] = useState({ S: false, T: false });
+  const { request: Rcoin } = useRecommendCoin();
+  const { request: Pcoin } = usePossessionCoin();
+  const { request: TrHis } = useTradingHis();
 
   useEffect(() => {
-    dispatch(getSearchCoinList());
     dispatch(getNowUsedCondition());
-    dispatch(getCoinInAccount());
     dispatch(getProperty());
   }, [dispatch]);
   const AT = useSelector((state: RootStateType) => state.autotrading);
@@ -49,9 +51,9 @@ const AutoTrading: FC = () => {
           />
           <AccountStatus myProperty={myProperty} />
           <div className="flex w-full gap-5 mt-3">
-            <SearchResult searchList={AT.searchList} />
-            <ConclusionStatus colclusionList={[1, 2]} />
-            <AccountPrice priceList={AT.myCoinList} />
+            <SearchResult searchList={Rcoin.data} />
+            <ConclusionStatus his={TrHis.data} />
+            <AccountPrice priceList={Pcoin.data} />
           </div>
         </div>
         <>

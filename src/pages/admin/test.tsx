@@ -30,20 +30,7 @@ const Setting: FC = () => {
           flexDirection: "column",
           rowGap: 15,
         }}
-      >
-        <ConditionModal
-          type="search"
-          condition={Object.values(
-            at.searchCondition ? at.searchCondition : []
-          )}
-        />
-        <ConditionModal
-          type="trading"
-          condition={Object.values(
-            at.tradingCondition ? at.tradingCondition : []
-          )}
-        />
-      </div>
+      ></div>
     </Admin>
   );
 };

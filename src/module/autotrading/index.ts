@@ -1,8 +1,4 @@
-import {
-  getCoinInAccount,
-  getNowUsedCondition,
-  getSearchCoinList,
-} from "@/pages/api/autotrading";
+import { getNowUsedCondition } from "@/pages/api/autotrading";
 import { AutoTradingInitialState } from "./../autoTrading/index.d";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -21,17 +17,6 @@ const AutoTradingSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getSearchCoinList.pending, (state) => {
-      state.searchListStatus = "Loading";
-    });
-    builder.addCase(getSearchCoinList.fulfilled, (state, action) => {
-      state.searchList = action.payload;
-      state.searchListStatus = "Success";
-    });
-    builder.addCase(getSearchCoinList.rejected, (state, action) => {
-      state.searchListStatus = `Error, ${action.error}`;
-    });
-
     builder.addCase(getNowUsedCondition.pending, (state) => {
       state.conditionListStatus = "Loading";
     });
@@ -42,17 +27,6 @@ const AutoTradingSlice = createSlice({
     });
     builder.addCase(getNowUsedCondition.rejected, (state, action) => {
       state.conditionListStatus = `Error, ${action.error}`;
-    });
-
-    builder.addCase(getCoinInAccount.pending, (state) => {
-      state.myCoinListStatus = "Loading";
-    });
-    builder.addCase(getCoinInAccount.fulfilled, (state, action) => {
-      state.myCoinList = action.payload;
-      state.myCoinListStatus = "Success";
-    });
-    builder.addCase(getCoinInAccount.rejected, (state, action) => {
-      state.myCoinListStatus = `Error, ${action.error}`;
     });
   },
 });

@@ -1,4 +1,4 @@
-import { dataChanger } from "../lib/ModalDataChanger";
+import { dataChanger } from "../lib/modalDataChanger";
 import { FC, useRef } from "react";
 import {
   SEARCH_OPTION,

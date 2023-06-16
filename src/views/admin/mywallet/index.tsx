@@ -24,8 +24,8 @@ const Marketplace = () => {
         {/* trending card */}
         <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-1">
           <BitCard
-            account={myProperty}
-            balance={balance}
+            account={myProperty[0]}
+            balance={myProperty[1]}
             coinList={coinList}
             image={NFt3.src}
           />

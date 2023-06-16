@@ -19,10 +19,11 @@ import IMG_URL from "@/assets/img/search/bitcoin.png";
 import { CoinSearch } from "@/pages/api/searchAPIs";
 import { Input } from "@/components/common/input";
 import { SearchButton } from "../Condition";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { conditionExtract } from "../lib/conditionExtract";
 import { SearchCondition } from "../type/condition";
+import { RootStateType } from "@/module/rootReducer.d";
 
 interface Props {
   searchSlice: SearchInitialStateType;
@@ -43,10 +44,16 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
   const [useConditionList, setUseConditionList] = useState<string[]>(); // 검색에 사용된 컨디션
   const [loading, setLoading] = useState<boolean>(false); // 로딩 상태
   const [name, setName] = useState<string>(""); // 로딩 상태
-
+  const { autoTradingStatus } = useSelector(
+    (state: RootStateType) => state.common
+  );
   const dispatch = useDispatch();
 
   const searchBtnEvent = useCallback(async () => {
+    if (autoTradingStatus) {
+      alert("자동매매 실행 중 종목을 검색 할 수 없습니다.");
+      return;
+    }
     const body = {
       Price: price,
       TransactionAmount: tta,

@@ -1,5 +1,5 @@
 import CoinPage from "@/views/admin/coinlist/index";
-import Loading from "@/components/common/Loading";
+import Loading from "@/components/common/LoadingComponent";
 import Admin from "@/layouts/admin";
 import { setPageActive } from "@/module/common";
 import { useCallback, useEffect, useState } from "react";

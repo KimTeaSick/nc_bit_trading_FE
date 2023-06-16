@@ -37,3 +37,10 @@ export const deleteTradingOption = async (name: string) => {
   const response = await post("trade/deleteTradingOption", { name });
   return response;
 };
+
+export const controlAuto = async (type: boolean) => {
+  const response = await post("trade/controlAutoTrading", {
+    flag: type ? 1 : 0,
+  });
+  return response;
+};

@@ -1,8 +1,10 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
 import Footer from "@/components/footer/Footer";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { getATStatus, useAutoStatus } from "@/pages/api/autotrading";
+import { useDispatch } from "react-redux";
 
 interface Props {
   children: ReactNode;
@@ -10,7 +12,11 @@ interface Props {
 }
 
 const Admin: FC<Props> = ({ children, extract }) => {
+  const dispatch = useDispatch<any>();
   document.documentElement.dir = "ltr";
+  useEffect(() => {
+    dispatch(getATStatus());
+  }, [dispatch]);
 
   return (
     <div className={extract + " flex h-full w-full"}>

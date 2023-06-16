@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 
 const Widget = (props: {
   icon: JSX.Element;
-  title: string;
-  subtitle: string;
+  title: string | number;
+  subtitle: string | number;
   button?: ReactNode;
 }) => {
   const { icon, title, subtitle, button } = props;

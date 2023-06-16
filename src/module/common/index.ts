@@ -1,3 +1,4 @@
+import { getATStatus } from "@/pages/api/autotrading";
 import { CommonInitialState } from "./common.d";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -10,6 +11,8 @@ const initialState: CommonInitialState = {
   lineTwoColor: "skyblue",
   lineThreeRange: 60,
   lineThreeColor: "orange",
+  autoTradingStatus: 0,
+  ATStatus: "",
 };
 
 const commonSlice = createSlice({
@@ -38,7 +41,19 @@ const commonSlice = createSlice({
       state.lineThreeColor = action.payload;
     },
   },
-  extraReducers: (builder) => {},
+
+  extraReducers: (builder) => {
+    builder.addCase(getATStatus.pending, (state) => {
+      state.ATStatus = "Loading";
+    });
+    builder.addCase(getATStatus.fulfilled, (state, action) => {
+      state.ATStatus = "Success";
+      state.autoTradingStatus = action.payload.now_status;
+    });
+    builder.addCase(getATStatus.rejected, (state, action) => {
+      state.ATStatus = `Error, ${action.error}`;
+    });
+  },
 });
 
 export const {

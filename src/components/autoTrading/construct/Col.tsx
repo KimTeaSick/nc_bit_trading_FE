@@ -10,10 +10,11 @@ export const SEARCH_RESULT_COL = [
 
 export const TRADING_STATUS_COL = [
   "종목명",
-  "현재가",
-  "주문가",
-  "주문량",
-  "체경상태",
+  "개수",
+  "가격",
+  "사용 원화",
+  "수수료",
+  "상태",
 ];
 
 export const ACCOUNT_PRICE_COL = [

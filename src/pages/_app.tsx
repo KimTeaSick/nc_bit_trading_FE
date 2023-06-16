@@ -10,6 +10,7 @@ import Head from "next/head";
 import "../styles/globals.css";
 import "@/assets/css/MiniCalendar.css";
 import { BrowserRouter } from "react-router-dom";
+import { useAutoStatus } from "./api/autotrading";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = useState(() => new QueryClient());

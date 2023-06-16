@@ -9,17 +9,16 @@ const TABLE_HEAD_CLASS = "border-gray-200 border-b-2 flex ";
 const TR_CLASS = "w-full flex justify-between items-center";
 const TD_CLASS = "w-1/3 flex justify-center";
 const USE_OPTION = " bg-red-400 rounded-lg text-white ";
+const NOW_CHOICE_OPTION = " bg-navy-400 rounded-lg text-white ";
 
 interface Props {
   itemList: any[];
   onClick: (name: string) => void;
+  name: string;
+  resetEvent: () => void;
 }
 
-const ConditionList: FC<Props> = ({ itemList, onClick }) => {
-  const { optionList } = useSelector(
-    (state: RootStateType) => state.autotradingCondition
-  );
-
+const ConditionList: FC<Props> = ({ itemList, onClick, name, resetEvent }) => {
   return (
     <div className={COVER_CLASS}>
       <p className="text-xl font-bold">조건 리스트</p>
@@ -33,11 +32,12 @@ const ConditionList: FC<Props> = ({ itemList, onClick }) => {
             ))}
           </tr>
         </thead>
-        {optionList?.map((value: any, idx: number) => (
+        {itemList?.map((value: any, idx: number) => (
           <tr
             className={
               `${TR_CLASS}` +
               `${value.used && USE_OPTION}` +
+              `${value.Name === name && NOW_CHOICE_OPTION}` +
               " text-sm cursor-pointer text-gray-900 items-center"
             }
             onClick={() => onClick(value.Name)}
@@ -48,6 +48,17 @@ const ConditionList: FC<Props> = ({ itemList, onClick }) => {
             <td className={TD_CLASS}>{value.Update_date}</td>
           </tr>
         ))}
+        <tr
+          className={
+            `${TR_CLASS}` +
+            " text-sm cursor-pointer text-gray-900 items-center py-5"
+          }
+          onClick={resetEvent}
+        >
+          <td className={TD_CLASS}>새로운 조건 등록</td>
+          <td className={TD_CLASS}>-</td>
+          <td className={TD_CLASS}>-</td>
+        </tr>
       </table>
     </div>
   );

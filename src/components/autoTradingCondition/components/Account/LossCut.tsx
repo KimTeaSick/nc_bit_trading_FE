@@ -2,6 +2,7 @@ import { Dispatch, FC, SetStateAction } from "react";
 import { useAccountType } from "../../type/autoTrading";
 import SelectBox, { CALL_PRICE } from "../SelectBox";
 import { Input } from "@/components/common/input";
+import RadioButton from "../RadioButton";
 
 const COVER_CLASS = "flex flex-col font-semibold gap-2";
 const TITLE_CLASS = "font-bold text-xl";
@@ -32,6 +33,11 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
         </div>
         <div className={FLEX_GAP_CLASS}>
           <div className={FLEX_GAP_CLASS}>
+            <RadioButton
+              value={1}
+              initialValue={value.loss}
+              setValue={() => setValue({ ...value, loss: 1 })}
+            />
             <p>전체 종목을</p>
             <SelectBox
               itemList={CALL_PRICE}
@@ -47,6 +53,11 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
             <p>매도,</p>
           </div>
           <div className={FLEX_GAP_CLASS}>
+            <RadioButton
+              value={2}
+              initialValue={value.loss}
+              setValue={() => setValue({ ...value, loss: 2 })}
+            />
             <Input
               width={60}
               value={value.loss_cut_under_coin_specific_percent}
@@ -91,6 +102,11 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
         </div>
         <div className={FLEX_GAP_CLASS}>
           <div className={FLEX_GAP_CLASS}>
+            <RadioButton
+              value={1}
+              initialValue={value.gain}
+              setValue={() => setValue({ ...value, gain: 1 })}
+            />
             <p>전체 종목을</p>
             <SelectBox
               itemList={CALL_PRICE}
@@ -103,9 +119,14 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
                 })
               }
             />
-            <p>매도,</p>
+            <p>매도</p>
           </div>
           <div className={FLEX_GAP_CLASS}>
+            <RadioButton
+              value={2}
+              initialValue={value.gain}
+              setValue={() => setValue({ ...value, gain: 2 })}
+            />
             <Input
               width={60}
               value={value.loss_cut_over_coin_specific_percent}
