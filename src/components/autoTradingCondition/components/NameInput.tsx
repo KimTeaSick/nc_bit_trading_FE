@@ -8,7 +8,7 @@ interface Props {
   name: string;
   setName: (e: ChangeEvent<HTMLInputElement>) => void;
   registerEvent: (type: string) => void;
-  ATEvent: () => void;
+  autoTradingStatus: number;
   AnD: (name: string, type: number) => void;
   type: boolean;
 }
@@ -17,7 +17,7 @@ const NameInput: FC<Props> = ({
   name,
   setName,
   registerEvent,
-  ATEvent,
+  autoTradingStatus,
   AnD,
   type,
 }) => {
@@ -47,7 +47,16 @@ const NameInput: FC<Props> = ({
           }
         />
         <Link href={"/admin/autotrading"}>
-          <Button title="자동매매" event={() => controlAuto(true)} />
+          <Button
+            title="자동매매"
+            event={() => {
+              if (autoTradingStatus) {
+                alert(`자동매매 실행 중 사용 할 수 없습니다.`);
+                return;
+              }
+              controlAuto(true);
+            }}
+          />
         </Link>
       </div>
     </div>

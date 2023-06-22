@@ -50,10 +50,10 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
   const dispatch = useDispatch();
 
   const searchBtnEvent = useCallback(async () => {
-    if (autoTradingStatus) {
-      alert("자동매매 실행 중 종목을 검색 할 수 없습니다.");
-      return;
-    }
+    // if (autoTradingStatus) {
+    //   alert("자동매매 실행 중 종목을 검색 할 수 없습니다.");
+    //   return;
+    // }
     const body = {
       Price: price,
       TransactionAmount: tta,

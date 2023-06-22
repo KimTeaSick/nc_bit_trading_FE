@@ -31,7 +31,7 @@ const TradingAutoCancle: FC<Props> = ({ value, setValue }) => {
         <p>매수 미 체결 주문 내역에 대하여 주문시점으로부터 </p>
         <Input
           width={50}
-          value={value.sell_cancle_time}
+          value={value.buy_cancle_time}
           onClick={() => setValue({ ...value, buy_cancle_time: "" })}
           onChange={(e) =>
             setValue({ ...value, buy_cancle_time: e.target.value })

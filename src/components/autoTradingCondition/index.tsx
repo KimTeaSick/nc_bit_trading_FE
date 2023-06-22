@@ -132,7 +132,7 @@ const AutoTradingConditon: FC = () => {
             AnD={activeNdelete}
             setName={setName}
             registerEvent={RUEvent}
-            ATEvent={() => console.log("asd")}
+            autoTradingStatus={autoTradingStatus}
           />
         </div>
       </div>

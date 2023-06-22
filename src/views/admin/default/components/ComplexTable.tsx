@@ -25,7 +25,7 @@ type RowObj = {
 const columnHelper = createColumnHelper<RowObj>();
 
 export default function ComplexTable(props: { tableData: any }) {
-  const { tableData } = props;
+  const { tableData = [] } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
   let defaultData = tableData;
   const columns = [
@@ -158,10 +158,10 @@ export default function ComplexTable(props: { tableData: any }) {
     debugTable: true,
   });
 
-  // useEffect(() => {
-  //   console.log(tableData);
-  //   setData(tableData);
-  // }, [tableData]);
+  useEffect(() => {
+    console.log(tableData);
+    setData(defaultData);
+  }, [tableData]);
 
   return (
     <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>

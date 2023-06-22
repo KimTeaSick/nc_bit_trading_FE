@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Banner from "./components/Banner";
+import Banner from "./Banner";
 import NFt3 from "@/assets/img/nfts/Nft3.png";
 import BitCard from "@/components/card/BitCard";
 import { useSelector } from "react-redux";

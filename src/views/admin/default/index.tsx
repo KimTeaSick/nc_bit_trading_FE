@@ -1,14 +1,11 @@
 import { FC } from "react";
-import { TbPigMoney, TbMoneybag } from "react-icons/tb";
-import { RiHandCoinFill, RiHandCoinLine } from "react-icons/ri";
-import { MdAccountBalance } from "react-icons/md";
-
-import Widget from "@/components/widget/Widget";
 import CheckTable from "@/views/admin/default/components/CheckTable";
 import ComplexTable from "@/views/admin/default/components/ComplexTable";
 import useTableDataComplex from "./variables/tableDataComplex";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
+import AccountStatus from "./components/AccountStatus";
+import Marketplace from "./components/MarketPlace";
 
 interface DashboardProps {
   rpLoading?: boolean;
@@ -20,55 +17,15 @@ const Dashboard: FC<DashboardProps> = ({
   CheckTableDataComplex,
 }) => {
   const { accountInfo } = useSelector((state: RootStateType) => state.dash);
-  console.log("rpLoading", rpLoading);
-  // const CheckTableDataComplex = useSearchData();
-  console.log("CheckTableDataComplex", CheckTableDataComplex);
   const tableDataComplex = useTableDataComplex();
 
   return (
-    <div className="flex flex-row">
-      <div className="mt-3 basis-5/6">
-        {/* Card widget */}
-        <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-5">
-          <Widget
-            icon={<MdAccountBalance className="h-7 w-7" />}
-            title={"종합잔고"}
-            subtitle={accountInfo[0]?.toFixed(1)}
-          />
-          <Widget
-            icon={<TbMoneybag className="h-6 w-6" />}
-            title={"예수금"}
-            subtitle={accountInfo[1]?.toFixed(1)}
-          />
-          <Widget
-            icon={<RiHandCoinFill className="h-7 w-7" />}
-            title={"당일 매수금"}
-            subtitle={accountInfo[2]?.toFixed(1)}
-          />
-          <Widget
-            icon={<RiHandCoinLine className="h-6 w-6" />}
-            title={"당일 매도금"}
-            subtitle={accountInfo[3]?.toFixed(1)}
-          />
-          <Widget
-            icon={<TbPigMoney className="h-7 w-7" />}
-            title={"손익금"}
-            subtitle={accountInfo[4]?.toFixed(1)}
-          />
-        </div>
-
-        {/* Tables & Charts */}
-        <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-1">
-          {/* Check Table */}
-          <div>
-            {rpLoading === true ? null : (
-              <CheckTable tableData={CheckTableDataComplex} />
-            )}
-          </div>
-          {/* Complex Table , Task & Calendar */}
-
-          <ComplexTable tableData={tableDataComplex} />
-        </div>
+    <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
+      <AccountStatus accountInfo={accountInfo} />
+      <Marketplace />
+      <div className="mt-5 grid grid-cols-2 gap-5">
+        {!rpLoading && <CheckTable tableData={CheckTableDataComplex} />}
+        <ComplexTable tableData={tableDataComplex} />
       </div>
     </div>
   );

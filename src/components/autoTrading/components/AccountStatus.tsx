@@ -20,7 +20,7 @@ const AccountStatus: FC<Props> = ({ myProperty }) => {
   const stopEvent = () => {
     controlAuto(false);
     alert("자동 매매가 중지되었습니다.");
-    Router.replace("/admin/wallet");
+    Router.replace("/admin/default");
   };
 
   return (

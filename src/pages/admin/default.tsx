@@ -1,43 +1,32 @@
-import { NextPage } from "next";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { setPageActive } from "@/module/common";
-import {
-  getAccountThunk,
-  getPossessionCoin,
-  useRecommendPrice,
-} from "../api/dash";
-import { YMD } from "@/lib/dateFormat";
+import { getAccountThunk, getPossessionCoin } from "../api/dash";
 import Dashboard from "@/views/admin/default";
 import Admin from "@/layouts/admin";
+import { useRecommendCoin } from "../api/autotrading";
+import { getBalance, getProperty } from "../api/walletAPIs";
 
-const Home: NextPage = () => {
+const Home: FC = () => {
   const dispatch = useDispatch<any>();
   const [recommandPriceData, setRecommandPrice] = useState([]);
-  const now = new Date();
-  const { request: recommandPrice }: any = useRecommendPrice();
-  console.log(recommandPrice);
+  const { request: recommandPrice }: any = useRecommendCoin();
 
   useEffect(() => {
     setRecommandPrice(recommandPrice.data);
     dispatch(setPageActive("Dash"));
     dispatch(getPossessionCoin());
-    dispatch(
-      getAccountThunk({
-        date: [YMD(now) + "000000", YMD(now) + "235959"],
-      })
-    );
-  }, [dispatch, recommandPrice, now]);
+    dispatch(getBalance());
+    dispatch(getProperty());
+  }, [dispatch, recommandPrice]);
 
   return (
-    <>
-      <Admin>
-        <Dashboard
-          CheckTableDataComplex={recommandPriceData}
-          // rpLoading={recommandPrice.isLoading}
-        />
-      </Admin>
-    </>
+    <Admin>
+      <Dashboard
+        CheckTableDataComplex={recommandPriceData}
+        // rpLoading={recommandPrice.isLoading}
+      />
+    </Admin>
   );
 };
 
