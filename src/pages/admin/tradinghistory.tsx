@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import LayoutComponent from "@/components/common/Layout";
+
 import { setPageActive } from "@/module/common";
 import { useDispatch, useSelector } from "react-redux";
 import TradingPage from "@/components/TradingList/TradingListPage";

@@ -15,6 +15,7 @@ export const TRADING_STATUS_COL = [
   "사용 원화",
   "수수료",
   "상태",
+  "날짜",
 ];
 
 export const ACCOUNT_PRICE_COL = [

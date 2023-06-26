@@ -9,78 +9,21 @@ type RowObj = {
   quantity: string;
   price: string;
   charge: string;
+  date: string;
 };
 
 export const useTransactionHistory = () => {
   const { orderList } = useSelector((state: RootStateType) => state.trading);
   const tableData = orderList.map((value, index) => {
     return {
-      number: index + 1,
-      name: value.order_currency,
-      Trading: value.type === "bid" ? "매도" : "매수",
-      coinprice: value.contract[0].price,
-      quantity: value.order_qty,
-      price: value.contract[0].total,
-      charge: value.contract[0].fee,
+      coin_name: value.coin_name,
+      unit: value.unit,
+      price: value.price,
+      total_price: value.total_price,
+      fee: value.fee,
+      type: value.type === "bid" ? "매도" : "매수",
+      date: value.date.slice(0, 19),
     };
   });
   return tableData;
 };
-
-const tableDataComplex: RowObj[] = [
-  {
-    number: "1",
-    name: "Marketplace",
-    Trading: "매도",
-    coinprice: "21.3원",
-    quantity: "50",
-    price: "1,065원",
-    charge: "2.66원",
-  },
-  {
-    number: "1",
-    name: "Marketplace",
-    Trading: "매도",
-    coinprice: "21.3원",
-    quantity: "50",
-    price: "1,065원",
-    charge: "2.66원",
-  },
-  {
-    number: "1",
-    name: "Marketplace",
-    Trading: "매도",
-    coinprice: "21.3원",
-    quantity: "50",
-    price: "1,065원",
-    charge: "2.66원",
-  },
-  {
-    number: "1",
-    name: "Marketplace",
-    Trading: "매도",
-    coinprice: "21.3원",
-    quantity: "50",
-    price: "1,065원",
-    charge: "2.66원",
-  },
-  {
-    number: "1",
-    name: "Marketplace",
-    Trading: "매도",
-    coinprice: "21.3원",
-    quantity: "50",
-    price: "1,065원",
-    charge: "2.66원",
-  },
-  {
-    number: "1",
-    name: "Marketplace",
-    Trading: "매도",
-    coinprice: "21.3원",
-    quantity: "50",
-    price: "1,065원",
-    charge: "2.66원",
-  },
-];
-export default tableDataComplex;

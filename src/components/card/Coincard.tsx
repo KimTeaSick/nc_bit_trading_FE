@@ -2,6 +2,7 @@ import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { ImPriceTags } from "react-icons/im";
 import { useState } from "react";
 import Card from "@/components/card";
+import Image from "next/image";
 
 const CoinCard = (props: {
   image: string;
@@ -17,7 +18,9 @@ const CoinCard = (props: {
     >
       <div className="h-full w-full">
         <div className="relative w-full">
-          <img
+          <Image
+            width={50}
+            height={50}
             src={image}
             className="mb-3 h-full w-full rounded-xl 3xl:h-full 3xl:w-full"
             alt=""
@@ -42,8 +45,7 @@ const CoinCard = (props: {
               {title}{" "}
             </p>
             <p className="flex items-center text-lg font-bold text-brand-500 dark:text-whit ">
-              <ImPriceTags className="mr-2" />
-              {price}{" "}
+              ₩{price}{" "}
             </p>
           </div>
 

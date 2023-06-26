@@ -12,19 +12,6 @@ const Marketplace: FC = () => {
   return (
     <div>
       <Banner />
-      <div>
-        <h4 className="ml-1 text-2xl font-bold text-navy-700 dark:text-white">
-          내 지갑 현황
-        </h4>
-      </div>
-      <div className="z-20 ">
-        <BitCard
-          account={myProperty[0]}
-          balance={myProperty[1]}
-          coinList={coinList}
-          image={NFt3.src}
-        />
-      </div>
     </div>
   );
 };

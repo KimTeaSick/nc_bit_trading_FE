@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import AccountStatus from "./components/AccountStatus";
 import Marketplace from "./components/MarketPlace";
+import Rate from "./components/Rate";
+import { useNowRate, useTodayAccount } from "@/pages/api/dash";
 
 interface DashboardProps {
   rpLoading?: boolean;
@@ -16,14 +18,17 @@ const Dashboard: FC<DashboardProps> = ({
   rpLoading,
   CheckTableDataComplex,
 }) => {
-  const { accountInfo } = useSelector((state: RootStateType) => state.dash);
+  const { request: accoutInfo } = useTodayAccount();
+  const { request: rateInfo } = useNowRate();
   const tableDataComplex = useTableDataComplex();
+  console.log("rateInfo", rateInfo);
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
-      <AccountStatus accountInfo={accountInfo} />
+      <AccountStatus accountInfo={accoutInfo.data} />
       <Marketplace />
-      <div className="mt-5 grid grid-cols-2 gap-5">
+      <Rate rateInfo={rateInfo?.data} />
+      <div className="mt-1 grid grid-cols-2 gap-5">
         {!rpLoading && <CheckTable tableData={CheckTableDataComplex} />}
         <ComplexTable tableData={tableDataComplex} />
       </div>

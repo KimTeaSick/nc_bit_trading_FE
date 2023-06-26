@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Col, TRADING_STATUS_COL } from "../construct/Col";
 import { fixed } from "../lib/tool";
 import { THStatusChanger } from "../lib/modalDataChanger";
+import { krwChage } from "@/lib/krwChage";
 
 const SEARCH_RESULT_CLASS = "flex flex-col w-full ";
 const ITEM_STYLE_CLASS = "w-1/6 flex justify-center";
@@ -25,11 +26,16 @@ const ConclusionStatus: FC<Props> = ({ his }) => {
             <div className={ROW_STYLE_CLASS} key={index}>
               <p className={ITEM_STYLE_CLASS}>{his[index].coin_name}</p>
               <p className={ITEM_STYLE_CLASS}>{fixed(his[index].unit, 4)}</p>
-              <p className={ITEM_STYLE_CLASS}>{fixed(his[index].price, 0)}</p>
-              <p className={ITEM_STYLE_CLASS}>{his[index].total}</p>
-              <p className={ITEM_STYLE_CLASS}>{his[index].fee}</p>
+              <p className={ITEM_STYLE_CLASS}>
+                {krwChage(fixed(his[index].price, 0))}
+              </p>
+              <p className={ITEM_STYLE_CLASS}>{krwChage(his[index].total)}</p>
+              <p className={ITEM_STYLE_CLASS}>{krwChage(his[index].fee)}</p>
               <p className={ITEM_STYLE_CLASS}>
                 {THStatusChanger(his[index].status)}
+              </p>
+              <p className={ITEM_STYLE_CLASS + " text-center text-sm"}>
+                {his[index].date}
               </p>
             </div>
           ))}

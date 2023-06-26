@@ -10,6 +10,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import { krwChage } from "@/lib/krwChage";
 
 type RowObj = {
   name: string;
@@ -53,7 +54,7 @@ function CheckTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -80,7 +81,7 @@ function CheckTable(props: { tableData: any }) {
   return (
     <Card extra={"w-full h-[50vh] px-6"}>
       <header className="relative flex items-center justify-between pt-4">
-        <div className="text-xl font-bold text-navy-700 dark:text-white">
+        <div className="lg:!text-xl text-base font-bold text-navy-700 dark:text-white">
           📚 실시간 종목
         </div>
         <CardMenu />
@@ -128,10 +129,15 @@ function CheckTable(props: { tableData: any }) {
                         key={cell.id}
                         className="min-w-[150px] border-white/0 py-3 pr-4"
                       >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
+                        {cell.id.substring(cell.id.length - 5) === "price"
+                          ? flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
+                            )
+                          : flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
+                            )}
                       </td>
                     );
                   })}

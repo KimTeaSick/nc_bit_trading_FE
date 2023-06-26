@@ -4,7 +4,7 @@ import Admin from "@/layouts/admin";
 
 const Search: FC = () => {
   return (
-    <Admin>
+    <Admin extract=" w-[200vw] md:!w-full">
       <SearchPage />
     </Admin>
   );

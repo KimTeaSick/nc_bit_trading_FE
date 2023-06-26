@@ -15,10 +15,7 @@ export const getDisparityOptionThunk = createAsyncThunk(
 
 export const useDisparityLineQuery = () => {
   const queryKey = "setting/getDisparity" as const;
-  const queryFn = async () =>
-    await axios
-      .get("http://192.168.10.119:8000/" + queryKey)
-      .then((res) => res.data);
+  const queryFn = async () => await get(queryKey).then((res) => res.data);
   const request = useQuery([queryKey], queryFn);
   return request;
 };

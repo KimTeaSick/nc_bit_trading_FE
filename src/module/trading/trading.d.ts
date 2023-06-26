@@ -1,15 +1,11 @@
 type OrderListType = {
-  contract: OrderListContractType[];
-  payment_currency: string;
-  order_currency: string;
-  order_status: string;
-  cancel_date: string;
-  cancel_type: string;
-  watch_price: string;
-  order_price: string;
-  order_date: string;
-  order_qty: string;
+  coin_name: string;
+  unit: string;
+  price: string;
+  total_price: string;
+  fee: string;
   type: string;
+  date: string;
 };
 type OrderListContractType = {
   fee: string;

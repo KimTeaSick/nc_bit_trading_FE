@@ -11,6 +11,7 @@ import {
 } from "@tanstack/react-table";
 import { coinNameChange } from "@/variables/coinNameChange";
 import { conditionNameChange } from "@/variables/conditionNameChange";
+import { krwChage } from "@/lib/krwChage";
 
 function CheckTable(props: {
   tableData: any;
@@ -67,7 +68,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -78,7 +79,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -89,7 +90,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -100,7 +101,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -111,7 +112,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),

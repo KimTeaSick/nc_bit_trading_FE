@@ -62,12 +62,12 @@ const Navbar = (props: {
             className="block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
           />
         </div>
-        <span
+        {/* <span
           className="flex cursor-pointer text-xl text-gray-600 dark:text-white xl:hidden"
           onClick={onOpenSidenav}
         >
-          <FiAlignJustify className="h-5 w-5" />
-        </span>
+          <FiAlignJustify className="h-5 w-5" /> */}
+        {/* </span> */}
         {/* start Notification */}
 
         {/* start Horizon PRO */}

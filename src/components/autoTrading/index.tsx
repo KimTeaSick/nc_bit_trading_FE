@@ -13,7 +13,11 @@ import {
   useTradingHis,
 } from "@/pages/api/autotrading";
 import { getProperty } from "@/pages/api/walletAPIs";
-import ConditionModal from "./components/ConditionModal";
+import {
+  TradingConditionM,
+  SearchConditionM,
+} from "./components/ConditionModal";
+import { useTodayAccount } from "@/pages/api/dash";
 
 const AutoTrading: FC = () => {
   const dispatch = useDispatch<any>();
@@ -21,6 +25,7 @@ const AutoTrading: FC = () => {
   const { request: Rcoin } = useRecommendCoin();
   const { request: Pcoin } = usePossessionCoin();
   const { request: TrHis } = useTradingHis();
+  const { request: accountInfo } = useTodayAccount();
 
   useEffect(() => {
     dispatch(getNowUsedCondition());
@@ -34,6 +39,7 @@ const AutoTrading: FC = () => {
     type === "T" && setShow({ T: true, S: false });
     type === "N" && setShow({ T: false, S: false });
   };
+  console.log("AT.tradingCondition?.name", AT.tradingCondition);
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
@@ -49,8 +55,8 @@ const AutoTrading: FC = () => {
             trading_condition={AT.tradingCondition?.name}
             showControl={showControl}
           />
-          <AccountStatus myProperty={myProperty} />
-          <div className="flex w-full gap-5 mt-3">
+          <AccountStatus myProperty={accountInfo.data} />
+          <div className="flex flex-col w-full gap-5 mt-3 md:!flex-row">
             <SearchResult searchList={Rcoin.data} />
             <ConclusionStatus his={TrHis.data} />
             <AccountPrice priceList={Pcoin.data} />
@@ -58,22 +64,28 @@ const AutoTrading: FC = () => {
         </div>
         <>
           {show.S && (
-            <ConditionModal
-              type="search"
+            <SearchConditionM
               showControl={showControl}
-              condition={Object.values(
-                AT.searchCondition ? AT.searchCondition : []
-              )}
+              cValue={AT.searchCondition}
             />
+            // <ConditionModal
+            //   type="search"
+            //   showControl={showControl}
+            //   condition={Object.values(
+            //     AT.searchCondition ? AT.searchCondition : []
+            //   )}
+            // />
           )}
           {show.T && (
-            <ConditionModal
-              type="trading"
+            <TradingConditionM
               showControl={showControl}
-              condition={Object.values(
-                AT.tradingCondition ? AT.tradingCondition : []
-              )}
+              cValue={AT.tradingCondition}
             />
+            // <ConditionModal
+            //   type="trading"
+            //   showControl={showControl}
+            //   condition={AT.tradingCondition}
+            // />
           )}
         </>
       </div>

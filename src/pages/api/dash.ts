@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { get } from ".";
+import { AccountType } from "@/@types/Dash";
 
 export const useRecommendPrice = () => {
   const queryKey = "dash/recommendCoin" as const;
@@ -43,3 +44,27 @@ export const getAccountThunk = createAsyncThunk(
     return response;
   }
 );
+
+export const useTodayAccount = () => {
+  const queryKey = "todayAccount" as const;
+  const queryFn = async () =>
+    await get(queryKey).then((res: AccountType) => {
+      return res;
+    });
+
+  const request = useQuery([queryKey], queryFn);
+
+  return { request };
+};
+
+export const useNowRate = () => {
+  const queryKey = "nowRate" as const;
+  const queryFn = async () =>
+    await get(queryKey).then((res: AccountType) => {
+      return res;
+    });
+
+  const request = useQuery([queryKey], queryFn);
+
+  return { request };
+};

@@ -15,15 +15,16 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import { krwChage } from "@/lib/krwChage";
 
 type RowObj = {
-  number: string;
-  name: string;
-  Trading: string;
-  coinprice: string;
-  quantity: string;
+  coin_name: string;
+  unit: string;
   price: string;
-  charge: string;
+  total_price: string;
+  fee: string;
+  type: string;
+  date: string;
 };
 
 function CheckTable(props: {
@@ -34,19 +35,8 @@ function CheckTable(props: {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   let defaultData = tableData;
   const columns = [
-    columnHelper.accessor("number", {
-      id: "number",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">NO.</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("name", {
-      id: "name",
+    columnHelper.accessor("coin_name", {
+      id: "coin_name",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">코인</p>
       ),
@@ -56,34 +46,10 @@ function CheckTable(props: {
         </p>
       ),
     }),
-    columnHelper.accessor("Trading", {
-      id: "Trading",
+    columnHelper.accessor("type", {
+      id: "type",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">매매</p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("coinprice", {
-      id: "coinprice",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">
-          개당 코인 가격
-        </p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("quantity", {
-      id: "quantity",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">수량</p>
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -94,6 +60,19 @@ function CheckTable(props: {
     columnHelper.accessor("price", {
       id: "price",
       header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">
+          개당 코인 가격
+        </p>
+      ),
+      cell: (info) => (
+        <p className="text-sm font-bold text-navy-700 dark:text-white">
+          {krwChage(info.getValue())}
+        </p>
+      ),
+    }),
+    columnHelper.accessor("unit", {
+      id: "unit",
+      header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">수량</p>
       ),
       cell: (info) => (
@@ -102,12 +81,36 @@ function CheckTable(props: {
         </p>
       ),
     }),
-    columnHelper.accessor("charge", {
-      id: "charge",
+    columnHelper.accessor("total_price", {
+      id: "total_price",
+      header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">
+          총 거래가
+        </p>
+      ),
+      cell: (info) => (
+        <p className="text-sm font-bold text-navy-700 dark:text-white">
+          {krwChage(info.getValue())}
+        </p>
+      ),
+    }),
+    columnHelper.accessor("fee", {
+      id: "fee",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
           수수료
         </p>
+      ),
+      cell: (info) => (
+        <p className="text-sm font-bold text-navy-700 dark:text-white">
+          {info.getValue()}
+        </p>
+      ),
+    }),
+    columnHelper.accessor("date", {
+      id: "date",
+      header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">날짜</p>
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">

@@ -1,5 +1,5 @@
 import { Input } from "@/components/common/input";
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import Button from "./Button";
 import Link from "next/link";
 import { controlAuto } from "@/pages/api/autotradingCondition";
@@ -21,6 +21,20 @@ const NameInput: FC<Props> = ({
   AnD,
   type,
 }) => {
+  const [loading, setLoading] = useState(false);
+  const AUTO_BTN = async () => {
+    setLoading(true);
+    if (autoTradingStatus) {
+      alert(`자동매매 실행 중 사용 할 수 없습니다.`);
+      setLoading(false);
+      return;
+    }
+    const res = await controlAuto(true);
+    if (res === 200) {
+      setLoading(false);
+      window.location.href = "/admin/autotrading";
+    }
+  };
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center">
@@ -50,12 +64,9 @@ const NameInput: FC<Props> = ({
           <Button
             title="자동매매"
             event={() => {
-              if (autoTradingStatus) {
-                alert(`자동매매 실행 중 사용 할 수 없습니다.`);
-                return;
-              }
-              controlAuto(true);
+              AUTO_BTN();
             }}
+            loading={loading}
           />
         </Link>
       </div>

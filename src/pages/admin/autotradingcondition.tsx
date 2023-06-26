@@ -14,7 +14,7 @@ const Autotrading: NextPage = () => {
 
   return (
     <>
-      <Admin>
+      <Admin extract=" w-[200vw] md:!w-full">
         <AutoTradingComponent />
       </Admin>
     </>

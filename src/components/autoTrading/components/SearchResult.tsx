@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Col, SEARCH_RESULT_COL } from "../construct/Col";
+import { krwChage } from "@/lib/krwChage";
 
-const SEARCH_RESULT_CLASS = "flex flex-col w-full";
+const SEARCH_RESULT_CLASS = "flex flex-col w-full md:!w-3/5";
 const ITEM_STYLE_CLASS = "w-1/2 flex justify-center";
 const ROW_STYLE_CLASS =
   "flex bg-gray-50 border-b-2 border-b-gray-300 h-10 items-center";
@@ -22,7 +23,7 @@ const SearchResult: FC<Props> = ({ searchList }) => {
           searchList?.map((value, index) => (
             <div className={ROW_STYLE_CLASS} key={index}>
               <p className={ITEM_STYLE_CLASS}>{value.name}</p>
-              <p className={ITEM_STYLE_CLASS}>{value.catch_price}</p>
+              <p className={ITEM_STYLE_CLASS}>{krwChage(value.catch_price)}</p>
             </div>
           ))}
       </div>

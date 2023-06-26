@@ -1,6 +1,4 @@
-import tableDataDevelopment, {
-  useTransactionHistory,
-} from "./variables/tableDataDevelopment";
+import { useTransactionHistory } from "./variables/tableDataDevelopment";
 import tableDataCheck from "./variables/tableDataCheck";
 import CheckTable from "./components/CheckTable";
 import tableDataColumns from "./variables/tableDataColumns";

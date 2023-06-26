@@ -1,3 +1,4 @@
+import { Spinner } from "@/components/common/Loading.styled";
 import { FC } from "react";
 
 const BUTTON_CLASS = `font-bold h-auto bg-blueSecondary p-3 text-white rounded-md flex justify-center items-center cursor-pointer`;
@@ -7,13 +8,19 @@ interface Props {
   title: string;
   event: () => void;
   type?: boolean;
+  loading?: boolean;
 }
 
-const Button: FC<Props> = ({ title, event, type }) => {
+const Button: FC<Props> = ({ title, event, type, loading }) => {
   return (
-    <div className={`${BUTTON_CLASS} ${type && EXTENED_CLASS}`} onClick={event}>
+    <button
+      className={`${BUTTON_CLASS} ${type && EXTENED_CLASS}`}
+      onClick={event}
+      disabled={loading}
+    >
+      {loading ? <Spinner /> : null}
       <p>{title}</p>
-    </div>
+    </button>
   );
 };
 

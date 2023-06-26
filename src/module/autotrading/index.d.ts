@@ -25,7 +25,11 @@ export type SearchOptionType = {
   name: string;
   low_price: number | null;
   high_price: number | null;
-  chart_term: string | null;
+  TA_chart_term: string | null;
+  MASP_chart_term: string | null;
+  MACD_chart_term: string | null;
+  disparity_chart_term: string | null;
+  trend_chart_term: string | null;
   low_transaction_amount: number | null;
   high_transaction_amount: number | null;
   first_disparity: number | null;
@@ -33,13 +37,14 @@ export type SearchOptionType = {
   second_disparity: number | null;
   MASP: number | null;
   trend_term: number | null;
-  trend_type: number | null;
+  trend_type: number | string | null;
   trend_reverse: number | null;
   disparity_term: number | null;
   low_disparity: number | null;
   high_disparity: number | null;
   short_disparity: number | null;
   long_disparity: number | null;
+  signal: number | null;
   up_down: string | null;
 };
 
@@ -56,9 +61,11 @@ export type TradingOptionType = {
   loss_cut_over_call_price_specific_coin: number;
   buy_cancle_time: number;
   sell_cancle_time: number;
+
   percent_to_buy_method: number;
   price_to_buy_method: number;
   callmoney_to_buy_method: number;
+
   upper_percent_to_price_condition: number;
   down_percent_to_price_condition: number;
   disparity_for_upper_case: number;
@@ -67,7 +74,7 @@ export type TradingOptionType = {
   down_percent_to_disparity_condition: number;
   call_money_to_sell_method: number;
   percent_to_split_sell: number;
-  shot_MACD_value: number;
+  short_MACD_value: number;
   long_MACD_value: number;
   MACD_signal_value: number;
 };

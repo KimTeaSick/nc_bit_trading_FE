@@ -12,3 +12,10 @@ export type PossessionCoinInfoType = {
   profit: number;
   rate: number;
 };
+
+export type AccountType = {
+  total: number;
+  deposit: number;
+  buy: number;
+  sell: number;
+};

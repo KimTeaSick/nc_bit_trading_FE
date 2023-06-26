@@ -9,6 +9,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import { krwChage } from "@/lib/krwChage";
 
 type RowObj = {
   number: number;
@@ -75,7 +76,7 @@ export default function ComplexTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -88,7 +89,7 @@ export default function ComplexTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -101,7 +102,7 @@ export default function ComplexTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -114,7 +115,7 @@ export default function ComplexTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -127,7 +128,7 @@ export default function ComplexTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue())}
         </p>
       ),
     }),
@@ -164,15 +165,15 @@ export default function ComplexTable(props: { tableData: any }) {
   }, [tableData]);
 
   return (
-    <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>
+    <Card extra={"w-full h-full px-6 pb-6 overflow-x-auto"}>
       <div className="relative flex items-center justify-between pt-4">
-        <div className="text-xl font-bold text-navy-700 dark:text-white">
+        <div className="text-base font-bold text-navy-700 dark:text-white md:!text-lg">
           💰 보유 코인
         </div>
         <CardMenu />
       </div>
 
-      <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
+      <div className="mt-8">
         <table className="w-full">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (

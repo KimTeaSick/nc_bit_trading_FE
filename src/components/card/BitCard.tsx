@@ -7,6 +7,7 @@ import Card from "@/components/card";
 import { sell } from "@/pages/api/walletAPIs";
 import Image from "next/image";
 import { fixed } from "../autoTrading/lib/tool";
+import { krwChage } from "@/lib/krwChage";
 
 const BitCard = (props: {
   account: string;
@@ -42,7 +43,7 @@ const BitCard = (props: {
                     계좌 보유 금액
                   </span>
                   <span className="text-brand-500 dark:text-white px-2 w-[100px]">
-                    {fixed(account, 0)}
+                    {krwChage(fixed(account, 0))}
                   </span>
                   {"원"}
                 </div>
@@ -54,14 +55,14 @@ const BitCard = (props: {
                     예수금
                   </span>
                   <span className="text-brand-500 dark:text-white px-2 w-[100px]">
-                    {fixed(balance, 0)}
+                    {krwChage(fixed(balance, 0))}
                   </span>
                   {" 원"}
                 </div>
               </div>
             </div>
             <div className="flex flex-wrap gap-2 gap-x-6 ">
-              {coinList.map((coin, index) => (
+              {/** coinList.map((coin, index) => (
                 <div
                   className="my-1 items-center flex text-lg flex-col font-bold text-navy-700 dark:text-wdivte md:flex-row"
                   key={index}
@@ -88,7 +89,7 @@ const BitCard = (props: {
                     </button>
                   </div>
                 </div>
-              ))}
+              ))*/}
             </div>
           </div>
 

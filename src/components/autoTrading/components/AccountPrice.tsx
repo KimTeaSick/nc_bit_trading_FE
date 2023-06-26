@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { ACCOUNT_PRICE_COL, Col } from "../construct/Col";
 import { fixed } from "../lib/tool";
+import { krwChage } from "@/lib/krwChage";
 
-const SEARCH_RESULT_CLASS = "flex flex-col w-full";
+const SEARCH_RESULT_CLASS = "flex flex-col w-full md:!w-3/5";
 const ITEM_STYLE_CLASS = "w-1/5 flex justify-center";
 const ROW_COVER = "h-[60vh] bg-gray-50 overflow-y-auto";
 const ROW_STYLE_CLASS =
@@ -24,7 +25,7 @@ const AccountPrice: FC<Props> = ({ priceList = [] }) => {
               <p className={ITEM_STYLE_CLASS}>{value.coin}</p>
               <p className={ITEM_STYLE_CLASS}>{fixed(value.info.rate, 2)}</p>
               <p className={ITEM_STYLE_CLASS}>
-                {fixed(value.info.buy_price, 0)}
+                {krwChage(fixed(value.info.buy_price, 0))}
               </p>
               <p className={ITEM_STYLE_CLASS}>{value.info.unit}</p>
               <p className={ITEM_STYLE_CLASS}>{value.info.unit}</p>
