@@ -8,6 +8,7 @@ import AccountStatus from "./components/AccountStatus";
 import Marketplace from "./components/MarketPlace";
 import Rate from "./components/Rate";
 import { useNowRate, useTodayAccount } from "@/pages/api/dash";
+import { fixed } from "@/components/autoTrading/lib/tool";
 
 interface DashboardProps {
   rpLoading?: boolean;
@@ -25,7 +26,13 @@ const Dashboard: FC<DashboardProps> = ({
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
-      <AccountStatus accountInfo={accoutInfo.data} />
+      <AccountStatus
+        accountInfo={accoutInfo.data}
+        rate={fixed(
+          rateInfo?.data?.now_balance * (rateInfo?.data?.rate / 100),
+          2
+        )}
+      />
       <Marketplace />
       <Rate rateInfo={rateInfo?.data} />
       <div className="mt-1 grid grid-cols-2 gap-5">

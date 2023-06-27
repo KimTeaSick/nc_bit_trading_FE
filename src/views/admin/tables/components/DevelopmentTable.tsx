@@ -16,6 +16,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { krwChage } from "@/lib/krwChage";
+import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
 type RowObj = {
   coin_name: string;
@@ -42,7 +43,7 @@ function CheckTable(props: {
       ),
       cell: (info: any) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {CHANGE_KR_NAME(info.getValue())}
         </p>
       ),
     }),

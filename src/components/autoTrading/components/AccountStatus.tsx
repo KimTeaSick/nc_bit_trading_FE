@@ -16,9 +16,10 @@ const BUTTON_COVER_CLASS = "flex h-12 justify-center";
 
 interface Props {
   myProperty: AccountType | undefined;
+  rate: string | number;
 }
 
-const AccountStatus: FC<Props> = ({ myProperty }) => {
+const AccountStatus: FC<Props> = ({ myProperty, rate }) => {
   const stopEvent = () => {
     controlAuto(false);
     alert("자동 매매가 중지되었습니다.");
@@ -50,7 +51,7 @@ const AccountStatus: FC<Props> = ({ myProperty }) => {
       <Widget
         icon={<TbPigMoney className="h-7 w-7" />}
         title={"손익금"}
-        subtitle={"0"}
+        subtitle={rate}
       />
       <div className={BUTTON_COVER_CLASS}>
         <Button type={true} title="자동 매매 중지" event={() => stopEvent()} />

@@ -9,7 +9,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { coinNameChange } from "@/variables/coinNameChange";
+import { CHANGE_KR_NAME, coinNameChange } from "@/variables/coinNameChange";
 import { conditionNameChange } from "@/variables/conditionNameChange";
 import { krwChage } from "@/lib/krwChage";
 
@@ -240,7 +240,7 @@ function CheckTable(props: {
                           className="min-w-[70px] border-white/0 py-3  pr-4 text-sm font-bold"
                         >
                           {cell.id.slice(-4) === "name"
-                            ? coinNameChange(row.original.name[0])
+                            ? CHANGE_KR_NAME(row.original.name[0])
                             : flexRender(
                                 cell.column.columnDef.cell,
                                 cell.getContext()

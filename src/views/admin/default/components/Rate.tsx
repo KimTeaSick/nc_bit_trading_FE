@@ -8,7 +8,7 @@ interface Props {
 const Rate: FC<Props> = ({ rateInfo }) => {
   return (
     <Card extra="flex p-5 justify-center items-center gap-2">
-      <div className="text-xl">현제 자산 변화 추이</div>
+      <div className="text-xl">현재 자산 변화 추이</div>
       <div className="text-sm">( 당일 00시 기준 )</div>
       <div className="text-5xl font-bold">{rateInfo?.now_balance}</div>
       <div

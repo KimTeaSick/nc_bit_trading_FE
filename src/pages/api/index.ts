@@ -12,10 +12,6 @@ export const get = async (uri: string, params = {}, headers = {}) => {
       },
     });
     const { data } = result;
-    if (data === 444) {
-      alert("해당 요청중 오류가 나타났습니다.");
-      return;
-    }
     return data;
   } catch (e) {
     console.log(e);
@@ -31,10 +27,6 @@ export const post = async (uri: string, body = {}, headers = {}) => {
       },
     });
     const { data } = result;
-    if (data === 444) {
-      alert("해당 요청중 오류가 나타났습니다.");
-      return;
-    }
     return data;
   } catch (e) {
     console.log(e);

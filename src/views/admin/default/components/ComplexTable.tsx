@@ -10,6 +10,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { krwChage } from "@/lib/krwChage";
+import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
 type RowObj = {
   number: number;
@@ -25,7 +26,7 @@ type RowObj = {
 
 const columnHelper = createColumnHelper<RowObj>();
 
-export default function ComplexTable(props: { tableData: any }) {
+function ComplexTable(props: { tableData: any }) {
   const { tableData = [] } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
   let defaultData = tableData;
@@ -50,7 +51,7 @@ export default function ComplexTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {CHANGE_KR_NAME(info.getValue())}
         </p>
       ),
     }),
@@ -231,3 +232,5 @@ export default function ComplexTable(props: { tableData: any }) {
     </Card>
   );
 }
+
+export default React.memo(ComplexTable);

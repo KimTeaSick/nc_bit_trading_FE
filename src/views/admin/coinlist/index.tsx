@@ -5,6 +5,7 @@ import { CoinType } from "@/@types/CoinList";
 import Link from "next/link";
 import { FC } from "react";
 import { krwChage } from "@/lib/krwChage";
+import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
 interface CoinListProps {
   coinList: CoinType[];
@@ -28,7 +29,7 @@ const CoinList: FC<CoinListProps> = ({ coinList }) => {
           {coinList.map((coin, index) => (
             <Link key={index} href={`coin/${coin[0]}`}>
               <CoinCard
-                title={coin[0]}
+                title={CHANGE_KR_NAME(coin[0])}
                 price={krwChage(coin[1].closing_price)}
                 extra=""
                 image={NFt3.src}

@@ -1,12 +1,11 @@
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
-import { ImPriceTags } from "react-icons/im";
 import { useState } from "react";
 import Card from "@/components/card";
 import Image from "next/image";
 
 const CoinCard = (props: {
   image: string;
-  title: string;
+  title: string | undefined;
   price: string | number;
   extra?: string;
 }) => {

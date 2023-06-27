@@ -11,6 +11,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { krwChage } from "@/lib/krwChage";
+import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
 type RowObj = {
   name: string;
@@ -41,7 +42,7 @@ function CheckTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {CHANGE_KR_NAME(info.getValue())}
         </p>
       ),
     }),
@@ -81,7 +82,7 @@ function CheckTable(props: { tableData: any }) {
   return (
     <Card extra={"w-full h-[50vh] px-6"}>
       <header className="relative flex items-center justify-between pt-4">
-        <div className="lg:!text-xl text-base font-bold text-navy-700 dark:text-white">
+        <div className="text-xl font-bold text-navy-700 dark:text-white">
           📚 실시간 종목
         </div>
         <CardMenu />

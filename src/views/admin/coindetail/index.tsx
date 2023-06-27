@@ -1,20 +1,13 @@
 import Widget from "@/components/widget/Widget";
 import DetailCard from "./components/coindetailCard";
-import {
-  Dispatch,
-  FC,
-  SetStateAction,
-  useEffect,
-  useState,
-  WheelEvent,
-} from "react";
+import { Dispatch, FC, SetStateAction, useEffect } from "react";
 import { IoDocuments } from "react-icons/io5";
-import { RootStateType } from "@/module/rootReducer.d";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { krwChage } from "@/lib/krwChage";
 import WarningButton from "./components/WarningButton";
 import { updateCoinWarning } from "@/pages/api/coinListAPIs";
 import { getDisparityOptionThunk } from "@/pages/api/settingAPI";
+import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
 interface CoinDetailProps {
   selectCoin: any;
@@ -45,7 +38,7 @@ const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, coinName }) => {
           <Widget
             icon={<IoDocuments className="h-6 w-6" />}
             title={""}
-            subtitle={coinName}
+            subtitle={CHANGE_KR_NAME(coinName)}
             button={
               <WarningButton
                 isWarning={selectCoin?.data.warning === "1"}

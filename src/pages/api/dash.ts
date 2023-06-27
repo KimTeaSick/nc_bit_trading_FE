@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { get } from ".";
+import { useQuery } from "@tanstack/react-query";
 import { AccountType } from "@/@types/Dash";
+import coin_list from "../../variables/coin_list.json";
+import { get } from ".";
 
 export const useRecommendPrice = () => {
   const queryKey = "dash/recommendCoin" as const;
@@ -67,4 +67,13 @@ export const useNowRate = () => {
   const request = useQuery([queryKey], queryFn);
 
   return { request };
+};
+
+export const json_file_download = async () => {
+  const response = await get("coinlist.json");
+  const json_res = JSON.stringify(response);
+  const json_coin_list = JSON.stringify(coin_list);
+  console.log("one", response === coin_list);
+  console.log("two", json_res === json_coin_list);
+  return response;
 };

@@ -1,7 +1,11 @@
 import { useDispatch } from "react-redux";
 import { FC, useEffect, useState } from "react";
 import { setPageActive } from "@/module/common";
-import { getAccountThunk, getPossessionCoin } from "../api/dash";
+import {
+  getAccountThunk,
+  getPossessionCoin,
+  json_file_download,
+} from "../api/dash";
 import Dashboard from "@/views/admin/default";
 import Admin from "@/layouts/admin";
 import { useRecommendCoin } from "../api/autotrading";
@@ -18,6 +22,7 @@ const Home: FC = () => {
     dispatch(getPossessionCoin());
     dispatch(getBalance());
     dispatch(getProperty());
+    json_file_download();
   }, [dispatch, recommandPrice]);
 
   return (

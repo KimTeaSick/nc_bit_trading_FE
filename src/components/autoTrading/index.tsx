@@ -17,7 +17,8 @@ import {
   TradingConditionM,
   SearchConditionM,
 } from "./components/ConditionModal";
-import { useTodayAccount } from "@/pages/api/dash";
+import { useNowRate, useTodayAccount } from "@/pages/api/dash";
+import { fixed } from "./lib/tool";
 
 const AutoTrading: FC = () => {
   const dispatch = useDispatch<any>();
@@ -26,13 +27,12 @@ const AutoTrading: FC = () => {
   const { request: Pcoin } = usePossessionCoin();
   const { request: TrHis } = useTradingHis();
   const { request: accountInfo } = useTodayAccount();
+  const { request: rateInfo } = useNowRate();
 
   useEffect(() => {
     dispatch(getNowUsedCondition());
-    dispatch(getProperty());
   }, [dispatch]);
   const AT = useSelector((state: RootStateType) => state.autotrading);
-  const { myProperty } = useSelector((state: RootStateType) => state.wallet);
 
   const showControl = (type: string) => {
     type === "S" && setShow({ T: false, S: true });
@@ -55,7 +55,13 @@ const AutoTrading: FC = () => {
             trading_condition={AT.tradingCondition?.name}
             showControl={showControl}
           />
-          <AccountStatus myProperty={accountInfo.data} />
+          <AccountStatus
+            myProperty={accountInfo.data}
+            rate={fixed(
+              rateInfo?.data?.now_balance * (rateInfo?.data?.rate / 100),
+              2
+            )}
+          />
           <div className="flex flex-col w-full gap-5 mt-3 md:!flex-row">
             <SearchResult searchList={Rcoin.data} />
             <ConclusionStatus his={TrHis.data} />
@@ -68,24 +74,12 @@ const AutoTrading: FC = () => {
               showControl={showControl}
               cValue={AT.searchCondition}
             />
-            // <ConditionModal
-            //   type="search"
-            //   showControl={showControl}
-            //   condition={Object.values(
-            //     AT.searchCondition ? AT.searchCondition : []
-            //   )}
-            // />
           )}
           {show.T && (
             <TradingConditionM
               showControl={showControl}
               cValue={AT.tradingCondition}
             />
-            // <ConditionModal
-            //   type="trading"
-            //   showControl={showControl}
-            //   condition={AT.tradingCondition}
-            // />
           )}
         </>
       </div>

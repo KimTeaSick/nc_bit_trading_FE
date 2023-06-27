@@ -8,9 +8,10 @@ import { krwChage } from "@/lib/krwChage";
 
 interface Props {
   accountInfo: AccountType;
+  rate: string | number;
 }
 
-const AccountStatus: FC<Props> = ({ accountInfo }) => {
+const AccountStatus: FC<Props> = ({ accountInfo, rate }) => {
   console.log("accountInfo", accountInfo);
 
   return (
@@ -38,7 +39,7 @@ const AccountStatus: FC<Props> = ({ accountInfo }) => {
       <Widget
         icon={<TbPigMoney className="h-7 w-7" />}
         title={"손익금"}
-        subtitle={0}
+        subtitle={rate}
       />
     </div>
   );
