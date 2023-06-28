@@ -9,20 +9,18 @@ import Marketplace from "./components/MarketPlace";
 import Rate from "./components/Rate";
 import { useNowRate, useTodayAccount } from "@/pages/api/dash";
 import { fixed } from "@/components/autoTrading/lib/tool";
+import SearchList from "./components/SearchList";
+import PossessionList from "./components/PossessionList";
 
 interface DashboardProps {
   rpLoading?: boolean;
-  CheckTableDataComplex: any;
+  searchList: any[];
 }
 
-const Dashboard: FC<DashboardProps> = ({
-  rpLoading,
-  CheckTableDataComplex,
-}) => {
+const Dashboard: FC<DashboardProps> = ({ rpLoading, searchList }) => {
   const { request: accoutInfo } = useTodayAccount();
   const { request: rateInfo } = useNowRate();
   const tableDataComplex = useTableDataComplex();
-  console.log("rateInfo", rateInfo);
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
@@ -35,9 +33,9 @@ const Dashboard: FC<DashboardProps> = ({
       />
       <Marketplace />
       <Rate rateInfo={rateInfo?.data} />
-      <div className="mt-1 grid grid-cols-2 gap-5">
-        {!rpLoading && <CheckTable tableData={CheckTableDataComplex} />}
-        <ComplexTable tableData={tableDataComplex} />
+      <div className="grid grid-cols-2 gap-5">
+        <SearchList value={searchList} />
+        <PossessionList value={tableDataComplex} />
       </div>
     </div>
   );

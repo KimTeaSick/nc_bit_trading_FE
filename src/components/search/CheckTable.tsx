@@ -9,7 +9,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { CHANGE_KR_NAME, coinNameChange } from "@/variables/coinNameChange";
+import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 import { conditionNameChange } from "@/variables/conditionNameChange";
 import { krwChage } from "@/lib/krwChage";
 

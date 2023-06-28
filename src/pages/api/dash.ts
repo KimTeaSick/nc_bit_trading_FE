@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useQuery } from "@tanstack/react-query";
-import { AccountType } from "@/@types/Dash";
+import { AccountType, RateType } from "@/@types/Dash";
 import coin_list from "../../variables/coin_list.json";
 import { get } from ".";
 
@@ -60,7 +60,7 @@ export const useTodayAccount = () => {
 export const useNowRate = () => {
   const queryKey = "nowRate" as const;
   const queryFn = async () =>
-    await get(queryKey).then((res: AccountType) => {
+    await get(queryKey).then((res: RateType) => {
       return res;
     });
 

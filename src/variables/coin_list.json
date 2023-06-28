@@ -1095,8 +1095,13 @@
 		"warning": "0"
 	},
 	{
-		"en_name": "test",
-		"kr_name": "tesst",
-		"warning": "0"
+		"en_name": "NCT",
+		"kr_name": null,
+		"warning": null
+	},
+	{
+		"en_name": "date",
+		"kr_name": null,
+		"warning": null
 	}
 ]

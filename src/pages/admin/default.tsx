@@ -28,7 +28,7 @@ const Home: FC = () => {
   return (
     <Admin>
       <Dashboard
-        CheckTableDataComplex={recommandPriceData}
+        searchList={recommandPrice.data}
         // rpLoading={recommandPrice.isLoading}
       />
     </Admin>

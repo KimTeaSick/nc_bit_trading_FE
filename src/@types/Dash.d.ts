@@ -14,8 +14,12 @@ export type PossessionCoinInfoType = {
 };
 
 export type AccountType = {
-  total: number;
-  deposit: number;
-  buy: number;
-  sell: number;
+  total: number | undefined;
+  deposit: number | undefined;
+  buy: number | undefined;
+  sell: number | undefined;
+};
+export type RateType = {
+  now_balance: number | undefined;
+  rate: number | undefined;
 };

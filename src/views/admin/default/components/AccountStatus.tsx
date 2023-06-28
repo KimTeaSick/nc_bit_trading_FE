@@ -7,8 +7,8 @@ import { AccountType } from "@/@types/Dash";
 import { krwChage } from "@/lib/krwChage";
 
 interface Props {
-  accountInfo: AccountType;
-  rate: string | number;
+  accountInfo: AccountType | undefined;
+  rate: string | number | undefined;
 }
 
 const AccountStatus: FC<Props> = ({ accountInfo, rate }) => {
