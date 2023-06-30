@@ -52,7 +52,7 @@ const MACD: FC<Props> = ({ value, data, setValue }) => {
             onChange={(e) => setValue({ ...value, signal: e.target.value })}
           />
           <div>MACD,</div>
-          <div>0선</div>
+          <div>시그널</div>
           <SelectBox
             width={80}
             value={value.up_down}

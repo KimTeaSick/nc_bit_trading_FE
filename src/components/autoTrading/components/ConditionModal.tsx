@@ -125,8 +125,8 @@ export const TradingConditionM = ({
   const modalRef = useRef(null);
   const T_TILE = [
     { kName: "계좌 조건", eName: "account" },
-    { kName: "매도 조건", eName: "buy" },
-    { kName: "매수 조건", eName: "sell" },
+    { kName: "매수 조건", eName: "buy" },
+    { kName: "매도 조건", eName: "sell" },
   ];
   console.log("trading", cValue);
 

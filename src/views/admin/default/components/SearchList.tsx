@@ -8,7 +8,7 @@ const TH_CLASS =
   "flex justify-between w-full font-bold border-b-2 pb-2 text-gray-700";
 const ROW_CLASS = "font-medium flex justify-between";
 const W_F = "w-full";
-const COL_CLASS = "font-bold my-3 text-sm";
+const COL_CLASS = " font-bold my-3 text-sm";
 
 interface Props {
   value: any[];
@@ -31,7 +31,7 @@ const SearchList: FC<Props> = ({ value }) => {
           </tr>
         </thead>
       </table>
-      <div className="overflow-y-scroll w-full h-[40vh]">
+      <div className="overflow-y-scroll w-full h-[40vh] scrollbar-hide">
         <table className="w-full">
           <tbody>
             {value?.map(

@@ -4,6 +4,7 @@ import { fixed } from "../lib/tool";
 import { THStatusChanger } from "../lib/modalDataChanger";
 import { krwChage } from "@/lib/krwChage";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
+import { SELL_REASON } from "../construct/sell_reason";
 
 const SEARCH_RESULT_CLASS = "flex flex-col w-full ";
 const ITEM_STYLE_CLASS = "w-1/6 flex justify-center";
@@ -36,6 +37,9 @@ const ConclusionStatus: FC<Props> = ({ his }) => {
               <p className={ITEM_STYLE_CLASS}>{krwChage(his[index].fee)}</p>
               <p className={ITEM_STYLE_CLASS}>
                 {THStatusChanger(his[index].status)}
+              </p>
+              <p className={ITEM_STYLE_CLASS + " text-sm"}>
+                {SELL_REASON(his[index].sell_reason)}
               </p>
               <p
                 className={
