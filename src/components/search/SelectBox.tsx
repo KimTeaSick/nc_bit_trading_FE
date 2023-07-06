@@ -7,6 +7,23 @@ const CHART_TERM = [
   { key: "24시간", value: "24h" },
 ];
 
+// const CHART_TERM = [
+// { key: "1분", value: "1m" },
+// { key: "3분", value: "3m" },
+// { key: "5분", value: "5m" },
+// { key: "10분", value: "10m" },
+// { key: "30분", value: "30m" },
+// { key: "1시간", value: "1h" },
+// { key: "6시간", value: "6h" },
+// { key: "12시간", value: "12h" },
+// { key: "24시간", value: "24h" },
+// ];
+
+const TA_TERM = [
+  { key: "00시 기준", value: "00" },
+  { key: "24시간 기준", value: "24" },
+];
+
 const TREND_TYPE = (use: boolean) => {
   return use
     ? [
@@ -61,5 +78,5 @@ const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   );
 };
 
-export { CHART_TERM, TREND_TYPE, UP_DOWN, COMPARISON };
+export { CHART_TERM, TREND_TYPE, UP_DOWN, COMPARISON, TA_TERM };
 export default SelectBox;

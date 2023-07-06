@@ -34,6 +34,23 @@ export const CoinSearch = async (body: any) => {
   }
 };
 
+export const B_CoinSearch = async (body: any) => {
+  try {
+    const flag = validationCheck(body);
+    if (flag) {
+      const response = await post("newRawSearch", body);
+      console.log("response.data", response);
+      return { data: response };
+    } else {
+      alert("값을 다 채워주세요!");
+      return flag;
+    }
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+};
+
 export const ConditionRegister = async (body: any) => {
   const response = await post("option/insertOption", body);
   if (response === "Insert sucess") {

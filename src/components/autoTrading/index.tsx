@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import {
   getNowUsedCondition,
+  useAutoOrderList,
   usePossessionCoin,
   useRecommendCoin,
   useTradingHis,
@@ -19,6 +20,7 @@ import {
 } from "./components/ConditionModal";
 import { useNowRate, useTodayAccount } from "@/pages/api/dash";
 import { fixed } from "./lib/tool";
+import OrderListT from "./components/OrderList";
 
 const AutoTrading: FC = () => {
   const dispatch = useDispatch<any>();
@@ -26,6 +28,7 @@ const AutoTrading: FC = () => {
   const { request: Rcoin } = useRecommendCoin();
   const { request: Pcoin } = usePossessionCoin();
   const { request: TrHis } = useTradingHis();
+  const { request: OList } = useAutoOrderList();
   const { request: accountInfo } = useTodayAccount();
   const { request: rateInfo } = useNowRate();
 
@@ -64,7 +67,10 @@ const AutoTrading: FC = () => {
           />
           <div className="flex flex-col w-full gap-5 mt-3 md:!flex-row">
             <SearchResult searchList={Rcoin.data} />
-            <ConclusionStatus his={TrHis.data} />
+            <div className="w-full flex flex-col">
+              <OrderListT orderList={OList.data} />
+              <ConclusionStatus his={TrHis.data} />
+            </div>
             <AccountPrice priceList={Pcoin.data} />
           </div>
         </div>

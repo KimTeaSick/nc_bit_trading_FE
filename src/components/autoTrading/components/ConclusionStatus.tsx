@@ -10,7 +10,7 @@ const SEARCH_RESULT_CLASS = "flex flex-col w-full ";
 const ITEM_STYLE_CLASS = "w-1/6 flex justify-center";
 const ROW_STYLE_CLASS =
   "flex bg-gray-50 border-b-2 border-b-gray-300 h-10 items-center text-sm md:text-base";
-const ROW_COVER = "h-[60vh] bg-gray-50 overflow-y-auto";
+const ROW_COVER = "h-[30vh] bg-gray-50 overflow-y-auto";
 3;
 
 interface Props {

@@ -1,6 +1,6 @@
 import { Input } from "@/components/common/input";
 import SearchConditionCover from "../SearchConditionCover";
-import SelectBox, { CHART_TERM } from "../SelectBox";
+import SelectBox, { CHART_TERM, TA_TERM } from "../SelectBox";
 import { SearchButton } from "../Condition";
 import CheckTable from "../CheckTable";
 import { TransactionAmountType } from "../type/condition";
@@ -20,8 +20,8 @@ const TransactionAmount: FC<Props> = ({ value, setValue, data }) => {
       <div className="flex justify-between">
         <div className="flex items-center gap-2 text-xl">
           <SelectBox
-            width={80}
-            itemList={CHART_TERM}
+            width={130}
+            itemList={TA_TERM}
             value={value.chart_term}
             event={(e) => setValue({ ...value, chart_term: e.target.value })}
           />

@@ -47,7 +47,17 @@ export const useAutoStatus = () => {
       return res;
     });
   };
+  const request = useQuery([queryKey], queryFn);
+  return { request };
+};
 
+export const useAutoOrderList = () => {
+  const queryKey = "trade/orderList";
+  const queryFn = async () => {
+    await get(queryKey).then((res) => {
+      return res;
+    });
+  };
   const request = useQuery([queryKey], queryFn);
   return { request };
 };

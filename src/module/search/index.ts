@@ -25,7 +25,9 @@ const SearchSlice = createSlice({
       state.transactionAmountSearchCoin = action.payload.coins.TransactioAmount;
       state.trendSearchCoin = action.payload.coins.Trend;
       state.recommends = action.payload.coins.recommends;
-      console.log("action.payload", action.payload);
+    },
+    setSearchResultBetaData: (state, action) => {
+      state.recommends = action.payload;
     },
     setResultDataRollback: (state) => {
       state.priceSearchCoin = null;
@@ -55,5 +57,6 @@ export const {
   setConditionDetail,
   setResultDataRollback,
   setConditionDetailRollBack,
+  setSearchResultBetaData,
 } = SearchSlice.actions;
 export default SearchSlice.reducer;

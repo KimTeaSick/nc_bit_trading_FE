@@ -21,6 +21,14 @@ export const ACCOUNT_PRICE_COL = [
   "가능수량",
 ];
 
+export const ORDER_LIST_COL = [
+  "종목명",
+  "상태",
+  "주문 시간",
+  "체결 시간",
+  "취소 시간",
+];
+
 interface Props {
   itemCol: string[];
   colCount: string;

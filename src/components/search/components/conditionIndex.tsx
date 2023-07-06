@@ -14,9 +14,9 @@ import MACDC from "../components/MACD";
 import CheckTable from "../CheckTable";
 import Card from "../../card";
 import { SearchInitialStateType } from "@/module/search/search";
-import { setSearchResultData } from "@/module/search";
+import { setSearchResultData, setSearchResultBetaData } from "@/module/search";
 import IMG_URL from "@/assets/img/search/bitcoin.png";
-import { CoinSearch } from "@/pages/api/searchAPIs";
+import { CoinSearch, B_CoinSearch } from "@/pages/api/searchAPIs";
 import { Input } from "@/components/common/input";
 import { SearchButton } from "../Condition";
 import { useDispatch, useSelector } from "react-redux";
@@ -70,6 +70,28 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
       return;
     } else {
       dispatch(setSearchResultData(response.data));
+      setUseConditionList(response.data.optionList);
+      setLoading(false);
+    }
+  }, [dispatch, price, tta, MASP, dis, trend, MACD]);
+
+  const B_searchBtnEvent = useCallback(async () => {
+    const body = {
+      Price: price,
+      TransactionAmount: tta,
+      MASP: MASP,
+      Disparity: dis,
+      Trend: trend,
+      MACD: MACD,
+    };
+    setLoading(true);
+    const response = await B_CoinSearch(body);
+    if (response === false) {
+      setLoading(false);
+      alert("검색 중 에러가 발생했습니다!");
+      return;
+    } else {
+      dispatch(setSearchResultBetaData(response.data));
       setUseConditionList(response.data.optionList);
       setLoading(false);
     }
@@ -146,6 +168,12 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
         </div>
 
         <div className="w-1/3 flex my-2 gap-1">
+          {/* <SearchButton
+            title="검색(Beta)"
+            event={() => B_searchBtnEvent()}
+            disable={loading}
+            loading={loading}
+          /> */}
           <SearchButton
             title="검색"
             event={() => searchBtnEvent()}
