@@ -18,6 +18,10 @@ export type UseSellConditionType = {
   shot_MACD_value: string;
   long_MACD_value: string;
   MACD_signal_value: string;
+
+  trailing_start_percent: string;
+  trailing_stop_percent: string;
+  trailing_order_percent: string;
 };
 
 export type useAccountType = {

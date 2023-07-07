@@ -7,6 +7,7 @@ import PriceCriteria from "./Sell/PriceCriteria";
 import TradingConditionCover from "./TradingConditionCover";
 import { UseSellConditionType } from "../type/autoTrading";
 import MACDCondition from "./Sell/MACDCondition";
+import TrailingStop from "./Sell/TrailingStop";
 
 const CATEGORY_TITLE = "text-xl font-bold";
 const TITLE_CLASS = "font-bold";
@@ -74,6 +75,10 @@ const SellCondition: FC<Props> = ({ sellCondition, setSellCondition }) => {
               value={sellCondition}
               setValue={setSellCondition}
             />
+          </div>
+          <div id="BuyMethod" className="p-1">
+            <p className={CATEGORY_TITLE}>트레일링 스탑</p>
+            <TrailingStop value={sellCondition} setValue={setSellCondition} />
           </div>
         </div>
       </div>

@@ -18,6 +18,10 @@ export const useSellCondition = (): [
     shot_MACD_value: "15",
     long_MACD_value: "60",
     MACD_signal_value: "9",
+
+    trailing_start_percent: "0",
+    trailing_stop_percent: "0",
+    trailing_order_percent: "0",
   };
   const [sellCondition, setSellCondition] = useState(initialValue);
   const resetSell = () => setSellCondition(initialValue);
