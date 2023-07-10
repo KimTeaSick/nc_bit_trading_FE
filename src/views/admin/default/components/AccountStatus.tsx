@@ -1,7 +1,7 @@
 import { TbPigMoney, TbMoneybag } from "react-icons/tb";
 import { RiHandCoinFill, RiHandCoinLine } from "react-icons/ri";
 import { MdAccountBalance } from "react-icons/md";
-import Widget from "@/components/widget/Widget";
+import Widget from "@/components/common/widget/Widget";
 import { FC } from "react";
 import { AccountType } from "@/@types/Dash";
 import { krwChage } from "@/lib/krwChage";

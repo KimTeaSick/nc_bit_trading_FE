@@ -1,11 +1,11 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
-import CardMenu from "@/components/card/CardMenu";
+import CardMenu from "@/components/common/card/CardMenu";
 import { DiApple } from "react-icons/di";
 import { DiAndroid } from "react-icons/di";
 import { DiWindows } from "react-icons/di";
 import { BiCalendarHeart } from "react-icons/bi";
 
-import Card from "@/components/card";
+import Card from "@/components/common/card";
 
 import {
   createColumnHelper,

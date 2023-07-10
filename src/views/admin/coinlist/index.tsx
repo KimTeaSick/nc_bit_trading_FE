@@ -1,6 +1,6 @@
 import NFt3 from "@/assets/img/nfts/Nft3.png";
 
-import CoinCard from "@/components/card/Coincard";
+import CoinCard from "@/components/common/card/Coincard";
 import { CoinType } from "@/@types/CoinList";
 import Link from "next/link";
 import { FC } from "react";

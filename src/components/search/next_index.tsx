@@ -17,6 +17,12 @@ import ConditionIndex from "./components/conditionIndex";
 import { BTN_EVENT_TYPE } from "@/@types/Search";
 import { RootStateType } from "@/module/rootReducer.d";
 
+const COMPONENT_COVER_CLASS =
+  "mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1";
+const TITLE_SECTION_CLASS =
+  "mb-4 mt-5 flex flex-row justify-between px-4 md:flex-row md:items-center";
+const TITLE_CLASS = "ml-1 text-2xl font-bold text-navy-700 dark:text-white";
+
 const SearchPage: FC = () => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(0);
@@ -66,11 +72,9 @@ const SearchPage: FC = () => {
   }, [conditionListSetter, dispatch, stage]);
 
   return (
-    <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
-      <div className="mb-4 mt-5 flex flex-row justify-between px-4 md:flex-row md:items-center">
-        <h4 className="ml-1 text-2xl font-bold text-navy-700 dark:text-white">
-          조건 등록
-        </h4>
+    <div className={COMPONENT_COVER_CLASS}>
+      <div className={TITLE_SECTION_CLASS}>
+        <h4 className={TITLE_CLASS}>조건 등록</h4>
       </div>
       {stage === 0 ? (
         <ChoiceCondition

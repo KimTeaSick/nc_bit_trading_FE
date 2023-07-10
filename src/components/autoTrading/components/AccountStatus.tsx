@@ -1,5 +1,5 @@
 import Button from "@/components/common/button";
-import Widget from "@/components/widget/Widget";
+import Widget from "@/components/common/widget/Widget";
 import { controlAuto } from "@/pages/api/autotradingCondition";
 import { FC } from "react";
 import { MdAccountBalance } from "react-icons/md";

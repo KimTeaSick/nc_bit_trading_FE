@@ -3,7 +3,7 @@ import "assets/css/MiniCalendar.css";
 
 import { useState } from "react";
 import Calendar from "react-calendar";
-import Card from "@/components/card";
+import Card from "@/components/common/card";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const MiniCalendar = () => {

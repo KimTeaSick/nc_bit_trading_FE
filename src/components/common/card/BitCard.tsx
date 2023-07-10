@@ -3,7 +3,7 @@ import { TbMoneybag } from "react-icons/tb";
 import { SiBitcoinsv } from "react-icons/si";
 
 import { useState } from "react";
-import Card from "@/components/card";
+import Card from "@/components/common/card";
 import { sell } from "@/pages/api/walletAPIs";
 import Image from "next/image";
 import { fixed } from "../autoTrading/lib/tool";

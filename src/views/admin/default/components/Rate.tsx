@@ -1,4 +1,4 @@
-import Card from "@/components/card";
+import Card from "@/components/common/card";
 import { FC } from "react";
 
 interface Props {

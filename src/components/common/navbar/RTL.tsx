@@ -1,6 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import React from "react";
-import Dropdown from "@/components/dropdown";
+import Dropdown from "@/components/common/dropdown";
 import { FiAlignJustify } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import navbarimage from "assets/img/layout/Navbar.png";

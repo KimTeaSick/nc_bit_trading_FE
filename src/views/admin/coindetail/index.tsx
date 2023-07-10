@@ -1,4 +1,4 @@
-import Widget from "@/components/widget/Widget";
+import Widget from "@/components/common/widget/Widget";
 import DetailCard from "./components/coindetailCard";
 import { Dispatch, FC, SetStateAction, useEffect } from "react";
 import { IoDocuments } from "react-icons/io5";

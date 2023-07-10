@@ -2,7 +2,7 @@
 
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
-import { ROUTES, AUTH_ROUTES } from "../../routes";
+import { ROUTES, AUTH_ROUTES } from "../../../routes";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import { useEffect } from "react";

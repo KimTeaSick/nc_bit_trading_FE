@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useEffect, useState } from "react";
-import Navbar from "@/components/navbar";
-import Sidebar from "@/components/sidebar";
-import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/common/navbar";
+import Sidebar from "@/components/common/sidebar";
+import Footer from "@/components/common/footer/Footer";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { getATStatus, useAutoStatus } from "@/pages/api/autotrading";
 import { useDispatch } from "react-redux";

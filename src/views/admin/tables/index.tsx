@@ -6,7 +6,7 @@ import tableDataComplex from "./variables/tableDataComplex";
 import DevelopmentTable from "./components/DevelopmentTable";
 import ColumnsTable from "./components/ColumnsTable";
 import ComplexTable from "./components/ComplexTable";
-import Calendar from "@/components/calendar/Calendar";
+import Calendar from "@/components/common/calendar/Calendar";
 import { useState } from "react";
 import CustomCalendar from "@/components/common/CustomCalendar";
 

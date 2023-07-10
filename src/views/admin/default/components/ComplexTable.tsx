@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import CardMenu from "@/components/card/CardMenu";
-import Card from "@/components/card";
+import CardMenu from "@/components/common/card/CardMenu";
+import Card from "@/components/common/card";
 import {
   createColumnHelper,
   flexRender,

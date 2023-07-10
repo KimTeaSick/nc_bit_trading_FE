@@ -1,4 +1,4 @@
-import Card from "@/components/card";
+import Card from "@/components/common/card";
 import Chart from "@/components/Chart";
 import ButtonSection from "./ButtonSection";
 

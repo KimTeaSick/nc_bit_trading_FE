@@ -3,7 +3,7 @@ import {
   MdOutlineCalendarToday,
   MdBarChart,
 } from "react-icons/md";
-import Card from "components/card";
+import Card from "components/common/card";
 import {
   lineChartDataTotalSpent,
   lineChartOptionsTotalSpent,

@@ -85,6 +85,16 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "STEEM",
+		"kr_name": "스팀",
+		"warning": "0"
+	},
+	{
+		"en_name": "STRAX",
+		"kr_name": "스트라티스",
+		"warning": "0"
+	},
+	{
 		"en_name": "ZRX",
 		"kr_name": "제로엑스",
 		"warning": "0"
@@ -115,8 +125,18 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "THETA",
+		"kr_name": "쎄타토큰",
+		"warning": "0"
+	},
+	{
 		"en_name": "LOOM",
 		"kr_name": "룸네트워크",
+		"warning": "0"
+	},
+	{
+		"en_name": "WAVES",
+		"kr_name": "웨이브",
 		"warning": "0"
 	},
 	{
@@ -150,6 +170,11 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "ATOLO",
+		"kr_name": "라이즌",
+		"warning": "1"
+	},
+	{
 		"en_name": "AMO",
 		"kr_name": "아모코인",
 		"warning": "0"
@@ -162,6 +187,16 @@
 	{
 		"en_name": "ORBS",
 		"kr_name": "오브스",
+		"warning": "0"
+	},
+	{
+		"en_name": "TFUEL",
+		"kr_name": "쎄타퓨엘",
+		"warning": "0"
+	},
+	{
+		"en_name": "VALOR",
+		"kr_name": "밸러토큰",
 		"warning": "0"
 	},
 	{
@@ -295,8 +330,18 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "AERGO",
+		"kr_name": "아르고",
+		"warning": "0"
+	},
+	{
 		"en_name": "EVZ",
 		"kr_name": "이브이지",
+		"warning": "0"
+	},
+	{
+		"en_name": "QTCON",
+		"kr_name": "퀴즈톡",
 		"warning": "0"
 	},
 	{
@@ -422,7 +467,7 @@
 	{
 		"en_name": "ANV",
 		"kr_name": "애니버스",
-		"warning": "0"
+		"warning": "1"
 	},
 	{
 		"en_name": "GRT",
@@ -442,6 +487,11 @@
 	{
 		"en_name": "SOFI",
 		"kr_name": "라이파이낸스",
+		"warning": "0"
+	},
+	{
+		"en_name": "GRACY",
+		"kr_name": "그레이시",
 		"warning": "0"
 	},
 	{
@@ -470,6 +520,11 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "WIKEN",
+		"kr_name": "위드",
+		"warning": "0"
+	},
+	{
 		"en_name": "CTSI",
 		"kr_name": "카르테시",
 		"warning": "0"
@@ -490,8 +545,18 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "SUSHI",
+		"kr_name": "스시스왑",
+		"warning": "0"
+	},
+	{
 		"en_name": "ASM",
 		"kr_name": "어셈블프로토콜",
+		"warning": "0"
+	},
+	{
+		"en_name": "PUNDIX",
+		"kr_name": "펀디엑스",
 		"warning": "0"
 	},
 	{
@@ -505,13 +570,28 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "FRONT",
+		"kr_name": "프론티어",
+		"warning": "0"
+	},
+	{
 		"en_name": "RLY",
 		"kr_name": "랠리",
 		"warning": "0"
 	},
 	{
+		"en_name": "OCEAN",
+		"kr_name": "오션프로토콜",
+		"warning": "0"
+	},
+	{
 		"en_name": "BFC",
 		"kr_name": "바이프로스트",
+		"warning": "0"
+	},
+	{
+		"en_name": "ALICE",
+		"kr_name": "마이네이버앨리스",
 		"warning": "0"
 	},
 	{
@@ -572,6 +652,11 @@
 	{
 		"en_name": "SHIB",
 		"kr_name": "시바이누",
+		"warning": "0"
+	},
+	{
+		"en_name": "MATIC",
+		"kr_name": "폴리곤",
 		"warning": "0"
 	},
 	{
@@ -650,6 +735,11 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "TEMCO",
+		"kr_name": "템코",
+		"warning": "0"
+	},
+	{
 		"en_name": "DOGE",
 		"kr_name": "도지코인",
 		"warning": "0"
@@ -663,6 +753,11 @@
 		"en_name": "CTK",
 		"kr_name": "셴투",
 		"warning": "0"
+	},
+	{
+		"en_name": "XYM",
+		"kr_name": "심볼",
+		"warning": "1"
 	},
 	{
 		"en_name": "BNB",
@@ -685,8 +780,18 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "AGIX",
+		"kr_name": "싱귤래리티넷",
+		"warning": "0"
+	},
+	{
 		"en_name": "SOL",
 		"kr_name": "솔라나",
+		"warning": "0"
+	},
+	{
+		"en_name": "FNSA",
+		"kr_name": "핀시아",
 		"warning": "0"
 	},
 	{
@@ -712,6 +817,16 @@
 	{
 		"en_name": "MED",
 		"kr_name": "메디블록",
+		"warning": "0"
+	},
+	{
+		"en_name": "1INCH",
+		"kr_name": "1인치",
+		"warning": "0"
+	},
+	{
+		"en_name": "CRV",
+		"kr_name": "커브",
 		"warning": "0"
 	},
 	{
@@ -745,6 +860,16 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "JASMY",
+		"kr_name": "재스미코인",
+		"warning": "0"
+	},
+	{
+		"en_name": "TITAN",
+		"kr_name": "타이탄스왑",
+		"warning": "0"
+	},
+	{
 		"en_name": "REQ",
 		"kr_name": "리퀘스트",
 		"warning": "0"
@@ -757,6 +882,11 @@
 	{
 		"en_name": "AVAX",
 		"kr_name": "아발란체",
+		"warning": "0"
+	},
+	{
+		"en_name": "TDROP",
+		"kr_name": "티드랍",
 		"warning": "0"
 	},
 	{
@@ -796,7 +926,12 @@
 	},
 	{
 		"en_name": "DAR",
-		"kr_name": "마인즈 오브",
+		"kr_name": "마인즈 오브 달라니아",
+		"warning": "0"
+	},
+	{
+		"en_name": "WNCG",
+		"kr_name": "랩트 나인 크로니클 골드",
 		"warning": "0"
 	},
 	{
@@ -830,6 +965,11 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "FITFI",
+		"kr_name": "스텝앱",
+		"warning": "0"
+	},
+	{
 		"en_name": "STAT",
 		"kr_name": "스탯",
 		"warning": "0"
@@ -855,6 +995,16 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "LM",
+		"kr_name": "레저메타",
+		"warning": "1"
+	},
+	{
+		"en_name": "GRND",
+		"kr_name": "슈퍼워크",
+		"warning": "0"
+	},
+	{
 		"en_name": "APT",
 		"kr_name": "앱토스",
 		"warning": "0"
@@ -870,6 +1020,11 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "HOOK",
+		"kr_name": "훅트 프로토콜",
+		"warning": "0"
+	},
+	{
 		"en_name": "ONIT",
 		"kr_name": "온버프",
 		"warning": "0"
@@ -877,6 +1032,11 @@
 	{
 		"en_name": "OP",
 		"kr_name": "옵티미즘",
+		"warning": "0"
+	},
+	{
+		"en_name": "EVER",
+		"kr_name": "에버스케일",
 		"warning": "0"
 	},
 	{
@@ -910,138 +1070,8 @@
 		"warning": "0"
 	},
 	{
-		"en_name": "AGIX",
-		"kr_name": "싱귤래리티넷",
-		"warning": "0"
-	},
-	{
-		"en_name": "FET",
-		"kr_name": "페치",
-		"warning": "0"
-	},
-	{
-		"en_name": "STEEM",
-		"kr_name": "스팀",
-		"warning": "0"
-	},
-	{
-		"en_name": "STRAX",
-		"kr_name": "스트라티스",
-		"warning": "0"
-	},
-	{
-		"en_name": "THETA",
-		"kr_name": "쎄타토큰",
-		"warning": "0"
-	},
-	{
-		"en_name": "WAVES",
-		"kr_name": "웨이브",
-		"warning": "0"
-	},
-	{
-		"en_name": "ATOLO",
-		"kr_name": "라이즌",
-		"warning": "1"
-	},
-	{
-		"en_name": "TFUEL",
-		"kr_name": "쎄타퓨엘",
-		"warning": "0"
-	},
-	{
-		"en_name": "VALOR",
-		"kr_name": "밸러토큰",
-		"warning": "0"
-	},
-	{
-		"en_name": "AERGO",
-		"kr_name": "아르고",
-		"warning": "0"
-	},
-	{
-		"en_name": "QTCON",
-		"kr_name": "퀴즈톡",
-		"warning": "0"
-	},
-	{
-		"en_name": "GRACY",
-		"kr_name": "그레이시",
-		"warning": "0"
-	},
-	{
-		"en_name": "WIKEN",
-		"kr_name": "위드",
-		"warning": "0"
-	},
-	{
-		"en_name": "SUSHI",
-		"kr_name": "스시스왑",
-		"warning": "0"
-	},
-	{
-		"en_name": "PUNDIX",
-		"kr_name": "펀디엑스",
-		"warning": "0"
-	},
-	{
-		"en_name": "FRONT",
-		"kr_name": "프론티어",
-		"warning": "0"
-	},
-	{
-		"en_name": "OCEAN",
-		"kr_name": "오션프로토콜",
-		"warning": "0"
-	},
-	{
-		"en_name": "ALICE",
-		"kr_name": "마이네이버앨리스",
-		"warning": "0"
-	},
-	{
-		"en_name": "MATIC",
-		"kr_name": "폴리곤",
-		"warning": "0"
-	},
-	{
-		"en_name": "TEMCO",
-		"kr_name": "템코",
-		"warning": "0"
-	},
-	{
-		"en_name": "FNSA",
-		"kr_name": "핀시아",
-		"warning": "0"
-	},
-	{
-		"en_name": "1INCH",
-		"kr_name": "1인치",
-		"warning": "0"
-	},
-	{
-		"en_name": "JASMY",
-		"kr_name": "재스미코인",
-		"warning": "0"
-	},
-	{
-		"en_name": "TITAN",
-		"kr_name": "타이탄스왑",
-		"warning": "0"
-	},
-	{
-		"en_name": "TDROP",
-		"kr_name": "티드랍",
-		"warning": "0"
-	},
-	{
-		"en_name": "FITFI",
-		"kr_name": "스텝앱",
-		"warning": "0"
-	},
-	{
-		"en_name": "EVER",
-		"kr_name": "에버스케일",
+		"en_name": "IMX",
+		"kr_name": "이뮤터블엑스",
 		"warning": "0"
 	},
 	{
@@ -1050,8 +1080,18 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "ACS",
+		"kr_name": "액세스프로토콜",
+		"warning": "0"
+	},
+	{
 		"en_name": "LDO",
 		"kr_name": "리도다오",
+		"warning": "0"
+	},
+	{
+		"en_name": "FET",
+		"kr_name": "페치",
 		"warning": "0"
 	},
 	{
@@ -1060,44 +1100,24 @@
 		"warning": "0"
 	},
 	{
+		"en_name": "NCT",
+		"kr_name": "폴리스웜",
+		"warning": "0"
+	},
+	{
 		"en_name": "FLOKI",
 		"kr_name": "플로키",
+		"warning": "0"
+	},
+	{
+		"en_name": "STG",
+		"kr_name": "스타게이트 파이낸스",
 		"warning": "0"
 	},
 	{
 		"en_name": "PEPE",
 		"kr_name": "페페",
 		"warning": "0"
-	},
-	{
-		"en_name": "XYM",
-		"kr_name": "심볼",
-		"warning": "1"
-	},
-	{
-		"en_name": "LM",
-		"kr_name": "레저메타",
-		"warning": "1"
-	},
-	{
-		"en_name": "WNCG",
-		"kr_name": "랩트 나인 크로니클 골드",
-		"warning": "0"
-	},
-	{
-		"en_name": "CRV",
-		"kr_name": "커브",
-		"warning": "0"
-	},
-	{
-		"en_name": "ACS",
-		"kr_name": "액세스프로토콜",
-		"warning": "0"
-	},
-	{
-		"en_name": "NCT",
-		"kr_name": null,
-		"warning": null
 	},
 	{
 		"en_name": "date",

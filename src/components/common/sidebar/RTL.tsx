@@ -3,8 +3,8 @@
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
 
-import SidebarCard from "@/components/sidebar/components/SidebarCard";
-import routes from "../../routes";
+import SidebarCard from "@/components/common/sidebar/components/SidebarCard";
+import routes from "../../../routes";
 
 const Sidebar = (props: {
   open: boolean;

@@ -1,9 +1,10 @@
+import "react-calendar/dist/Calendar.css";
+// import "@/assets/css/MiniCalendar.css";
+
 import { useState } from "react";
 import Calendar from "react-calendar";
-import Card from "@/components/card";
-import "react-calendar/dist/Calendar.css";
+import Card from "@/components/common/card";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import "assets/css/MiniCalendar.css";
 
 const MiniCalendar = () => {
   const [value, onChange] = useState(new Date());

@@ -1,8 +1,8 @@
-import CardMenu from "@/components/card/CardMenu";
+import CardMenu from "@/components/common/card/CardMenu";
 import Checkbox from "@/components/checkbox";
-import Card from "@/components/card";
+import Card from "@/components/common/card";
 import { MdCancel, MdCheckCircle, MdOutlineError } from "react-icons/md";
-import Widget from "@/components/widget/Widget";
+import Widget from "@/components/common/widget/Widget";
 import { MdBarChart, MdDashboard } from "react-icons/md";
 
 import OptionWidget from "@/views/admin/default/components/OptionWidget";
