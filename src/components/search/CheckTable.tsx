@@ -197,7 +197,7 @@ function CheckTable(props: {
           )
         )}
       </div>
-      <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64">
+      <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden h-64 scrollbar-hide">
         <table className="w-full">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (

@@ -6,12 +6,13 @@ import { krwChage } from "@/lib/krwChage";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 import { SELL_REASON } from "../construct/sell_reason";
 
-const SEARCH_RESULT_CLASS = "flex flex-col w-full ";
+const SEARCH_RESULT_CLASS = "flex flex-col w-full md:mt-5";
 const ITEM_STYLE_CLASS = "w-1/6 flex justify-center";
 const ROW_STYLE_CLASS =
-  "flex bg-gray-50 border-b-2 border-b-gray-300 h-10 items-center text-sm md:text-base";
-const ROW_COVER = "h-[30vh] bg-gray-50 overflow-y-auto";
-3;
+  "flex bg-gray-50 border-b-2 border-b-gray-300 h-10 items-center text-sm md:text-base dark:bg-navy-800 dark:text-white";
+const ROW_COVER =
+  "h-[30vh] bg-gray-50 overflow-y-auto dark:bg-navy-800 scrollbar-hide";
+const TITLE = "text-2xl font-bold dark:text-white";
 
 interface Props {
   his: any[];
@@ -20,7 +21,7 @@ interface Props {
 const ConclusionStatus: FC<Props> = ({ his }) => {
   return (
     <div className={SEARCH_RESULT_CLASS}>
-      <p className="text-2xl  font-bold">체결 현황</p>
+      <p className={TITLE}>체결 현황</p>
       <Col itemCol={TRADING_STATUS_COL} colCount="6" />
       <div className={ROW_COVER}>
         {Array.isArray(his) &&

@@ -35,7 +35,7 @@ interface Props {
 }
 
 const COL_COVER_CLASS =
-  "flex gap-5 font-bold text-sm md:!text-lg bg-indigo-50 w-full justify-between p-3";
+  "flex gap-5 font-bold text-sm md:!text-lg bg-indigo-50 w-full justify-between p-3 dark:bg-navy-200";
 const COL_STYLE_CLASS = (colCount: string) => {
   return `w-1/${colCount} flex justify-center`;
 };

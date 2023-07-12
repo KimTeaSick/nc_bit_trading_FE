@@ -2,11 +2,12 @@ import { FC } from "react";
 import { POSSESSION_LIST, SEARCH_LIST } from "../variables/TABLE_COL";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
-const COMPONENT_COVER_CLASS = "w-full bg-white rounded-2xl h-[50vh] p-5";
-const TITLE_CLASS = "font-bold text-xl mb-3 text-gray-900";
+const COMPONENT_COVER_CLASS =
+  "w-full bg-white rounded-2xl h-[50vh] p-5 dark:bg-navy-800";
+const TITLE_CLASS = "font-bold text-xl mb-3 text-gray-900 dark:text-gray-300";
 const TH_CLASS =
   "flex justify-between w-full font-bold border-b-2 pb-2 text-gray-700";
-const ROW_CLASS = "font-medium flex justify-between";
+const ROW_CLASS = "font-medium flex justify-between dark:text-gray-300";
 const W_F = "w-full ";
 const COL_CLASS = "font-bold my-3 text-sm";
 

@@ -20,13 +20,6 @@ const BuyCondition: FC<Props> = ({
   return (
     <TradingConditionCover title="매수">
       <div>
-        {/* <div id="BuyCondition" className="p-1">
-          <p className="text-xl font-bold">매수 조건</p>
-          <PercentBuyCondition
-            value={buyCondition}
-            setValue={setBuyCondition}
-          />
-        </div> */}
         <div id="BuyMethod" className="p-1 h-auto">
           <p className="text-xl font-bold">매수 방법</p>
           <div className="p-1">

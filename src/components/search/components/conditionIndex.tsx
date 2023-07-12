@@ -12,7 +12,7 @@ import Price from "../components/Price";
 import MASPC from "../components/MASP";
 import MACDC from "../components/MACD";
 import CheckTable from "../CheckTable";
-import Card from "../../card";
+import Card from "@/components/common/card";
 import { SearchInitialStateType } from "@/module/search/search";
 import { setSearchResultData, setSearchResultBetaData } from "@/module/search";
 import IMG_URL from "@/assets/img/search/bitcoin.png";
@@ -152,7 +152,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
             height={20}
           />
           <div className="w-1/12 mr-5 font-bold text-lg">조건 이름 :</div>
-          <div className="shadow-lg border-2">
+          <div className="shadow-lg border-2 dark:border-none">
             <Input
               width={400}
               height={40}

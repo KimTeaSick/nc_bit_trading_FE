@@ -1,10 +1,12 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { PageButton, PagiNationSection } from "./PagiNation.styked";
+import { PagiNationSection } from "./PagiNation.styked";
 
 interface PaginNationProps {
   page: string;
   setNowPage: Dispatch<SetStateAction<number>>;
 }
+
+const P_BUTTON_CLASS = "cursor-pointer dark:text-white";
 
 const PaginNation: FC<PaginNationProps> = ({ page, setNowPage }) => {
   const count = new Array(page).fill("");
@@ -12,9 +14,13 @@ const PaginNation: FC<PaginNationProps> = ({ page, setNowPage }) => {
   return (
     <PagiNationSection>
       {count.map((value, index) => (
-        <PageButton key={index} onClick={() => setNowPage(index + 1)}>
+        <span
+          className={P_BUTTON_CLASS}
+          onClick={() => setNowPage(index + 1)}
+          key={index}
+        >
           {index + 1}
-        </PageButton>
+        </span>
       ))}
     </PagiNationSection>
   );

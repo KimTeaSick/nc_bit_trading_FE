@@ -96,7 +96,7 @@ function ChoiceCondition(props: {
             조건 리스트
           </div>
         </header>
-        <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain xl:overflow-x-hidden">
+        <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain scrollbar-hide xl:overflow-x-hidden">
           <table className="w-full h-full">
             <thead>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -137,7 +137,9 @@ function ChoiceCondition(props: {
                     <tr
                       key={row.id}
                       className={`${
-                        row.original.used === 1 ? "bg-red-100" : ""
+                        row.original.used === 1
+                          ? "bg-red-100 dark:bg-navy-200"
+                          : ""
                       }`}
                       onClick={async () => {
                         const detail = await getConditionDetail({

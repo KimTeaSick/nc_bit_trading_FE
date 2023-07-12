@@ -8,50 +8,21 @@ import {
 } from "../construct/modalValue";
 import { SearchOptionType } from "@/module/autoTrading/index.d";
 
+const MODAL_BACK =
+  "bg-opacity-40 bg-gray-500 w-[100vw] h-[100vh] z-50 fixed top-0 left-0 overflow-hidden";
+const MODAL_COVER =
+  "bg-indigo-100 rounded-lg w-3/5 h-auto overflow-auto fixed top-[20%] left-[25%] flex flex-col items-center p-2 dark:bg-navy-600";
+
+const CONDITION_COVER =
+  "flex w-11/12 p-3 bg-white my-2 rounded-md box-border dark:bg-navy-700";
+const CONDITION_TITLE = "font-bold mr-1 dark:text-white";
+const CONDITION_CONTENT = "dark:text-white";
+
 interface Props {
   condition: any[];
   type: string;
   showControl: (type: string) => void;
 }
-
-const ConditionModal: FC<Props> = ({ type, condition = [], showControl }) => {
-  console.log("type condition", type, condition);
-  const modalRef = useRef(null);
-  return (
-    <div
-      ref={modalRef}
-      onClick={(e) => {
-        if (e.target == modalRef.current) showControl("N");
-      }}
-      className=" bg-opacity-40 bg-gray-500 w-[100vw] h-[100vh] z-50 fixed top-0 left-0 overflow-hidden"
-    >
-      <div className="bg-indigo-100 rounded-lg w-2/5 h-auto overflow-hidden fixed top-[20%] left-[30%]">
-        <div className="bg-navy-500 p-2">
-          <p className="text-2xl font-bold text-white text-center">
-            {type === "search" ? "검색 조건" : "매매 조건"}
-          </p>
-        </div>
-        <div className="p-5">
-          {type === "search"
-            ? SEARCH_OPTION.map((value, index) => (
-                <div key={index} className="flex gap-2">
-                  <p className="font-bold">{value} : </p>
-                  <p>{`${dataChanger(condition[index])}`}</p>
-                </div>
-              ))
-            : TRADING_OPTION_VALUE_LIST.map((value, index) => (
-                <div key={index} className="flex gap-2">
-                  <p className="font-bold">{value} : </p>
-                  <p>{`${dataChanger(condition[index])}`}</p>
-                </div>
-              ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default ConditionModal;
 
 interface _Props {
   title?: string;
@@ -60,9 +31,9 @@ interface _Props {
 
 const SearchConditionC: FC<_Props> = ({ title, content }) => {
   return (
-    <div className="flex w-11/12 p-3 bg-white my-2 rounded-md box-border">
-      <p className="font-bold mr-1">{title} :</p>
-      <p className="">{content}</p>
+    <div className={CONDITION_COVER}>
+      <p className={CONDITION_TITLE}>{title} :</p>
+      <p className={CONDITION_CONTENT}>{content}</p>
     </div>
   );
 };
@@ -89,9 +60,9 @@ export const SearchConditionM = ({
       onClick={(e) => {
         if (e.target == modalRef.current) showControl("N");
       }}
-      className=" bg-opacity-40 bg-gray-500 w-[100vw] h-[100vh] z-50 fixed top-0 left-0 overflow-hidden"
+      className={MODAL_BACK}
     >
-      <div className="bg-indigo-100 rounded-lg w-3/5 h-auto overflow-auto fixed top-[20%] left-[25%] flex flex-col items-center p-2">
+      <div className={MODAL_COVER}>
         {S_TILE.map(
           (value: { kName: string; eName: string }, index: number) => (
             <SearchConditionC
@@ -108,9 +79,9 @@ export const SearchConditionM = ({
 
 const TradingConditionC: FC<_Props> = ({ title, content }) => {
   return (
-    <div className="flex w-11/12 p-1 bg-white box-border">
-      <p className="font-bold mr-1">{title}</p>
-      <p className="">{content}</p>
+    <div className="flex w-11/12 p-1 bg-white box-border dark:bg-navy-700">
+      <p className={CONDITION_TITLE}>{title}</p>
+      <p className={CONDITION_CONTENT}>{content}</p>
     </div>
   );
 };
@@ -136,16 +107,16 @@ export const TradingConditionM = ({
       onClick={(e) => {
         if (e.target == modalRef.current) showControl("N");
       }}
-      className=" bg-opacity-40 bg-gray-500 w-[100vw] h-[100vh] z-50 fixed top-0 left-0 overflow-hidden"
+      className={MODAL_BACK}
     >
-      <div className="bg-indigo-100 rounded-lg w-3/5 h-auto overflow-auto fixed top-[20%] left-[25%] flex flex-col items-center p-2">
+      <div className={MODAL_COVER}>
         {T_TILE.map(
           (value: { kName: string; eName: string }, index: number) => (
             <div
-              className="flex flex-col items-center overflow-hidden rounded-lg my-2 w-full bg-white"
+              className="flex flex-col items-center overflow-hidden rounded-lg my-2 w-full bg-white dark:bg-navy-700"
               key={index}
             >
-              <p className=" self-start ml-3 font-bold text-lg">
+              <p className="self-start ml-3 font-bold text-lg dark:text-white">
                 {value.kName}
               </p>
               {Object.values(TRADING_CONDITION(cValue)[`${value.eName}`]).map(

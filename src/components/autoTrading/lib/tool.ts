@@ -1,5 +1,5 @@
 export const fixed = (
-  value: string | number,
+  value: string | number | undefined,
   number: number
 ): string | number => {
   const returnValue = Number(value);

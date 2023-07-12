@@ -43,7 +43,7 @@ const Sidebar = (props: {
       ${open ? "translate-x-0" : "-translate-x-90"}`}
         >
           <span
-            className=" absolute right-4 top-4 block cursor-pointer 
+            className="absolute right-4 top-4 block cursor-pointer 
             xl:hidden"
             onClick={() => onClose(false)}
           >

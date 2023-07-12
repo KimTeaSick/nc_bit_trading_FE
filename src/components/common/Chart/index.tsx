@@ -1,10 +1,9 @@
 import { FC, useState } from "react";
 import CandleChart from "./CandleChart";
-import { ChartSection } from "./Chart.styled";
 import VolumeChart from "./VolumeChart";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
-import Loading from "../common/Loading";
+import Loading from "../Loading";
 import { useWindowSize } from "./useWindowSize";
 
 const Chart: FC = () => {

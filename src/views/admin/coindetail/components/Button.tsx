@@ -23,7 +23,11 @@ const Button: FC<ButtonProps> = ({ termText, active }) => {
     dispatch(setChartTerm(termText));
   };
   return (
-    <CoinDetailButton onClick={termEvent} active={active}>
+    <CoinDetailButton
+      className="dark:!bg-navy-400 dark:border-gary-400 "
+      onClick={termEvent}
+      active={active}
+    >
       {termText}
     </CoinDetailButton>
   );

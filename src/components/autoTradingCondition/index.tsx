@@ -101,7 +101,7 @@ const AutoTradingConditon: FC = () => {
             자동 매매 조건 설정
           </h4>
         </div>
-        <div className="w-full bg-navy-50 rounded-lg h-auto p-3">
+        <div className="w-full bg-navy-50 rounded-lg h-auto p-3 dark:bg-navy-600">
           <div className="w-full flex gap-3 mb-3">
             <ConditionList
               name={name}

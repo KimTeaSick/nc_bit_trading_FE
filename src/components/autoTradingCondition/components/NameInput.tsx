@@ -38,7 +38,7 @@ const NameInput: FC<Props> = ({
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center">
-        <p className="font-bold mr-5">조건 이름 :</p>
+        <p className="font-bold mr-5 dark:text-white">조건 이름 :</p>
         <Input
           width={320}
           height={50}

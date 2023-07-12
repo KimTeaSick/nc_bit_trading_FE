@@ -24,7 +24,9 @@ const SearchConditionCover: FC<Props> = ({
         <div className="w-11" />
       )}
       <div className="w-1/12 font-bold text-lg">{title}</div>
-      <div className="w-11/12 bg-navy-50 rounded-md p-5">{children}</div>
+      <div className="w-11/12 bg-navy-50 rounded-md p-5 dark:bg-navy-600">
+        {children}
+      </div>
     </div>
   );
 };

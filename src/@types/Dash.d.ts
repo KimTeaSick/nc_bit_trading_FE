@@ -20,6 +20,6 @@ export type AccountType = {
   sell: number | undefined;
 };
 export type RateType = {
-  now_balance: number | undefined;
-  rate: number | undefined;
+  now_balance: number;
+  rate: number;
 };

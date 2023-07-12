@@ -1,5 +1,5 @@
 import Card from "@/components/common/card";
-import Chart from "@/components/Chart";
+import Chart from "@/components/common/Chart";
 import ButtonSection from "./ButtonSection";
 
 const DetailCard = () => {

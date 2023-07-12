@@ -6,7 +6,7 @@ import { useState } from "react";
 import Card from "@/components/common/card";
 import { sell } from "@/pages/api/walletAPIs";
 import Image from "next/image";
-import { fixed } from "../autoTrading/lib/tool";
+import { fixed } from "../../autoTrading/lib/tool";
 import { krwChage } from "@/lib/krwChage";
 
 const BitCard = (props: {

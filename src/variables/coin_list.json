@@ -800,11 +800,6 @@
 		"warning": "0"
 	},
 	{
-		"en_name": "GO",
-		"kr_name": "고체인",
-		"warning": "1"
-	},
-	{
 		"en_name": "DFA",
 		"kr_name": "디파인",
 		"warning": "0"

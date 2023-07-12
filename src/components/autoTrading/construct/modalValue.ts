@@ -101,7 +101,9 @@ export const SEARCH_CONDITION = (
       "시간 "
     )}차트 기준, 단기 이평 ${value.short_disparity} 장기 이평 ${
       value.long_disparity
-    } 시그널 ${value.signal}, 0선 ${value.up_down === "up" ? "이상" : "이하"}`,
+    } 시그널 ${value.signal}, 시그널 선 ${
+      value.up_down === "up" ? "이상" : "이하"
+    }`,
   };
 };
 

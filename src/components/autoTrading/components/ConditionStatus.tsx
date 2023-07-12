@@ -3,7 +3,7 @@ import { Dispatch, FC, SetStateAction } from "react";
 const CONDITION_STATUS_WRAPPER = "flex gap-6 text-xl font-semibold";
 const CONDITION_WRAPPER = "flex items-center gap-2";
 const CONDITION_NAME_STYLE_CLASS =
-  "rounded-lg bg-white p-1 px-3 cursor-pointer";
+  "rounded-lg bg-white p-1 px-3 cursor-pointer dark:bg-navy-200";
 
 interface Props {
   search_condition: string;

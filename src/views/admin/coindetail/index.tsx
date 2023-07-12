@@ -12,7 +12,7 @@ import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 interface CoinDetailProps {
   selectCoin: any;
   data: any;
-  coinName: any;
+  coinName: string;
   flag: any;
   setFlag: Dispatch<SetStateAction<number>>;
 }
