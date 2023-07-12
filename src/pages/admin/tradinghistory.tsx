@@ -21,10 +21,8 @@ const TradingList: FC = () => {
 
   return (
     <Admin>
-      <Tables />
-      <PagiNationSection>
-        <PaginNation page={orderListPage} setNowPage={setNowPage} />
-      </PagiNationSection>
+      <Tables page={nowPage} />
+      <PaginNation page={orderListPage} setNowPage={setNowPage} />
     </Admin>
   );
 };

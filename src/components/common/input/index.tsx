@@ -2,7 +2,7 @@ import { ChangeEvent, ChangeEventHandler, FC } from "react";
 import { InputStyle } from "@/styles/globalStyle";
 
 interface InputProps {
-  width: number;
+  width: string;
   height?: number;
   placeholder?: string;
   value?: string | number;
@@ -24,8 +24,9 @@ export const Input: FC<InputProps> = ({
 }) => {
   return (
     <InputStyle
+      className={width}
       type={type}
-      width={width}
+      // width={width}
       height={height ? height : 27}
       value={value}
       disabled={disable}

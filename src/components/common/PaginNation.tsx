@@ -6,13 +6,13 @@ interface PaginNationProps {
   setNowPage: Dispatch<SetStateAction<number>>;
 }
 
-const P_BUTTON_CLASS = "cursor-pointer dark:text-white";
+const P_BUTTON_CLASS = "cursor-pointer font-bold dark:text-white";
 
 const PaginNation: FC<PaginNationProps> = ({ page, setNowPage }) => {
   const count = new Array(page).fill("");
 
   return (
-    <PagiNationSection>
+    <div className="w-full flex flex-wrap items-center justify-center gap-1">
       {count.map((value, index) => (
         <span
           className={P_BUTTON_CLASS}
@@ -22,7 +22,7 @@ const PaginNation: FC<PaginNationProps> = ({ page, setNowPage }) => {
           {index + 1}
         </span>
       ))}
-    </PagiNationSection>
+    </div>
   );
 };
 

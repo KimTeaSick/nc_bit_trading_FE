@@ -17,10 +17,10 @@ const MACD: FC<Props> = ({ value, data, setValue }) => {
 
   return (
     <SearchConditionCover title="MACD :" value={value} setValue={setValue}>
-      <div className="flex justify-between">
-        <div className="flex items-center gap-2 text-xl">
+      <div className="flex justify-between flex-col md:flex-row ">
+        <div className="flex items-center gap-2 text-xl flex-wrap md:flex-nowrap">
           <SelectBox
-            width={80}
+            width={"w-1/6 md:w-22"}
             value={value.chart_term}
             itemList={CHART_TERM}
             event={(e) => setValue({ ...value, chart_term: e.target.value })}
@@ -28,7 +28,7 @@ const MACD: FC<Props> = ({ value, data, setValue }) => {
           <div>차트기준</div>
           <div>단기 이평</div>
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.short_disparity}
             onClick={() => setValue({ ...value, short_disparity: "" })}
             onChange={(e) =>
@@ -37,7 +37,7 @@ const MACD: FC<Props> = ({ value, data, setValue }) => {
           />
           <div>장기 이평</div>
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.long_disparity}
             onClick={() => setValue({ ...value, long_disparity: "" })}
             onChange={(e) =>
@@ -46,7 +46,7 @@ const MACD: FC<Props> = ({ value, data, setValue }) => {
           />
           <div>signal</div>
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.signal}
             onClick={() => setValue({ ...value, signal: "" })}
             onChange={(e) => setValue({ ...value, signal: e.target.value })}
@@ -54,14 +54,14 @@ const MACD: FC<Props> = ({ value, data, setValue }) => {
           <div>MACD,</div>
           <div>시그널</div>
           <SelectBox
-            width={80}
+            width={"w-1/6 md:w-24"}
             value={value.up_down}
             itemList={UP_DOWN}
             event={(e) => setValue({ ...value, up_down: e.target.value })}
           />
         </div>
         {data && data.length !== 0 && (
-          <div className="flex justify-end pr-3 w-16">
+          <div className="flex justify-end pr-3 w-full md:w-16 mt-2 md:mt-0">
             <SearchButton event={() => setShow(!resultShow)} />
           </div>
         )}{" "}

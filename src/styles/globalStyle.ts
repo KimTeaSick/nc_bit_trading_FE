@@ -30,12 +30,11 @@ export const PageWapper = styled.div`
 `;
 
 interface InputProps {
-  width: number;
+  // width: number;
   height: number;
 }
 
 export const InputStyle = styled.input`
-  width: ${(props: InputProps) => props.width}px;
   height: ${(props: InputProps) => props.height}px;
   color: #000;
   padding: 0 0 0 10px;

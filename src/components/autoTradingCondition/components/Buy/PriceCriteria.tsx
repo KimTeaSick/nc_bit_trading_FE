@@ -13,7 +13,7 @@ const PriceCriteria: FC<Props> = ({ value, setValue }) => {
       <p>가격 현재가 대비</p>
       <SelectBox
         itemList={CALL_PRICE}
-        width={90}
+        width={"w-22"}
         value={value.callmoney_to_buy_method}
         event={(e) =>
           setValue({ ...value, callmoney_to_buy_method: e.target.value })

@@ -16,7 +16,7 @@ const TrailingStop: FC<Props> = ({ value, setValue }) => {
       <div className={LINE_CLASS}>
         <p>평균 매수단가 대비</p>{" "}
         <Input
-          width={60}
+          width={"w-12"}
           value={value.trailing_start_percent}
           onClick={() => setValue({ ...value, trailing_start_percent: "" })}
           onChange={(e) =>
@@ -28,7 +28,7 @@ const TrailingStop: FC<Props> = ({ value, setValue }) => {
       <div className={LINE_CLASS}>
         <p>최고가 달성 이후 가격이</p>{" "}
         <Input
-          width={60}
+          width={"w-12"}
           value={value.trailing_stop_percent}
           onClick={() => setValue({ ...value, trailing_stop_percent: "" })}
           onChange={(e) =>
@@ -40,7 +40,7 @@ const TrailingStop: FC<Props> = ({ value, setValue }) => {
       <div className={LINE_CLASS}>
         <p>해당 시점에 현재가 대비</p>{" "}
         <Input
-          width={60}
+          width={"w-12"}
           value={value.trailing_order_percent}
           onClick={() => setValue({ ...value, trailing_order_percent: "" })}
           onChange={(e) =>

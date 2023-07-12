@@ -12,7 +12,7 @@ const PercentSellMethod: FC<Props> = ({ value, setValue }) => {
     <div className="flex gap-1 items-center font-semibold pl-2">
       <p>보유종목의</p>
       <Input
-        width={70}
+        width={"w-20"}
         value={value.percent_to_split_sell}
         onClick={() => setValue({ ...value, percent_to_split_sell: "" })}
         onChange={(e) =>

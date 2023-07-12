@@ -12,7 +12,7 @@ const MACDCondition: FC<Props> = ({ value, setValue }) => {
     <div className="flex flex-col gap-2 font-semibold pl-2">
       <div className="flex gap-1">
         <Input
-          width={60}
+          width={"w-20"}
           value={value.shot_MACD_value}
           onClick={() => setValue({ ...value, shot_MACD_value: "" })}
           onChange={(e) =>
@@ -21,7 +21,7 @@ const MACDCondition: FC<Props> = ({ value, setValue }) => {
         />
         <p>단기</p>
         <Input
-          width={60}
+          width={"w-20"}
           value={value.long_MACD_value}
           onClick={() => setValue({ ...value, long_MACD_value: "" })}
           onChange={(e) =>
@@ -30,7 +30,7 @@ const MACDCondition: FC<Props> = ({ value, setValue }) => {
         />
         <p>장기</p>
         <Input
-          width={60}
+          width={"w-20"}
           value={value.MACD_signal_value}
           onClick={() => setValue({ ...value, MACD_signal_value: "" })}
           onChange={(e) =>

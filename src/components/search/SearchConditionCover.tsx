@@ -17,14 +17,16 @@ const SearchConditionCover: FC<Props> = ({
   checkDisable,
 }) => {
   return (
-    <div className="w-full flex items-center">
-      {!checkDisable ? (
-        <CheckBox value={value} setValue={setValue} />
-      ) : (
-        <div className="w-11" />
-      )}
-      <div className="w-1/12 font-bold text-lg">{title}</div>
-      <div className="w-11/12 bg-navy-50 rounded-md p-5 dark:bg-navy-600">
+    <div className="w-full flex flex-wrap items-center md:flex-nowrap justify-between">
+      <div className="flex items-center">
+        {!checkDisable ? (
+          <CheckBox value={value} setValue={setValue} />
+        ) : (
+          <div className="w-11" />
+        )}
+        <div className="w-full font-bold text-lg md:!w1/12">{title}</div>
+      </div>
+      <div className="w-full md:w-11/12 bg-navy-50 rounded-md p-5 dark:bg-navy-600">
         {children}
       </div>
     </div>

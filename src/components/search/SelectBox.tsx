@@ -47,17 +47,13 @@ const COMPARISON = [
 ];
 
 interface SelectionProps {
-  width: number;
+  width: string;
   value?: string;
   itemList?: any[];
   event: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
-interface SelectProps {
-  width: number;
-}
 
 const Select = styled.select`
-  width: ${(props: SelectProps) => props.width}px;
   color: #000;
   height: 25px;
   border: none;
@@ -68,7 +64,7 @@ const Select = styled.select`
 
 const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   return (
-    <Select width={width} onChange={event} value={value || undefined}>
+    <Select className={width} onChange={event} value={value || undefined}>
       {itemList?.map((item: any, index) => (
         <option value={item?.value} key={index}>
           {item?.key}

@@ -20,17 +20,17 @@ const MASP: FC<Props> = ({ value, setValue, data }) => {
       value={value}
       setValue={setValue}
     >
-      <div className="flex justify-between">
-        <div className="flex items-center gap-2 text-xl">
+      <div className="flex justify-between flex-col md:flex-row ">
+        <div className="flex items-center gap-2 text-xl flex-wrap md:flex-nowrap">
           <SelectBox
-            width={80}
+            width={"w-1/6 md:w-22"}
             value={value.chart_term}
             itemList={CHART_TERM}
             event={(e) => setValue({ ...value, chart_term: e.target.value })}
           />
           <div>차트기준</div>
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.first_disparity}
             onClick={() => setValue({ ...value, first_disparity: "" })}
             onChange={(e) =>
@@ -39,13 +39,13 @@ const MASP: FC<Props> = ({ value, setValue, data }) => {
           />
           <div>이평선</div>
           <SelectBox
-            width={80}
+            width={"w-1/6 md:w-22"}
             itemList={COMPARISON}
             value={value.comparison}
             event={(e) => setValue({ ...value, comparison: e.target.value })}
           />
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.second_disparity}
             onClick={() => setValue({ ...value, second_disparity: "" })}
             onChange={(e) =>
@@ -55,7 +55,7 @@ const MASP: FC<Props> = ({ value, setValue, data }) => {
           <div>이평선 </div>
         </div>
         {data && data.length !== 0 && (
-          <div className="flex w-16 justify-end pr-3">
+          <div className="flex w-full mt-2 md:mt-0 md:w-16 justify-end pr-3">
             <SearchButton event={() => setShow(!resultShow)} />
           </div>
         )}

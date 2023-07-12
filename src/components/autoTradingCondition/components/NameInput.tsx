@@ -40,7 +40,7 @@ const NameInput: FC<Props> = ({
       <div className="flex items-center">
         <p className="font-bold mr-5 dark:text-white">조건 이름 :</p>
         <Input
-          width={320}
+          width={"w-3/4"}
           height={50}
           value={name}
           onChange={(e) => setName(e)}

@@ -22,7 +22,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
         <div className={FLEX_GAP_CLASS}>
           <p>잔고의 총 손실이</p>
           <Input
-            width={60}
+            width={"w-12"}
             value={value.loss_cut_under_percent}
             onClick={() => setValue({ ...value, loss_cut_under_percent: "" })}
             onChange={(e) =>
@@ -41,7 +41,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
             <p>전체 종목을</p>
             <SelectBox
               itemList={CALL_PRICE}
-              width={80}
+              width={"w-20"}
               value={value.loss_cut_under_call_price_sell_all}
               event={(e) =>
                 setValue({
@@ -59,7 +59,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
               setValue={() => setValue({ ...value, loss: 2 })}
             />
             <Input
-              width={60}
+              width={"w-12"}
               value={value.loss_cut_under_coin_specific_percent}
               onClick={() =>
                 setValue({ ...value, loss_cut_under_coin_specific_percent: "" })
@@ -74,7 +74,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
             <p>% 이상인 종목만</p>
             <SelectBox
               itemList={CALL_PRICE}
-              width={80}
+              width={"w-20"}
               value={value.loss_cut_under_call_price_specific_coin}
               event={(e) =>
                 setValue({
@@ -91,7 +91,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
         <div className={FLEX_GAP_CLASS}>
           <p>잔고의 총 이익이</p>
           <Input
-            width={60}
+            width={"w-12"}
             value={value.loss_cut_over_percent}
             onClick={() => setValue({ ...value, loss_cut_over_percent: "" })}
             onChange={(e) =>
@@ -110,7 +110,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
             <p>전체 종목을</p>
             <SelectBox
               itemList={CALL_PRICE}
-              width={80}
+              width={"w-20"}
               value={value.loss_cut_over_call_price_sell_all}
               event={(e) =>
                 setValue({
@@ -128,7 +128,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
               setValue={() => setValue({ ...value, gain: 2 })}
             />
             <Input
-              width={60}
+              width={"w-12"}
               value={value.loss_cut_over_coin_specific_percent}
               onClick={() =>
                 setValue({ ...value, loss_cut_over_coin_specific_percent: "" })
@@ -142,7 +142,7 @@ const LossCut: FC<Props> = ({ value, setValue }) => {
             />
             <p>% 이상인 종목만</p>
             <SelectBox
-              width={80}
+              width={"w-20"}
               itemList={CALL_PRICE}
               value={value.loss_cut_over_call_price_specific_coin}
               event={(e) =>

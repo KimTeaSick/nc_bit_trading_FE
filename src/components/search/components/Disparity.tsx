@@ -22,17 +22,17 @@ const Disparity: FC<Props> = ({ value, data, setValue }) => {
       setValue={setValue}
       checkDisable={true}
     >
-      <div className="flex justify-between">
-        <div className="flex items-center gap-2 text-xl">
+      <div className="flex justify-between flex-col md:flex-row ">
+        <div className="flex items-center gap-2 text-xl flex-wrap md:flex-nowrap">
           <SelectBox
-            width={80}
+            width={"w-1/6 md:w-22"}
             value={value.chart_term}
             itemList={CHART_TERM}
             event={(e) => setValue({ ...value, chart_term: e.target.value })}
           />
           <div>차트기준</div>
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.disparity_term}
             onClick={() => setValue({ ...value, disparity_term: "" })}
             onChange={(e) =>
@@ -41,7 +41,7 @@ const Disparity: FC<Props> = ({ value, data, setValue }) => {
           />
           <div>이평 이격도가</div>
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.low_disparity}
             onClick={() => setValue({ ...value, low_disparity: "" })}
             onChange={(e) =>
@@ -50,7 +50,7 @@ const Disparity: FC<Props> = ({ value, data, setValue }) => {
           />
           <div>이상</div>
           <Input
-            width={50}
+            width={"w-1/6 md:w-24"}
             value={value.high_disparity}
             onClick={() => setValue({ ...value, high_disparity: "" })}
             onChange={(e) =>
@@ -60,7 +60,7 @@ const Disparity: FC<Props> = ({ value, data, setValue }) => {
           <div>이하</div>
         </div>
         {data && data.length !== 0 && (
-          <div className="flex justify-end pr-3 w-16">
+          <div className="flex justify-end pr-3 w-full md:w-16 mt-2 md:mt-0">
             <SearchButton event={() => setShow(!resultShow)} />
           </div>
         )}{" "}

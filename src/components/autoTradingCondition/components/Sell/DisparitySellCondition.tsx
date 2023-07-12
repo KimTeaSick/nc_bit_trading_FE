@@ -13,7 +13,7 @@ const DisparitySellCondition: FC<Props> = ({ up_down, value, setValue }) => {
     <div className="flex gap-1 items-center font-semibold pl-2">
       <p>현재 가가</p>
       <Input
-        width={70}
+        width={"w-16"}
         value={
           up_down
             ? value.disparity_for_upper_case
@@ -32,7 +32,7 @@ const DisparitySellCondition: FC<Props> = ({ up_down, value, setValue }) => {
       />
       <p>이평선 대비</p>
       <Input
-        width={70}
+        width={"w-16"}
         value={
           up_down
             ? value.upper_percent_to_disparity_condition

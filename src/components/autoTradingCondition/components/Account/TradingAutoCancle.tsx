@@ -18,7 +18,7 @@ const TradingAutoCancle: FC<Props> = ({ value, setValue }) => {
       <div className={COMPONENT_STYLR_CLASS}>
         <p>매도 미 체결 주문 내역에 대하여 주문시점으로부터 </p>
         <Input
-          width={50}
+          width={"w-14"}
           value={value.sell_cancle_time}
           onClick={() => setValue({ ...value, sell_cancle_time: "" })}
           onChange={(e) =>
@@ -30,7 +30,7 @@ const TradingAutoCancle: FC<Props> = ({ value, setValue }) => {
       <div className={COMPONENT_STYLR_CLASS}>
         <p>매수 미 체결 주문 내역에 대하여 주문시점으로부터 </p>
         <Input
-          width={50}
+          width={"w-14"}
           value={value.buy_cancle_time}
           onClick={() => setValue({ ...value, buy_cancle_time: "" })}
           onChange={(e) =>

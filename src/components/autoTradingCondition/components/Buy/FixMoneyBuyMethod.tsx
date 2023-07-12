@@ -12,7 +12,7 @@ const FixMoneyBuyMethod: FC<Props> = ({ value, setValue }) => {
     <div className="flex gap-1 items-center font-semibold pl-2">
       <p>1 종목 당 증거금</p>
       <Input
-        width={70}
+        width={"w-20"}
         value={value.price_to_buy_method}
         onClick={() => setValue({ ...value, price_to_buy_method: "" })}
         onChange={(e) =>

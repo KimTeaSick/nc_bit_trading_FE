@@ -20,13 +20,13 @@ const Admin: FC<Props> = ({ children, extract }) => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className={extract + " h-full w-[100vw]"}>
+    <div className={extract + " h-full w-full"}>
       <Sidebar open={open} onClose={setOpen} />
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
         <main
-          className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[260px]`}
+          className={`mx-[10px] h-full flex-none transition-all md:pr-2 xl:ml-[260px]`}
         >
-          <div className="h-full ">
+          <div className="h-full">
             <Navbar />
             {children}
             <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const CoinCard = (props: {
   image: string;
-  title: string | undefined;
+  title: string | undefined | null;
   price: string | number;
   extra?: string;
 }) => {

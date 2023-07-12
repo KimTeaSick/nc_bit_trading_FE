@@ -13,7 +13,7 @@ const PriceCount: FC<Props> = ({ value, setValue }) => {
     <div className={COVER_CLASS}>
       <p>미체결 주문을 포함 보유 중인 종목의 수가</p>
       <Input
-        width={50}
+        width={"w-12"}
         value={value.price_count}
         onClick={() => setValue({ ...value, price_count: "" })}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>

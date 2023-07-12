@@ -29,10 +29,11 @@ type RowObj = {
 };
 
 function CheckTable(props: {
+  page: number;
   tableData: any;
   setModalOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { tableData, setModalOpen } = props;
+  const { tableData, setModalOpen, page } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
   let defaultData = tableData;
   const columns = [
@@ -138,8 +139,9 @@ function CheckTable(props: {
   return (
     <Card extra={"w-full h-full sm:overflow-auto px-6"}>
       <header className="relative flex items-center justify-between pt-4">
-        <div className="text-xl font-bold text-navy-700 dark:text-white">
-          거래 내역
+        <div className="text-xl font-bold text-navy-700 flex gap-3 dark:text-white">
+          <p>거래 내역</p>
+          <p>Page_{page}</p>
         </div>
         <button
           className={`flex items-center text-xl hover:cursor-pointer bg-lightPrimary p-2 text-brand-500 hover:bg-gray-100 dark:bg-navy-700 

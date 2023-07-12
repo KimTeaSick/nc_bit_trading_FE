@@ -17,18 +17,18 @@ const TransactionAmount: FC<Props> = ({ value, setValue, data }) => {
 
   return (
     <SearchConditionCover title="가격대금 : " value={value} setValue={setValue}>
-      <div className="flex justify-between">
-        <div className="flex items-center gap-2 text-xl">
+      <div className="flex justify-between flex-col md:flex-row ">
+        <div className="flex items-center gap-2 text-xl flex-wrap md:flex-nowrap">
           <SelectBox
-            width={130}
-            itemList={TA_TERM}
+            width={"w-22"}
+            itemList={CHART_TERM}
             value={value.chart_term}
             event={(e) => setValue({ ...value, chart_term: e.target.value })}
           />
           <div>차트기준, </div>
           <div>거래 대금이</div>
           <Input
-            width={150}
+            width={"w-1/6"}
             value={value.low_transaction_amount}
             onClick={() => setValue({ ...value, low_transaction_amount: "" })}
             onChange={(e) =>
@@ -37,7 +37,7 @@ const TransactionAmount: FC<Props> = ({ value, setValue, data }) => {
           />
           <div> 원 이상</div>
           <Input
-            width={150}
+            width={"w-1/5"}
             value={value.high_transaction_amount}
             onClick={() => setValue({ ...value, high_transaction_amount: "" })}
             onChange={(e) =>
@@ -47,7 +47,7 @@ const TransactionAmount: FC<Props> = ({ value, setValue, data }) => {
           <div> 원 이하인 종목</div>
         </div>
         {data && data.length !== 0 && (
-          <div className="flex justify-end w-16 pr-3">
+          <div className="flex justify-end w-full md:w-16 pr-3 mt-2 md:mt-0">
             <SearchButton event={() => setShow(!resultShow)} />
           </div>
         )}

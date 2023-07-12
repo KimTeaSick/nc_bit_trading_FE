@@ -17,7 +17,7 @@ const CheckBox: FC<Props> = ({ value, setValue }) => {
   );
 
   return (
-    <div onClick={event} className="m-3">
+    <div onClick={event} className="w-11 m-3">
       {value.flag ? (
         <Image src={ConditionAbled} alt="check" width={20} height={20} />
       ) : (

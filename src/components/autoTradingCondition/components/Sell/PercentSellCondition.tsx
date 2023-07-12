@@ -13,7 +13,7 @@ const PercentSellCondtion: FC<Props> = ({ up_down, value, setValue }) => {
     <div className="flex gap-1 items-center font-semibold pl-2">
       <p>보유 종목의 평균 매수 단가 기준 대비</p>
       <Input
-        width={70}
+        width={"w-20"}
         value={
           up_down
             ? value.upper_percent_to_price_condition

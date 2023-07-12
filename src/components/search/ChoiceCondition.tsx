@@ -168,7 +168,7 @@ function ChoiceCondition(props: {
             </tbody>
           </table>
         </div>
-        <div className="w-1/6 flex gap-2 self-end p-2 absolute bottom-1">
+        <div className="w-1/2 md:w-1/6 flex gap-2 self-end p-2 absolute bottom-1">
           <SearchButton event={() => registerBtnEvent()} title="등록" />
           {flag && (
             <Link className="w-full" href={"/admin/autotradingcondition"}>

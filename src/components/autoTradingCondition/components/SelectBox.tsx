@@ -16,7 +16,7 @@ const CALL_PRICE = [
 ];
 
 interface SelectionProps {
-  width: number;
+  width: string;
   value?: string;
   itemList?: any[];
   event: (e: ChangeEvent<HTMLSelectElement>) => void;
@@ -26,7 +26,6 @@ interface SelectProps {
 }
 
 const Select = styled.select`
-  width: ${(props: SelectProps) => props.width}px;
   color: #000;
   height: 25px;
   border: none;
@@ -37,7 +36,7 @@ const Select = styled.select`
 
 const SelectBox: FC<SelectionProps> = ({ width, itemList, event, value }) => {
   return (
-    <Select width={width} onChange={event} value={value}>
+    <Select className={width} onChange={event} value={value}>
       {itemList?.map((item: any, index) => (
         <option value={item?.value} key={index}>
           {item?.key}

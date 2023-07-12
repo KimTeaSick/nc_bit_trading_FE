@@ -132,7 +132,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
             data={searchSlice.MACDSearchCoin}
           />
           {searchSlice.recommends && searchSlice.recommends.length !== 0 && (
-            <div className="w-full bg-navy-50 rounded-md p-5 flex flex-col gap-2">
+            <div className="w-full bg-navy-50 rounded-md p-5 flex flex-col gap-2 dark:bg-navy-600">
               <CheckTable
                 optionList={useConditionList}
                 tableData={searchSlice.recommends}
@@ -142,7 +142,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
         </div>
       </div>
 
-      <div className="w-full flex justify-between items-center pt-2">
+      <div className="w-full flex justify-between items-center pt-2 flex-wrap md:flex-nowrap">
         <div className="w-full flex items-center">
           <Image
             src={IMG_URL.src}
@@ -154,7 +154,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
           <div className="w-1/12 mr-5 font-bold text-lg">조건 이름 :</div>
           <div className="shadow-lg border-2 dark:border-none">
             <Input
-              width={400}
+              width={"w-3/4"}
               height={40}
               value={
                 searchSlice.conditionDetail !== null
@@ -167,7 +167,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
           </div>
         </div>
 
-        <div className="w-1/3 flex my-2 gap-1">
+        <div className="w-full flex my-2 gap-1 md:w-1/3">
           {/* <SearchButton
             title="검색(Beta)"
             event={() => B_searchBtnEvent()}

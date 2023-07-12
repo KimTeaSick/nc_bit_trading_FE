@@ -12,7 +12,7 @@ const PriceCriteria: FC<Props> = ({ value, setValue }) => {
     <div className="flex gap-1 items-center font-semibold pl-2">
       <p>현재가 대비</p>
       <SelectBox
-        width={90}
+        width={"w-20"}
         itemList={CALL_PRICE}
         value={value.call_money_to_sell_method}
         event={(e) =>
