@@ -6,7 +6,7 @@ import TradingAutoCancle from "./TradingAutoCancle";
 import ReBuyLmit from "./ReBuyLmit";
 import LossCut from "./LossCut";
 
-const CONDITION_COVER = "flex gap-2";
+const CONDITION_COVER = "flex gap-2 flex-wrap md:flex-nowrap";
 const MIDDLE_LINE = "border-l-gray-300 border-l-2 pl-5";
 
 interface Props {

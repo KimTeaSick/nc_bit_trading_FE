@@ -1,6 +1,7 @@
 import { Input } from "@/components/common/input";
 import { Dispatch, FC, SetStateAction } from "react";
 import { UseSellConditionType } from "../../type/autoTrading";
+import SelectBox, { CALL_PRICE } from "../SelectBox";
 
 const LINE_CLASS = "flex gap-2 items-center font-semibold pl-2";
 const COVER_CLASS = "flex flex-col gap-2 ";
@@ -39,15 +40,15 @@ const TrailingStop: FC<Props> = ({ value, setValue }) => {
       </div>
       <div className={LINE_CLASS}>
         <p>해당 시점에 현재가 대비</p>{" "}
-        <Input
-          width={"w-12"}
+        <SelectBox
+          width={"w-20"}
           value={value.trailing_order_percent}
-          onClick={() => setValue({ ...value, trailing_order_percent: "" })}
-          onChange={(e) =>
+          itemList={CALL_PRICE}
+          event={(e) =>
             setValue({ ...value, trailing_order_percent: e.target.value })
           }
         />
-        <p>% 로 매도 주문을 실행한다.</p>
+        <p>로 매도 주문을 실행한다.</p>
       </div>
     </div>
   );

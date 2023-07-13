@@ -7,7 +7,7 @@ import RadioButton from "../RadioButton";
 const COVER_CLASS = "flex flex-col font-semibold gap-2";
 const TITLE_CLASS = "font-bold text-xl";
 const SELL_BUY_WAPPER = "flex flex-col gap-1 px-2 ";
-const FLEX_GAP_CLASS = "flex gap-2 items-center";
+const FLEX_GAP_CLASS = "flex gap-2 items-center flex-wrap md:flex-nowrap";
 
 interface Props {
   value: useAccountType;

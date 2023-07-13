@@ -37,7 +37,7 @@ const SellCondition: FC<Props> = ({ sellCondition, setSellCondition }) => {
               setValue={setSellCondition}
             />
           </div>
-          <div className={COMPONENT_COVER_CLASS}>
+          {/* <div className={COMPONENT_COVER_CLASS}>
             <p className={TITLE_CLASS}>2. 이평선 기준</p>
             <DisparitySellCondition
               up_down={true}
@@ -58,7 +58,7 @@ const SellCondition: FC<Props> = ({ sellCondition, setSellCondition }) => {
                 setValue={setSellCondition}
               />
             </p>
-          </div>
+          </div> */}
         </div>
         <div id="BuyMethod" className="p-1">
           <p className={CATEGORY_TITLE}>매도 방법</p>

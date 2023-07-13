@@ -102,19 +102,21 @@ const AutoTradingConditon: FC = () => {
           </h4>
         </div>
         <div className="w-full bg-navy-50 rounded-lg h-auto p-3 dark:bg-navy-600">
-          <div className="w-full flex gap-3 mb-3">
-            <ConditionList
-              name={name}
-              itemList={ATState.optionList}
-              onClick={getDetailOption}
-              resetEvent={resetEvent}
-            />
+          <div className="w-full flex gap-3 mb-3 flex-wrap md:flex-nowrap">
+            <div className="md:w-1/5 h-auto w-full ">
+              <ConditionList
+                name={name}
+                itemList={ATState.optionList}
+                onClick={getDetailOption}
+                resetEvent={resetEvent}
+              />
+            </div>
             <div className="w-full flex flex-col gap-3">
               <AccountComponent
                 value={actCondition}
                 setValue={setActCondition}
               />
-              <div className="flex gap-3 mb-3">
+              <div className="flex gap-3 mb-3 flex-wrap md:flex-nowrap">
                 <BuyCondition
                   buyCondition={buyCondition}
                   setBuyCondition={setBuyCondition}
