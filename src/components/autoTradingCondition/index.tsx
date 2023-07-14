@@ -33,6 +33,7 @@ const AutoTradingConditon: FC = () => {
   const dispatch = useDispatch<any>();
 
   const RUEvent = async (type: string) => {
+    console.log(sellCondition);
     if (autoTradingStatus) {
       alert("자동매매 실행 중 조건을 변경 / 등록 할 수 없습니다.");
       return;

@@ -21,7 +21,7 @@ export type UseSellConditionType = {
 
   trailing_start_percent: string;
   trailing_stop_percent: string;
-  trailing_order_percent: string;
+  trailing_order_call_price: string;
 };
 
 export type useAccountType = {

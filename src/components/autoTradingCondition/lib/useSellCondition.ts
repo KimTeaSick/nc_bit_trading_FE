@@ -15,13 +15,14 @@ export const useSellCondition = (): [
     down_percent_to_disparity_condition: "1",
     call_money_to_sell_method: 0,
     percent_to_split_sell: "25",
+
     shot_MACD_value: "15",
     long_MACD_value: "60",
     MACD_signal_value: "9",
 
     trailing_start_percent: "0",
     trailing_stop_percent: "0",
-    trailing_order_percent: "0",
+    trailing_order_call_price: "0",
   };
   const [sellCondition, setSellCondition] = useState(initialValue);
   const resetSell = () => setSellCondition(initialValue);

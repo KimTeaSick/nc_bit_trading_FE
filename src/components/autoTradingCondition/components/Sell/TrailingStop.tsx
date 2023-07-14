@@ -39,13 +39,13 @@ const TrailingStop: FC<Props> = ({ value, setValue }) => {
         <p>% 이상 하락하면 </p>
       </div>
       <div className={LINE_CLASS}>
-        <p>해당 시점에 현재가 대비</p>{" "}
+        <p>해당 시점의 매도호가 최하단 기준</p>{" "}
         <SelectBox
           width={"w-20"}
-          value={value.trailing_order_percent}
+          value={value.trailing_order_call_price}
           itemList={CALL_PRICE}
           event={(e) =>
-            setValue({ ...value, trailing_order_percent: e.target.value })
+            setValue({ ...value, trailing_order_call_price: e.target.value })
           }
         />
         <p>로 매도 주문을 실행한다.</p>

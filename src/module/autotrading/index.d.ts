@@ -77,4 +77,7 @@ export type TradingOptionType = {
   short_MACD_value: number;
   long_MACD_value: number;
   MACD_signal_value: number;
+  trailing_start_percent: string;
+  trailing_stop_percent: string;
+  trailing_order_call_price: string;
 };

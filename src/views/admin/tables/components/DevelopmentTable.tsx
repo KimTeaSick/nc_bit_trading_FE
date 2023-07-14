@@ -137,7 +137,7 @@ function CheckTable(props: {
     setData(tableData);
   }, [tableData]);
   return (
-    <Card extra={"w-full h-full sm:overflow-auto px-6"}>
+    <Card extra={"w-full h-full md:h-[80vh] sm:overflow-auto px-6"}>
       <header className="relative flex items-center justify-between pt-4">
         <div className="text-xl font-bold text-navy-700 flex gap-3 dark:text-white">
           <p>거래 내역</p>

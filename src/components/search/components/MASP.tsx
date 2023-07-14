@@ -16,7 +16,7 @@ const MASP: FC<Props> = ({ value, setValue, data }) => {
   const [resultShow, setShow] = useState(false);
   return (
     <SearchConditionCover
-      title="이동평균선 비교 : "
+      title={`이동평균선\n 비교 : `}
       value={value}
       setValue={setValue}
     >

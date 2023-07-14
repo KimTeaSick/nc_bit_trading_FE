@@ -124,9 +124,10 @@ type TRADING_CONDITION_TYPE = {
   sell: {
     price_condition_to_sell_upper: string;
     price_condition_to_sell_down: string;
-    disparity_condition_to_sell_upper: string;
-    disparity_condition_to_sell_down: string;
-    MACD_to_sell: string;
+    // disparity_condition_to_sell_upper: string;
+    // disparity_condition_to_sell_down: string;
+    trailing_stop: string;
+    // MACD_to_sell: string;
     price_to_sell_fn: string;
     percent_to_sell_fn: string;
   };
@@ -192,11 +193,13 @@ export const TRADING_CONDITION = (
       buy_utility_money: `1 종목당 증거금 매매 시작전 예수금의 ${value.percent_to_buy_method}% 으로 고정`,
     },
     sell: {
-      price_condition_to_sell_upper: `보유 종목의 평균 매수 단가가 기준 대비 ${value.upper_percent_to_price_condition}이상 상승 시`,
-      price_condition_to_sell_down: `보유 종목의 평균 매수 단가가 기준 대비 ${value.down_percent_to_price_condition}이상 하락 시`,
-      disparity_condition_to_sell_upper: `현재가가 ${value.disparity_for_upper_case}이평선 대비 ${value.upper_percent_to_disparity_condition} 이상 상승 시`,
-      disparity_condition_to_sell_down: `현재가가 ${value.disparity_for_down_case}이평선 대비 ${value.down_percent_to_disparity_condition} 이상 하락 시`,
-      MACD_to_sell: `${value.short_MACD_value}단기 ${value.long_MACD_value}장기 ${value.MACD_signal_value}시그널 MACD가 MACD 시그널을 하향 돌파할 경우`,
+      price_condition_to_sell_upper: `보유 종목의 평균 매수 단가가 기준 대비 ${value.upper_percent_to_price_condition}% 이상 상승 시`,
+      price_condition_to_sell_down: `보유 종목의 평균 매수 단가가 기준 대비 ${value.down_percent_to_price_condition}% 이상 하락 시`,
+      trailing_stop: `${
+        value.trailing_start_percent
+      }% 이상 상승시 시작, 최고가 대비${
+        value.trailing_stop_percent
+      } % 이상하락시 ${CALL_PRICE[value.trailing_order_call_price]}로 매도`,
       price_to_sell_fn: `현재가 대비 ${
         CALL_PRICE[value.call_money_to_sell_method]
       }로 주문`,

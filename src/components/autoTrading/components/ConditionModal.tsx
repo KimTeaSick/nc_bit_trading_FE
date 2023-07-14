@@ -1,11 +1,5 @@
-import { dataChanger } from "../lib/modalDataChanger";
 import { FC, useRef } from "react";
-import {
-  SEARCH_CONDITION,
-  SEARCH_OPTION,
-  TRADING_CONDITION,
-  TRADING_OPTION_VALUE_LIST,
-} from "../construct/modalValue";
+import { SEARCH_CONDITION, TRADING_CONDITION } from "../construct/modalValue";
 import { SearchOptionType } from "@/module/autoTrading/index.d";
 
 const MODAL_BACK =

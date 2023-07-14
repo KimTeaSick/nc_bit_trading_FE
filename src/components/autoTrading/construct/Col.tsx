@@ -18,7 +18,7 @@ export const ACCOUNT_PRICE_COL = [
   "수익률",
   "매입가",
   "보유수량",
-  "가능수량",
+  "평가금액",
 ];
 
 export const ORDER_LIST_COL = [
