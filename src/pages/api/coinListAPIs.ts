@@ -9,13 +9,13 @@ import { get, post } from ".";
 import { RootStateType } from "@/module/rootReducer.d";
 
 export const getCoinList = () => {
-  return get("getBitcoinInfo");
+  return get("coin/getBitcoinInfo");
 };
 
 export const getCoinDetailInfo = (
   id: string | string[] | undefined
 ): Promise<DetailCoinType | undefined> => {
-  return get(`getDetailBTCInfo/${id}`);
+  return get(`coin/getDetailBTCInfo/${id}`);
 };
 
 export const getChartData = createAsyncThunk(
@@ -30,7 +30,7 @@ export const get5AvgData = createAsyncThunk(
   async (body: GetAvgDataBodyType) => {
     console.log("body", body);
 
-    const data = await post("getAvgData", body);
+    const data = await post("coin/getAvgData", body);
     return data;
   }
 );
@@ -38,7 +38,7 @@ export const get5AvgData = createAsyncThunk(
 export const get20AvgData = createAsyncThunk(
   "get20AvgData",
   async (body: GetAvgDataBodyType) => {
-    const data = await post("getAvgData", body);
+    const data = await post("coin/getAvgData", body);
     return data;
   }
 );
@@ -46,7 +46,7 @@ export const get20AvgData = createAsyncThunk(
 export const get60AvgData = createAsyncThunk(
   "get60AvgData",
   async (body: GetAvgDataBodyType) => {
-    const data = await post("getAvgData", body);
+    const data = await post("coin/getAvgData", body);
     return data;
   }
 );

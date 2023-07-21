@@ -25,12 +25,12 @@ const SellCondition: FC<Props> = ({ sellCondition, setSellCondition }) => {
         <div id="BuyCondition" className="p-1">
           <p className={CATEGORY_TITLE}>매도 조건</p>
           <div className={COMPONENT_COVER_CLASS}>
-            <p className={TITLE_CLASS}>1. 가격 기준</p>
-            <PercentSellCondtion
+            <p className={TITLE_CLASS}>가격 기준</p>
+            {/* <PercentSellCondtion
               up_down={true}
               value={sellCondition}
               setValue={setSellCondition}
-            />
+            /> */}
             <PercentSellCondtion
               up_down={false}
               value={sellCondition}
@@ -62,15 +62,15 @@ const SellCondition: FC<Props> = ({ sellCondition, setSellCondition }) => {
         </div>
         <div id="BuyMethod" className="p-1">
           <p className={CATEGORY_TITLE}>매도 방법</p>
-          <div className="p-1">
-            <p className={TITLE_CLASS}>1. 가격 기준</p>
+          {/* <div className="p-1"> 
+          <p className={TITLE_CLASS}>1. 가격 기준</p>
             <PriceCriteria value={sellCondition} setValue={setSellCondition} />
             <p className="pl-2 font-semibold">
               현재가 기준 -2 % 범위 안에서 가격 균등 배분
             </p>
-          </div>
+          </div> */}
           <div className="p-1">
-            <p className={TITLE_CLASS}>2. 수량 기준</p>
+            <p className={TITLE_CLASS}>수량 기준</p>
             <PercentSellMethod
               value={sellCondition}
               setValue={setSellCondition}

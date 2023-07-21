@@ -10,7 +10,7 @@ interface Props {
 const PriceCriteria: FC<Props> = ({ value, setValue }) => {
   return (
     <div className="flex gap-1 items-center font-semibold pl-2">
-      <p>가격 현재가 대비</p>
+      <p>가격 매수 호가 최상단 대비</p>
       <SelectBox
         itemList={CALL_PRICE}
         width={"w-22"}

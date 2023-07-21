@@ -47,6 +47,7 @@ export type MACDType = {
 };
 
 export type SearchCondition = {
+  idx: number;
   Price: PriceType;
   TransactionAmount: TransactionAmountType;
   MASP: MASPType;

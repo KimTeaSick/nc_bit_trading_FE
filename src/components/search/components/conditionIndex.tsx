@@ -35,6 +35,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
   const initial: SearchCondition | undefined = conditionExtract(
     searchSlice.conditionDetail
   );
+
   const [price, setPrice] = usePrice(initial?.Price);
   const [MASP, setMASP] = useMASP(initial?.MASP);
   const [dis, setDis] = useDisparity(initial?.Disparity);
@@ -184,6 +185,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
             title={searchSlice.conditionDetail !== null ? "수정" : "등록"}
             event={() => {
               const body = {
+                idx: initial?.idx,
                 Price: price,
                 TransactionAmount: tta,
                 MASP: MASP,

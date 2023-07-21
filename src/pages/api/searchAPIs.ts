@@ -88,15 +88,17 @@ export const getConditionDetail = async (body: any) => {
   return response;
 };
 
-export const conditionDelete = async (name: any) => {
-  const body = { option: name[0] };
+export const conditionDelete = async (idx: any) => {
+  console.log("idx", idx[0].idx);
+
+  const body = { option: idx[0].idx };
   const response = await post("option/deleteOption", body);
   if (response === "delete sucess") alert("조건이 삭제되었습니다");
   return response;
 };
 
-export const setUseCondition = async (name: any) => {
-  const body = { option: name[0] };
+export const setUseCondition = async (idx: any) => {
+  const body = { option: idx[0].idx };
   const response = await post("option/useOption", body);
   return response;
 };

@@ -29,7 +29,7 @@ export const detailTradingOption = createAsyncThunk(
 );
 
 export const activeTradingOption = async (name: string) => {
-  const response = await post("option/useTradingOption", { name });
+  const response = await post("trade/useTradingOption", { name });
   return response;
 };
 

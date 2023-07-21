@@ -1,7 +1,7 @@
 // import CoinDetailPage from "@/components/CoinDetail/CoinDetailPage";
 import { DetailCoinType } from "@/@types/CoinList";
 import CoinDetailPage from "@/views/admin/coindetail/index";
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   getCoinDetailInfo,
   getChartData,
@@ -50,21 +50,21 @@ const CoinDetail: NextPage = () => {
       if (line_one !== null) {
         dispatch(
           get5AvgData({
-            range: line_one?.range,
+            range: "5",
             coin: id,
             term: chartTerm,
           })
         );
         dispatch(
           get20AvgData({
-            range: line_two?.range,
+            range: "20",
             coin: id,
             term: chartTerm,
           })
         );
         dispatch(
           get60AvgData({
-            range: line_three?.range,
+            range: "60",
             coin: id,
             term: chartTerm,
           })

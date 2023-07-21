@@ -143,7 +143,7 @@ function ChoiceCondition(props: {
                       }`}
                       onClick={async () => {
                         const detail = await getConditionDetail({
-                          option: row.original.Name,
+                          option: row.original.idx,
                         });
                         dispatch(setConditionDetail(detail));
                         setStage(1);

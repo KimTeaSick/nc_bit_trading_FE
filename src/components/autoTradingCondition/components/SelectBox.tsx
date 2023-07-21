@@ -7,7 +7,7 @@ const CALL_PRICE = [
   { key: "+3 호가", value: +3 },
   { key: "+2 호가", value: +2 },
   { key: "+1 호가", value: +1 },
-  { key: "시장가", value: 0 },
+  { key: "0 호가", value: 0 },
   { key: "-1 호가", value: -1 },
   { key: "-2 호가", value: -2 },
   { key: "-3 호가", value: -3 },

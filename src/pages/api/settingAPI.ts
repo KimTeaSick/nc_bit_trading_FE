@@ -8,13 +8,13 @@ import { conditionFormat } from "@/lib/dateFormat";
 export const getDisparityOptionThunk = createAsyncThunk(
   "getDisparityOptionThunk",
   async () => {
-    const response = await get("setting/getDisparity");
+    const response = await get("coin/getDisparity");
     return response;
   }
 );
 
 export const useDisparityLineQuery = () => {
-  const queryKey = "setting/getDisparity" as const;
+  const queryKey = "coin/getDisparity" as const;
   const queryFn = async () => await get(queryKey).then((res) => res.data);
   const request = useQuery([queryKey], queryFn);
   return request;

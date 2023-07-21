@@ -55,9 +55,9 @@ const SearchPage: FC = () => {
         editCondition: async () =>
           await ConditionEdit(Object.keys(searchSlice.conditionDetail), body),
         useCondition: async () =>
-          await setUseCondition(Object.keys(searchSlice.conditionDetail)),
+          await setUseCondition(Object.values(searchSlice.conditionDetail)),
         deleteCondition: async () =>
-          await conditionDelete(Object.keys(searchSlice.conditionDetail)),
+          await conditionDelete(Object.values(searchSlice.conditionDetail)),
       };
       BTN_EVENT[`${type}`]();
       await conditionListSetter();

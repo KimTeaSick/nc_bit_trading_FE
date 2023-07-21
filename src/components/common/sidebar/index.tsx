@@ -53,7 +53,7 @@ const Sidebar = (props: {
             <div className="ml-1 mt-1 h-2.5 font-poppins font-bold uppercase text-navy-700 dark:text-white flex flex-col justify-center items-center">
               <div>
                 <div className="text-2xl">4SEASON</div>
-                <span className="font-medium text-xs">Trading</span>
+                <span className="font-medium text-xs">Auto Trading System</span>
               </div>
             </div>
           </div>
