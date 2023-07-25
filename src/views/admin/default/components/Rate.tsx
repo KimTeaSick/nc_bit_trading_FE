@@ -1,5 +1,5 @@
 import Card from "@/components/common/card";
-import { FC } from "react";
+import React, { FC } from "react";
 
 interface Props {
   rateInfo: any;
@@ -22,4 +22,4 @@ const Rate: FC<Props> = ({ rateInfo }) => {
   );
 };
 
-export default Rate;
+export default React.memo(Rate);

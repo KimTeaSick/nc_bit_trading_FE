@@ -31,10 +31,10 @@ const ROUTES = [
     secondary: true,
   },
   {
-    name: "Transaction History",
+    name: "Assets Status",
     layout: "/admin",
     icon: <MdBarChart className="h-6 w-6" />,
-    path: "tradinghistory",
+    path: "assetsStatus",
   },
   {
     name: "Search",

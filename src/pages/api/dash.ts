@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { AccountType, RateType } from "@/@types/Dash";
 import coin_list from "../../variables/coin_list.json";
-import { get } from ".";
+import { get, post } from ".";
 
 export const useRecommendPrice = () => {
   const queryKey = "dash/recommendCoin" as const;

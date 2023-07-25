@@ -7,10 +7,11 @@ import {
 export type AutoInitialStateType = {
   optionList: OptionListType[];
   optionListState: string;
-  sell: UseSellConditionType | null;
-  buy: UseBuyConditionType | null;
-  account: useAccountType | null;
+  detailIdx: number | null;
   name: string | null;
+  buy: UseBuyConditionType | null;
+  sell: UseSellConditionType | null;
+  account: useAccountType | null;
   optionState: string;
 };
 

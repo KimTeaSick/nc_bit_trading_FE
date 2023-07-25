@@ -20,4 +20,7 @@ export type TradingInitialState = {
   orderList: OrderListType[];
   orderListStatus: string;
   orderListPage: string;
+
+  rate: number | null;
+  rateStatus: string;
 };

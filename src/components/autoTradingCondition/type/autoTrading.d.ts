@@ -40,9 +40,18 @@ export type useAccountType = {
   gain: number;
 };
 
-export type TradingOptionType = {
+export interface RawTradingOptionType {
+  idx: number;
+  name: string;
   buy: UseBuyConditionType;
   sell: UseSellConditionType;
   account: useAccountType;
-  name: string;
-};
+}
+
+export interface TradingOptionType extends RawTradingOptionType {
+  idx: number;
+}
+
+export interface TradingOptionBodyType extends RawTradingOptionType {
+  idx?: number;
+}

@@ -18,6 +18,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import { resetConditoin } from "@/module/autotradingCondition";
+import { TradingOptionBodyType } from "./type/autoTrading";
 
 const AutoTradingConditon: FC = () => {
   const ATState = useSelector(
@@ -33,39 +34,43 @@ const AutoTradingConditon: FC = () => {
   const dispatch = useDispatch<any>();
 
   const RUEvent = async (type: string) => {
-    console.log(sellCondition);
     if (autoTradingStatus) {
       alert("자동매매 실행 중 조건을 변경 / 등록 할 수 없습니다.");
       return;
     }
+
     let url = "";
-    const body = {
-      account: actCondition,
-      sell: sellCondition,
-      buy: buyCondition,
+
+    let body: TradingOptionBodyType = {
       name,
+      buy: buyCondition,
+      sell: sellCondition,
+      account: actCondition,
     };
+
     type === "regist"
       ? (url = "insertTradingOption")
-      : (url = "updateTradingOption");
+      : ((url = "updateTradingOption"), (body.idx = ATState.detailIdx));
+
     const response = await RUTradingOptionList(body, url);
+
     dispatch(getTradingOptionList());
     return response;
   };
 
   const getDetailOption = useCallback(
-    (name: string) => dispatch(detailTradingOption(name)),
+    (idx: number) => dispatch(detailTradingOption(idx)),
     [dispatch]
   );
 
-  const activeNdelete = async (name: string, type: number) => {
+  const activeNdelete = async (idx: number, type: number) => {
     if (autoTradingStatus) {
       alert(
         `자동매매 실행 중 조건을 ${type ? "변경" : "삭제"} 할 수 없습니다.`
       );
       return;
     }
-    type ? await activeTradingOption(name) : await deleteTradingOption(name);
+    type ? await activeTradingOption(idx) : await deleteTradingOption(idx);
     dispatch(getTradingOptionList());
   };
 
@@ -132,6 +137,7 @@ const AutoTradingConditon: FC = () => {
           <NameInput
             type={ATState.account === null}
             name={name}
+            idx={ATState.detailIdx}
             AnD={activeNdelete}
             setName={setName}
             registerEvent={RUEvent}

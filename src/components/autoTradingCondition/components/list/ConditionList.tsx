@@ -13,7 +13,7 @@ const NOW_CHOICE_OPTION = " bg-navy-400 rounded-lg text-white ";
 
 interface Props {
   itemList: any[];
-  onClick: (name: string) => void;
+  onClick: (idx: number) => void;
   name: string;
   resetEvent: () => void;
 }
@@ -40,7 +40,7 @@ const ConditionList: FC<Props> = ({ itemList, onClick, name, resetEvent }) => {
               `${value.Name === name && NOW_CHOICE_OPTION}` +
               " text-sm cursor-pointer text-gray-900 items-center"
             }
-            onClick={() => onClick(value.Name)}
+            onClick={() => onClick(value.idx)}
             key={idx}
           >
             <td className={TD_CLASS}>{value.Name}</td>

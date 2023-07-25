@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Col, ORDER_LIST_COL } from "../construct/Col";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
+import { SUB_DATE } from "@/lib/dateFormat";
 
 const SEARCH_RESULT_CLASS = "flex flex-col w-full";
 const ITEM_STYLE_CLASS = "w-1/2 flex justify-center";
@@ -25,9 +26,13 @@ const OrderListT: FC<Props> = ({ orderList }) => {
             <div className={ROW_STYLE_CLASS} key={index}>
               <p className={ITEM_STYLE_CLASS}>{CHANGE_KR_NAME(value.coin)}</p>
               <p className={ITEM_STYLE_CLASS}>{value.status}</p>
-              <p className={ITEM_STYLE_CLASS}>{value.transaction_time}</p>
-              <p className={ITEM_STYLE_CLASS}>{value.conclusion_time}</p>
-              <p className={ITEM_STYLE_CLASS}>{value.cancel_time}</p>
+              <p className={ITEM_STYLE_CLASS}>
+                {SUB_DATE(value.transaction_time)}
+              </p>
+              <p className={ITEM_STYLE_CLASS}>
+                {SUB_DATE(value.conclusion_time)}
+              </p>
+              <p className={ITEM_STYLE_CLASS}>{SUB_DATE(value.cancel_time)}</p>
             </div>
           ))}
       </div>

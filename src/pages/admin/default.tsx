@@ -14,22 +14,23 @@ import { getBalance, getProperty } from "../api/walletAPIs";
 const Home: FC = () => {
   const dispatch = useDispatch<any>();
   const [recommandPriceData, setRecommandPrice] = useState([]);
-  const { request: recommandPrice }: any = useRecommendCoin();
+  // const { request: recommandPrice }: any = useRecommendCoin();
 
   useEffect(() => {
-    setRecommandPrice(recommandPrice.data);
+    // setRecommandPrice(recommandPrice.data);
     dispatch(setPageActive("Dash"));
     dispatch(getPossessionCoin());
     dispatch(getBalance());
     dispatch(getProperty());
     json_file_download();
-  }, [dispatch, recommandPrice]);
+  }, [dispatch]);
+  // }, [dispatch, recommandPrice]);
 
   return (
     <Admin>
       <Dashboard
-        searchList={recommandPrice.data}
-        // rpLoading={recommandPrice.isLoading}
+      // searchList={recommandPrice.data}
+      // rpLoading={recommandPrice.isLoading}
       />
     </Admin>
   );

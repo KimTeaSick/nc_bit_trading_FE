@@ -13,8 +13,14 @@ export const getDateOrderList = createAsyncThunk(
   "getDateOrderList",
   async (body: any) => {
     const response = await post("getDateOrderList", body);
-    console.log("response", response);
+    return response;
+  }
+);
 
+export const rate_check = createAsyncThunk(
+  "dash/rateCheck",
+  async (body: number) => {
+    const response = await post("dash/rateCheck", { days: body });
     return response;
   }
 );

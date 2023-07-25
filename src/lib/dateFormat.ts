@@ -1,4 +1,3 @@
-import { ConditionListObjectType } from "./../@types/Setting.d";
 export function getCurrentDate(date: any) {
   let year = date.getFullYear().toString();
   let month = date.getMonth() + 1;
@@ -33,10 +32,7 @@ export const YMD = (now: Date) => {
   }${now.getDate() < 10 ? "0" + now.getDate() : now.getDate()}`;
 };
 
-export const conditionFormat = (
-  group: any,
-  condition: ConditionListObjectType[]
-) => {
+export const conditionFormat = (group: any, condition: any[]) => {
   // 배열.reduce((누적값, 현잿값, 인덱스, 요소) => { return 결과 }, 초깃값);
   const groupValues = condition.reduce((acc: any, current) => {
     acc[current.group_idx] = acc[current.group_idx] || [];
@@ -52,3 +48,8 @@ export const conditionFormat = (
   });
   return groups;
 };
+
+export function SUB_DATE(date: string) {
+  if (typeof date !== "string") return;
+  return date.substring(0, 19);
+}

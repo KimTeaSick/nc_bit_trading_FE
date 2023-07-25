@@ -8,10 +8,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState: AutoInitialStateType = {
   optionList: [],
   optionListState: "",
-  sell: null,
-  buy: null,
-  account: null,
+  detailIdx: null,
   name: null,
+  buy: null,
+  sell: null,
+  account: null,
   optionState: "",
 };
 
@@ -20,10 +21,11 @@ const AutoTradingSlice = createSlice({
   initialState,
   reducers: {
     resetConditoin: (state) => {
-      state.sell = null;
-      state.buy = null;
-      state.account = null;
+      state.detailIdx = null;
       state.name = null;
+      state.buy = null;
+      state.sell = null;
+      state.account = null;
     },
   },
   extraReducers: (builder) => {
@@ -42,6 +44,7 @@ const AutoTradingSlice = createSlice({
     });
     builder.addCase(detailTradingOption.fulfilled, (state, action) => {
       state.optionState = "Success!";
+      state.detailIdx = action.payload.value.idx;
       state.name = action.payload.name;
       state.buy = action.payload.value.buy;
       state.sell = action.payload.value.sell;

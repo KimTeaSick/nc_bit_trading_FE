@@ -6,22 +6,25 @@ import { controlAuto } from "@/pages/api/autotradingCondition";
 
 interface Props {
   name: string;
+  idx: number;
   setName: (e: ChangeEvent<HTMLInputElement>) => void;
   registerEvent: (type: string) => void;
   autoTradingStatus: number;
-  AnD: (name: string, type: number) => void;
+  AnD: (idx: number, type: number) => void;
   type: boolean;
 }
 
 const NameInput: FC<Props> = ({
+  idx,
   name,
-  setName,
-  registerEvent,
+  type,
   autoTradingStatus,
   AnD,
-  type,
+  setName,
+  registerEvent,
 }) => {
   const [loading, setLoading] = useState(false);
+
   const AUTO_BTN = async () => {
     setLoading(true);
     if (autoTradingStatus) {
@@ -35,6 +38,7 @@ const NameInput: FC<Props> = ({
       window.location.href = "/admin/autotrading";
     }
   };
+
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center w-1/5">
@@ -50,8 +54,8 @@ const NameInput: FC<Props> = ({
       <div className="flex gap-2">
         {!type && (
           <>
-            <Button title={"삭제"} type={!type} event={() => AnD(name, 0)} />
-            <Button title={"사용"} event={() => AnD(name, 1)} />
+            <Button title={"삭제"} type={!type} event={() => AnD(idx, 0)} />
+            <Button title={"사용"} event={() => AnD(idx, 1)} />
           </>
         )}
         <Button
