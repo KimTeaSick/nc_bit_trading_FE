@@ -12,6 +12,7 @@ const initialState: TradingInitialState = {
   orderListPage: "",
 
   rate: null,
+  account_balance: null,
   rateStatus: "",
 };
 
@@ -49,7 +50,8 @@ const tradingSlice = createSlice({
     });
     builder.addCase(rate_check.fulfilled, (state, action) => {
       state.rateStatus = "Success";
-      state.rate = action.payload;
+      state.rate = action.payload.rate;
+      state.account_balance = action.payload.account_balance;
     });
     builder.addCase(rate_check.rejected, (state, action) => {
       state.rateStatus = `error ${action.error}`;

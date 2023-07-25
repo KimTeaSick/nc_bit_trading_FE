@@ -5,8 +5,8 @@ export const TOP_MENU_LIST = [
 ] as const;
 
 export const RATE_BUTTON_TERM = [
-  { key: "현재", value: 0 },
+  { key: "1일", value: 1 },
   { key: "7일", value: 7 },
   { key: "30일", value: 30 },
   { key: "90일", value: 90 },
-];
+] as const;

@@ -22,5 +22,6 @@ export type TradingInitialState = {
   orderListPage: string;
 
   rate: number | null;
+  account_balance: number | null;
   rateStatus: string;
 };
