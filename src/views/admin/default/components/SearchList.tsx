@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { SEARCH_LIST } from "../variables/TABLE_COL";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
+import { isArray } from "@amcharts/amcharts5/.internal/core/util/Type";
 
 const COMPONENT_COVER_CLASS =
   "w-full bg-white rounded-2xl h-[50vh] p-5 dark:bg-navy-800";
@@ -35,16 +36,20 @@ const SearchList: FC<Props> = ({ value }) => {
       <div className="overflow-y-scroll w-full h-[40vh] scrollbar-hide">
         <table className="w-full">
           <tbody>
-            {value?.map(
-              (coin: { name: string; catch_price: string }, index: number) => (
-                <tr className={ROW_CLASS} key={index}>
-                  <td className={W_F + COL_CLASS}>
-                    {CHANGE_KR_NAME(coin.name)}
-                  </td>
-                  <td className={W_F + COL_CLASS}>{coin.catch_price}</td>
-                </tr>
-              )
-            )}
+            {Array.isArray(value) &&
+              value.map(
+                (
+                  coin: { name: string; catch_price: string },
+                  index: number
+                ) => (
+                  <tr className={ROW_CLASS} key={index}>
+                    <td className={W_F + COL_CLASS}>
+                      {CHANGE_KR_NAME(coin.name)}
+                    </td>
+                    <td className={W_F + COL_CLASS}>{coin.catch_price}</td>
+                  </tr>
+                )
+              )}
           </tbody>
         </table>
       </div>

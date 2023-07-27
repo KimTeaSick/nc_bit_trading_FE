@@ -16,13 +16,6 @@ const ROUTES = [
     path: "default",
     icon: <MdHome className="h-6 w-6" />,
   },
-  // {
-  //   name: "My Wallet",
-  //   layout: "/admin",
-  //   path: "wallet",
-  //   icon: <HiWallet className="h-6 w-6" />,
-  //   secondary: true,
-  // },
   {
     name: "Coin List",
     layout: "/admin",
@@ -42,18 +35,6 @@ const ROUTES = [
     icon: <IoSettingsSharp className="h-6 w-6" />,
     path: "search",
   },
-  // {
-  //   name: "Profile",
-  //   layout: "/admin",
-  //   path: "profile",
-  //   icon: <MdPerson className="h-6 w-6" />,
-  // },
-  // {
-  //   name: "Sign In",
-  //   layout: "/auth",
-  //   path: "sign-in",
-  //   icon: <MdLock className="h-6 w-6" />,
-  // },
 ];
 
 const AUTH_ROUTES = [
@@ -63,13 +44,6 @@ const AUTH_ROUTES = [
     path: "default",
     icon: <MdHome className="h-6 w-6" />,
   },
-  // {
-  //   name: "My Wallet",
-  //   layout: "/admin",
-  //   path: "wallet",
-  //   icon: <HiWallet className="h-6 w-6" />,
-  //   secondary: true,
-  // },
   {
     name: "Coin List",
     layout: "/admin",
@@ -95,17 +69,5 @@ const AUTH_ROUTES = [
     icon: <IoPizza className="h-6 w-6" />,
     path: "autotrading",
   },
-  // {
-  //   name: "Profile",
-  //   layout: "/admin",
-  //   path: "profile",
-  //   icon: <MdPerson className="h-6 w-6" />,
-  // },
-  // {
-  //   name: "Sign In",
-  //   layout: "/auth",
-  //   path: "sign-in",
-  //   icon: <MdLock className="h-6 w-6" />,
-  // },
 ];
 export { ROUTES, AUTH_ROUTES };

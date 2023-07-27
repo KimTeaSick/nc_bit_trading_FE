@@ -20,6 +20,8 @@ export const SELL_REASON = (value: string) => {
     "disparity over": "이평선 대비 상승",
     "disparity under": "이평선 대비 하락",
     "macd signal": "시그널 하향 돌파",
+    "trailing stop": "트레일링 스탑",
+    resale: "재 매도",
   };
   return value ? REASON_LIST[value] : "-";
 };

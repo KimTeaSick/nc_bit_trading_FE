@@ -33,7 +33,8 @@ const AccountPrice: FC<Props> = ({ priceList = [] }) => {
               </p>
               <p className={ITEM_STYLE_CLASS}>{value.info.unit}</p>
               <p className={ITEM_STYLE_CLASS}>
-                {krwChage(fixed(value.info.unit * value.info.buy_price, 0))}
+                {/* {krwChage(fixed(value.info.unit * value.info.buy_price, 0))} */}
+                {krwChage(fixed(value.info.evaluate_price, 0))}
               </p>
             </div>
           ))}

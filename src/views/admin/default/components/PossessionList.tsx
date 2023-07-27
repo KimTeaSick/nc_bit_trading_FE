@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { POSSESSION_LIST, SEARCH_LIST } from "../variables/TABLE_COL";
+import { POSSESSION_LIST } from "../variables/TABLE_COL";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
 const COMPONENT_COVER_CLASS =
@@ -43,17 +43,20 @@ const PossessionList: FC<Props> = ({ value }) => {
       <div className="overflow-y-scroll w-full h-[40vh] scrollbar-hide">
         <table className="w-full">
           <tbody>
-            {value?.map((coin: P_Coin_type, index: number) => (
-              <tr className={ROW_CLASS} key={index}>
-                <td className={W_F + COL_CLASS}>{CHANGE_KR_NAME(coin.name)}</td>
-                <td className={W_F + COL_CLASS}>
-                  <p className="w-2/5 text-end">{coin.ratereturn}%</p>
-                </td>
-                <td className={W_F + COL_CLASS}>{coin.purchaseprice}</td>
-                <td className={W_F + COL_CLASS}>{coin.quantity}</td>
-                <td className={W_F + COL_CLASS}>{coin.purchaseamount}</td>
-              </tr>
-            ))}
+            {Array.isArray(value) &&
+              value?.map((coin: P_Coin_type, index: number) => (
+                <tr className={ROW_CLASS} key={index}>
+                  <td className={W_F + COL_CLASS}>
+                    {CHANGE_KR_NAME(coin.name)}
+                  </td>
+                  <td className={W_F + COL_CLASS}>
+                    <p className="w-2/5 text-end">{coin.ratereturn}%</p>
+                  </td>
+                  <td className={W_F + COL_CLASS}>{coin.purchaseprice}</td>
+                  <td className={W_F + COL_CLASS}>{coin.quantity}</td>
+                  <td className={W_F + COL_CLASS}>{coin.purchaseamount}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
