@@ -24,6 +24,10 @@ const Sidebar = (props: {
   );
   useEffect(() => {
     dispatch(getNowUsedCondition());
+    if (window.screen.width < 500) {
+      console.log("window.screen.width ::: ::: ", window.screen.width);
+      onClose(false);
+    }
   }, [dispatch]);
 
   return (

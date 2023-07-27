@@ -40,7 +40,7 @@ const PossessionList: FC<Props> = ({ value }) => {
           </tr>
         </thead>
       </table>
-      <div className="overflow-y-scroll w-full h-[40vh] scrollbar-hide">
+      <div className="overflow-y-scroll w-full h-[35vh] scrollbar-hide">
         <table className="w-full">
           <tbody>
             {Array.isArray(value) &&
