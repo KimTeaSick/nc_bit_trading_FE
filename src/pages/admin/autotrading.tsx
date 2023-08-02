@@ -3,7 +3,7 @@ import Admin from "@/layouts/admin";
 
 const AutoTrading = () => {
   return (
-    <Admin extract="overflow-hidden">
+    <Admin>
       <AutoTradingPage />
     </Admin>
   );

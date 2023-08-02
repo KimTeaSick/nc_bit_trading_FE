@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { UseQueryResult, useQuery } from "@tanstack/react-query";
+import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
 import { AccountType, RateType } from "@/@types/Dash";
 import coin_list from "../../variables/coin_list.json";
 import { get, post } from ".";
@@ -18,17 +18,19 @@ export const useRecommendPrice = () => {
 export const usePossessionCoin = () => {
   const queryKey = "dash/getPossessoionCoinInfo" as const;
   const queryFn = async () =>
-    await get(queryKey).then((res) => {
+    await post(queryKey, { idx: 1 }).then((res) => {
       return res;
     });
-  const request = useQuery([queryKey], queryFn);
+  const request = useMutation(queryFn);
+  console.log("request ::: ::: ", request);
+
   return { request };
 };
 
 export const getPossessionCoin = createAsyncThunk(
   "dash/getPossessoionCoinInfo",
   async () => {
-    const response = get("dash/getPossessoionCoinInfo");
+    const response = post("dash/getPossessoionCoinInfo", { idx: 1 });
     return response;
   }
 );

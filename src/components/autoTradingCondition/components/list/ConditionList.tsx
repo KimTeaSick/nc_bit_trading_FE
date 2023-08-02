@@ -32,22 +32,23 @@ const ConditionList: FC<Props> = ({ itemList, onClick, name, resetEvent }) => {
             ))}
           </tr>
         </thead>
-        {itemList?.map((value: any, idx: number) => (
-          <tr
-            className={
-              `${TR_CLASS}` +
-              `${value.used && USE_OPTION}` +
-              `${value.Name === name && NOW_CHOICE_OPTION}` +
-              " text-sm cursor-pointer text-gray-900 items-center"
-            }
-            onClick={() => onClick(value.idx)}
-            key={idx}
-          >
-            <td className={TD_CLASS}>{value.Name}</td>
-            <td className={TD_CLASS}>{value.Create_date}</td>
-            <td className={TD_CLASS}>{value.Update_date}</td>
-          </tr>
-        ))}
+        {Array.isArray(itemList) &&
+          itemList?.map((value: any, idx: number) => (
+            <tr
+              className={
+                `${TR_CLASS}` +
+                `${value.used && USE_OPTION}` +
+                `${value.Name === name && NOW_CHOICE_OPTION}` +
+                " text-sm cursor-pointer text-gray-900 items-center"
+              }
+              onClick={() => onClick(value.idx)}
+              key={idx}
+            >
+              <td className={TD_CLASS}>{value.Name}</td>
+              <td className={TD_CLASS}>{value.Create_date}</td>
+              <td className={TD_CLASS}>{value.Update_date}</td>
+            </tr>
+          ))}
         <tr
           className={
             `${TR_CLASS}` +

@@ -53,7 +53,7 @@ export const B_CoinSearch = async (body: any) => {
 
 export const ConditionRegister = async (body: any) => {
   const response = await post("option/insertOption", body);
-  if (response === "Insert sucess") {
+  if (response === "Insert success") {
     alert("조건이 등록되었습니다!");
     return 200;
   } else {
@@ -68,7 +68,7 @@ export const ConditionEdit = async (name: string[], condition: any) => {
     ...condition,
   };
   const response = await post("option/updateOption", body);
-  if (response === "Insert sucess") {
+  if (response === "Insert success") {
     alert("조건이 수정되었습니다!");
     return 200;
   } else {

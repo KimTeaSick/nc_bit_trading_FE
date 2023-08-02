@@ -21,7 +21,7 @@ import { useNowRate, useTodayAccount } from "@/pages/api/dash";
 import OrderListT from "./components/OrderList";
 
 const PAGE_COVER_CLASS =
-  "mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1";
+  "grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1";
 const TITLE_SECTION_CLASS =
   "mb-4 mt-5 flex flex-col justify-between px-4 md:flex-row md:items-center";
 const CONTENT_CLASS = "col-span-1 h-fit w-full xl:col-span-1 2xl:col-span-2";

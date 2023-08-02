@@ -169,12 +169,12 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
         </div>
 
         <div className="w-full flex my-2 gap-1 md:w-1/3">
-          {/* <SearchButton
+          <SearchButton
             title="검색(Beta)"
             event={() => B_searchBtnEvent()}
             disable={loading}
             loading={loading}
-          /> */}
+          />
           <SearchButton
             title="검색"
             event={() => searchBtnEvent()}

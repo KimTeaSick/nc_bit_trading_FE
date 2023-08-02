@@ -47,8 +47,7 @@ const Sidebar = (props: {
       ${open ? "translate-x-0" : "-translate-x-90"}`}
         >
           <span
-            className="absolute right-4 top-4 block cursor-pointer 
-            xl:hidden"
+            className="absolute right-4 top-4 block cursor-pointer xl:hidden"
             onClick={() => onClose(false)}
           >
             <HiX />
@@ -63,15 +62,9 @@ const Sidebar = (props: {
           </div>
           <div className="mb-7 mt-[58px] h-px bg-gray-300 dark:bg-white/30" />
           {/* Nav item */}
-
           <ul className="mb-auto pt-1">
             <Links routes={autoTradingStatus === 0 ? ROUTES : AUTH_ROUTES} />
           </ul>
-
-          {/* Free Horizon Card */}
-          <div className="flex justify-center">{/* <SidebarCard /> */}</div>
-
-          {/* Nav item end */}
         </div>
       )}
     </>

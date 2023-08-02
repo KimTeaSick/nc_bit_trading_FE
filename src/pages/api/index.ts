@@ -4,6 +4,15 @@ import axios from "axios";
 // const BASE_URL = "http://3.35.242.102:8888/";
 const BASE_URL = "http://121.165.242.171:34256/";
 
+// const token = localStorage.getItem("access_token");
+
+// const client = axios.create({
+//   baseURL: BASE_URL,
+//   headers: {
+//     Authorization: `Bearer ${JSON.parse(token)}`,
+//   },
+// });
+
 export const get = async (uri: string, params = {}, headers = {}) => {
   try {
     const result = await axios.get(BASE_URL + uri, {
@@ -11,6 +20,7 @@ export const get = async (uri: string, params = {}, headers = {}) => {
       headers: {
         ...headers,
       },
+      withCredentials: true,
     });
     const { data } = result;
     return data;
@@ -20,7 +30,11 @@ export const get = async (uri: string, params = {}, headers = {}) => {
   }
 };
 
-export const post = async (uri: string, body = {}, headers = {}) => {
+export const post = async (
+  uri: string,
+  body = {},
+  headers = {}
+): Promise<any> => {
   try {
     const result = await axios.post(BASE_URL + uri, body, {
       headers: {
