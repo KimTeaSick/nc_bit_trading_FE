@@ -4,7 +4,7 @@ import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
 
 import SidebarCard from "@/components/common/sidebar/components/SidebarCard";
-import routes from "../../../routes";
+// import routes from "../../../routes";
 
 const Sidebar = (props: {
   open: boolean;
@@ -32,9 +32,7 @@ const Sidebar = (props: {
       <div className="mb-7 mt-[58px] h-px bg-gray-300 dark:bg-white/30" />
       {/* Nav item */}
 
-      <ul className="mb-auto pt-1">
-        <Links routes={routes} />
-      </ul>
+      <ul className="mb-auto pt-1">{/* <Links routes={routes} /> */}</ul>
 
       {/* Free Horizon Card */}
       <div className="flex justify-center">{/* <SidebarCard /> */}</div>

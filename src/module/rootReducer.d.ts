@@ -7,6 +7,7 @@ import { DashInitialState } from "./dash/dash";
 import { SearchInitialStateType } from "./search/search";
 import { AutoInitialStateType } from "./autotradingCondition";
 import { AutoTradingInitialState } from "./autoTrading";
+import { UserInitialStateType } from "./user/user";
 
 export type RootStateType = {
   common: CommonInitialState;
@@ -18,4 +19,5 @@ export type RootStateType = {
   search: SearchInitialStateType;
   autotradingCondition: AutoInitialStateType;
   autotrading: AutoTradingInitialState;
+  user: UserInitialStateType;
 };

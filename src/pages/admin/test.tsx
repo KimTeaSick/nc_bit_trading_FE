@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDisparityOptionThunk } from "../api/settingAPI";
 import Admin from "@/layouts/admin";
-import ConditionModal from "@/components/autoTrading/components/ConditionModal";
+
 import { getNowUsedCondition } from "../api/autotrading";
 import { RootStateType } from "@/module/rootReducer.d";
 

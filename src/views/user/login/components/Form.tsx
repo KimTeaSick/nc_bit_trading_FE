@@ -2,7 +2,8 @@ import Button from "@/components/common/button";
 import { Input } from "@/components/common/input";
 import { LoginInfoType } from "../variable/login";
 import { Dispatch, FC, SetStateAction } from "react";
-import { login_event, verify_token } from "@/pages/api/user";
+import { login_event } from "@/pages/api/user";
+import { useRouter } from "next/router";
 
 interface Props {
   value: LoginInfoType;
@@ -10,8 +11,20 @@ interface Props {
 }
 
 const LoginForm: FC<Props> = ({ value, setValue }) => {
-  const loginButtonClick = () => {
-    const res = login_event(value);
+  const history = useRouter();
+
+  const log_out = () => localStorage.clear();
+
+  const loginButtonClick = async () => {
+    const res = await login_event(value);
+    if (res === 200) {
+      history.push("/admin/default");
+      history.reload();
+      return;
+    } else {
+      alert("로그인 정보가 불 일치 합니다.");
+      return;
+    }
   };
 
   return (
@@ -34,7 +47,8 @@ const LoginForm: FC<Props> = ({ value, setValue }) => {
       </div>
       <div className="flex w-2/3 flex-col gap-2">
         <Button title="로그인" event={loginButtonClick} />
-        <Button title="검증" event={verify_token} />
+        {/* <Button title="검증" event={_get_user_info} /> */}
+        <Button title="데이터 삭제" event={log_out} />
       </div>
     </div>
   );

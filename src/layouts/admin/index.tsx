@@ -3,8 +3,9 @@ import Navbar from "@/components/common/navbar";
 import Sidebar from "@/components/common/sidebar";
 import Footer from "@/components/common/footer/Footer";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { getATStatus, useAutoStatus } from "@/pages/api/autotrading";
+import { getATStatus } from "@/pages/api/autotrading";
 import { useDispatch } from "react-redux";
+// import { get_user_info } from "@/pages/api/user";
 
 interface Props {
   children: ReactNode;
@@ -14,9 +15,12 @@ interface Props {
 const Admin: FC<Props> = ({ children, extract }) => {
   const dispatch = useDispatch<any>();
   document.documentElement.dir = "ltr";
+
   useEffect(() => {
     dispatch(getATStatus());
+    // dispatch(get_user_info());
   }, [dispatch]);
+
   const [open, setOpen] = useState(true);
 
   return (

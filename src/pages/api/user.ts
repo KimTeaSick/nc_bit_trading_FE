@@ -1,20 +1,21 @@
-import { LoginInfoType } from "@/views/user/login/variable/login";
 import { post, get } from ".";
+import { LoginInfoType } from "@/views/user/login/variable/login";
+import { RegisterInfoType } from "@/views/user/register/variable/RegisterInfo";
 
-export const login_event = async (body: LoginInfoType) => {
+export const login_event = async (body: LoginInfoType): Promise<200 | 444> => {
   const res: any = await post("user/login", body);
-  console.log("login_event ::: ::: ", res);
-
-  localStorage.setItem("access_token", res.access_token);
-  return res;
+  if (res.status === 200) {
+    localStorage.clear();
+    localStorage.setItem("access_token", res.data.access_token);
+    localStorage.setItem("user_name", res.data.name);
+    localStorage.setItem("user_idx", res.data.idx);
+    return res.status;
+  } else {
+    return res.status;
+  }
 };
 
-export const verify_token = async () => {
-  const token = localStorage.getItem("access_token");
-  console.log("verify token ::: ::: ", token);
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
-  const res: any = await get("user/verify", {}, headers);
+export const user_regist_envent = async (body: RegisterInfoType) => {
+  const res = await post("user/register", body);
   return res;
 };

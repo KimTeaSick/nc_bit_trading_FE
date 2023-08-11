@@ -59,4 +59,5 @@ export const {
   setConditionDetailRollBack,
   setSearchResultBetaData,
 } = SearchSlice.actions;
+
 export default SearchSlice.reducer;

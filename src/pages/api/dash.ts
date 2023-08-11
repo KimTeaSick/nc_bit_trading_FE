@@ -18,7 +18,7 @@ export const useRecommendPrice = () => {
 export const usePossessionCoin = () => {
   const queryKey = "dash/getPossessoionCoinInfo" as const;
   const queryFn = async () =>
-    await post(queryKey, { idx: 1 }).then((res) => {
+    await get(queryKey, { params: { idx: 1 } }).then((res) => {
       return res;
     });
   const request = useMutation(queryFn);
@@ -30,7 +30,9 @@ export const usePossessionCoin = () => {
 export const getPossessionCoin = createAsyncThunk(
   "dash/getPossessoionCoinInfo",
   async () => {
-    const response = post("dash/getPossessoionCoinInfo", { idx: 1 });
+    const response = get("dash/getPossessoionCoinInfo", {
+      params: { idx: 1 },
+    });
     return response;
   }
 );

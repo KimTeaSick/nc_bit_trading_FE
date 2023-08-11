@@ -4,22 +4,20 @@ import axios from "axios";
 // const BASE_URL = "http://3.35.242.102:8888/";
 const BASE_URL = "http://121.165.242.171:34256/";
 
-// const token = localStorage.getItem("access_token");
+const token =
+  typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
 
-// const client = axios.create({
-//   baseURL: BASE_URL,
-//   headers: {
-//     Authorization: `Bearer ${JSON.parse(token)}`,
-//   },
-// });
+const client = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
 
 export const get = async (uri: string, params = {}, headers = {}) => {
   try {
-    const result = await axios.get(BASE_URL + uri, {
+    const result = await client.get(BASE_URL + uri, {
       ...params,
-      headers: {
-        ...headers,
-      },
       withCredentials: true,
     });
     const { data } = result;
@@ -36,7 +34,7 @@ export const post = async (
   headers = {}
 ): Promise<any> => {
   try {
-    const result = await axios.post(BASE_URL + uri, body, {
+    const result = await client.post(BASE_URL + uri, body, {
       headers: {
         ...headers,
       },
@@ -56,7 +54,7 @@ export const patch = async (
   headers = {}
 ) => {
   try {
-    const result = await axios.patch(url, body, {
+    const result = await client.patch(url, body, {
       ...params,
       headers: {
         ...headers,

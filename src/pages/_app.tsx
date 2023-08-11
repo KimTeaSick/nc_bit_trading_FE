@@ -10,9 +10,16 @@ import Head from "next/head";
 import "../styles/globals.css";
 import "@/assets/css/MiniCalendar.css";
 import { BrowserRouter } from "react-router-dom";
-import { useAutoStatus } from "./api/autotrading";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/module/rootReducer.d";
+import { useRouter } from "next/router";
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const { userInfo } = useSelector((state: RootStateType) => state.user);
+  const idx =
+    typeof window === "undefined" ? null : localStorage.getItem("user_idx");
+  const router = useRouter();
+
   const [queryClient] = useState(() => new QueryClient());
   const [element, setElement] = useState<HTMLElement | null>(null);
 

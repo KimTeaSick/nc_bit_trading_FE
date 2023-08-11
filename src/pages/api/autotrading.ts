@@ -5,7 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 export const getNowUsedCondition = createAsyncThunk(
   "getNowUsedCondition",
   async () => {
-    const response = await get("trade/getNowUsedCondition");
+    const response = await get("trade/getNowUsedCondition", {
+      params: { idx: 1 },
+    });
     return response;
   }
 );
@@ -23,7 +25,7 @@ export const useRecommendCoin = () => {
 export const usePossessionCoin = () => {
   const queryKey = "dash/getPossessoionCoinInfo";
   const queryFn = async () =>
-    await post(queryKey, { idx: 1 }).then((res) => {
+    await get(queryKey, { params: { idx: 1 } }).then((res) => {
       return res;
     });
   const request = useQuery([queryKey], queryFn);

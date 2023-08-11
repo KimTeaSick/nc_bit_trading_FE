@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
 import { ROUTES, AUTH_ROUTES } from "../../../routes";
@@ -8,6 +7,7 @@ import { RootStateType } from "@/module/rootReducer.d";
 import { useEffect } from "react";
 import { getNowUsedCondition } from "@/pages/api/autotrading";
 import { MdMenu } from "react-icons/md";
+import { useRouter } from "next/router";
 
 const MENU_BTN_CLASS = `!z-50 fixed left-3 top-3 bg-white w-10 h-10 flex items-center justify-center rounded-r-lg cursor-pointer
   sm: !rounded-[100%] shadow
@@ -18,10 +18,17 @@ const Sidebar = (props: {
   onClose: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const dispatch = useDispatch<any>();
+  const history = useRouter();
   const { open, onClose } = props;
   const { autoTradingStatus } = useSelector(
     (state: RootStateType) => state.common
   );
+  // const { userInfo } = useSelector((state: RootStateType) => state.user);
+  const idx = localStorage.getItem("user_idx");
+  const log_out_event = () => {
+    localStorage.clear();
+    history.replace("/user/login");
+  };
   useEffect(() => {
     dispatch(getNowUsedCondition());
     if (window.screen.width < 500) {
@@ -61,9 +68,19 @@ const Sidebar = (props: {
             </div>
           </div>
           <div className="mb-7 mt-[58px] h-px bg-gray-300 dark:bg-white/30" />
+          {idx && (
+            <>
+              <div className="flex justify-center items-center">
+                <p className="cursor-pointer" onClick={log_out_event}>
+                  log out
+                </p>
+              </div>
+              <div className="my-7 h-px bg-gray-300 dark:bg-white/30" />
+            </>
+          )}
           {/* Nav item */}
           <ul className="mb-auto pt-1">
-            <Links routes={autoTradingStatus === 0 ? ROUTES : AUTH_ROUTES} />
+            <Links routes={idx === null ? ROUTES : AUTH_ROUTES} />
           </ul>
         </div>
       )}
