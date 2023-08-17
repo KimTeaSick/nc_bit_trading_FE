@@ -11,15 +11,14 @@ interface Props {
 }
 
 const LoginForm: FC<Props> = ({ value, setValue }) => {
-  const history = useRouter();
+  // const history = useRouter();
 
   const log_out = () => localStorage.clear();
 
   const loginButtonClick = async () => {
     const res = await login_event(value);
     if (res === 200) {
-      history.push("/admin/default");
-      history.reload();
+      window.location.href = "/admin/default";
       return;
     } else {
       alert("로그인 정보가 불 일치 합니다.");

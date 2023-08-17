@@ -11,6 +11,7 @@ const client = axios.create({
   baseURL: BASE_URL,
   headers: {
     Authorization: `Bearer ${token}`,
+    // Authorization: `Bearer 12`,
   },
 });
 

@@ -2,8 +2,6 @@ import React from "react";
 import { SiBitcoinsv } from "react-icons/si";
 import { IoSettingsSharp, IoPizza } from "react-icons/io5";
 import { MdHome, MdBarChart, MdPerson, MdLock } from "react-icons/md";
-import { useSelector } from "react-redux";
-import { RootStateType } from "./module/rootReducer.d";
 
 const ROUTES = [
   {
@@ -47,10 +45,5 @@ const AUTH_ROUTES = [
     path: "autotrading",
   },
 ];
-
-const useRouter = () => {
-  const { userInfo } = useSelector((state: RootStateType) => state.user);
-  return userInfo.idx !== null ? AUTH_ROUTES : ROUTES;
-};
 
 export { ROUTES, AUTH_ROUTES };
