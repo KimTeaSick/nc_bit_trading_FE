@@ -1,4 +1,5 @@
 import { TrendSelectBox } from "./../../common/select/SelectBox";
+
 export type PriceConditionType = {
   flag: 1 | 0;
   low_price: string;

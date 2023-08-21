@@ -42,16 +42,16 @@ export const useTradingHis = () => {
   return { request };
 };
 
-export const useAutoStatus = () => {
-  const queryKey = "trade/autoTradingCheck";
-  const queryFn = async () => {
-    await get(queryKey).then((res) => {
-      return res;
-    });
-  };
-  const request = useQuery([queryKey], queryFn);
-  return { request };
-};
+// export const useAutoStatus = () => {
+//   const queryKey = "trade/autoTradingCheck";
+//   const queryFn = async () => {
+//     await get(queryKey).then((res) => {
+//       return res;
+//     });
+//   };
+//   const request = useQuery([queryKey], queryFn);
+//   return { request };
+// };
 
 export const useAutoOrderList = () => {
   const queryKey = "trade/orderList";

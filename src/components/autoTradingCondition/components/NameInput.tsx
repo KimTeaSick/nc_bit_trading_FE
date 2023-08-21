@@ -35,6 +35,7 @@ const NameInput: FC<Props> = ({
     const res = await controlAuto(true);
     if (res === 200) {
       setLoading(false);
+      localStorage.setItem("user_auto_active", "1");
       window.location.href = "/admin/autotrading";
     }
   };

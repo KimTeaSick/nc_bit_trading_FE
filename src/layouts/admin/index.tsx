@@ -17,7 +17,7 @@ const Admin: FC<Props> = ({ children, extract }) => {
   document.documentElement.dir = "ltr";
 
   useEffect(() => {
-    dispatch(getATStatus());
+    // dispatch(getATStatus());
     // dispatch(get_user_info());
   }, [dispatch]);
 

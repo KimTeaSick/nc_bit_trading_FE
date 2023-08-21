@@ -60,8 +60,9 @@ type TableDataType = {
 };
 
 export type OptionType = {
+  idx: number;
   Name: string;
   Create_date: string;
   Update_date: string;
-  used: 0 | 1;
+  Used: 0 | 1;
 };

@@ -22,7 +22,7 @@ const Widget = (props: {
         <div className="h-50 ml-4 flex w-auto flex-col justify-center">
           <p className="font-dm text-sm font-medium text-gray-600">{title}</p>
           <h4 className="text-xl font-bold text-navy-700 dark:text-white">
-            {subtitle}
+            {subtitle ? subtitle : 0}
           </h4>
         </div>
       </div>

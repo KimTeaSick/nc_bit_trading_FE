@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
-import { ROUTES, AUTH_ROUTES } from "../../../routes";
+import { ROUTES_MAKE } from "../../../routes";
+// import { ACTIVE_AUTO } from "@/variables/routers";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import { useEffect, useState } from "react";
@@ -19,17 +20,24 @@ const Sidebar = (props: {
 }) => {
   const { open, onClose } = props;
   const [user_idx, set_user_idx] = useState<string | null>(null);
+  const [user_active, set_user_active] = useState<string | null>(null);
+  const [ROUTE, SET_ROUTE] = useState<string | null>(null);
   const dispatch = useDispatch<any>();
   const history = useRouter();
   const log_out_event = () => {
     localStorage.clear();
-    history.replace("/user/login");
+    window.location.href = "/user/login";
   };
 
   useEffect(() => {
     const idx =
       typeof window === "undefined" ? null : localStorage.getItem("user_idx");
+    const user_auto_active =
+      typeof window === "undefined"
+        ? null
+        : localStorage.getItem("user_auto_active");
     set_user_idx(idx);
+    set_user_active(user_auto_active);
     dispatch(getNowUsedCondition());
     if (window.screen.width < 500) {
       console.log("window.screen.width ::: ::: ", window.screen.width);
@@ -80,7 +88,7 @@ const Sidebar = (props: {
           )}
           {/* Nav item */}
           <ul className="mb-auto pt-1">
-            <Links routes={user_idx !== null ? AUTH_ROUTES : ROUTES} />
+            <Links routes={ROUTES_MAKE(user_idx, user_active)} />
           </ul>
         </div>
       )}

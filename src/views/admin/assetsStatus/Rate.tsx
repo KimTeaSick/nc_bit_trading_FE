@@ -9,6 +9,7 @@ import { RATE_TERM_TYPE } from "@/@types/AssetsStatus";
 const RateButton = ({ onClick }: { onClick: (term: number) => void }) => {
   const dispatch = useDispatch<any>();
   const [active, setActive] = useState<RATE_TERM_TYPE>(1);
+
   const click_event = (value: RATE_TERM_TYPE) => {
     dispatch(onClick(value));
     setActive(value);

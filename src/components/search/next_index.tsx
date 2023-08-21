@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import ChoiceCondition from "./ChoiceCondition";
+import ChoiceCondition from "./next_ChoiceCondition";
 import {
   CoinSearch,
   ConditionEdit,
@@ -16,6 +16,7 @@ import {
 import ConditionIndex from "./components/conditionIndex";
 import { BTN_EVENT_TYPE } from "@/@types/Search";
 import { RootStateType } from "@/module/rootReducer.d";
+import { OptionType } from "./ConditionType";
 
 const COMPONENT_COVER_CLASS =
   "mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1";
@@ -26,7 +27,7 @@ const TITLE_CLASS = "ml-1 text-2xl font-bold text-navy-700 dark:text-white";
 const SearchPage: FC = () => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(0);
-  const [conditionList, setConditionList] = useState<string[]>(); // 검색에 사용된 컨디션
+  const [conditionList, setConditionList] = useState<OptionType[]>([]); // 검색에 사용된 컨디션
   const searchSlice = useSelector((state: RootStateType) => state.search);
   const { autoTradingStatus } = useSelector(
     (state: RootStateType) => state.common

@@ -1,15 +1,15 @@
 /* eslint-disable */
 import React from "react";
-// import { Link, useLocation } from "react-router-dom";
 import Link from "next/link";
 import DashIcon from "@/components/icons/DashIcon";
 export const SidebarLinks = ({ routes }: { routes: any[] }): JSX.Element => {
-  // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName: string) => {
     return location.pathname.includes(routeName);
   };
 
   const createLinks = (routes: any[]) => {
+    console.log("routes", routes);
+
     return routes.map((route, index) => (
       <Link href={route.layout + "/" + route.path} key={index}>
         <div className="relative mb-3 flex hover:cursor-pointer">
