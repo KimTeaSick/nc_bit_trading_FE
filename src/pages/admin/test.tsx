@@ -14,7 +14,7 @@ const Setting: FC = () => {
   useEffect(() => {
     dispatch(setPageActive("Setting"));
     dispatch(getDisparityOptionThunk());
-    dispatch(getNowUsedCondition());
+    // dispatch(getNowUsedCondition());
   }, [dispatch]);
 
   const at = useSelector((state: RootStateType) => state.autotrading);

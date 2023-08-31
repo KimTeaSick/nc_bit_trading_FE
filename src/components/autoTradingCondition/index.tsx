@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import ConditionList from "./components/list/ConditionList";
 import { useSellCondition } from "./lib/useSellCondition";
 import { useBuyCondition } from "./lib/useBuyCondition";
@@ -24,9 +24,8 @@ const AutoTradingConditon: FC = () => {
   const ATState = useSelector(
     (state: RootStateType) => state.autotradingCondition
   );
-  const { autoTradingStatus } = useSelector(
-    (state: RootStateType) => state.common
-  );
+
+  const [flag, setFlag] = useState<string | null>("0");
   const [actCondition, setActCondition, resetAC] = useAccount();
   const [sellCondition, setSellCondition, resetSell] = useSellCondition();
   const [buyCondition, setBuyCondition, resetBuy] = useBuyCondition();
@@ -34,26 +33,24 @@ const AutoTradingConditon: FC = () => {
   const dispatch = useDispatch<any>();
 
   const RUEvent = async (type: string) => {
-    if (autoTradingStatus) {
+    console.log("flag", flag);
+    if (flag === "1") {
+      console.log("flag", flag);
       alert("자동매매 실행 중 조건을 변경 / 등록 할 수 없습니다.");
       return;
     }
-
     let url = "";
-
     let body: TradingOptionBodyType = {
       name,
       buy: buyCondition,
       sell: sellCondition,
       account: actCondition,
     };
-
     type === "regist"
       ? (url = "insertTradingOption")
       : ((url = "updateTradingOption"), (body.idx = ATState.detailIdx));
 
     const response = await RUTradingOptionList(body, url);
-
     dispatch(getTradingOptionList());
     return response;
   };
@@ -64,12 +61,14 @@ const AutoTradingConditon: FC = () => {
   );
 
   const activeNdelete = async (idx: number, type: number) => {
-    if (autoTradingStatus) {
+    console.log("flag", flag);
+    if (flag === "1") {
       alert(
         `자동매매 실행 중 조건을 ${type ? "변경" : "삭제"} 할 수 없습니다.`
       );
       return;
     }
+
     type ? await activeTradingOption(idx) : await deleteTradingOption(idx);
     dispatch(getTradingOptionList());
   };
@@ -90,7 +89,13 @@ const AutoTradingConditon: FC = () => {
     setSellCondition,
     setBuyCondition,
   ]);
-
+  useEffect(() => {
+    const user_auto_active =
+      typeof window === "undefined"
+        ? "0"
+        : localStorage.getItem("user_auto_active");
+    setFlag(user_auto_active);
+  }, []);
   const resetEvent = useCallback(() => {
     resetAC();
     resetSell();
@@ -141,7 +146,7 @@ const AutoTradingConditon: FC = () => {
             AnD={activeNdelete}
             setName={setName}
             registerEvent={RUEvent}
-            autoTradingStatus={autoTradingStatus}
+            autoTradingStatus={flag}
           />
         </div>
       </div>

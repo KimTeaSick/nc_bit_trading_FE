@@ -8,8 +8,6 @@ export const SidebarLinks = ({ routes }: { routes: any[] }): JSX.Element => {
   };
 
   const createLinks = (routes: any[]) => {
-    console.log("routes", routes);
-
     return routes.map((route, index) => (
       <Link href={route.layout + "/" + route.path} key={index}>
         <div className="relative mb-3 flex hover:cursor-pointer">

@@ -5,9 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 export const getNowUsedCondition = createAsyncThunk(
   "getNowUsedCondition",
   async () => {
-    const response = await get("trade/getNowUsedCondition", {
-      params: { idx: 1 },
-    });
+    const response = await get("trade/getNowUsedCondition");
     return response;
   }
 );

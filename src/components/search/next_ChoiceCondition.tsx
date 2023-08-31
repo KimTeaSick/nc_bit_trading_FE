@@ -14,12 +14,14 @@ interface Props {
   tableData: OptionType[];
   setStage: Dispatch<SetStateAction<number>>;
   registerBtnEvent: () => void;
+  flag: string | null;
 }
 
 const ChoiceCondition: FC<Props> = ({
   tableData,
   setStage,
   registerBtnEvent,
+  flag,
 }) => {
   const dispatch = useDispatch();
   const CLICK_EVENT = async (idx: number) => {
@@ -27,7 +29,7 @@ const ChoiceCondition: FC<Props> = ({
     dispatch(setConditionDetail(detail));
     setStage(1);
   };
-  const flag = flagDistinguish(tableData);
+
   return (
     <div className="h-[80vh]">
       <Card extra={"w-full h-full sm:overflow-auto px-6"}>
@@ -64,7 +66,7 @@ const ChoiceCondition: FC<Props> = ({
           </div>
           <div className="w-1/2 md:w-1/6 flex gap-2 self-end p-2 absolute bottom-1">
             <SearchButton event={() => registerBtnEvent()} title="등록" />
-            {flag && (
+            {flag === "0" && (
               <Link className="w-full" href={"/admin/autotradingcondition"}>
                 <SearchButton
                   event={() => console.log("asd")}

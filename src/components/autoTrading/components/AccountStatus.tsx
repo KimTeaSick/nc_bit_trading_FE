@@ -20,11 +20,16 @@ interface Props {
 }
 
 const AccountStatus: FC<Props> = ({ myProperty, rate }) => {
-  const stopEvent = () => {
+  const stopEvent = async () => {
     localStorage.setItem("user_auto_active", "0");
-    controlAuto(false);
-    alert("자동 매매가 중지되었습니다.");
-    window.location.href = "/admin/default";
+    const res = await controlAuto(false);
+    if (res === 200) {
+      alert("자동 매매가 중지되었습니다.");
+      window.location.href = "/admin/default";
+    } else {
+      alert("자동 매매가 중지중 에러가 발생하였습니다.");
+      return;
+    }
   };
 
   return (

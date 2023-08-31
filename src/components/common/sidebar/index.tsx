@@ -6,7 +6,7 @@ import { ROUTES_MAKE } from "../../../routes";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import { useEffect, useState } from "react";
-import { getNowUsedCondition } from "@/pages/api/autotrading";
+// import { getNowUsedCondition } from "@/pages/api/autotrading";
 import { MdMenu } from "react-icons/md";
 import { useRouter } from "next/router";
 
@@ -21,6 +21,7 @@ const Sidebar = (props: {
   const { open, onClose } = props;
   const [user_idx, set_user_idx] = useState<string | null>(null);
   const [user_active, set_user_active] = useState<string | null>(null);
+  const [user_name, set_user_name] = useState<string | null>(null);
   const [ROUTE, SET_ROUTE] = useState<string | null>(null);
   const dispatch = useDispatch<any>();
   const history = useRouter();
@@ -36,9 +37,11 @@ const Sidebar = (props: {
       typeof window === "undefined"
         ? null
         : localStorage.getItem("user_auto_active");
+    const name =
+      typeof window === "undefined" ? null : localStorage.getItem("user_name");
     set_user_idx(idx);
+    set_user_name(name);
     set_user_active(user_auto_active);
-    dispatch(getNowUsedCondition());
     if (window.screen.width < 500) {
       console.log("window.screen.width ::: ::: ", window.screen.width);
       onClose(false);
@@ -78,7 +81,8 @@ const Sidebar = (props: {
           <div className="mb-7 mt-[58px] h-px bg-gray-300 dark:bg-white/30" />
           {user_idx && (
             <>
-              <div className="flex justify-center items-center">
+              <div className="flex flex-col justify-center items-center">
+                <p className="font-bold text-xl">{user_name}</p>
                 <p className="cursor-pointer" onClick={log_out_event}>
                   log out
                 </p>

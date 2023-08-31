@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = "http://52.78.246.119:8888/";
+// const BASE_URL = "http://52.78.246.119:8888/";
 // const BASE_URL = "http://3.35.242.102:8888/";
-// const BASE_URL = "http://121.165.242.171:34256/";
+const BASE_URL = "http://121.165.242.171:34256/";
 
 const token =
   typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
@@ -11,7 +11,6 @@ const client = axios.create({
   baseURL: BASE_URL,
   headers: {
     Authorization: `Bearer ${token}`,
-    // Authorization: `Bearer 12`,
   },
 });
 
@@ -22,7 +21,13 @@ export const get = async (uri: string, params = {}, headers = {}) => {
       withCredentials: true,
     });
     const { data } = result;
-    return data;
+
+    if (data.status === 401) {
+      window.location.href = "/user/login";
+      localStorage.clear();
+    }
+
+    return data.data;
   } catch (e) {
     console.log(e);
     throw e;
@@ -41,7 +46,13 @@ export const post = async (
       },
     });
     const { data } = result;
-    return data;
+
+    if (data.status === 401) {
+      window.location.href = "/user/login";
+      localStorage.clear();
+    }
+
+    return data.data;
   } catch (e) {
     console.log(e);
     throw e;

@@ -27,11 +27,9 @@ const TITLE_CLASS = "ml-1 text-2xl font-bold text-navy-700 dark:text-white";
 const SearchPage: FC = () => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(0);
+  const [flag, setFlag] = useState<string | null>("0");
   const [conditionList, setConditionList] = useState<OptionType[]>([]); // 검색에 사용된 컨디션
   const searchSlice = useSelector((state: RootStateType) => state.search);
-  const { autoTradingStatus } = useSelector(
-    (state: RootStateType) => state.common
-  );
   const conditionListSetter = useCallback(async () => {
     const list = await getConditionList();
     setConditionList(list);
@@ -44,7 +42,7 @@ const SearchPage: FC = () => {
 
   const btnEvent = useCallback(
     async (type: string, body?: any, name?: string) => {
-      if (autoTradingStatus) {
+      if (flag === "1") {
         alert(
           "자동매매 실행 중 조건을 변경 / 삭제 / 수정 / 등록 할 수 없습니다."
         );
@@ -64,11 +62,16 @@ const SearchPage: FC = () => {
       await conditionListSetter();
       setStage(0);
     },
-    [conditionListSetter, searchSlice]
+    [conditionListSetter, searchSlice, flag]
   );
 
   useEffect(() => {
+    const user_auto_active =
+      typeof window === "undefined"
+        ? "0"
+        : localStorage.getItem("user_auto_active");
     conditionListSetter();
+    setFlag(user_auto_active);
     dispatch(setResultDataRollback());
   }, [conditionListSetter, dispatch, stage]);
 
@@ -82,6 +85,7 @@ const SearchPage: FC = () => {
           tableData={conditionList}
           registerBtnEvent={() => clickRegister()}
           setStage={setStage}
+          flag={flag}
         />
       ) : (
         <ConditionIndex

@@ -13,7 +13,7 @@ interface Props {
 const LoginForm: FC<Props> = ({ value, setValue }) => {
   // const history = useRouter();
 
-  const log_out = () => localStorage.clear();
+  const log_out = () => (window.location.href = "/user/register");
 
   const loginButtonClick = async () => {
     const res = await login_event(value);
@@ -47,7 +47,7 @@ const LoginForm: FC<Props> = ({ value, setValue }) => {
       <div className="flex w-2/3 flex-col gap-2">
         <Button title="로그인" event={loginButtonClick} />
         {/* <Button title="검증" event={_get_user_info} /> */}
-        <Button title="데이터 삭제" event={log_out} />
+        <Button title="회원가입" event={log_out} />
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ interface Props {
   idx: number;
   setName: (e: ChangeEvent<HTMLInputElement>) => void;
   registerEvent: (type: string) => void;
-  autoTradingStatus: number;
+  autoTradingStatus: string | null;
   AnD: (idx: number, type: number) => void;
   type: boolean;
 }
@@ -27,7 +27,7 @@ const NameInput: FC<Props> = ({
 
   const AUTO_BTN = async () => {
     setLoading(true);
-    if (autoTradingStatus) {
+    if (autoTradingStatus === "1") {
       alert(`자동매매 실행 중 사용 할 수 없습니다.`);
       setLoading(false);
       return;
