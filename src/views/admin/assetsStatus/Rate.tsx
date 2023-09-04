@@ -5,6 +5,7 @@ import Card from "@/components/common/card";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import { RATE_TERM_TYPE } from "@/@types/AssetsStatus";
+import AssetsTable from "./components/AssetsTable";
 
 const RateButton = ({ onClick }: { onClick: (term: number) => void }) => {
   const dispatch = useDispatch<any>();
@@ -20,11 +21,13 @@ const RateButton = ({ onClick }: { onClick: (term: number) => void }) => {
   }, []);
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 my-5">
       {RATE_BUTTON_TERM.map((v, i) => (
         <div
           key={i}
-          className={`${active === v.value && "text-red-700"} font-bold`}
+          className={`${
+            active === v.value && "text-red-700"
+          } font-bold cursor-pointer`}
           onClick={async () => click_event(v.value)}
         >
           {v.key}
@@ -39,18 +42,38 @@ const Rate: FC = () => {
 
   return (
     <div>
-      <Card extra="mt-5 h-[80vh] flex items-center justify-center">
-        <div className="flex flex-col items-center">
-          <div
-            className={`text-3xl font-bold ${
-              assets.rate && assets.rate > 0 ? "text-blue-600" : "text-red-600"
-            }`}
-          >
-            {assets.rate} %
-          </div>
-          <RateButton onClick={rate_check} />
-        </div>
+      <Card extra="h-[80vh] flex items-center justify-center">
         <div className="text-4xl font-bold">{assets.account_balance} 원</div>
+        <RateButton onClick={rate_check} />
+        <div
+          id="date"
+          className="rounded-md px-5 py-1 border-2 text-gray-700 border-gray-300 mb-3 bg-[#ffffff]"
+        >
+          {assets.date}
+        </div>
+        <div id="info_box" className="w-3/4 shadow-md rounded-md bg-[#f9f9f9]">
+          <div id="top" className="flex p-5 justify-between">
+            <p className="w-1/3">- 총 투자금액 : </p>
+            <p className="w-1/3">- 기초평가금액 : </p>
+            <p className="w-1/3">- 입금평가금액 : </p>
+          </div>
+          <div id="bottom" className="flex p-5 justify-between">
+            <p className="w-1/3">- 총 투자손익 : </p>
+            <p className="w-1/3">- 기말평가금액 : </p>
+            <p className="w-1/3">
+              - 투자원금 비교 수익률 :{" "}
+              {(
+                (assets.account_balance / assets.total_invest) * 100 -
+                100
+              ).toFixed(2)}{" "}
+              %
+            </p>
+          </div>
+        </div>
+        <AssetsTable
+          table_data={assets.table_data}
+          total_invest={assets.total_invest}
+        />
       </Card>
     </div>
   );

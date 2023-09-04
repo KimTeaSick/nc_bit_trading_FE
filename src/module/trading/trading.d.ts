@@ -22,6 +22,9 @@ export type TradingInitialState = {
   orderListPage: string;
 
   rate: number | null;
-  account_balance: number | null;
+  account_balance: number;
+  date: string;
+  table_data: [number, number, number, string][] | null;
+  total_invest: number;
   rateStatus: string;
 };

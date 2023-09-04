@@ -12,7 +12,10 @@ const initialState: TradingInitialState = {
   orderListPage: "",
 
   rate: null,
-  account_balance: null,
+  account_balance: 0,
+  date: "",
+  table_data: null,
+  total_invest: 0,
   rateStatus: "",
 };
 
@@ -51,6 +54,9 @@ const tradingSlice = createSlice({
     builder.addCase(rate_check.fulfilled, (state, action) => {
       state.rateStatus = "Success";
       state.rate = action.payload.rate;
+      state.date = action.payload.date;
+      state.table_data = action.payload.table_data;
+      state.total_invest = action.payload.invest_money;
       state.account_balance = action.payload.account_balance;
     });
     builder.addCase(rate_check.rejected, (state, action) => {

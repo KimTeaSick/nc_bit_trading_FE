@@ -1,7 +1,6 @@
 export const TOP_MENU_LIST = [
-  { key: "보유 자산", value: "asset" },
-  { key: "수익률", value: "rate" },
   { key: "거래 내역", value: "transaction" },
+  { key: "수익률", value: "rate" },
 ] as const;
 
 export const RATE_BUTTON_TERM = [
@@ -10,3 +9,5 @@ export const RATE_BUTTON_TERM = [
   { key: "30일", value: 30 },
   { key: "90일", value: 90 },
 ] as const;
+
+export const ASSETS_ROW = ["날짜", "입금", "잔고", "전일 비교 수익률"];

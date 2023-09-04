@@ -9,7 +9,7 @@ import { getOrderList } from "@/pages/api/tradingList";
 import { setPageActive } from "@/module/common";
 
 const CALENDAR_SEC_CLASS =
-  "absolute right-10 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none";
+  "absolute right-10 z-10 mt-2 origin-top-right rounded-md  bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none";
 
 const TransHis: FC = () => {
   const data = useTransactionHistory();
@@ -30,7 +30,7 @@ const TransHis: FC = () => {
 
   return (
     <div>
-      <div className="mt-5 mb-3 grid h-full grid-cols-1 gap-5 md:grid-cols-1 relative">
+      <div className="mb-3 grid h-full grid-cols-1 gap-5 md:grid-cols-1 relative">
         <DevelopmentTable
           page={nowPage}
           tableData={data}
