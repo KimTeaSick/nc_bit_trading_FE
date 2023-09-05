@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { ASSETS_ROW } from "../variables/variables";
 
 interface Props {
-  table_data: [number, number, number, string][] | null;
+  table_data: [number, number, number, string, number][] | null;
   total_invest: number;
 }
 
@@ -47,9 +47,8 @@ const AssetsTable: FC<Props> = ({ table_data = [], total_invest }) => {
                     value[3].slice(6, 8)}
                 </p>
                 <p className={row_class}>
-                  {value[2] === 0 ? "-" : value[2] + " 원"}
+                  {value[4] === 0 ? "-" : value[4] + " 원"}
                 </p>
-                <p className={row_class}>{value[1] + " 원"}</p>
                 <p className={row_class}>{value[0]} %</p>
               </div>
             ))}

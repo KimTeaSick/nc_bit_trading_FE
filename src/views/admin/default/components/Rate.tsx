@@ -1,5 +1,6 @@
 import Card from "@/components/common/card";
 import React, { FC } from "react";
+import AssetsTable from "./AssetsTable";
 
 interface Props {
   rateInfo: any;
@@ -7,7 +8,7 @@ interface Props {
 
 const Rate: FC<Props> = ({ rateInfo }) => {
   return (
-    <Card extra="flex p-5 justify-center items-center gap-2">
+    <div className="flex flex-col justify-center items-center">
       <div className="text-xl">현재 자산 변화 추이</div>
       <div className="text-sm">( 당일 00시 기준 )</div>
       <div className="text-5xl font-bold">{rateInfo?.now_balance}</div>
@@ -18,7 +19,7 @@ const Rate: FC<Props> = ({ rateInfo }) => {
       >
         {rateInfo?.rate} %
       </div>
-    </Card>
+    </div>
   );
 };
 

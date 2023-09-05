@@ -77,7 +77,10 @@ export const json_file_download = async () => {
   const response = await get("coinlist.json");
   const json_res = JSON.stringify(response);
   const json_coin_list = JSON.stringify(coin_list);
-  console.log("one", response === coin_list);
-  console.log("two", json_res === json_coin_list);
   return response;
+};
+
+export const get_users_rate_info = async () => {
+  const res = await get("dash/get_users_rate_info");
+  return res;
 };

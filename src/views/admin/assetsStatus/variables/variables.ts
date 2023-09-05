@@ -10,4 +10,4 @@ export const RATE_BUTTON_TERM = [
   { key: "90일", value: 90 },
 ] as const;
 
-export const ASSETS_ROW = ["날짜", "입금", "잔고", "전일 비교 수익률"];
+export const ASSETS_ROW = ["날짜", "수익금", "수익률"];
