@@ -42,7 +42,7 @@ const Rate: FC = () => {
 
   return (
     <div>
-      <Card extra="h-[80vh] flex items-center justify-center">
+      <Card extra="h-[80vh] flex items-center justify-center p-2">
         <div className="text-4xl font-bold">{assets.account_balance} 원</div>
         <RateButton onClick={rate_check} />
         <div
@@ -51,7 +51,10 @@ const Rate: FC = () => {
         >
           {assets.date}
         </div>
-        <div id="info_box" className="w-3/4 shadow-md rounded-md bg-[#f9f9f9]">
+        <div
+          id="info_box"
+          className="w-full md:w-3/4 shadow-md rounded-md bg-[#f9f9f9] text-xs font-bold md:text-md dark:bg-blue-800"
+        >
           <div id="top" className="flex p-5 justify-between">
             <p className="w-1/3">- 총 투자금액 : </p>
             <p className="w-1/3">- 기초평가금액 : </p>

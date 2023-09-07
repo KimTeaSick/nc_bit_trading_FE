@@ -4,11 +4,12 @@ import { SearchOptionType } from "@/module/autoTrading/index.d";
 
 const MODAL_BACK =
   "bg-opacity-40 bg-gray-500 w-[100vw] h-[100vh] z-50 fixed top-0 left-0 overflow-hidden";
-const MODAL_COVER =
-  "bg-indigo-100 rounded-lg w-3/5 h-auto overflow-auto fixed top-[20%] left-[25%] flex flex-col items-center p-2 dark:bg-navy-600";
-
+const MODAL_COVER = `flex flex-col items-center p-2 bg-indigo-100 rounded-lg w-4/5 h-auto 
+  overflow-auto fixed top-[10%] left-[10%] font-bold text-sm
+  md:top-[20%] md:w-3/5 md:left-[25%] 
+  dark:bg-navy-600`;
 const CONDITION_COVER =
-  "flex w-11/12 p-3 bg-white my-2 rounded-md box-border dark:bg-navy-700";
+  "flex w-11/12 p-3 bg-white my-1 md:my-2 rounded-md box-border dark:bg-navy-700";
 const CONDITION_TITLE = "font-bold mr-1 dark:text-white";
 const CONDITION_CONTENT = "dark:text-white";
 
@@ -25,7 +26,7 @@ interface _Props {
 
 const SearchConditionC: FC<_Props> = ({ title, content }) => {
   return (
-    <div className={CONDITION_COVER}>
+    <div className={CONDITION_COVER + " flex-col md:flex-row"}>
       <p className={CONDITION_TITLE}>{title} :</p>
       <p className={CONDITION_CONTENT}>{content}</p>
     </div>
@@ -121,8 +122,6 @@ export const TradingConditionM = ({
             </div>
           )
         )}
-
-        {/*  */}
       </div>
     </div>
   );

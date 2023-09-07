@@ -36,19 +36,13 @@ const Dashboard: FC<DashboardProps> = ({ rpLoading, searchList }) => {
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
-      <AccountStatus
-        accountInfo={accoutInfo.data}
-        rate={fixed(
-          rateInfo?.data?.now_balance * (rateInfo?.data?.rate / 100),
-          2
-        )}
-      />
+      <AccountStatus accountInfo={accoutInfo.data} />
       <Marketplace />
-      <div className="flex justify-center items-center bg-white rounded-lg">
-        <div className="w-1/2">
+      <div className="flex flex-col p-2 justify-center items-center bg-white dark:bg-navy-800 rounded-lg md:flex-row">
+        <div className="w-full md:w-1/2">
           <Rate rateInfo={rateInfo?.data} />
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2 ">
           <p className="font-bold text-xl mb-3 text-gray-900 dark:text-gray-300">
             회원별 수익률
           </p>
@@ -69,7 +63,7 @@ const Dashboard: FC<DashboardProps> = ({ rpLoading, searchList }) => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-5">
         <SearchList value={searchList} />
         <PossessionList value={tableDataComplex} />
       </div>

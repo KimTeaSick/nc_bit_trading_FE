@@ -3,10 +3,10 @@ import { POSSESSION_LIST } from "../variables/TABLE_COL";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
 const COMPONENT_COVER_CLASS =
-  "w-full bg-white rounded-2xl h-[50vh] p-5 dark:bg-navy-800";
+  "w-full bg-white rounded-2xl h-[50vh] p-5 dark:bg-navy-800  overflow-x-scroll scrollbar-hide";
 const TITLE_CLASS = "font-bold text-xl mb-3 text-gray-900 dark:text-gray-300";
 const TH_CLASS =
-  "flex justify-between w-full font-bold border-b-2 pb-2 text-gray-700";
+  "flex justify-between w-full font-bold border-b-2 pb-2 text-gray-700 whitespace-nowrap";
 const ROW_CLASS = "font-medium flex justify-between dark:text-gray-300";
 const W_F = "w-full ";
 const COL_CLASS = "font-bold my-3 text-sm";
@@ -31,7 +31,7 @@ const PossessionList: FC<Props> = ({ value }) => {
       <p className={TITLE_CLASS}>보유 종목</p>
       <table className={W_F}>
         <thead>
-          <tr className={TH_CLASS}>
+          <tr className={TH_CLASS + ""}>
             {POSSESSION_LIST.map((col: string, index: number) => (
               <td className={W_F} key={index}>
                 {col}
@@ -40,7 +40,7 @@ const PossessionList: FC<Props> = ({ value }) => {
           </tr>
         </thead>
       </table>
-      <div className="overflow-y-scroll w-full h-[35vh] scrollbar-hide">
+      <div className="overflow-y-scroll w-full h-[35vh] scrollbar-hide ">
         <table className="w-full">
           <tbody>
             {Array.isArray(value) &&

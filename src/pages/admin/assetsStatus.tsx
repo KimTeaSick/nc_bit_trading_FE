@@ -18,7 +18,7 @@ const TradingList: FC = () => {
             onClick={() => setActive(v.value)}
             className={
               active === v.value
-                ? "text-gray-900 dark:text-red-500 bg-white rounded-t-lg p-5"
+                ? "text-gray-900 dark:text-red-500 bg-white rounded-t-lg p-5 dark:!bg-navy-800"
                 : "" + " cursor-pointer p-5"
             }
           >

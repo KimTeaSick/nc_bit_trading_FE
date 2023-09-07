@@ -3,8 +3,8 @@ import { Col, ORDER_LIST_COL } from "../construct/Col";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 import { SUB_DATE } from "@/lib/dateFormat";
 
-const SEARCH_RESULT_CLASS = "flex flex-col w-full";
-const ITEM_STYLE_CLASS = "w-1/2 flex justify-center";
+const SEARCH_RESULT_CLASS = "flex flex-col font-bold w-full";
+const ITEM_STYLE_CLASS = "w-1/2 flex text-sm justify-center";
 const ROW_STYLE_CLASS =
   "flex bg-gray-50 border-b-2 border-b-gray-300 h-10 items-center dark:bg-navy-800 dark:text-white";
 const ROW_COVER = "h-[20vh] bg-gray-50 overflow-y-auto dark:bg-navy-800";

@@ -16,10 +16,9 @@ const BUTTON_COVER_CLASS = "flex h-12 justify-center";
 
 interface Props {
   myProperty: AccountType | undefined;
-  rate: { now_balance: number; rate: number } | undefined;
 }
 
-const AccountStatus: FC<Props> = ({ myProperty, rate }) => {
+const AccountStatus: FC<Props> = ({ myProperty }) => {
   const stopEvent = async () => {
     localStorage.setItem("user_auto_active", "0");
     const res = await controlAuto(false);
@@ -57,7 +56,7 @@ const AccountStatus: FC<Props> = ({ myProperty, rate }) => {
       <Widget
         icon={<TbPigMoney className="h-7 w-7" />}
         title={"손익금"}
-        subtitle={fixed(rate?.now_balance * (rate?.rate / 100), 2)}
+        subtitle={krwChage(myProperty?.revenue)}
       />
       <div className={BUTTON_COVER_CLASS}>
         <Button type={true} title="자동 매매 중지" event={() => stopEvent()} />

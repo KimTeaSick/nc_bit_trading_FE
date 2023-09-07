@@ -8,11 +8,11 @@ interface Props {
   total_invest: number;
 }
 
-const row_class = "p-1 pl-3 w-full border-b-2";
+const row_class = "p-1 pl-3 w-full border-b-2 dark:text-white";
 
 const AssetsTable: FC<Props> = ({ table_data = [], total_invest, name }) => {
   return (
-    <div className="w-1/2">
+    <div className="w-full overflow-hidden rounded-sm md:w-1/2 dark:text-white ">
       <div id="table" className="rounded-md shadow-md">
         <div
           id="title"
@@ -23,7 +23,10 @@ const AssetsTable: FC<Props> = ({ table_data = [], total_invest, name }) => {
         </div>
 
         <div id="body" className="flex w-full">
-          <div id="row-left" className="flex w-1/4 flex-col border-r-2">
+          <div
+            id="row-left"
+            className="flex w-1/4 flex-col border-r-2 dark:border-l-2"
+          >
             {ASSETS_ROW.map((value, index) => (
               <div key={index} className={row_class}>
                 {value}

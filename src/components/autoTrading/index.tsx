@@ -62,7 +62,7 @@ const AutoTrading: FC = () => {
             trading_condition={AT.tradingCondition?.name}
             showControl={showControl}
           />
-          <AccountStatus myProperty={accountInfo.data} rate={rateInfo.data} />
+          <AccountStatus myProperty={accountInfo.data} />
           <div className="flex flex-col w-full gap-5 mt-3 md:!flex-row">
             <SearchResult searchList={Rcoin.data} />
             <div className="w-full flex flex-col">

@@ -18,6 +18,7 @@ export type AccountType = {
   deposit: number | undefined;
   buy: number | undefined;
   sell: number | undefined;
+  revenue: number;
 };
 export type RateType = {
   now_balance: number;

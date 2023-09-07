@@ -3,8 +3,8 @@ import { Col, SEARCH_RESULT_COL } from "../construct/Col";
 import { krwChage } from "@/lib/krwChage";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
 
-const SEARCH_RESULT_CLASS = "flex flex-col w-full md:!w-1/3";
-const ITEM_STYLE_CLASS = "w-1/2 flex justify-center";
+const SEARCH_RESULT_CLASS = "flex flex-col w-full font-bold md:!w-1/3";
+const ITEM_STYLE_CLASS = "w-1/2 text-sm flex justify-center";
 const ROW_STYLE_CLASS =
   "flex bg-gray-50 border-b-2 border-b-gray-300 h-10 items-center dark:bg-navy-800 dark:text-white";
 const ROW_COVER = "h-[60vh] bg-gray-50 overflow-y-auto dark:bg-navy-800";

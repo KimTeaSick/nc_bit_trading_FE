@@ -24,7 +24,7 @@ export type TradingInitialState = {
   rate: number | null;
   account_balance: number;
   date: string;
-  table_data: [number, number, number, string][] | null;
+  table_data: [number, number, number, string, number][] | null;
   total_invest: number;
   rateStatus: string;
 };
