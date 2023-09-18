@@ -4,10 +4,10 @@ export const TOP_MENU_LIST = [
 ] as const;
 
 export const RATE_BUTTON_TERM = [
-  { key: "1일", value: 1 },
-  { key: "7일", value: 7 },
-  { key: "30일", value: 30 },
-  { key: "90일", value: 90 },
+  { key: "1일", value: "1" },
+  { key: "7일", value: "7" },
+  { key: "30일", value: "30" },
+  { key: "90일", value: "90" },
 ] as const;
 
 export const ASSETS_ROW = ["날짜", "수익금", "수익률"];

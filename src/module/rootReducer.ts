@@ -9,6 +9,7 @@ import dashSlice from "./dash";
 import settingSlice from "./setting";
 import searchSlice from "./search";
 import userSlice from "./user";
+import assetsSlice from "./assets";
 import autotradingConditionSlice from "./autotradingCondition";
 import autotradingSlice from "./autoTrading";
 
@@ -31,6 +32,7 @@ const rootReducer = (
         autotradingCondition: autotradingConditionSlice,
         autotrading: autotradingSlice,
         user: userSlice,
+        assets: assetsSlice,
       });
       return combineReducer(state, action);
     }

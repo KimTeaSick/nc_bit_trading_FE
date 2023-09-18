@@ -1,20 +1,24 @@
 import { FC, useEffect, useState } from "react";
 import { ASSETS_ROW } from "../variables/variables";
+import { D_W_M } from "../../default/variables/TABLE_COL";
 
 interface Props {
+  days: string;
   table_data: [number, number, number, string, number][] | null;
   total_invest: number;
 }
 
 const row_class = "p-1 pl-3 border-b-2 dark:border-gray-800";
 
-const AssetsTable: FC<Props> = ({ table_data = [], total_invest }) => {
+const AssetsTable: FC<Props> = ({ days, table_data = [], total_invest }) => {
   const [name, setName] = useState<null | string>("");
+
   useEffect(() => {
     const user_name =
       typeof window !== "undefined" ? localStorage.getItem("user_name") : "";
     setName(user_name);
   }, []);
+
   return (
     <div className="w-full md:w-5/6 dark:bg-gray-700 rounded-md my-2 overflow-hidden ">
       <div id="table" className="rounded-md shadow-md">
@@ -23,7 +27,7 @@ const AssetsTable: FC<Props> = ({ table_data = [], total_invest }) => {
           className="border-b-2 flex justify-between p-3 font-bold dark:border-gray-800"
         >
           <p>{name}</p>
-          <p>총 투자원금 : {total_invest} 원</p>
+          <p>총 잔고 : {total_invest} 원</p>
         </div>
         <div id="body" className="flex">
           <div
@@ -46,16 +50,18 @@ const AssetsTable: FC<Props> = ({ table_data = [], total_invest }) => {
                 className="flex-col border-r-2 dark:border-gray-800"
               >
                 <p className={row_class}>
-                  {value[3].slice(0, 4) +
-                    "-" +
-                    value[3].slice(4, 6) +
-                    "-" +
-                    value[3].slice(6, 8)}
+                  {days !== "0"
+                    ? value[3]?.slice(0, 4) +
+                      "-" +
+                      value[3]?.slice(4, 6) +
+                      "-" +
+                      value[3]?.slice(6, 8)
+                    : D_W_M[index]}
                 </p>
                 <p className={row_class}>
-                  {value[4] === 0 ? "-" : value[4] + " 원"}
+                  {value[1] === 0 ? "-" : value[1] + " 원"}
                 </p>
-                <p className={row_class}>{value[0]} %</p>
+                <p className={row_class}>{value[0].toFixed(2)} %</p>
               </div>
             ))}
           </div>

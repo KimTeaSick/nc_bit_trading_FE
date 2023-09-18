@@ -44,7 +44,7 @@ const AssetsTable: FC<Props> = ({ table_data = [], total_invest, name }) => {
                 <p className={row_class}>
                   {value[1] === 0 ? "-" : value[1] + " 원"}
                 </p>
-                <p className={row_class}>{value[0]} %</p>
+                <p className={row_class}>{value[0].toFixed(2)} %</p>
               </div>
             ))}
           </div>

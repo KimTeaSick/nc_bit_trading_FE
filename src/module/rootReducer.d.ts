@@ -8,6 +8,7 @@ import { SearchInitialStateType } from "./search/search";
 import { AutoInitialStateType } from "./autotradingCondition";
 import { AutoTradingInitialState } from "./autoTrading";
 import { UserInitialStateType } from "./user/user";
+import { AssetsInitialType } from "./assets";
 
 export type RootStateType = {
   common: CommonInitialState;
@@ -20,4 +21,5 @@ export type RootStateType = {
   autotradingCondition: AutoInitialStateType;
   autotrading: AutoTradingInitialState;
   user: UserInitialStateType;
+  assets: AssetsInitialType;
 };
