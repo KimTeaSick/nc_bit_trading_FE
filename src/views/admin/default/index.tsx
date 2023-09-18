@@ -1,17 +1,18 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import useTableDataComplex from "./variables/tableDataComplex";
-import AccountStatus from "./components/AccountStatus";
-import Marketplace from "./components/MarketPlace";
+import Account_status from "./components/Account_status";
 import Rate from "./components/Rate";
 import {
   get_users_rate_info,
   useNowRate,
   useTodayAccount,
 } from "@/pages/api/dash";
-import { fixed } from "@/components/autoTrading/lib/tool";
-import SearchList from "./components/SearchList";
-import PossessionList from "./components/PossessionList";
-import AssetsTable from "./components/AssetsTable";
+import Possession_list from "./components/Possession_list";
+import Assets_table from "./components/Assets_table";
+import Search_list from "./components/Search_list";
+import * as CSS from "./variables/css_name";
+import Banner from "./components/Banner";
+import { USER_IDXES } from "./variables/TABLE_COL";
 
 interface DashboardProps {
   rpLoading?: boolean;
@@ -22,50 +23,25 @@ const Dashboard: FC<DashboardProps> = ({ rpLoading, searchList }) => {
   const { request: accoutInfo } = useTodayAccount();
   const { request: rateInfo } = useNowRate();
   const tableDataComplex = useTableDataComplex();
-  const [act_data, set_act_data] = useState<any>({});
-
-  const act_info = useCallback(async () => {
-    const info = await get_users_rate_info();
-    set_act_data(info);
-    console.log("info ::: ::: ", info.jo_info);
-  }, []);
-
-  useEffect(() => {
-    act_info();
-  }, [act_info]);
 
   return (
-    <div className="mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1">
-      <AccountStatus accountInfo={accoutInfo.data} />
-      <Marketplace />
-      <div className="flex flex-col p-2 justify-center items-center bg-white dark:bg-navy-800 rounded-lg md:flex-row">
-        <div className="w-full md:w-1/2">
+    <div className={CSS.PAGE_WRAPPER}>
+      <Account_status accountInfo={accoutInfo.data} />
+      <Banner />
+      <div className={CSS.RATE_AND_DWM_TABLE}>
+        <div className={CSS.RATE_PART}>
           <Rate rateInfo={rateInfo?.data} />
         </div>
-        <div className="w-full md:w-1/2 ">
-          <p className="font-bold text-xl mb-3 text-gray-900 dark:text-gray-300">
-            회원별 수익률
-          </p>
-          <AssetsTable
-            table_data={act_data.shin_info?.table_data}
-            name={act_data.shin_info?.name}
-            total_invest={act_data.shin_info?.total}
-          />
-          <AssetsTable
-            table_data={act_data.jo_info?.table_data}
-            name={act_data.jo_info?.name}
-            total_invest={act_data.jo_info?.total}
-          />
-          <AssetsTable
-            table_data={act_data.oh_info?.table_data}
-            name={act_data.oh_info?.name}
-            total_invest={act_data.oh_info?.total}
-          />
+        <div className={CSS.TABLE_PART}>
+          <p className={CSS.TABLE_TITLE}>회원별 수익률</p>
+          {USER_IDXES.map((value, index) => (
+            <Assets_table key={index} idx={value} />
+          ))}
         </div>
       </div>
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-5">
-        <SearchList value={searchList} />
-        <PossessionList value={tableDataComplex} />
+      <div className={CSS.POSSEION_AND_SEARCH_LIST_PART}>
+        <Search_list value={searchList} />
+        <Possession_list value={tableDataComplex} />
       </div>
     </div>
   );

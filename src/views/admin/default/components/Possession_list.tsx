@@ -23,9 +23,7 @@ type P_Coin_type = {
   purchaseamount: string;
 };
 
-const PossessionList: FC<Props> = ({ value }) => {
-  console.log("PossessionList :::: ", value);
-
+const Possession_list: FC<Props> = ({ value }) => {
   return (
     <div className={COMPONENT_COVER_CLASS}>
       <p className={TITLE_CLASS}>보유 종목</p>
@@ -64,4 +62,4 @@ const PossessionList: FC<Props> = ({ value }) => {
   );
 };
 
-export default PossessionList;
+export default Possession_list;

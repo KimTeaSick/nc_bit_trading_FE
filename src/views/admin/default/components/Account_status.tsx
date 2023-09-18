@@ -10,38 +10,41 @@ interface Props {
   accountInfo: AccountType | undefined;
 }
 
-const AccountStatus: FC<Props> = ({ accountInfo }) => {
-  console.log("accountInfo", accountInfo);
+const WIDGET_WRAPPER =
+  "mt-3 grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-5";
+const SEVEN = "h-7 w-7";
+const SIX = "h-6 w-6";
 
+const Account_status: FC<Props> = ({ accountInfo }) => {
   return (
-    <div className="mt-3 grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-5">
+    <div className={WIDGET_WRAPPER}>
       <Widget
-        icon={<MdAccountBalance className="h-7 w-7" />}
         title={"종합잔고"}
+        icon={<MdAccountBalance className={SEVEN} />}
         subtitle={krwChage(accountInfo?.total)}
       />
       <Widget
-        icon={<TbMoneybag className="h-6 w-6" />}
         title={"예수금"}
+        icon={<TbMoneybag className={SIX} />}
         subtitle={krwChage(accountInfo?.deposit)}
       />
       <Widget
-        icon={<RiHandCoinFill className="h-7 w-7" />}
         title={"당일 매수금"}
+        icon={<RiHandCoinFill className={SEVEN} />}
         subtitle={krwChage(accountInfo?.buy)}
       />
       <Widget
-        icon={<RiHandCoinLine className="h-6 w-6" />}
         title={"당일 매도금"}
+        icon={<RiHandCoinLine className={SIX} />}
         subtitle={krwChage(accountInfo?.sell)}
       />
       <Widget
-        icon={<TbPigMoney className="h-7 w-7" />}
         title={"손익금"}
+        icon={<TbPigMoney className={SEVEN} />}
         subtitle={krwChage(accountInfo?.revenue)}
       />
     </div>
   );
 };
 
-export default React.memo(AccountStatus);
+export default React.memo(Account_status);

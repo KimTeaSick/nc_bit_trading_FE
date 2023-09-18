@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { LoadingPageWrapper, Spinner } from "./Loading.styled";
+import { Spinner } from "./Loading.styled";
 
 const Loading: FC = () => {
   return (
-    <LoadingPageWrapper>
+    <div className="w-full h-[80vh] flex justify-center items-center">
       <Spinner />
-    </LoadingPageWrapper>
+    </div>
   );
 };
 

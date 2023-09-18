@@ -5,20 +5,19 @@ import { isArray } from "@amcharts/amcharts5/.internal/core/util/Type";
 
 const COMPONENT_COVER_CLASS =
   "w-full bg-white rounded-2xl h-[50vh] p-5 dark:bg-navy-800";
-const TITLE_CLASS = "font-bold text-xl mb-3 text-gray-900 dark:text-gray-300";
 const TH_CLASS =
   "flex justify-between w-full font-bold border-b-2 pb-2 text-gray-700";
+const TITLE_CLASS = "font-bold text-xl mb-3 text-gray-900 dark:text-gray-300";
+const TABLE_WRAPPER = "overflow-y-scroll w-full h-[40vh] scrollbar-hide";
 const ROW_CLASS = "font-medium flex justify-between dark:text-gray-300";
-const W_F = "w-full";
 const COL_CLASS = " font-bold my-3 text-sm";
+const W_F = "w-full";
 
 interface Props {
   value: any[];
 }
 
-const SearchList: FC<Props> = ({ value }) => {
-  console.log("SearchList :::: ", value);
-
+const Search_list: FC<Props> = ({ value }) => {
   return (
     <div className={COMPONENT_COVER_CLASS}>
       <p className={TITLE_CLASS}>실시간 종목</p>
@@ -33,8 +32,8 @@ const SearchList: FC<Props> = ({ value }) => {
           </tr>
         </thead>
       </table>
-      <div className="overflow-y-scroll w-full h-[40vh] scrollbar-hide">
-        <table className="w-full">
+      <div className={TABLE_WRAPPER}>
+        <table className={W_F}>
           <tbody>
             {Array.isArray(value) &&
               value.map(
@@ -57,4 +56,4 @@ const SearchList: FC<Props> = ({ value }) => {
   );
 };
 
-export default SearchList;
+export default Search_list;

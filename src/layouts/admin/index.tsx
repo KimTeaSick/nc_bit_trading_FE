@@ -3,23 +3,16 @@ import Navbar from "@/components/common/navbar";
 import Sidebar from "@/components/common/sidebar";
 import Footer from "@/components/common/footer/Footer";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { getATStatus } from "@/pages/api/autotrading";
-import { useDispatch } from "react-redux";
-// import { get_user_info } from "@/pages/api/user";
+import Loading from "@/components/common/Loading";
 
 interface Props {
   children: ReactNode;
   extract?: string;
+  is_loading?: boolean;
 }
 
-const Admin: FC<Props> = ({ children, extract }) => {
-  const dispatch = useDispatch<any>();
+const Admin: FC<Props> = ({ children, extract, is_loading }) => {
   document.documentElement.dir = "ltr";
-
-  useEffect(() => {
-    // dispatch(getATStatus());
-    // dispatch(get_user_info());
-  }, [dispatch]);
 
   const [open, setOpen] = useState(true);
 
@@ -32,7 +25,7 @@ const Admin: FC<Props> = ({ children, extract }) => {
         >
           <div className="overflow-auto min-h-[100vh] scrollbar-hide">
             <Navbar />
-            {children}
+            {is_loading ? children : <Loading />}
             <div className="pt-5s mx-auto mb-auto h-full p-2 md:pr-2">
               <Routes>
                 <Route

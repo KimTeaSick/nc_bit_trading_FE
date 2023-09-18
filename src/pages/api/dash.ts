@@ -80,7 +80,12 @@ export const json_file_download = async () => {
   return response;
 };
 
-export const get_users_rate_info = async () => {
-  const res = await get("dash/get_users_rate_info");
+export const get_users_rate_info = async (idx: number) => {
+  const res = await post("dash/get_users_rate_info", { idx });
+  return res;
+};
+
+export const get_day_week_month_data = async () => {
+  const res = await post("dash/day_week_month_data");
   return res;
 };
