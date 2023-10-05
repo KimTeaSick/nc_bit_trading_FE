@@ -68,7 +68,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {krwChage(info.getValue())}
+          {krwChage(info.getValue()) + " 원"}
         </p>
       ),
     }),
@@ -79,7 +79,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {Number(info.getValue()).toFixed(4) + " 개"}
         </p>
       ),
     }),
@@ -92,7 +92,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {krwChage(info.getValue())}
+          {krwChage(info.getValue()) + " 원"}
         </p>
       ),
     }),
@@ -105,7 +105,7 @@ function CheckTable(props: {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {krwChage(info.getValue()) + " 원"}
         </p>
       ),
     }),

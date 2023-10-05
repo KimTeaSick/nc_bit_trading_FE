@@ -18,7 +18,7 @@ export const useRecommendPrice = () => {
 export const usePossessionCoin = () => {
   const queryKey = "dash/getPossessoionCoinInfo" as const;
   const queryFn = async () =>
-    await get(queryKey, { params: { idx: 1 } }).then((res) => {
+    await get(queryKey).then((res) => {
       return res;
     });
   const request = useMutation(queryFn);
@@ -30,9 +30,7 @@ export const usePossessionCoin = () => {
 export const getPossessionCoin = createAsyncThunk(
   "dash/getPossessoionCoinInfo",
   async () => {
-    const response = get("dash/getPossessoionCoinInfo", {
-      params: { idx: 1 },
-    });
+    const response = get("dash/getPossessoionCoinInfo");
     return response;
   }
 );
@@ -85,7 +83,12 @@ export const get_users_rate_info = async (idx: number) => {
   return res;
 };
 
-export const get_day_week_month_data = async () => {
-  const res = await post("dash/day_week_month_data");
+export const get_day_week_month_data = async (idx: number) => {
+  const res = await post("dash/day_week_month_data", { idx });
+  return res;
+};
+
+export const all_user_deposit = async () => {
+  const res = await get("dash/all_user_deposit");
   return res;
 };

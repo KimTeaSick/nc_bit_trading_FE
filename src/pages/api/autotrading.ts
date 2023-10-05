@@ -23,7 +23,7 @@ export const useRecommendCoin = () => {
 export const usePossessionCoin = () => {
   const queryKey = "dash/getPossessoionCoinInfo";
   const queryFn = async () =>
-    await get(queryKey, { params: { idx: 1 } }).then((res) => {
+    await get(queryKey).then((res) => {
       return res;
     });
   const request = useQuery([queryKey], queryFn);

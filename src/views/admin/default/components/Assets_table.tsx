@@ -4,6 +4,7 @@ import { D_W_M } from "../variables/TABLE_COL";
 import Dash_detail_button from "./Dash_detail_button";
 import { get_day_week_month_data, get_users_rate_info } from "@/pages/api/dash";
 import Link from "next/link";
+import { krwChage } from "@/lib/krwChage";
 
 interface Props {
   idx: number;
@@ -40,14 +41,14 @@ const Assets_table: FC<Props> = ({ idx }) => {
     <div className={TABLE_WRAPPER}>
       <div id="table" className={TABLE_ROUNDED}>
         <div id="title" className={TITLE_AND_DEPOSIT}>
-          <p>{name}</p>
+          <p>{name.slice(0, 1) + "**"}</p>
           <div className="flex">
-            <p>총 잔고 : {total_invest} 원</p>
+            <p>기말 평가 자산 : {krwChage(total_invest)} 원</p>
             <Link href={`/admin/dash/rate/${idx}`}>
               <Dash_detail_button
                 title="상세보기"
                 event={async () => {
-                  await get_day_week_month_data();
+                  await get_day_week_month_data(1);
                 }}
               />
             </Link>
@@ -67,7 +68,7 @@ const Assets_table: FC<Props> = ({ idx }) => {
                 <div key={index} className={ROW_WRAPPER}>
                   <p className={ROW}>{D_W_M[index]}</p>
                   <p className={ROW}>
-                    {value[1] === 0 ? "-" : value[1] + " 원"}
+                    {value[1] === 0 ? "-" : krwChage(value[1]) + " 원"}
                   </p>
                   <p className={ROW}>{value[0].toFixed(2)} %</p>
                 </div>

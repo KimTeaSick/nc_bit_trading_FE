@@ -25,7 +25,7 @@ const Admin: FC<Props> = ({ children, extract, is_loading }) => {
         >
           <div className="overflow-auto min-h-[100vh] scrollbar-hide">
             <Navbar />
-            {is_loading ? children : <Loading />}
+            {!is_loading ? children : <Loading />}
             <div className="pt-5s mx-auto mb-auto h-full p-2 md:pr-2">
               <Routes>
                 <Route

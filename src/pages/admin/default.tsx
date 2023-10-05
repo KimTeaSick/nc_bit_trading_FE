@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { setPageActive } from "@/module/common";
 import {
+  all_user_deposit,
   getAccountThunk,
   getPossessionCoin,
   json_file_download,
@@ -14,10 +15,16 @@ import { getBalance, getProperty } from "../api/walletAPIs";
 const Home: FC = () => {
   const dispatch = useDispatch<any>();
   const { request: recommandPrice }: any = useRecommendCoin();
+  const [money, set_money] = useState(0);
+  const user_deposit_event = useCallback(async () => {
+    const a_u_d = await all_user_deposit();
+    set_money(a_u_d);
+  }, []);
 
   useEffect(() => {
     dispatch(setPageActive("Dash"));
     dispatch(getPossessionCoin());
+    user_deposit_event();
     dispatch(getBalance());
     dispatch(getProperty());
     json_file_download();
@@ -26,6 +33,7 @@ const Home: FC = () => {
   return (
     <Admin>
       <Dashboard
+        money={money}
         searchList={recommandPrice.data}
         rpLoading={recommandPrice.isLoading}
       />
