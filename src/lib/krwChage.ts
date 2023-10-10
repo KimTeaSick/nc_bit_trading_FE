@@ -1,5 +1,5 @@
 export const krwChage = (won: string | number | undefined) => {
-  if (Number(won) <= 1000) {
+  if (Math.abs(Number(won)) <= 1000) {
     won = Number(won).toFixed(2);
   } else {
     won = Number(won).toFixed(0);
