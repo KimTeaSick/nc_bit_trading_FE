@@ -4,4 +4,4 @@ export const POSSESSION_LIST = ["종목명", "수익률", "매입가", "수량",
 
 export const D_W_M = ["당일", "주간", "월간"];
 
-export const USER_IDXES = [1, 4, 8, 12];
+export const USER_IDXES = [14, 8, 1, 4, 12];

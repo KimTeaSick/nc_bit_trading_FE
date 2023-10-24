@@ -5,7 +5,6 @@ import ButtonSection from "./ButtonSection";
 const DetailCard = () => {
   return (
     <Card extra="pb-7 p-[20px]">
-      {/* task content */}
       <div className="h-full w-full">
         <Chart />
         <ButtonSection />

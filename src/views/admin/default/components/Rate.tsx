@@ -11,7 +11,6 @@ const Rate: FC<Props> = ({ rateInfo }) => {
   return (
     <div className={RATE_WRAPPER}>
       <div className="text-xl">현재 자산 변화 추이</div>
-      <div className="text-sm">( 당일 00시 기준 )</div>
       <div className="text-5xl font-bold">
         {rateInfo?.now_balance ? krwChage(rateInfo?.now_balance) + "원" : 0}
       </div>

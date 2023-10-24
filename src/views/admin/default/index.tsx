@@ -28,8 +28,8 @@ const Dashboard: FC<DashboardProps> = ({ rpLoading, searchList, money }) => {
 
   return (
     <div className={CSS.PAGE_WRAPPER}>
-      <Account_status accountInfo={accoutInfo.data} />
       <Banner />
+      <Account_status accountInfo={accoutInfo.data} />
       <div className={CSS.RATE_AND_DWM_TABLE}>
         <div className={CSS.RATE_PART}>
           <All_people_money money={money} />

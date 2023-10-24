@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 const Widget = (props: {
   icon: JSX.Element;
-  title: string | number | undefined;
+  title?: string | number | undefined;
   subtitle: string | number | undefined;
   button?: ReactNode;
 }) => {

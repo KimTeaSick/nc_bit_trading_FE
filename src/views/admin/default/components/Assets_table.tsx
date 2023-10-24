@@ -14,7 +14,7 @@ const ROW = "p-1 pl-3 w-full border-b-2 dark:text-white";
 const TABLE_WRAPPER =
   "w-full overflow-hidden rounded-sm md:w-2/3 dark:text-white";
 const TABLE_ROUNDED = "rounded-md shadow-md";
-const TITLE_AND_DEPOSIT = "border-b-2 flex justify-between p-3 font-bold";
+const TITLE_AND_DEPOSIT = "border-b-2 flex justify-between p-1 font-bold";
 const TABLE_BODY = "flex w-full";
 const ROW_WRAPPER = "flex-col border-r-2 w-1/3";
 const ROW_LEFT = "flex w-1/4 flex-col border-r-2 dark:border-l-2";
@@ -38,7 +38,7 @@ const Assets_table: FC<Props> = ({ idx }) => {
   }, [set_info]);
 
   return (
-    <div className={TABLE_WRAPPER}>
+    <div className={TABLE_WRAPPER + " shadow-md my-2"}>
       <div id="table" className={TABLE_ROUNDED}>
         <div id="title" className={TITLE_AND_DEPOSIT}>
           <p>{name.slice(0, 1) + "**"}</p>

@@ -30,13 +30,13 @@ const Table_and_his: FC<Props> = ({ type, data, COL }) => {
               <p>{value}</p>
               <p>
                 {data?.table_data[index]
-                  ? krwChage(Number(data.table_data[index][1]).toFixed(0)) +
+                  ? krwChage(Number(data.table_data[index][0]).toFixed(0)) +
                     " 원"
                   : "-"}
               </p>
               <p>
                 {data?.table_data[index]
-                  ? Number(data.table_data[index][2]).toFixed(2) + " %"
+                  ? Number(data.table_data[index][1]).toFixed(2) + " %"
                   : "-"}
               </p>
             </div>

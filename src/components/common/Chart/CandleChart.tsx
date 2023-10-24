@@ -24,9 +24,6 @@ const CandleChart: FC<CandleChartProps> = ({
   const { line_one, line_two, line_three } = useSelector(
     (state: RootStateType) => state.setting
   );
-  const { avg5Data, avg20Data, avg60Data } = useSelector(
-    (state: RootStateType) => state.coin
-  );
 
   const dataArray: any[] = [];
 
@@ -58,19 +55,6 @@ const CandleChart: FC<CandleChartProps> = ({
   const numYTicks = 7;
 
   for (let i = 0; i < chartData.length; i++) {
-    // clo5Array.push([clo[i], clo[i + 1]]);
-    clo5Array.push([
-      avg5Data[i],
-      avg5Data[i + 1] == undefined ? avg5Data[i] : avg5Data[i + 1],
-    ]);
-    clo20Array.push([
-      avg20Data[i],
-      avg20Data[i + 1] == undefined ? avg20Data[i] : avg20Data[i + 1],
-    ]);
-    clo60Array.push([
-      avg60Data[i],
-      avg60Data[i + 1] == undefined ? avg60Data[i] : avg60Data[i + 1],
-    ]);
     dataArray.push([
       chartData[i].Date,
       chartData[i].Open,
@@ -78,9 +62,9 @@ const CandleChart: FC<CandleChartProps> = ({
       chartData[i].High,
       chartData[i].Low,
       chartData[i].Volume,
-      clo5Array[i],
-      clo20Array[i],
-      clo60Array[i],
+      // clo5Array[i],
+      // clo20Array[i],
+      // clo60Array[i],
     ]);
   }
 
@@ -149,36 +133,6 @@ const CandleChart: FC<CandleChartProps> = ({
                 y1={yAxisLength - scaleY(value[4])}
                 y2={yAxisLength - scaleY(value[3])}
                 stroke={value[1] > value[2] ? "#0D32FC" : "#F54329"}
-              />
-              <AvgLine
-                dataYMin={dataYMin}
-                barPlothWidth={barPlothWidth}
-                yAxisLength={yAxisLength}
-                x={x}
-                xX={xX}
-                scaleY={scaleY}
-                clo5Array={value[6]}
-                color={line_one?.color}
-              />
-              <AvgLine
-                dataYMin={dataYMin}
-                barPlothWidth={barPlothWidth}
-                yAxisLength={yAxisLength}
-                x={x}
-                xX={xX}
-                scaleY={scaleY}
-                clo5Array={value[7]}
-                color={line_two?.color}
-              />
-              <AvgLine
-                dataYMin={dataYMin}
-                barPlothWidth={barPlothWidth}
-                yAxisLength={yAxisLength}
-                x={x}
-                xX={xX}
-                scaleY={scaleY}
-                clo5Array={value[8]}
-                color={line_three?.color}
               />
               <rect
                 {...{ fill }}

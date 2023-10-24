@@ -1,53 +1,24 @@
-import { useSelector } from "react-redux";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  ChartBodyType,
-  DetailCoinType,
-  GetAvgDataBodyType,
-} from "@/@types/CoinList";
+import { ChartBodyType, DetailCoinType } from "@/@types/CoinList";
 import { get, post } from ".";
-import { RootStateType } from "@/module/rootReducer.d";
 
-export const getCoinList = () => {
-  return get("coin/getBitcoinInfo");
-};
+export const getCoinList = createAsyncThunk("getCoinList", async () => {
+  const { data } = await get("coin/getBitcoinInfo");
+  const coinList = Object.entries(data);
+  return coinList.slice(0, -1);
+});
 
-export const getCoinDetailInfo = (
+export const getCoinDetailInfo = async (
   id: string | string[] | undefined
 ): Promise<DetailCoinType | undefined> => {
-  return get(`coin/getDetailBTCInfo/${id}`);
+  const { data } = await get(`coin/getDetailBTCInfo/${id}`);
+  return data;
 };
 
 export const getChartData = createAsyncThunk(
   "getChartData",
   async (body: ChartBodyType): Promise<DetailCoinType> => {
     return post(`getCandleChart`, body);
-  }
-);
-
-export const get5AvgData = createAsyncThunk(
-  "getAvgData",
-  async (body: GetAvgDataBodyType) => {
-    console.log("body", body);
-
-    const data = await post("coin/getAvgData", body);
-    return data;
-  }
-);
-
-export const get20AvgData = createAsyncThunk(
-  "get20AvgData",
-  async (body: GetAvgDataBodyType) => {
-    const data = await post("coin/getAvgData", body);
-    return data;
-  }
-);
-
-export const get60AvgData = createAsyncThunk(
-  "get60AvgData",
-  async (body: GetAvgDataBodyType) => {
-    const data = await post("coin/getAvgData", body);
-    return data;
   }
 );
 

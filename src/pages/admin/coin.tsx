@@ -2,31 +2,19 @@ import CoinPage from "@/views/admin/coinlist/index";
 import Loading from "@/components/common/LoadingComponent";
 import Admin from "@/layouts/admin";
 import { setPageActive } from "@/module/common";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { CoinType } from "@/@types/CoinList";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootStateType } from "@/module/rootReducer.d";
 import { getCoinList } from "../api/coinListAPIs";
-import { useDisparityLineQuery } from "../api/settingAPI";
-import { setDisparityLineOption } from "@/module/setting";
 
 const CoinList = () => {
-  const dispatch = useDispatch();
-  const { data, isLoading } = useDisparityLineQuery();
-  const [coinList, setCoinList] = useState<CoinType[]>([]);
-
-  const coin = useCallback(async () => {
-    const { data } = await getCoinList();
-    setCoinList(Object.entries(data));
-  }, []);
+  const dispatch = useDispatch<any>();
+  const { coinList } = useSelector((state: RootStateType) => state.coin);
 
   useEffect(() => {
-    coin();
-  }, [coin]);
-
-  useEffect(() => {
+    dispatch(getCoinList());
     dispatch(setPageActive("Coin"));
-    dispatch(setDisparityLineOption(data));
-  }, [dispatch, isLoading]);
+  }, [dispatch]);
 
   return (
     <Admin>
