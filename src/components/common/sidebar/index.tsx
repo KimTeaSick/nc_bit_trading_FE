@@ -2,11 +2,8 @@
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
 import { ROUTES_MAKE } from "../../../routes";
-// import { ACTIVE_AUTO } from "@/variables/routers";
-import { useDispatch, useSelector } from "react-redux";
-import { RootStateType } from "@/module/rootReducer.d";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-// import { getNowUsedCondition } from "@/pages/api/autotrading";
 import { MdMenu } from "react-icons/md";
 import { useRouter } from "next/router";
 

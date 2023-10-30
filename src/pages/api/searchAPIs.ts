@@ -36,6 +36,7 @@ export const CoinSearch = async (body: any) => {
 
 export const B_CoinSearch = async (body: any) => {
   try {
+    console.log("body :::", body);
     const flag = validationCheck(body);
     if (flag) {
       const response = await post("newRawSearch", body);

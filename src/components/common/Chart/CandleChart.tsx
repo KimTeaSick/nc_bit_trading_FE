@@ -27,7 +27,7 @@ const CandleChart: FC<CandleChartProps> = ({
 
   const dataArray: any[] = [];
 
-  let SVG_CHART_WIDTH = typeof CHART_WIDTH === "number" ? CHART_WIDTH * 0.9 : 0;
+  let SVG_CHART_WIDTH = typeof CHART_WIDTH === "number" ? CHART_WIDTH * 0.7 : 0;
   let SVG_CHART_HEIGHT =
     typeof CHART_HEIGHT === "number" ? CHART_HEIGHT * 0.5 : 0;
 

@@ -1,7 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import ChoiceCondition from "./next_ChoiceCondition";
 import {
-  CoinSearch,
   ConditionEdit,
   ConditionRegister,
   conditionDelete,

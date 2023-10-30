@@ -19,18 +19,11 @@ const TopWidget: FC<Props> = ({ selectCoin, coinName }) => (
       button={
         <WarningButton
           isWarning={selectCoin?.warning === "1"}
-          event={
-            selectCoin?.warning === "1"
-              ? () =>
-                  updateCoinWarning({
-                    value: 0,
-                    coin_name: coinName + "_KRW",
-                  })
-              : () =>
-                  updateCoinWarning({
-                    value: 1,
-                    coin_name: coinName + "_KRW",
-                  })
+          event={() =>
+            updateCoinWarning({
+              value: selectCoin?.warning === "1" ? 0 : 1,
+              coin_name: coinName + "_KRW",
+            })
           }
         />
       }
@@ -42,10 +35,10 @@ const TopWidget: FC<Props> = ({ selectCoin, coinName }) => (
     />
     <Widget
       icon={<IoDocuments className="h-6 w-6" />}
-      title={`금일 최고가 : ${krwChage(
+      title={""}
+      subtitle={`금일 최고가 : ${krwChage(
         String(selectCoin?.max_price)
       )} 원   금일 최저가 : ${krwChage(String(selectCoin?.min_price))} 원 `}
-      subtitle={""}
     />
   </div>
 );

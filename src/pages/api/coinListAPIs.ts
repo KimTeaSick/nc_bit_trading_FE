@@ -11,7 +11,7 @@ export const getCoinList = createAsyncThunk("getCoinList", async () => {
 export const getCoinDetailInfo = async (
   id: string | string[] | undefined
 ): Promise<DetailCoinType | undefined> => {
-  const { data } = await get(`coin/getDetailBTCInfo/${id}`);
+  const data = await get(`coin/getDetailBTCInfo/${id}`);
   return data;
 };
 
@@ -26,6 +26,6 @@ export const updateCoinWarning = async (body: {
   value: number;
   coin_name: string;
 }) => {
-  const response = await post("coinDetail/updateWarning", body);
+  const response = await post("coin/updateWarning", body);
   return response;
 };

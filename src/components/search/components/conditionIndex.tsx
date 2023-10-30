@@ -85,6 +85,7 @@ const ConditionIndex: FC<Props> = ({ searchSlice, btnEvent, setStage }) => {
       Trend: trend,
       MACD: MACD,
     };
+    console.log("B_searchBtnEvent ::: ", body);
     setLoading(true);
     const response = await B_CoinSearch(body);
     if (response === false) {

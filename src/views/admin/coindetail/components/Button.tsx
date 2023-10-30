@@ -34,3 +34,24 @@ const Button: FC<ButtonProps> = ({ termText, active }) => {
 };
 
 export default Button;
+
+export const CountButton = () => {
+  const count = [
+    { key: "10%", value: 10 },
+    { key: "25%", value: 25 },
+    { key: "50%", value: 50 },
+    { key: "100%", value: 100 },
+  ];
+  return (
+    <div className="flex gep-2 justify-between">
+      {count.map((value, index) => (
+        <div
+          className="rounded-sm w-[23%] p-2 flex justify-center border-2"
+          key={index}
+        >
+          {value.key}
+        </div>
+      ))}
+    </div>
+  );
+};
