@@ -3,9 +3,12 @@ import { ACCOUNT_PRICE_COL, Col } from "../construct/Col";
 import { fixed } from "../lib/tool";
 import { krwChage } from "@/lib/krwChage";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
+import { SellButton } from "./Button";
+import { useDispatch } from "react-redux";
+import { sellModalOpen, setSellCoin } from "@/module/autoTrading";
 
 const SEARCH_RESULT_CLASS = "flex flex-col w-full font-bold md:!w-3/5";
-const ITEM_STYLE_CLASS = "w-1/5 flex justify-center";
+const ITEM_STYLE_CLASS = "w-1/6 flex justify-center";
 const ROW_COVER = "h-[60vh] bg-gray-50 overflow-y-auto dark:bg-navy-800";
 const ROW_STYLE_CLASS =
   "flex bg-gray-50 border-b-2 border-b-gray-300 h-10 items-center text-sm md:!text-base dark:bg-navy-800 dark:text-white";
@@ -15,6 +18,7 @@ interface Props {
 }
 
 const AccountPrice: FC<Props> = ({ priceList = [] }) => {
+  const dispatch = useDispatch();
   return (
     <div className={SEARCH_RESULT_CLASS}>
       <p className={TITLE}>잔고 현황</p>
@@ -33,8 +37,21 @@ const AccountPrice: FC<Props> = ({ priceList = [] }) => {
               </p>
               <p className={ITEM_STYLE_CLASS}>{value.info.unit}</p>
               <p className={ITEM_STYLE_CLASS}>
-                {/* {krwChage(fixed(value.info.unit * value.info.buy_price, 0))} */}
                 {krwChage(fixed(value.info.evaluate_price, 0))}
+              </p>
+              <p className={ITEM_STYLE_CLASS}>
+                <SellButton
+                  title="sell"
+                  event={() => {
+                    dispatch(sellModalOpen(true));
+                    dispatch(
+                      setSellCoin({
+                        coinName: value.coin,
+                        unit: value.info.unit,
+                      })
+                    );
+                  }}
+                />
               </p>
             </div>
           ))}

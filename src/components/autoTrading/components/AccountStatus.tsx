@@ -5,8 +5,6 @@ import { FC } from "react";
 import { MdAccountBalance } from "react-icons/md";
 import { RiHandCoinFill, RiHandCoinLine } from "react-icons/ri";
 import { TbMoneybag, TbPigMoney } from "react-icons/tb";
-import Router from "next/router";
-import { fixed } from "../lib/tool";
 import { AccountType } from "@/@types/Dash";
 import { krwChage } from "@/lib/krwChage";
 

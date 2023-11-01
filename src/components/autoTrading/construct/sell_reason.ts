@@ -10,8 +10,6 @@ type REASON_LIST_TYPE = {
 };
 
 export const SELL_REASON = (value: string) => {
-  console.log("SELL_REASON", value);
-
   const REASON_LIST: REASON_LIST_TYPE = {
     "loss cut over": "로스컷 익절",
     "loss cut under": "로스컷 손절",

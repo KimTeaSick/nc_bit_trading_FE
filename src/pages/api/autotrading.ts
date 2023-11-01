@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { get, post } from ".";
 import { useQuery } from "@tanstack/react-query";
+import { SellFormType } from "@/@types/AutoTrading";
 
 export const getNowUsedCondition = createAsyncThunk(
   "getNowUsedCondition",
@@ -65,3 +66,7 @@ export const getATStatus = createAsyncThunk("autoTradingCheck", async () => {
   const response = await get("trade/autoTradingCheck");
   return response;
 });
+
+export const sellLimitOrder = async (body: SellFormType) => {
+  await post("trade/sell", body);
+};

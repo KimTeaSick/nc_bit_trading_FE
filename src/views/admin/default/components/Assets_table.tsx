@@ -68,9 +68,11 @@ const Assets_table: FC<Props> = ({ idx }) => {
                 <div key={index} className={ROW_WRAPPER}>
                   <p className={ROW}>{D_W_M[index]}</p>
                   <p className={ROW}>
-                    {value[1] === 0 ? "-" : krwChage(value[1]) + " 원"}
+                    {value[1] === "-" ? "-" : krwChage(value[1]) + " 원"}
                   </p>
-                  <p className={ROW}>{value[0].toFixed(2)} %</p>
+                  <p className={ROW}>
+                    {value[0] === "-" ? "-" : value[0].toFixed(2) + "%"}
+                  </p>
                 </div>
               ))}
           </div>

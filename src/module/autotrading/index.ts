@@ -10,12 +10,23 @@ const initialState: AutoTradingInitialState = {
   conditionListStatus: "",
   myCoinList: [],
   myCoinListStatus: "",
+  sellModal: false,
+  sellCoin: "",
+  sellUnit: "",
 };
 
 const AutoTradingSlice = createSlice({
   name: "AutoTradingSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    sellModalOpen: (state, action) => {
+      state.sellModal = action.payload;
+    },
+    setSellCoin: (state, action) => {
+      state.sellCoin = action.payload.coinName;
+      state.sellUnit = action.payload.unit;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getNowUsedCondition.pending, (state) => {
       state.conditionListStatus = "Loading";
@@ -31,4 +42,5 @@ const AutoTradingSlice = createSlice({
   },
 });
 
+export const { sellModalOpen, setSellCoin } = AutoTradingSlice.actions;
 export default AutoTradingSlice.reducer;

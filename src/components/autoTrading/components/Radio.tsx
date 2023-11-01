@@ -1,6 +1,6 @@
-import RadioWrapper from "@/components/headless/RadioHeadless";
-import RadioHeadless from "@/components/headless/RadioHeadless";
 import { useState } from "react";
+
+import RadioWrapper from "@/components/headless/RadioHeadless";
 
 const SellTypeRadio = () => {
   const [radio, setRadio] = useState(1);

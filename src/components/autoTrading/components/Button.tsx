@@ -1,3 +1,4 @@
+import ButtonWrapper from "@/components/headless/ButtonHeadless";
 import { FC } from "react";
 
 const BUTTON_CLASS = `font-bold h-auto bg-blueSecondary p-3 text-white rounded-md flex justify-center items-center cursor-pointer`;
@@ -18,3 +19,32 @@ const Button: FC<Props> = ({ title, event, type }) => {
 };
 
 export default Button;
+
+type SellProps = {
+  title: string;
+  event: () => void;
+};
+
+export const SellButton = ({ title, event }: SellProps) => {
+  return (
+    <div className="bg-red-500 rounded-md text-white px-2 cursor-pointer">
+      <ButtonWrapper title={title} event={event}>
+        <ButtonWrapper.Body>
+          <ButtonWrapper.Label />
+        </ButtonWrapper.Body>
+      </ButtonWrapper>
+    </div>
+  );
+};
+
+export const SellModalButton = ({ title, event }: SellProps) => {
+  return (
+    <div className="bg-red-500 rounded-md text-white p-2 cursor-pointer flex justify-center font-bold text-lg">
+      <ButtonWrapper title={title} event={event}>
+        <ButtonWrapper.Body>
+          <ButtonWrapper.Label />
+        </ButtonWrapper.Body>
+      </ButtonWrapper>
+    </div>
+  );
+};

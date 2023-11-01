@@ -19,6 +19,7 @@ export const ACCOUNT_PRICE_COL = [
   "매입가",
   "보유수량",
   "평가금액",
+  "매도",
 ];
 
 export const ORDER_LIST_COL = [

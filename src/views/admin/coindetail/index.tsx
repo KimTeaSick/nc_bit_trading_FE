@@ -2,10 +2,6 @@ import { FC } from "react";
 
 import DetailCard from "./components/coindetailCard";
 import TopWidget from "./components/TopWidget";
-import Card from "@/components/common/card";
-import SellTypeRadio from "./components/Radio";
-import { InputCount, InputPrice } from "./components/Input";
-import { CountButton } from "./components/Button";
 
 interface CoinDetailProps {
   selectCoin: any;
@@ -35,16 +31,6 @@ const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, coinName }) => {
           >
             <DetailCard />
           </div>
-          <Card extra="w-1/4 p-3 gap-3 h-full">
-            <SellTypeRadio />
-            <InputPrice />
-            <div className=" self-end">주문 가능 : 1213</div>
-            <InputCount />
-            <CountButton />
-            <div className="p-5 bg-red-500 rounded-md font-bold text-lg text-white flex justify-center">
-              매도
-            </div>
-          </Card>
         </div>
       </div>
     </div>

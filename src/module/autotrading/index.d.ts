@@ -6,6 +6,9 @@ export type AutoTradingInitialState = {
   conditionListStatus: string;
   myCoinList: MyCoinType[];
   myCoinListStatus: string;
+  sellModal: boolean;
+  sellCoin: string;
+  sellUnit: string;
 };
 
 type MyCoinType = {

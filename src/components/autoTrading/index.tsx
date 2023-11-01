@@ -19,6 +19,7 @@ import {
 } from "./components/ConditionModal";
 import { useNowRate, useTodayAccount } from "@/pages/api/dash";
 import OrderListT from "./components/OrderList";
+import SellModal from "./components/SellModal";
 
 const PAGE_COVER_CLASS =
   "grid h-full grid-cols-1 gap-5 xl:grid-cols-1 2xl:grid-cols-1";
@@ -42,7 +43,7 @@ const AutoTrading: FC = () => {
     dispatch(getNowUsedCondition());
   }, [dispatch]);
 
-  const AT = useSelector((state: RootStateType) => state.autotrading);
+  const autoTrading = useSelector((state: RootStateType) => state.autotrading);
 
   const showControl = (type: string) => {
     type === "S" && setShow({ T: false, S: true });
@@ -58,8 +59,8 @@ const AutoTrading: FC = () => {
         </div>
         <div className="bg-navy-50 p-4 rounded-md dark:bg-navy-600">
           <ConditionStatus
-            search_condition={AT.searchCondition?.name}
-            trading_condition={AT.tradingCondition?.name}
+            search_condition={autoTrading.searchCondition?.name}
+            trading_condition={autoTrading.tradingCondition?.name}
             showControl={showControl}
           />
           <AccountStatus myProperty={accountInfo.data} />
@@ -76,13 +77,19 @@ const AutoTrading: FC = () => {
           {show.S && (
             <SearchConditionM
               showControl={showControl}
-              cValue={AT.searchCondition}
+              cValue={autoTrading.searchCondition}
             />
           )}
           {show.T && (
             <TradingConditionM
               showControl={showControl}
-              cValue={AT.tradingCondition}
+              cValue={autoTrading.tradingCondition}
+            />
+          )}
+          {autoTrading.sellModal && (
+            <SellModal
+              coin={autoTrading.sellCoin}
+              unit={autoTrading.sellUnit}
             />
           )}
         </>
