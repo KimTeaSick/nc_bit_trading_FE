@@ -11,3 +11,4 @@ export const RATE_BUTTON_TERM = [
 ] as const;
 
 export const ASSETS_ROW = ["날짜", "수익금", "수익률"];
+export const CURRENT_RATE = ["실시간"];

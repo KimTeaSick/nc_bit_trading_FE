@@ -25,7 +25,6 @@ const CoinDetail: FC<CoinDetailProps> = ({ selectCoin, coinName }) => {
         <div className="flex gap-4">
           <div
             id="chart_section"
-            className="w-3/4"
             onWheel={() => (window.document.body.style.overflow = "hidden")}
             onMouseLeave={() => (window.document.body.style.overflow = "auto")}
           >

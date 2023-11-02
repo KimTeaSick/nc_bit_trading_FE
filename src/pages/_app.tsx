@@ -10,9 +10,6 @@ import Head from "next/head";
 import "../styles/globals.css";
 import "@/assets/css/MiniCalendar.css";
 import { BrowserRouter } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootStateType } from "@/module/rootReducer.d";
-import { useRouter } from "next/router";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = useState(() => new QueryClient());
