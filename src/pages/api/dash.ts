@@ -64,7 +64,7 @@ export const useNowRate = (): {
 };
 
 export const get_users_rate_info = async (idx: number) => {
-  const res = await post("dash/get_users_rate_info", { idx });
+  const res = await get(`dash/get_users_rate_info/?idx=${idx}`);
   return res;
 };
 
@@ -86,5 +86,10 @@ export const get_day_week_month_data = async (idx: number) => {
 
 export const all_user_deposit = async () => {
   const res = await get("dash/all_user_deposit");
+  return res;
+};
+
+export const getChartData = async (idx: string | string[]) => {
+  const res = await get(`dash/getChartData/?idx=${idx}`);
   return res;
 };

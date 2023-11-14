@@ -67,8 +67,6 @@ type SEARCH_CONDITION_TYPE = {
 export const SEARCH_CONDITION = (
   value: SearchOptionType
 ): SEARCH_CONDITION_TYPE => {
-  console.log("SEARCH_CONDITION :::: ", value);
-
   return {
     price: `24시간 종가가 ${value.low_price}원 이상 ${value.high_price}원 이하인 종목`,
 

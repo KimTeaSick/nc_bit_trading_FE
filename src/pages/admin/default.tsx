@@ -1,15 +1,16 @@
-import { useDispatch } from "react-redux";
 import { FC, useCallback, useEffect, useState } from "react";
-import { setPageActive } from "@/module/common";
-import { all_user_deposit, getPossessionCoin } from "../api/dash";
-import Dashboard from "@/views/admin/default";
+import { useDispatch } from "react-redux";
+
 import Admin from "@/layouts/admin";
+import Dashboard from "@/views/admin/default";
+import { setPageActive } from "@/module/common";
 import { useRecommendCoin } from "../api/autotrading";
 import { getBalance, getProperty } from "../api/walletAPIs";
+import { all_user_deposit, getPossessionCoin } from "../api/dash";
 
 const Home: FC = () => {
   const dispatch = useDispatch<any>();
-  const { request: recommandPrice }: any = useRecommendCoin();
+  // const { request: recommandPrice }: any = useRecommendCoin();
 
   const [money, set_money] = useState(0);
   const user_deposit_event = useCallback(async () => {
@@ -19,18 +20,18 @@ const Home: FC = () => {
 
   useEffect(() => {
     dispatch(setPageActive("Dash"));
-    dispatch(getPossessionCoin());
+    // dispatch(getPossessionCoin());
     user_deposit_event();
     dispatch(getBalance());
     dispatch(getProperty());
-  }, [dispatch]);
+  }, [dispatch, user_deposit_event]);
 
   return (
     <Admin>
       <Dashboard
         money={money}
-        searchList={recommandPrice.data}
-        rpLoading={recommandPrice.isLoading}
+        // searchList={recommandPrice.data}
+        // rpLoading={recommandPrice.isLoading}
       />
     </Admin>
   );

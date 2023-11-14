@@ -1,7 +1,7 @@
 import {
   TradingOptionBodyType,
   TradingOptionType,
-} from "@/components/autoTradingCondition/type/autoTrading";
+} from "@/views/admin/autoTradingCondition/type/autoTrading";
 import { get, post } from ".";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 

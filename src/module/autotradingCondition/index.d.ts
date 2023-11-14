@@ -2,7 +2,7 @@ import {
   UseBuyConditionType,
   UseSellConditionType,
   useAccountType,
-} from "../../components/autoTradingCondition/type/autoTrading";
+} from "../../views/admin/autoTradingCondition/type/autoTrading";
 
 export type AutoInitialStateType = {
   optionList: OptionListType[];

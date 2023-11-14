@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, memo, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
 import { krwChage } from "@/lib/krwChage";
@@ -106,4 +106,4 @@ const Assets_table: FC<Props> = ({ idx }) => {
   );
 };
 
-export default Assets_table;
+export default memo(Assets_table);

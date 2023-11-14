@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { Col, SEARCH_RESULT_COL } from "../construct/Col";
 import { krwChage } from "@/lib/krwChage";
 import { CHANGE_KR_NAME } from "@/variables/coinNameChange";
@@ -15,8 +16,6 @@ interface Props {
 }
 
 const SearchResult: FC<Props> = ({ searchList }) => {
-  console.log(searchList);
-
   return (
     <div className={SEARCH_RESULT_CLASS}>
       <p className={TITLE}>검색된 종목</p>

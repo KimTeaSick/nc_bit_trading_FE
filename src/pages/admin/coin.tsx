@@ -1,9 +1,10 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import CoinPage from "@/views/admin/coinlist/index";
 import Loading from "@/components/common/LoadingComponent";
 import Admin from "@/layouts/admin";
 import { setPageActive } from "@/module/common";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "@/module/rootReducer.d";
 import { getCoinList } from "../api/coinListAPIs";
 

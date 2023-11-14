@@ -1,4 +1,4 @@
-import AutoTradingPage from "@/components/autoTrading/index";
+import AutoTradingPage from "@/views/admin/autoTrading/index";
 import Admin from "@/layouts/admin";
 
 const AutoTrading = () => {

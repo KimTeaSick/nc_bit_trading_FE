@@ -1,12 +1,13 @@
-import MyWallet from "@/views/admin/mywallet/index";
 import { NextPage } from "next";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPageActive } from "@/module/common";
-import { getBalance, getProperty } from "../api/walletAPIs";
-import { RootStateType } from "@/module/rootReducer.d";
-import Loading from "@/components/common/Loading";
+
 import Admin from "@/layouts/admin";
+import Loading from "@/components/common/Loading";
+import MyWallet from "@/views/admin/mywallet/index";
+import { setPageActive } from "@/module/common";
+import { RootStateType } from "@/module/rootReducer.d";
+import { getBalance, getProperty } from "../api/walletAPIs";
 
 const Wallet: NextPage = () => {
   const dispatch = useDispatch<any>();

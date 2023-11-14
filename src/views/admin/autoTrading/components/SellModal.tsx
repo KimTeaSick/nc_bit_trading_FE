@@ -25,8 +25,8 @@ const SellModal = ({ coin, unit }: Props) => {
     coinUnit: "",
     cancleTime: "",
   });
-  const divUnit = (unit: number, percent: number): number => {
-    return percent / unit;
+  const divUnit = (unit: number, percent: number): string => {
+    return (unit * percent).toFixed(4);
   };
 
   return (
@@ -49,7 +49,11 @@ const SellModal = ({ coin, unit }: Props) => {
           value={sell.coinUnit}
           setValue={(value) => setSell({ ...sell, coinUnit: value })}
         />
-        <CountButton unit={unit} event={divUnit} />
+        <CountButton
+          unit={unit}
+          event={divUnit}
+          setValue={(value) => setSell({ ...sell, coinUnit: value })}
+        />
         <div className="flex self-end">보유 개수 : {unit}</div>
         <Input
           label="취소시간 : "

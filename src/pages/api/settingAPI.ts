@@ -21,7 +21,6 @@ export const useDisparityLineQuery = () => {
 };
 
 export const useDisparityLineMutation = (body: any) => {
-  console.log("body :::::::: ", body);
   const mutationFn = async () => {
     await axios
       .post("http://192.168.10.119:8000/setting/updateDisparity", body)

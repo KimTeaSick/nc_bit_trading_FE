@@ -1,9 +1,10 @@
 import { NextPage } from "next";
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { setPageActive } from "@/module/common";
-import AutoTradingComponent from "@/components/autoTradingCondition/index";
+import { useDispatch } from "react-redux";
+
 import Admin from "@/layouts/admin";
+import AutoTradingComponent from "@/views/admin/autoTradingCondition/index";
+import { setPageActive } from "@/module/common";
 
 const Autotrading: NextPage = () => {
   const dispatch = useDispatch<any>();

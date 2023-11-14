@@ -59,16 +59,18 @@ class LineChart extends React.Component<ChartProps, ChartState> {
         data: [30, 60, 90, 120, 30, 20, 10, 40],
       },
     ];
+
     const ReactApexChart = dynamic(() => import("react-apexcharts"), {
       ssr: false,
     });
     return (
       <ReactApexChart
         options={options}
-        series={this.state.chartData}
-        // series={this.props.chartData}
+        // series={data}
+        series={this.props.chartData}
+        type="line"
         width="100%"
-        height="100%"
+        height="30%"
       />
     );
   }

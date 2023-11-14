@@ -17,14 +17,14 @@ import All_people_money from "./components/All_people_money";
 
 interface DashboardProps {
   rpLoading?: boolean;
-  searchList: any[];
+  searchList?: any[];
   money: number;
 }
 
 const Dashboard: FC<DashboardProps> = ({ rpLoading, searchList, money }) => {
   const { request: accoutInfo } = useTodayAccount();
   const { request: rateInfo } = useNowRate();
-  const tableDataComplex = useTableDataComplex();
+  // const tableDataComplex = useTableDataComplex();
 
   return (
     <div className={CSS.PAGE_WRAPPER}>
@@ -46,10 +46,6 @@ const Dashboard: FC<DashboardProps> = ({ rpLoading, searchList, money }) => {
             <Assets_table key={index} idx={value} />
           ))}
         </div>
-      </div>
-      <div className={CSS.POSSEION_AND_SEARCH_LIST_PART}>
-        <Search_list value={searchList} />
-        <Possession_list value={tableDataComplex} />
       </div>
     </div>
   );

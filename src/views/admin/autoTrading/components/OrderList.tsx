@@ -14,8 +14,6 @@ interface Props {
 }
 
 const OrderListT: FC<Props> = ({ orderList }) => {
-  console.log("orderList :::: ", orderList);
-
   return (
     <div className={SEARCH_RESULT_CLASS}>
       <p className={TITLE}>주문 현황</p>
