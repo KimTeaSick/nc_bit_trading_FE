@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
 import { AccountType, RateType } from "@/@types/Dash";
 import { get, post } from ".";
+import { PageType } from "@/views/admin/default/components/AssetsTableSection";
 
 export const useRecommendPrice = () => {
   const queryKey = "dash/recommendCoin" as const;
@@ -63,9 +64,14 @@ export const useNowRate = (): {
   return { request };
 };
 
-export const get_users_rate_info = async (idx: number) => {
-  const res = await get(`dash/get_users_rate_info/?idx=${idx}`);
-  return res;
+export const useUserRateInfo = (idx: number) => {
+  const queryKey = `dash/get_users_rate_info/?idx=${idx}`;
+  const queryFn = async () =>
+    await get(queryKey).then((res) => {
+      return res;
+    });
+  const request = useQuery([queryKey], queryFn);
+  return request;
 };
 
 export const useUsersCurrentRate = (idx: number) => {
@@ -92,4 +98,34 @@ export const all_user_deposit = async () => {
 export const getChartData = async (idx: string | string[]) => {
   const res = await get(`dash/getChartData/?idx=${idx}`);
   return res;
+};
+
+export const useTotalMoney = () => {
+  const queryKey = "dash/totalOperateMoney";
+  const queryFn = async () =>
+    await get(queryKey).then((response) => {
+      return response;
+    });
+  const request = useQuery([queryKey], queryFn);
+  return request;
+};
+
+export const usePage = (now: number): UseQueryResult<PageType> => {
+  const queryKey = `dash/getUserCount/?now=${now}`;
+  const queryFn = async () =>
+    await get(queryKey).then((res: PageType) => {
+      return res;
+    });
+  const request = useQuery([queryKey], queryFn);
+  return request;
+};
+
+export const useTableList = (now: number): UseQueryResult<number[]> => {
+  const queryKey = `dash/getUserList/?now=${now}`;
+  const queryFn = async () =>
+    await get(queryKey).then((res: number[]) => {
+      return res;
+    });
+  const request = useQuery([queryKey], queryFn);
+  return request;
 };

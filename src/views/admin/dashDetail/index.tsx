@@ -33,6 +33,7 @@ const Dash_rate_detail: FC = () => {
         type={"일간 데이터"}
         data={table_data?.day_data}
       />
+      <LineChart chartData={[{ name: "money", data: chartData[1] }]} />
       <Table_and_his
         COL={WEEK_COL}
         type={"주간 데이터"}
@@ -43,7 +44,6 @@ const Dash_rate_detail: FC = () => {
         type={"월간 데이터"}
         data={table_data?.month_data}
       />
-      <LineChart chartData={[{ name: "money", data: chartData[1] }]} />
     </div>
   );
 };

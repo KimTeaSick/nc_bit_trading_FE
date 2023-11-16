@@ -1,7 +1,14 @@
 import React from "react";
 import { SiBitcoinsv } from "react-icons/si";
 import { IoSettingsSharp, IoPizza } from "react-icons/io5";
-import { MdHome, MdBarChart, MdPerson, MdLock } from "react-icons/md";
+import {
+  MdHome,
+  MdBarChart,
+  MdPerson,
+  MdLock,
+  MdCardMembership,
+} from "react-icons/md";
+import { BsPeople } from "react-icons/bs";
 
 const NO_LOGIN = [
   {
@@ -31,6 +38,12 @@ const ACTIVE_AUTO = [
     layout: "/admin",
     icon: <MdBarChart className="h-6 w-6" />,
     path: "assetsStatus",
+  },
+  {
+    name: "Member",
+    layout: "/admin",
+    icon: <BsPeople className="h-6 w-6" />,
+    path: "member",
   },
   {
     name: "Search",

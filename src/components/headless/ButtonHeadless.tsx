@@ -25,16 +25,12 @@ export const ButtonWrapper = ({ title, event, children }: ButtonProps) => {
 };
 const Body = ({ children, ...props }: React.PropsWithChildren<{}>) => {
   const { event } = useButtonContext();
-  return (
-    <div className="w-full text-center" onClick={event}>
-      {children}
-    </div>
-  );
+  return <div onClick={event}>{children}</div>;
 };
 
 const Label = ({ ...props }) => {
   const { title } = useButtonContext();
-  return <label>{title}</label>;
+  return <label className="cursor-pointer">{title}</label>;
 };
 
 ButtonWrapper.Label = Label;
