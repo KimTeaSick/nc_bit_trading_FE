@@ -23,7 +23,7 @@ const TradingList: FC = () => {
                 : "" + " cursor-pointer p-5"
             }
           >
-            {v.value}
+            {v.key}
           </div>
         ))}
       </div>

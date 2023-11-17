@@ -3,8 +3,6 @@ import { FC } from "react";
 import Rate from "./components/Rate";
 import Banner from "./components/Banner";
 import * as CSS from "./variables/css_name";
-import { USER_IDXES } from "./variables/TABLE_COL";
-import AssetsTable from "./components/AssetsTable";
 import Account_status from "./components/Account_status";
 import All_people_money from "./components/All_people_money";
 import { useNowRate, useTodayAccount } from "@/pages/api/dash";

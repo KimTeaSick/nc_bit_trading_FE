@@ -13,17 +13,17 @@ import {
   useUserRateInfo,
   useUsersCurrentRate,
 } from "@/pages/api/dash";
-import Loading from "@/components/common/Loading";
+import Loading from "@/components/common/LoadingComponent";
 
 interface Props {
   idx: number;
 }
 
 const ROW =
-  "p-1 pl-3 w-full h-1/3 text-xs font-bold md:text-base border-b-2 dark:text-white";
+  "p-1 pl-3 w-full text-xs font-bold md:text-base border-b-2 dark:text-white";
 const TABLE_WRAPPER =
-  "w-full overflow-hidden rounded-sm dark:text-white shadow-md h-32 md:w-3/4 my-2";
-const TITLE_AND_DEPOSIT = "border-b-2 flex justify-between p-1 font-bold h-1/4";
+  "box-border w-full rounded-sm dark:text-white shadow-md md:w-3/4 my-2 ";
+const TITLE_AND_DEPOSIT = "border-b-2 flex justify-between p-1 font-bold";
 const TABLE_BODY = "flex w-full";
 const ROW_WRAPPER = "flex-col border-r-2 w-1/3";
 const ROW_LEFT = "flex w-1/5 flex-col border-r-2 dark:border-l-2";
@@ -35,7 +35,7 @@ const AssetsTable: FC<Props> = ({ idx }) => {
   const table = useUserRateInfo(idx);
   return (
     <div className={TABLE_WRAPPER}>
-      {table.status === "success" ? (
+      {table.data !== null && table.status === "success" && (
         <div id="table">
           <div id="title" className={TITLE_AND_DEPOSIT}>
             <p>{table.data.date_info.name.slice(0, 1) + "**"}</p>
@@ -91,8 +91,6 @@ const AssetsTable: FC<Props> = ({ idx }) => {
             </div>
           </div>
         </div>
-      ) : (
-        <Loading />
       )}
     </div>
   );

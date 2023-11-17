@@ -95,11 +95,6 @@ export const all_user_deposit = async () => {
   return res;
 };
 
-export const getChartData = async (idx: string | string[]) => {
-  const res = await get(`dash/getChartData/?idx=${idx}`);
-  return res;
-};
-
 export const useTotalMoney = () => {
   const queryKey = "dash/totalOperateMoney";
   const queryFn = async () =>
@@ -124,6 +119,21 @@ export const useTableList = (now: number): UseQueryResult<number[]> => {
   const queryKey = `dash/getUserList/?now=${now}`;
   const queryFn = async () =>
     await get(queryKey).then((res: number[]) => {
+      return res;
+    });
+  const request = useQuery([queryKey], queryFn);
+  return request;
+};
+
+export const getChartData = async (idx: string | string[], term: number) => {
+  const res = await get(`dash/getChartData/?idx=${idx}&term=${term}`);
+  return res;
+};
+
+export const useChartData = (idx: string | string[], term: number) => {
+  const queryKey = `dash/getChartData/?idx=${idx}&term=${term}`;
+  const queryFn = async () =>
+    await get(queryKey).then((res) => {
       return res;
     });
   const request = useQuery([queryKey], queryFn);

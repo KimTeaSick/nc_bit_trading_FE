@@ -1,6 +1,6 @@
 export const TOP_MENU_LIST = [
-  { key: "거래 내역", value: "transaction" },
-  { key: "수익률", value: "rate" },
+  { key: "거래 이력", value: "transaction" },
+  { key: "투자 수익률", value: "rate" },
 ] as const;
 
 export const RATE_BUTTON_TERM = [

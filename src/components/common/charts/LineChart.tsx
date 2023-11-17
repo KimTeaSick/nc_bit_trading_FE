@@ -32,6 +32,7 @@ class LineChart extends React.Component<ChartProps, ChartState> {
   render() {
     const options: ApexOptions = {
       chart: {
+        animations: { enabled: false },
         height: 350,
         type: "line",
         zoom: {
@@ -39,8 +40,6 @@ class LineChart extends React.Component<ChartProps, ChartState> {
         },
       },
     };
-
-    console.log("chartData", this.props.chartData);
 
     const ReactApexChart = dynamic(() => import("react-apexcharts"), {
       ssr: false,

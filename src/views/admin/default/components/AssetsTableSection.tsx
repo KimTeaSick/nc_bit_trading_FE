@@ -1,6 +1,7 @@
 import { usePage, useTableList } from "@/pages/api/dash";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import AssetsTable from "./AssetsTable";
+import Loading from "@/components/common/LoadingComponent";
 
 export type PageType = {
   now: number;
@@ -46,21 +47,21 @@ const Page = ({ status, page, value, setValue }: PageProps) => {
 
 export const AssetsTableSection = () => {
   const [now, setNow] = useState(1);
-  const page = usePage(now);
   const tableList = useTableList(now);
+  const page = usePage(now);
+  const dataLoad = useRef(null);
 
   return (
-    <div className="md:h-[45vh] h-[65vh] flex justify-center items-center flex-col">
-      {tableList.status === "success" &&
+    <div className="flex items-center flex-col overflow-y-scroll h-[40vh]">
+      {tableList.status === "success" ? (
         tableList.data.map((value: number, index: number) => (
           <AssetsTable idx={value} key={index} />
-        ))}
-      <Page
-        status={page.status}
-        page={page.data!}
-        value={now}
-        setValue={setNow}
-      />
+        ))
+      ) : (
+        <div className="flex items-center justify-center h-full">
+          <Loading />
+        </div>
+      )}
     </div>
   );
 };
