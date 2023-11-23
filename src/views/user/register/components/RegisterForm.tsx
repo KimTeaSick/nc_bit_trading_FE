@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Input } from "@/components/common/input";
 import Button from "@/components/common/button";
-import useRegisterInfo from "../variable/RegisterInfo";
+import useRegisterInfo, { RegisterInfoType } from "../variable/RegisterInfo";
 import { user_regist_envent } from "@/pages/api/user";
 import { register_return_event } from "../variable/registReturn";
 import { useRouter } from "next/router";
@@ -9,8 +9,14 @@ import { useRouter } from "next/router";
 const RegisterForm: FC = () => {
   const [info, setInfo] = useRegisterInfo();
   const history = useRouter();
-  const user_regist_btn_evnet = async () => {
-    const res = await user_regist_envent(info);
+
+  const user_regist_btn_evnet = async (body: RegisterInfoType) => {
+    Object.values(body).forEach((element) => {
+      if (element === "") {
+        return alert("공백값이 없어야 합니다!");
+      }
+    });
+    const res = await user_regist_envent(body);
     const condition = register_return_event(res);
     if (condition === 200) history.push("/user/login");
   };
@@ -35,6 +41,16 @@ const RegisterForm: FC = () => {
           value={info.email}
           onClick={() => setInfo({ ...info, email: "" })}
           onChange={(e) => setInfo({ ...info, email: e.target.value })}
+        />
+      </div>
+      <div>
+        <p>전화번호</p>
+        <Input
+          width="80"
+          height={50}
+          value={info.phone}
+          onClick={() => setInfo({ ...info, phone: "" })}
+          onChange={(e) => setInfo({ ...info, phone: e.target.value })}
         />
       </div>
       <div>
@@ -69,7 +85,7 @@ const RegisterForm: FC = () => {
         />
       </div>
       <div>
-        <Button title="회원가입" event={user_regist_btn_evnet} />
+        <Button title="회원가입" event={() => user_regist_btn_evnet(info)} />
       </div>
     </div>
   );

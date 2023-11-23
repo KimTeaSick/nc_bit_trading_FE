@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 export type RegisterInfoType = {
   name: string;
   email: string;
+  phone: string;
   password: string;
   public: string;
   secret: string;
@@ -15,6 +16,7 @@ const useRegisterInfo = (): [
   const [info, setInfo] = useState({
     name: "",
     email: "",
+    phone: "",
     password: "",
     public: "",
     secret: "",
