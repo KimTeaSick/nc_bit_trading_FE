@@ -1,11 +1,11 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import Admin from "@/layouts/admin";
+import { useTotalMoney } from "../api/dash";
 import Dashboard from "@/views/admin/default";
 import { setPageActive } from "@/module/common";
 import { getBalance, getProperty } from "../api/walletAPIs";
-import { all_user_deposit, useTotalMoney } from "../api/dash";
 
 const Home: FC = () => {
   const dispatch = useDispatch<any>();
@@ -13,8 +13,8 @@ const Home: FC = () => {
 
   useEffect(() => {
     dispatch(setPageActive("Dash"));
-    dispatch(getBalance());
     dispatch(getProperty());
+    dispatch(getBalance());
   }, [dispatch]);
 
   return (

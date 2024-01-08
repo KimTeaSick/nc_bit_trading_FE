@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
 export type RegisterInfoType = {
+  platform: string;
   name: string;
   email: string;
   phone: string;
@@ -14,6 +15,7 @@ const useRegisterInfo = (): [
   Dispatch<SetStateAction<RegisterInfoType>>
 ] => {
   const [info, setInfo] = useState({
+    platform: "1",
     name: "",
     email: "",
     phone: "",

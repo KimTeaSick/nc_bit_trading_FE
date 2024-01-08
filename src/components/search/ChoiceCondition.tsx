@@ -1,92 +1,34 @@
-import React, { useEffect } from "react";
+import React, { Dispatch, FC, SetStateAction, useEffect } from "react";
 import Card from "@/components/common/card";
-import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  SortingState,
-  useReactTable,
-} from "@tanstack/react-table";
+
 import { SearchButton } from "./Condition";
 import { getConditionDetail } from "@/pages/api/searchAPIs";
 import { useDispatch } from "react-redux";
 import { setConditionDetail } from "@/module/search";
 import { flagDistinguish } from "./lib/flagDistinguish";
 import Link from "next/link";
+import { CONDITION_COL } from "./variable/col";
+import { OptionType } from "./ConditionType";
 
-function ChoiceCondition(props: {
-  tableData: any;
-  setStage: any;
-  registerBtnEvent: any;
-}) {
-  const { tableData, setStage, registerBtnEvent } = props;
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [defaultData, setDefaultData] = React.useState<SortingState>([]);
-  const [data, setData] = React.useState(() => [...defaultData]);
-  const flag = flagDistinguish(tableData);
-  useEffect(() => {
-    setDefaultData(tableData ? tableData : []);
-    setData(defaultData);
-  }, [defaultData, tableData]);
+interface Props {
+  tableData: OptionType[];
+  setStage: Dispatch<SetStateAction<number>>;
+  registerBtnEvent: () => void;
+  flag: string | null;
+}
 
+const ChoiceCondition: FC<Props> = ({
+  tableData,
+  setStage,
+  registerBtnEvent,
+  flag,
+}) => {
   const dispatch = useDispatch();
-
-  const columns = [
-    columnHelper.accessor("Name", {
-      id: "Name",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">
-          조건 이름
-        </p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("Create_date", {
-      id: "Create_date",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">
-          생성일
-        </p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
-        </p>
-      ),
-    }),
-    columnHelper.accessor("Update_date", {
-      id: "Update_date",
-      header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">
-          수정일
-        </p>
-      ),
-      cell: (info) => (
-        <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue() === null ? "-" : info.getValue()}
-        </p>
-      ),
-    }),
-  ];
-
-  // eslint-disable-next-line
-
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting,
-    },
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    debugTable: true,
-  });
+  const CLICK_EVENT = async (idx: number) => {
+    const detail = await getConditionDetail({ option: idx });
+    dispatch(setConditionDetail(detail));
+    setStage(1);
+  };
 
   return (
     <div className="h-[80vh]">
@@ -96,94 +38,47 @@ function ChoiceCondition(props: {
             조건 리스트
           </div>
         </header>
-        <div className="mt-8 overflow-x-scroll overflow-y-scroll overscroll-contain scrollbar-hide xl:overflow-x-hidden">
-          <table className="w-full h-full">
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr
-                  key={headerGroup.id}
-                  className="!border-px !border-gray-400"
-                >
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <th
-                        key={header.id}
-                        colSpan={header.colSpan}
-                        onClick={header.column.getToggleSortingHandler()}
-                        className="cursor-pointer border-b-[1px] border-gray-200 pt-4 pb-2 pr-4 text-start"
-                      >
-                        <div className="items-center justify-between text-xs text-gray-200">
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                          {{
-                            asc: "",
-                            desc: "",
-                          }[header.column.getIsSorted() as string] ?? null}
-                        </div>
-                      </th>
-                    );
-                  })}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table
-                .getRowModel()
-                .rows.slice(0, tableData?.legnth)
-                .map((row) => {
-                  return (
-                    <tr
-                      key={row.id}
-                      className={`${
-                        row.original.used === 1
-                          ? "bg-red-100 dark:bg-navy-200"
-                          : ""
-                      }`}
-                      onClick={async () => {
-                        const detail = await getConditionDetail({
-                          option: row.original.idx,
-                        });
-                        dispatch(setConditionDetail(detail));
-                        setStage(1);
-                      }}
-                    >
-                      {row.getVisibleCells().map((cell) => {
-                        return (
-                          <td
-                            key={cell.id}
-                            className="min-w-[150px] border-white/0 py-3 pr-4 cursor-pointer px-2"
-                          >
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-        </div>
-        <div className="w-1/2 md:w-1/6 flex gap-2 self-end p-2 absolute bottom-1">
-          <SearchButton event={() => registerBtnEvent()} title="등록" />
-          {flag && (
-            <Link className="w-full" href={"/admin/autotradingcondition"}>
-              <SearchButton
-                event={() => console.log("asd")}
-                title="매매 시작"
-              />
-            </Link>
-          )}
+        <div>
+          <div className="flex w-full justify-between border-b-2 my-3">
+            {CONDITION_COL.map((value, index) => (
+              <p
+                key={index}
+                className="w-1/3 text-start font-bold text-gray-600 text-sm"
+              >
+                {value}
+              </p>
+            ))}
+          </div>
+          <div className="flex flex-col w-full gap-2 text-sm">
+            {tableData?.map((value, index) => (
+              <div
+                key={index}
+                className={`flex w-full justify-between font-bold ${
+                  value.Used === 1 ? "bg-red-100 dark:bg-navy-200" : ""
+                }`}
+                onClick={() => CLICK_EVENT(value.idx)}
+              >
+                <div className="w-1/3 text-start">{value.Name}</div>
+                <div className="w-1/3 text-start">{value.Create_date}</div>
+                <div className="w-1/3 text-start">{value.Update_date}</div>
+              </div>
+            ))}
+          </div>
+          <div className="w-1/2 md:w-1/6 flex gap-2 self-end p-2 absolute bottom-1">
+            <SearchButton event={() => registerBtnEvent()} title="등록" />
+            {flag === "0" && (
+              <Link className="w-full" href={"/admin/autotradingcondition"}>
+                <SearchButton
+                  event={() => console.log("asd")}
+                  title="매매 시작"
+                />
+              </Link>
+            )}
+          </div>
         </div>
       </Card>
     </div>
   );
-}
+};
 
 export default ChoiceCondition;
-// const columnHelper = createColumnHelper<RowObj>();
-const columnHelper = createColumnHelper<any>();

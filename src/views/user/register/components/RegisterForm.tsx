@@ -5,6 +5,7 @@ import useRegisterInfo, { RegisterInfoType } from "../variable/RegisterInfo";
 import { user_regist_envent } from "@/pages/api/user";
 import { register_return_event } from "../variable/registReturn";
 import { useRouter } from "next/router";
+import { PlatformSelect } from "./PlatformSelect";
 
 const RegisterForm: FC = () => {
   const [info, setInfo] = useRegisterInfo();
@@ -22,7 +23,13 @@ const RegisterForm: FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-2 w-1/2 h-[50vh] justify-center bg-navy-50 p-4 rounded-lg items-center">
+    <div className="flex flex-col gap-2 w-1/2 h-[auto] justify-center bg-navy-50 p-4 rounded-lg items-center">
+      <div>
+        <p>이용 플랫폼</p>
+        <PlatformSelect
+          setValue={(e) => setInfo({ ...info, platform: e.target.value })}
+        />
+      </div>
       <div>
         <p>이름</p>
         <Input
@@ -85,7 +92,13 @@ const RegisterForm: FC = () => {
         />
       </div>
       <div>
-        <Button title="회원가입" event={() => user_regist_btn_evnet(info)} />
+        <Button
+          title="회원가입"
+          event={
+            () => user_regist_btn_evnet(info)
+            // console.log(info)
+          }
+        />
       </div>
     </div>
   );

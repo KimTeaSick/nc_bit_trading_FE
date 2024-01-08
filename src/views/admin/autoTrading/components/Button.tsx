@@ -39,12 +39,12 @@ export const SellButton = ({ title, event }: SellProps) => {
 
 export const SellModalButton = ({ title, event }: SellProps) => {
   return (
-    <div className="bg-red-500 rounded-md text-white p-2 cursor-pointer flex justify-center font-bold text-lg">
-      <ButtonWrapper title={title} event={event}>
-        <ButtonWrapper.Body>
+    <ButtonWrapper title={title} event={event}>
+      <ButtonWrapper.Body>
+        <div className="bg-red-500 rounded-md text-white p-2 cursor-pointer flex justify-center font-bold text-lg">
           <ButtonWrapper.Label />
-        </ButtonWrapper.Body>
-      </ButtonWrapper>
-    </div>
+        </div>
+      </ButtonWrapper.Body>
+    </ButtonWrapper>
   );
 };

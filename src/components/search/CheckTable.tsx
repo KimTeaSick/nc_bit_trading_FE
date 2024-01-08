@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Card from "@/components/common/card";
-
 import {
   createColumnHelper,
   flexRender,
@@ -20,23 +19,45 @@ function CheckTable(props: {
 }) {
   const { tableData, title, optionList } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  // const [defaultData, setDefaultData] = React.useState<SortingState>([]);
+  const [platform, setPlatform] = React.useState("1");
+  useEffect(() => {
+    setPlatform(window.localStorage.getItem("user_platform")!);
+  }, []);
 
   let defaultData =
     tableData !== undefined
       ? tableData?.map((coin: any, index: number) => {
           const key = Object.keys(coin);
           const value: any = Object.values(coin);
+          console.log("key", key);
           return {
-            closingprice: value[0].closing_price,
-            floatingprice: value[0].fluctate_24H,
-            highprice: value[0].max_price,
-            lowprice: value[0].min_price,
-            marketprice: value[0].opening_price,
-            name: key,
-            previousclosingprice: value[0].prev_closing_price,
-            ratechange: value[0].fluctate_rate_24H,
-            tradingvolume24: value[0].acc_trade_value_24H,
+            name: platform === "1" ? key : key.replace("KRW-", ""),
+            closingprice:
+              platform === "1" ? value[0].closing_price : value[0].trade_price,
+            floatingprice:
+              platform === "1"
+                ? value[0].fluctate_24H
+                : value[0].signed_change_price,
+            highprice:
+              platform === "1" ? value[0].max_price : value[0].high_price,
+            lowprice:
+              platform === "1" ? value[0].min_price : value[0].low_price,
+            marketprice:
+              platform === "1"
+                ? value[0].opening_price
+                : value[0].opening_price,
+            previousclosingprice:
+              platform === "1"
+                ? value[0].prev_closing_price
+                : value[0].prev_closing_price,
+            ratechange:
+              platform === "1"
+                ? value[0].fluctate_rate_24H
+                : value[0].signed_change_rate,
+            tradingvolume24:
+              platform === "1"
+                ? value[0].acc_trade_value_24H
+                : value[0].acc_trade_price_24h,
           };
         })
       : [];

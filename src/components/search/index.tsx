@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import ChoiceCondition from "./next_ChoiceCondition";
+import ChoiceCondition from "./ChoiceCondition";
 import {
   ConditionEdit,
   ConditionRegister,

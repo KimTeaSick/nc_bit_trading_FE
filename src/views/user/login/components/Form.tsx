@@ -4,6 +4,7 @@ import { LoginInfoType } from "../variable/login";
 import { Dispatch, FC, SetStateAction } from "react";
 import { login_event } from "@/pages/api/user";
 import { useRouter } from "next/router";
+import { PlatformSelect } from "./PlatformSelect";
 
 interface Props {
   value: LoginInfoType;
@@ -30,6 +31,7 @@ const LoginForm: FC<Props> = ({ value, setValue }) => {
     <div className="flex flex-col gap-2 w-1/2 h-[50vh] justify-center bg-navy-50 p-4 rounded-lg items-center">
       <p className="self-center font-bold text-4xl text-navy-700 my-3">Login</p>
       <div className="flex w-2/3 flex-col gap-2">
+        {/* <PlatformSelect /> */}
         <Input
           width="80"
           height={50}

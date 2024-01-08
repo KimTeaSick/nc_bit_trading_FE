@@ -25,7 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     return (
       <>
         <Head>
-          <title>nc_bit</title>
+          <title>오석표의 4계절 투자 플랫폼</title>
         </Head>
         <main className="app">
           <QueryClientProvider client={queryClient}>

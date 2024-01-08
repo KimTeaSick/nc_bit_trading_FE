@@ -55,7 +55,7 @@ export const AssetsTableSection = () => {
     <div className="flex items-center flex-col overflow-y-scroll h-[40vh]">
       {tableList.status === "success" ? (
         tableList.data.map((value: number, index: number) => (
-          <AssetsTable idx={value} key={index} />
+          <AssetsTable idx={value} key={index + value} />
         ))
       ) : (
         <div className="flex items-center justify-center h-full">

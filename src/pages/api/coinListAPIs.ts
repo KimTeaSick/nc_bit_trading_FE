@@ -5,6 +5,8 @@ import { get, post } from ".";
 export const getCoinList = createAsyncThunk("getCoinList", async () => {
   const { data } = await get("coin/getBitcoinInfo");
   const coinList = Object.entries(data);
+  console.log(coinList);
+
   return coinList.slice(0, -1);
 });
 

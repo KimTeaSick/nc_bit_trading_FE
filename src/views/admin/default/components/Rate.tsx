@@ -16,7 +16,7 @@ const Rate: FC<Props> = ({ rateInfo }) => {
       </div>
       <div
         className={`text-2xl font-bold ${
-          rateInfo?.rate > 0 ? "text-blue-600" : "text-red-600"
+          rateInfo?.rate > 0 ? "text-red-600" : "text-blue-600"
         }`}
       >
         {rateInfo?.rate ? rateInfo?.rate : 0} %

@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { get, post } from ".";
 
 export const getBalance = createAsyncThunk("checkAccount", async () => {

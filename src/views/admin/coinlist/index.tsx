@@ -25,7 +25,7 @@ const CoinList: FC<CoinListProps> = ({ coinList }) => {
             <Link key={index} href={`coin/${coin[0]}`}>
               <CoinCard
                 title={CHANGE_KR_NAME(coin[0])}
-                price={krwChage(coin[1].closing_price)}
+                price={krwChage(coin[1].opening_price)}
                 prevPrice={coin[1].prev_closing_price}
               />
             </Link>

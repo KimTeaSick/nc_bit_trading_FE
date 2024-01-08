@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { useLoginInfo } from "./variable/login";
 import LoginForm from "./components/Form";
+import { useLoginInfo } from "./variable/login";
+import { PlatformSelect } from "./components/PlatformSelect";
 
 const LoginComponent: FC = () => {
   const [loginInfo, setLoginInfo] = useLoginInfo();
